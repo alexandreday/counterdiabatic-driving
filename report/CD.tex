@@ -1,0 +1,56 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin=2.0cm,vmargin=2.5cm,bindingoffset=0.5cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%\usepackage{float}
+\usepackage{placeins}
+\usepackage{diagbox}
+\newtheorem{thm}{Theorem}
+\usepackage{subcaption}
+%\usepackage{subfigure}
+\usepackage[english]{babel}
+\author{Mohit}
+\title{Counterdiabatic driving}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Our Hamiltonian would be controlled using a control parameter called $\lambda$. Our aim would be drive the system without any transition.
+\section{Adiabatic gauge potential: derivation}
+Let Hamiltonian $H_0(\lambda (t))$ satisfy the following equation
+
+\begin{equation}
+H_0(\lambda (t)) |\psi \rangle= i \partial_t|\psi \rangle
+\end{equation}
+
+Let us go to rotating frame so as to diagonalize our Hamiltonian. Required unitary transformation $U(\lambda)$ would depend on parameter $\lambda$. Wave function in moving frame is $|\tilde{\psi}  \rangle = U^{\dagger} |\tilde{\psi}  \rangle$. In this basis, Hamiltonian is diagonal:
+$\tilde{H_0}= U^{\dagger} H_0 U = \sum_n \epsilon (\lambda)  |n (\lambda)\rangle \langle  n (\lambda) |$. \footnote{Note that expectation value should remain same in both basis, i.e.$ \langle \tilde{\psi} | \tilde{H_0}  |\tilde{\psi}  \rangle= \langle{\psi} | {H_0}  |{\psi}  \rangle$}
+
+How does the wave function evolve in new basis?
+\begin{equation}
+ i \partial_t|\tilde{\psi} \rangle=(\tilde{H_0
+ }(\lambda (t)) - \dot{\lambda} \tilde{\mathcal{A_\lambda}}) |\psi \rangle
+\end{equation}
+\section{Free interacting fermions in an external potential}
+
+\begin{equation}
+H_0= -J \sum_{j=1}^{L-1} (c^{\dagger}_j c_{j+1} +c^{\dagger}_{j+1} c_{j}) + \sum_{j=1}^{L} V_j(\lambda) c^{\dagger}_jc_j
+\end{equation}
+
+
+\begin{equation}
+\mathcal{A}^*_{\lambda}= i  \sum_{j=1}^{L-1} \alpha_j (c^{\dagger}_j c_{j+1} - c^{\dagger}_{j+1} c_{j}) 
+\end{equation}
+\appendix
+
+\section{Spin 1/2 particle in a time-dependent magnetic field}
+I would include a derivation from lecture notes to gain an intuition her. I also plan to understand Berry's paper and reproduce some of his calculations in this appendix.
+\end{document}
