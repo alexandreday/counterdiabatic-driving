@@ -21,10 +21,44 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
+\section{Goal}
 
+The goal, as of now, is to distinguish between integrable and non-integrable many-body quantum system by studying their approximate gauge adiabatic potential\footnote{We expect results to be valid for classical system too. But for now, we would focus on quantum systems.}
+
+ 
+Classically, on one hand, integrable systems have a lot of constants of motion, and as a result, they have a few independent degrees of freedom. On the other hand, non-integrable systems contain a large number of independent degrees of freedom. We expect a similar picture for quantum systems.
+
+The central idea is to apply Eigenstate Thermalization Hypothesis (ETH) to operators of approximate gauge potential in non-integrable quantum systems, and claim that its' norm scales exponentially in system 
+size. Whereas for integrable systems, approximate gauge potential are supposed to scale like a polynomial in system size.
+
+\section{Introduction}
+\subsection{Integrable and non-integrable systems}
+What is an integrable quantum systems? To the best of my knowledge, the general definition of integrability for quantum systems has not been reached conclusively. Despite this, there are some models which are commonly agreed to be integrable and similarly, there are model which are called non-integrable in literature. For our purposes, we would use such models to get some intuition.
+
+Let's list down a few properties of \textbf{integrable} quantum systems: 
+\begin{itemize}
+\item Density of those systems don't thermalize to Gibbs distribution. In fact, they thermalize to a generalized Gibbs distribution. (see Rigol papers for detail) 
+\item They can be diagonalized using a transformation that is local in space\footnote{According to Dries, for 2D transverse quantum Ising model, Jordan Wigner transformation exists to diagonalize the Hamiltonian. However, it's still called a non-integrable model since then the transformation becomes non-local. I need to dig relevant paper for details}. Examples are non-interacting fermions, 1 D Ising model and 1D transverse field Ising model (TFIM).  These can be diagonalized using Bogoliubov, transfer matrix method and Jordan-Wigner transformation, respectively.
+\item ETH doesn't apply to them (cite relevant papers)
+\item Distribution of Energy level spacing follows Poisson distribution --energy level attraction.
+\end{itemize}
+
+
+Let's list down a few properties of \textbf{non-integrable} quantum systems: 
+\begin{itemize}
+\item Density of those systems thermalize to Gibbs distribution.  (see Rigol papers for detail) 
+\item They cannot be diagonalized using a transformation that is local in space. This is not a strong argument because it just means that such a transformation has not been found yet.
+\item ETH does apply to them (cite relevant papers)
+\item Distribution of Energy level spacing are correlated and therefore, they show level repulsion. They follow Wigner-Dyson or similar distributions, depending upon the details of Hamiltonian. These properties can be derived using Random Matrix Theory.
+\end{itemize}
+
+
+We do note that both integrable and non-integrable show quantum phase transition \footnote{Is there any difference between phase transitions shown between integrable and non-integrable models? Apparently no.}. An example of quantum phase transition in integrable model: TFIM show paramagnetic-ferromagnetic quantum phase transition.
+
+
+\section{Adiabatic gauge potential}
 Our Hamiltonian would be controlled using a control parameter called $\lambda$. Our aim would be drive the system without any transition.
-\section{Adiabatic gauge potential: derivation}
+
 Let Hamiltonian $H_0(\lambda (t))$ satisfy the following equation
 
 \begin{equation}
@@ -39,6 +73,28 @@ How does the wave function evolve in new basis?
  i \partial_t|\tilde{\psi} \rangle=(\tilde{H_0
  }(\lambda (t)) - \dot{\lambda} \tilde{\mathcal{A_\lambda}}) |\psi \rangle
 \end{equation}
+
+Note that gauge potential should be purely imaginary. But this doesn't mean that it has to be necessarily anti-Hermitian for a real Hamiltonian.
+
+Derive the diagonal and off-diagonal elements. Derive the commutator relation, write the variational approach.
+
+\section{Our model: spin chain with transverse and longitudinal field}
+
+\begin{equation}
+H_0=\sum_{j=1}^{L-1} J(\lambda) \sigma_j^z \sigma_{j+1}^z + \sum_{j=1}^{L}  (Z_j (\lambda) \sigma_j^x +X_j (\lambda) \sigma_j^x)
+\end{equation}
+
+We note that for either $Z_j=0$ or $X_j=0$, this model is integrable. Apart from these cases, this model is non-integrable.
+
+
+David Huse and Kim have mentioned in their paper which parameter are best for the spin chain to be integrable. Since our method also depends on exact diagonalization, I should use their results.
+
+
+\appendix
+
+\section{Spin 1/2 particle in a time-dependent magnetic field}
+I would include a derivation from lecture notes to gain an intuition here. I also plan to understand Berry's paper and reproduce some of his calculations in this appendix.
+
 \section{Free interacting fermions in an external potential}
 
 \begin{equation}
@@ -49,8 +105,6 @@ H_0= -J \sum_{j=1}^{L-1} (c^{\dagger}_j c_{j+1} +c^{\dagger}_{j+1} c_{j}) + \sum
 \begin{equation}
 \mathcal{A}^*_{\lambda}= i  \sum_{j=1}^{L-1} \alpha_j (c^{\dagger}_j c_{j+1} - c^{\dagger}_{j+1} c_{j}) 
 \end{equation}
-\appendix
 
-\section{Spin 1/2 particle in a time-dependent magnetic field}
-I would include a derivation from lecture notes to gain an intuition her. I also plan to understand Berry's paper and reproduce some of his calculations in this appendix.
+include pictures drawn using sympy
 \end{document}
