@@ -76,20 +76,27 @@ How does the wave function evolve in new basis?
 
 Note that gauge potential should be purely imaginary. But this doesn't mean that it has to be necessarily anti-Hermitian for a real Hamiltonian.
 
+$\clubsuit \clubsuit $Things to include here \\
 Derive the diagonal and off-diagonal elements. Derive the commutator relation, write the variational approach.
 
 \section{Our model: spin chain with transverse and longitudinal field}
 
 \begin{equation}
-H_0=\sum_{j=1}^{L-1} J(\lambda) \sigma_j^z \sigma_{j+1}^z + \sum_{j=1}^{L}  (Z_j (\lambda) \sigma_j^x +X_j (\lambda) \sigma_j^x)
+H_0=\sum_{j=1}^{L-1} J(\lambda) \sigma_j^z \sigma_{j+1}^z + \sum_{j=1}^{L}  (Z_j (\lambda) \sigma_j^z +X_j (\lambda) \sigma_j^x)
 \end{equation}
 
-We note that for either $Z_j=0$ or $X_j=0$, this model is integrable. Apart from these cases, this model is non-integrable.
+We note that for either $Z_j=0$ or $X_j=0$, this model is integrable. Apart from these cases, this model is non-integrable. \footnote{David Huse and Kim have mentioned in their paper which parameter are best for the spin chain to be integrable. Since our method also depends on exact diagonalization, I should use their results.}
 
 
-David Huse and Kim have mentioned in their paper which parameter are best for the spin chain to be integrable. Since our method also depends on exact diagonalization, I should use their results.
+Here we would try to reproduce figure 4 of Dries paper.
 
+\begin{equation}
+H_0=\sum_{j=1}^{L-1}  \sigma_j^z \sigma_{j+1}^z + \sum_{j=1}^{L} (2\sigma_j^z + 0.8 \sigma_j^x ) + \lambda \sigma_0^x
+\end{equation}
 
+$\clubsuit \clubsuit $Things to include here \\
+
+CD Hamiltonian $H_0+ \lambda \sigma_0^x + \dot{\lambda} \alpha_0 \sigma_0^y$\\
 \appendix
 
 \section{Spin 1/2 particle in a time-dependent magnetic field}
