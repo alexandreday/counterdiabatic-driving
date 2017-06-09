@@ -55,7 +55,11 @@ Let's list down a few properties of \textbf{non-integrable} quantum systems:
 
 We do note that both integrable and non-integrable show quantum phase transition \footnote{Is there any difference between phase transitions shown between integrable and non-integrable models? Apparently no.}. An example of quantum phase transition in integrable model: TFIM show paramagnetic-ferromagnetic quantum phase transition.
 
+\subsection{What are adiabatic gauge potentials?}
+Gauge potentials are generators of translations in parameter space. Adiabatic gauge potentials are a special subset of these which diagonalize  the instantaneous Hamiltonian, attempting to leave its eigenbasis invariant as the parameter is changed. These adiabatic gauge potentials generate non-adiabatic corrections to Hamiltonian in the moving basis.
 
+
+In quantum systems, adiabatic gauge potentials are the generators of unitary basis transformation. 
 \section{Adiabatic gauge potential}
 Our Hamiltonian would be controlled using a control parameter called $\lambda$. Our aim would be drive the system without any transition.
 
@@ -114,4 +118,39 @@ H_0= -J \sum_{j=1}^{L-1} (c^{\dagger}_j c_{j+1} +c^{\dagger}_{j+1} c_{j}) + \sum
 \end{equation}
 
 include pictures drawn using sympy
+
+
+\section{Classical adiabatic gauge potential}
+Let's start by considering classical systems. For such systems, we specify the system by defining Hamiltonian $H (\lambda)$ in terms of canonical variables $q_i (\lambda,t)$ and $p_j (\lambda,t)$. where $\lambda$ is an externally controlled parameter. These variables satisfy the canonical relations:
+\begin{equation}
+\{q_i,p_j \}=\delta_{ij} 
+\end{equation}
+where $\{\ldots \}$ denotes the Poisson bracket.
+
+Canonical transformations are transformations of $q_i$ and $p_j$ to new variables $\bar{q_i}$ and $\bar{p_j}$ such that it preserves Poisson bracket. Hence, 
+\begin{equation}
+\{\bar{q_i},\bar{p_j} \}=\delta_{ij} 
+\end{equation}
+
+What are gauge potentials? Gauge potential $A_{\lambda}$  are the generators of continuous canonical transformations in parameter $\lambda$ space , which can be defined as :
+\begin{alignat}{5}
+q_j(\lambda + \delta \lambda) & =& q_j - \dfrac{\partial A_{\lambda}}{\partial p_j} \delta \lambda &\Rightarrow & \dfrac{\partial q_j}{\partial \lambda} &=& -\dfrac{\partial A_{\lambda}}{\partial p_j} = \{A_{\lambda},q_j \} \\
+p_j(\lambda + \delta \lambda) & =& p_j + \dfrac{\partial A_{\lambda}}{\partial q_j} \delta \lambda & \Rightarrow & \dfrac{\partial p_j}{\partial \lambda} &=& \dfrac{\partial A_{\lambda}}{\partial q_j}=\{ A_{\lambda},p_j \}
+\label{def_A}
+\end{alignat}
+
+We can verify that these transformations are canonical upto order $\delta \lambda ^2$ because we can show that:
+\begin{equation}
+\{q_j(\lambda + \delta \lambda), p_j(\lambda + \delta \lambda)\} = \delta_{ij} + O(\delta \lambda ^2)
+\end{equation}
+
+Let's try to understand by taking an example of continuous canonical transformation. We would shift the position coordinate by $X_i$. Here our parameter $\lambda$ is $X_i$
+\begin{eqnarray}
+ q_i(X_i,t) &=& q_i(0,t) - X_i \\
+p_i(X_i,t)&=& p_i(0,t)
+\end{eqnarray}
+Using equation \ref{def_A}, we see that $\frac{\partial A_{X_i}}{\partial q_j}=0$ and $-\frac{\partial A_{X_i}}{\partial p_j}=-\delta_{ij}$. Hence, $A_{X_i}=p_j + C_j$, where $C_j$ are arbitrary constants of integration. This is the gauge choice we have got in defining these gauge potentials. 
+
+
+
 \end{document}

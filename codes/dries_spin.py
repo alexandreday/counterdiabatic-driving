@@ -1,7 +1,7 @@
 from quspin.operators import hamiltonian # Hamiltonians and operators
 from quspin.basis import spin_basis_1d # Hilbert space spin basis
 import numpy as np # generic math functions
-
+import time
 
 
 
@@ -35,13 +35,13 @@ def Ham(L):
     H0 = hamiltonian(static,dynamic,basis=basis,dtype=np.complex_)
     return H0
 
-
-L=10
+t_start=time.time()
+L=4
 tau=0.01
 H0=Ham(L)
 E0,V0=H0.eigh(time=0)
 psi0=V0[:,0]
-t_in=np.linspace(0.01,10,20)
+t_in=np.logspace(-2,1.39794,15,endpoint=True)
 fidelity_arr=np.ones(len(t_in))
 energy_diff_arr=np.ones(len(t_in))
 
@@ -62,20 +62,12 @@ for i in range(len(t_in)):
 	fidelity_arr[i]=fidelity(t_in[i],psi)
 	energy_diff_arr[i]=np.real(energy_diff(t_in[i],psi))
 
-f=open('dries_ramp.dat','w')
+t_end=time.time()
+t_code=(t_end-t_start)/60.0
+
+f=open('log_dries_ramp.dat','w')
+f.write("L= %.12f code ran for= %.2f (in minutes) \n " %(L, t_code))
 for i in range(len(t_in)):
 	f.write(" %.12f %.12f %.12f  \n"  %(t_in[i],fidelity_arr[i],energy_diff_arr[i]))  
-
-
-
-
-
-
-
-
-
-
-
-
 
 
