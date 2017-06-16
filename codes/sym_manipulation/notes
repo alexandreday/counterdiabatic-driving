@@ -1,0 +1,13 @@
+
+###sympy information on second quant. Bosons and fermions implemented, but I don't think they have done it for pauli sigma spin
+http://docs.sympy.org/dev/modules/physics/secondquant.html   
+
+
+#sympy paper
+https://peerj.com/articles/cs-103/
+
+##conceptual question--difference between direct sum versus tensor product
+https://physics.stackexchange.com/questions/41782/when-and-how-do-you-represent-a-two-body-state-as-a-tensor-product
+
+###mit phy lecture notes on this  
+https://ocw.mit.edu/courses/physics/8-05-quantum-physics-ii-fall-2013/lecture-notes/MIT8_05F13_Chap_08.pdf

@@ -43,7 +43,20 @@ Let's list down a few properties of \textbf{integrable} quantum systems:
 \item Distribution of Energy level spacing follows Poisson distribution --energy level attraction.
 \end{itemize}
 
+We note here that many body localized (MBL) system is a new kind of integrable system. To understand its' similarity and difference from integrable system, I am quoting a paragraph from \cite{o2016explicit} : 
 
+``In order to explain the basic phenomenology of MBL systems, including their failure to thermalise, a picture of Local Integrals of Motion (LIOMs) has been put forward. According to this picture, the basic mechanism of MBL is similar to integrable models: there emerges an extensive number of operators (“conserved charges”) $\tau_i$ , which commute amongst  themselves $[\tau_i , \tau_j ]=0$ as well as with the Hamiltonian $[H, \tau_i]=0$.
+
+A special property of MBL systems is that $\tau_i$ have eigenvalues $\pm 1$, thus they resemble the bare spin-1/2 operators, and generically there are L such operators in a lattice system of size L. This means that any Hamiltonian eigenvector can be specified by the conserved quantum numbers corresponding to operators $\tau_i$. Because of this extensive number of emergent quantum numbers (that by definition do not change during unitary evolution), the thermalisation of the system is prevented as the MBL state retains the memory of its initial condition. \textbf{The difference between integrable models and MBL systems is in the form of individual $\tau_i$ : in the integrable case, each $\tau_i$. is an extended sum of local operators, while in the MBL case each $\tau_i$. is a single local operator, up to corrections that vanish exponentially with distance to the core.} The subleading (exponentially suppressed) corrections are important, as they cause the distinction between Anderson and MBL insulators. For example, the presence of tails in LIOMs is responsible for the dephasing dynamics and the spreading of entanglement in MBL systems, which does not occur in Anderson insulators"
+
+In \cite{abanin2017recent}, form of $\tau_i$ is given as 
+\begin{equation}
+\tau_i^z= \sigma_i^z + \sum_{j,k} \sum_{a,b=x,y,z} f^{a,b}_{i,j,k} \sigma_j^a \sigma_k^b
+\end{equation}
+where weights decay exponentially with distance:
+\begin{equation}
+f^{a,b}_{i,j,k} \propto \exp(- \max\{ |i-j|, |i-k| \}/ \xi)
+\end{equation}
 Let's list down a few properties of \textbf{non-integrable} quantum systems: 
 \begin{itemize}
 \item Density of those systems thermalize to Gibbs distribution.  (see Rigol papers for detail) 
@@ -135,25 +148,27 @@ Here we would try to reproduce figure 4 of Dries paper.
 H_0=\sum_{j=1}^{L-1}  \sigma_j^z \sigma_{j+1}^z + \sum_{j=1}^{L} (2\sigma_j^z + 0.8 \sigma_j^x ) + \lambda \sigma_0^x
 \end{equation}
 \begin{equation}
-\lambda(t) = \lambda_0 + (\lambda_f-\lambda_0)\sin\left(\dfrac{\pi}{2}\left(\sin(\dfrac{t\pi}{2.0 \tau})^2 \right) \right)^2 \quad, t \in [0, \tau]
+\lambda(t) = \lambda_0 + (\lambda_f-\lambda_0)\sin^2\left(\dfrac{\pi}{2}\sin^2\left(\dfrac{t\pi}{2 \tau}\right)  \right) \quad, t \in [0, \tau]
 \end{equation}
 \begin{figure}
 \centering
 \includegraphics[scale=0.67]{protocol.eps}
-\caption{Protocol chosen for going from $\lambda_i=0$ to $\lambda_i=1$ in time $\tau$}
+\caption{Protocol chosen for going from $\lambda_i=0$ to $\lambda_f=-10$ in time $\tau$}
 \end{figure}
 
-$\clubsuit \clubsuit $Things to include here \\
+$\clubsuit \clubsuit $Things to include here 
 
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.5]{fidelity_naive.eps}
 \includegraphics[scale=0.5]{final_energy_naive.eps}
-\caption{Fidelity and final energy above ground state}
+\caption{Fidelity and final energy above ground state for L=12 spin chains}
 \end{figure}
 
-CD Hamiltonian $H_0+ \lambda \sigma_0^x + \dot{\lambda} \alpha_0 \sigma_0^y$\\
+CD Hamiltonian $H_0+ \lambda \sigma_0^x + \dot{\lambda} \alpha_0 \sigma_0^y$
+
+\newpage
 \appendix
 
 \section{Spin 1/2 particle in a time-dependent magnetic field}
@@ -204,6 +219,9 @@ p_i(X_i,t)&=& p_i(0,t)
 \end{eqnarray}
 Using equation \ref{def_A}, we see that $\frac{\partial A_{X_i}}{\partial q_j}=0$ and $-\frac{\partial A_{X_i}}{\partial p_j}=-\delta_{ij}$. Hence, $A_{X_i}=p_j + C_j$, where $C_j$ are arbitrary constants of integration. This is the gauge choice we have got in defining these gauge potentials. 
 
+\bibliography{ref} 
+
+\bibliographystyle{plain}
 
 
 \end{document}
