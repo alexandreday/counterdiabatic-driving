@@ -122,7 +122,7 @@ $H (\lambda) |n(\lambda) \rangle = E_n (\lambda) |n(\lambda) $. Let's derive dia
 \item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle= \langle n |\partial_{\lambda} | n \rangle $
 \item \textbf{off- diagonal element:} We use the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate with respect to $\lambda$ to obtain:
 \begin{align}
-\langle m |A_{\lambda} | n \rangle = i \hbar \dfrac{\langle n |\partial_{\lambda}H | n \rangle}{E_m-E_n}
+\langle m |A_{\lambda} | n \rangle = i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
 \end{align}
 
 \end{itemize}
@@ -219,12 +219,21 @@ In Dries's paper \cite{sels2017minimizing}, they show  similar results in their 
 \end{figure}
 
 \section{Locality of operators: regulator}
-We introduce a regulator/ cutoff $\mu$ to regularize our exact gauge potential for non-integrable chains:
+Let's start off by writing the off-diagonal elements of exact gauge potential:
+\begin{equation}
+\langle m |A_{\lambda} | n \rangle = i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
+\end{equation}
+
+For a many-body Hamiltonian, number of states in Hilbert space grows exponentially in system size while energy bandwidth grows linearly with system size (since energy is an extensive quantity). Thus, distance between any two \textit{nearby} eigenvalues is exponentially small in system size. In other words, $E_m-E_n \sim e^{-S}$. If there are non-zero off-diagonal elements of $\partial_{\lambda}H $, then $\langle m |A_{\lambda} | n \rangle$ is ill-defined. It's called small denominator problem \cite{kolodrubetz2016geometry}.
+
+
+ 
+To resolve this problem, we introduce a regulator/ cutoff $\mu$ that regularizes our exact gauge potential in large system size $L$ limit. Once we have taken large $L$ limit, then we take small $\mu$ limit. Hence, if this method works, the right way to take limits will be:
 \begin{eqnarray}
 \langle n | A_{\lambda} | m \rangle &=& \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) 
 \end{eqnarray}
-
-Now we will use Laplace transform with $s= E_n-E_m$:
+where we have chosen diagonal elements of $A_{\lambda}$ to be zero \footnote{Dries says we can do this without any loss of generality. I am not sure if we can always do this.}. 
+Now we will use Laplace transform with $s=\mu$:
 
 \begin{eqnarray}
 \langle n | A_{\lambda} | m \rangle &=&  i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
@@ -262,18 +271,26 @@ Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hba
 where $C^n$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C_n= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $
 
 We can write short-hand notation for this $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}$ as $\sin ( C^{(1)}t)$, where $C^{(1)}= [H, \partial_{\lambda} H ]$. Thus, we can write: 
+
 \begin{equation}
- A_{\lambda} =  i\hbar \int_0^{\infty} e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
+\boxed{ A_{\lambda} =  i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
+= i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}}
+\label{def_1}
 \end{equation}
-I would emphasize that $A_{\lambda}$ depends on all odd powered commutators.
 
 
 Another way which might be more useful is by writing it in series form and changing the order of integral and sum. If there is some singularity, then the order of summation and integration should be important. So, here is how we should write this:
 \begin{eqnarray}
 A_{\lambda} &=&  i\hbar \int_0^{\infty} e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1} \\
  &=&  i\hbar  \sum_{n=0}^{\infty}(-1)^{n} C^{2n+1} \int_0^{\infty} e^{-\mu t}  \dfrac{ t ^{2n+1}}{(2n+1)!} \\
- &=&  i\hbar  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+1}}
+ &=&  i\hbar  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+2}}
 \end{eqnarray}
+Hence, we get another expression where we have integrated before taking the summation:
+
+\begin{equation}
+\boxed{ A_{\lambda} =  \dfrac{i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+1}}}
+\label{def_2}
+\end{equation}
 
 Now one thing which is good is that if we first take $\lim_{\mu \rightarrow 0}$, then $A_{\lambda}$ diverges. Thus, now divergence is more explicit. 
 
@@ -281,26 +298,58 @@ The correct limit is to take first $\lim L \rightarrow \infty$. If $C^n \propto 
 
 \subsection{ Integrable model}
 
-\subsubsection*{ZZ: doesn't grow at all}
+\subsubsection*{ZZ}
+We would take the simplest integrable Hamiltonian with Ising interaction and a local $x$ magnetic field:
 \begin{equation}
 H= J \sum_{j=1}^{L-1}  \sigma_j^z \sigma_{j+1}^z +  \lambda  \sigma_0^x
 \label{zz}
 \end{equation}
+Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^x$ . Here we begin:
+\begin{align*}
+[H, \partial_{\lambda} H] &= 2 i J \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \\ %\sigma_0^x
+[H, [H,[H, \partial_{\lambda} H]]] &=  (16 J^2 + 8 \lambda ^2) [H, \partial_{\lambda} ] = \alpha  [H, \partial_{\lambda} H] \\
+[H, [H,[H, [H,[H, \partial_{\lambda} H]]]]] &= \alpha [H, [H,[H, \partial_{\lambda} H]]]=  \alpha^2  [H, \partial_{\lambda}H ] 
+\end{align*}
 
 
-\begin{eqnarray}
-[H, [H,[H, \partial_{\lambda} H]]] &=&  (16 J^2 + 8 \lambda^2) [H, \partial_{\lambda} H] = \alpha [H, \partial_{\lambda} H]\\
-\end{eqnarray}
+Hence, $C^{2n+1}= \alpha^n C^{(1)}$, where $\alpha= (16 J^2 + 8 \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using \ref{def_1}, we get :
 
-\begin{eqnarray}
-[H, \partial_{\lambda} H] &=&  2 i J \sigma_0^y (\sigma_1^z + \sigma_{-1}^z) \\
-\end{eqnarray}
- Hence, $C^{2n+1}= \alpha^n C^{(1)}$
+\begin{align*}
+A_{\lambda} &= i\hbar   C^{(1)} \int_0^{\infty} e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^n  \\
+ &= i\hbar   C^{(1)} \int_0^{\infty} e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  \alpha^{(2n+1)/2} t ^{2n+1}}{\sqrt{\alpha}(2n+1)!}   \\
+  &= \dfrac{i\hbar   C^{(1)}}{\sqrt{\alpha}} \int_0^{\infty} e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  (\sqrt{\alpha } t)^{2n+1}}{(2n+1)!}   \\
+    &= \dfrac{i\hbar   C^{(1)}}{\sqrt{\alpha}} \int_0^{\infty} e^{-\mu t}  \sin  (\sqrt{\alpha } t)   \\
+     &= \dfrac{i\hbar   C^{(1)}}{\sqrt{\alpha}} \dfrac{\sqrt{\alpha}}{\alpha + \mu^2} =\dfrac{i\hbar   C^{(1)}}{{\alpha + \mu^2}} =  \dfrac{-2 \hbar J}{{\alpha + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) 
+\end{align*}
+ 
 
-$A_{\lambda} =  i\hbar  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{n}}{\mu^{2n+1}}
-$ 
+Using \ref{def_2}, we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+\begin{align*}
+A_{\lambda} &=  \dfrac{i\hbar  C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{n}}{\mu^{2n+1}} \\
+&=  \dfrac{i\hbar}{\mu \sqrt{\alpha}}  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \left(\dfrac{ \sqrt{\alpha}}{\mu} \right)^{2n+1} \\
+&=  \dfrac{i\hbar}{\mu \sqrt{\alpha}}  C^{(1)} \dfrac{\mu \sqrt{\alpha}}{ \mu^2 + \alpha}\quad, \mbox{if ~} |\alpha / \mu^2| <1 \\
+&=    C^{(1)}  \dfrac{ i\hbar  }{ \mu^2 + \alpha}= \dfrac{-2 \hbar J}{{\alpha + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \quad, \mbox{if ~} |\alpha / \mu^2| <1 \\
+\end{align*}
+Hence, both answers are consistent if I am allowed to do analytical continuation for the geometric series I have got in the second method. After taking $\mu \rightarrow 0$ limit, we get an expression for exact gauge potential:
 
-\subsubsection*{ZZ with X:  grow ``slowly"}
+\begin{equation}
+\boxed{ A_{\lambda} = \dfrac{- \hbar J}{{8 J^2 + 4 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z)}
+\end{equation}
+I can similarly write an exact expression for additional $\sum_{j=1}^L h_j \sigma_j^z$ term in the Hamiltonian.
+\subsubsection*{Transverse Ising chain}
+We would study another integrable model:
+\begin{equation}
+H= J \sum_{j=1}^{L-1}  \sigma_j^x \sigma_{j+1}^x + h \sum_{j=1}^L \sigma_j^z + \lambda  \sigma_0^z
+\label{xx_z}
+\end{equation}
+Since this model is studied by a lot of people \cite{del2012assisted, kolodrubetz2016geometry}, it will be good to find exact or approximate gauge potential using this regulator method.
+
+
+Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^z$ . Here we begin:
+\begin{align*}
+[H, \partial_{\lambda} H] &= 2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x) \\ 
+\end{align*}
+
 
 
 \subsection{Non-integrable model}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{abanin2017recent}
 Dmitry~A Abanin and Zlatko Papi{\'c}.
@@ -15,6 +15,12 @@ Luca D'Alessio, Yariv Kafri, Anatoli Polkovnikov, and Marcos Rigol.
 \newblock From quantum chaos and eigenstate thermalization to statistical
   mechanics and thermodynamics.
 \newblock {\em Advances in Physics}, 65(3):239--362, 2016.
+
+\bibitem{del2012assisted}
+Adolfo del Campo, Marek~M Rams, and Wojciech~H Zurek.
+\newblock Assisted finite-rate adiabatic passage across a quantum critical
+  point: exact solution for the quantum ising model.
+\newblock {\em Physical review letters}, 109(11):115703, 2012.
 
 \bibitem{kim2013ballistic}
 Hyungwon Kim and David~A Huse.
