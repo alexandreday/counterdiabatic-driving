@@ -231,6 +231,7 @@ For a many-body Hamiltonian, number of states in Hilbert space grows exponential
 To resolve this problem, we introduce a regulator/ cutoff $\mu$ that regularizes our exact gauge potential in large system size $L$ limit. Once we have taken large $L$ limit, then we take small $\mu$ limit. Hence, if this method works, the right way to take limits will be:
 \begin{eqnarray}
 \langle n | A_{\lambda} | m \rangle &=& \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) 
+\label{off-digonal}
 \end{eqnarray}
 where we have chosen diagonal elements of $A_{\lambda}$ to be zero \footnote{Dries says we can do this without any loss of generality. I am not sure if we can always do this.}. 
 Now we will use Laplace transform with $s=\mu$:
@@ -270,7 +271,7 @@ Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hba
 \end{eqnarray}
 where $C^n$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C_n= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $
 
-We can write short-hand notation for this $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}$ as $\sin ( C^{(1)}t)$, where $C^{(1)}= [H, \partial_{\lambda} H ]$. Thus, we can write: 
+We can simplify our expression if we call $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}$ as $\sin ( C^{(1)}t)$, where $C^{(1)}= [H, \partial_{\lambda} H ]$. Thus, we can write: 
 
 \begin{equation}
 \boxed{ A_{\lambda} =  i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
@@ -279,7 +280,7 @@ We can write short-hand notation for this $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t
 \end{equation}
 
 
-Another way which might be more useful is by writing it in series form and changing the order of integral and sum. If there is some singularity, then the order of summation and integration should be important. So, here is how we should write this:
+Can we further simplify the expression? If we are allowed to change the order of summation and integration \footnote{If there is some singularity, then the order of summation and integration might be important and we might get two different results.}, then we can do first Laplace transform of $t ^{2n+1}$  terms and then later the sum.  Hence, we get:
 \begin{eqnarray}
 A_{\lambda} &=&  i\hbar \int_0^{\infty} e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1} \\
  &=&  i\hbar  \sum_{n=0}^{\infty}(-1)^{n} C^{2n+1} \int_0^{\infty} e^{-\mu t}  \dfrac{ t ^{2n+1}}{(2n+1)!} \\
@@ -291,10 +292,15 @@ Hence, we get another expression where we have integrated before taking the summ
 \boxed{ A_{\lambda} =  \dfrac{i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+1}}}
 \label{def_2}
 \end{equation}
+We note that $i C^{2n+1}$ is Hermitian, which is consistent with the fact that $ A_{\lambda}$ is Hermitian. Also, we see that while doing the infinite summation we have assumed infinite system size. Why? In general,  $C^{n}$ grows with $n$ in the sense that it would have operators with larger support over lattice sites as $n$ increases. At a certain  $n_L$ that is proportional to system length $L$, we would find that $C^{n_L}$ has operators with support on boundary lattice sites. This is where our summation would be truncated for a finite system. Hence, the correct order of limits should be:
 
-Now one thing which is good is that if we first take $\lim_{\mu \rightarrow 0}$, then $A_{\lambda}$ diverges. Thus, now divergence is more explicit. 
+\begin{equation}
+\boxed{ A_{\lambda} =   \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } \dfrac{i\hbar}{\mu}  \sum_{n=0}^{n_L}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+1}}}
+\end{equation}
 
-The correct limit is to take first $\lim L \rightarrow \infty$. If $C^n \propto L$ and $\mu \propto 1/L$, then our $A_{\lambda}$ would again diverge. Dammit!
+Now one thing which is good is that if we take the wrong order of limit: take $\lim_{\mu \rightarrow 0}$ before $\lim_{L \rightarrow \infty }$, then $A_{\lambda}$ diverges. Thus, now divergence is more explicit than the original expression \ref{off-digonal}. 
+
+How should $\mu$ scale as $L$ because it seems that $C^n$ does definitely depend on $L$? Let's suppose $C^n \propto L^{\gamma}$, where $\gamma$ is some constant which we don't know. If we assume that $ A_{\lambda}$ is well-defined in large system size limit for many-body Hamiltonian (both integrable and non-integrable), then  $\mu \propto L^{\gamma}$.
 
 \subsection{ Integrable model}
 
@@ -304,15 +310,19 @@ We would take the simplest integrable Hamiltonian with Ising interaction and a l
 H= J \sum_{j=1}^{L-1}  \sigma_j^z \sigma_{j+1}^z +  \lambda  \sigma_0^x
 \label{zz}
 \end{equation}
+This model satisfies Ising symmetry $G= \Pi_i \sigma_i^x$ since $[H, G]=0$.
+
+
 Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^x$ . Here we begin:
 \begin{align*}
-[H, \partial_{\lambda} H] &= 2 i J \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \\ %\sigma_0^x
-[H, [H,[H, \partial_{\lambda} H]]] &=  (16 J^2 + 8 \lambda ^2) [H, \partial_{\lambda} ] = \alpha  [H, \partial_{\lambda} H] \\
+C^{(1)}&= 2 i J \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \\ 
+C^{(2)}&= 8 J^2(\sigma^z_1 \sigma^x_0 \sigma^z_{-1} + \sigma^x_0) - 4J \lambda \sigma_0^z( \sigma_{-1}^z + \sigma_1^z) \\
+C^{(3)} &=  (16 J^2 + 4 \lambda ^2) [H, \partial_{\lambda} ] = \alpha  [H, \partial_{\lambda} H] \\
 [H, [H,[H, [H,[H, \partial_{\lambda} H]]]]] &= \alpha [H, [H,[H, \partial_{\lambda} H]]]=  \alpha^2  [H, \partial_{\lambda}H ] 
 \end{align*}
 
 
-Hence, $C^{2n+1}= \alpha^n C^{(1)}$, where $\alpha= (16 J^2 + 8 \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using \ref{def_1}, we get :
+Hence, $C^{2n+1}= \alpha^n C^{(1)}$, where $\alpha= (16 J^2 + 4 \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using \ref{def_1}, we get :
 
 \begin{align*}
 A_{\lambda} &= i\hbar   C^{(1)} \int_0^{\infty} e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^n  \\
@@ -333,26 +343,57 @@ A_{\lambda} &=  \dfrac{i\hbar  C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfra
 Hence, both answers are consistent if I am allowed to do analytical continuation for the geometric series I have got in the second method. After taking $\mu \rightarrow 0$ limit, we get an expression for exact gauge potential:
 
 \begin{equation}
-\boxed{ A_{\lambda} = \dfrac{- \hbar J}{{8 J^2 + 4 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z)}
+\boxed{ A_{\lambda} = \dfrac{- \hbar J}{{8 J^2 + 2 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z)}
 \end{equation}
-I can similarly write an exact expression for additional $\sum_{j=1}^L h_j \sigma_j^z$ term in the Hamiltonian.
+Now one thing is good that $A_{\lambda}  \propto \sigma_0^y$ since Hamiltonian is real in $\{\sigma_z^i\}$ basis and $\sigma_0^y$ is imaginary, which is consistent with calculation shown in \cite{sels2017minimizing}. 
+
+One thing which I don't understand is why $A_{\lambda}$ is non-zero in $\lambda \rightarrow 0$ limit\footnote{Alright, it need not be because additional term in Hamiltonian is $\dot{\lambda} A_{\lambda}$, which goes to zero in $\lambda \rightarrow 0$ limit. }. Algebraically, it's because $C^{(n)} \propto \partial_{\lambda} H$, which is constant in $\lambda$ for our model. What are the diagonal elements of $A_{\lambda}$? Is it consistent with our assumption that diagonal elements are zero?  I think it's probably because we set diagonal element to be zero as diagonal element depends on derivatives of eigenvalues $| n(\lambda) \rangle$. I think I should be able to come up with a perturbation argument here.
+
+I can similarly write an exact expression for additional $\sum_{j=1}^L h_j \sigma_j^z$ term in the Hamiltonian, although this term breaks Ising symmetry $G$.
+
 \subsubsection*{Transverse Ising chain}
 We would study another integrable model:
 \begin{equation}
-H= J \sum_{j=1}^{L-1}  \sigma_j^x \sigma_{j+1}^x + h \sum_{j=1}^L \sigma_j^z + \lambda  \sigma_0^z
+H= J \sum_{j} \sigma_j^x \sigma_{j+1}^x + h \sum_{j} \sigma_j^z + \lambda  \sigma_{0}^z
 \label{xx_z}
 \end{equation}
+
+This model satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$.
+
+
 Since this model is studied by a lot of people \cite{del2012assisted, kolodrubetz2016geometry}, it will be good to find exact or approximate gauge potential using this regulator method.
 
 
 Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^z$ . Here we begin:
+\begin{align}
+ C^{(1)}&= -2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x) \\ 
+ C^{(2)}&= 8 J^2  (\sigma_0^z  +  \sigma_{-1}^x  \sigma_0^z  \sigma_1^x)- 4 J \lambda  (\sigma_{-1}^x +  \sigma_{1}^x) \sigma_0^ x  -4 h J ( (\sigma_{-1}^ x + \sigma_{1}^ x)  \sigma_0^x - (\sigma_{-1}^ y +\sigma_1^y )  \sigma_0^y ) 
+ \end{align}
+ 
 \begin{align*}
-[H, \partial_{\lambda} H] &= 2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x) \\ 
+C^{(3)}= & -8 i \left(2 h^2 J \sigma _{-1}^x\sigma _{0}^y+2  h^2 J  \sigma _{-1}^y\sigma _{0}^x+2 h^2 J \sigma_{0}^x\sigma _{1}^y+   2 h^2 J \sigma _{0}^y\sigma _{1}^x-hJ^2 \sigma _{-2}^z\sigma _{-1}^z\sigma _{0}^y \right. \\
+& \left. -3 h J^2 \sigma _{-1}^x\sigma_{0}^z\sigma _{1}^y-3  h J^2 \sigma _{-1}^y\sigma _{0}^z\sigma _{1}^x -hJ^2 \sigma _{0}^y\sigma _{1}^z\sigma _{2}^z \right.\\
+& \left. + 2 h J \lambda\sigma _{-1}^x\sigma _{0}^y+2 h J \lambda \sigma _{-1}^y\sigma _{0}^x+2 h J \lambda\sigma _{0}^x\sigma _{1}^y+2 h J \lambda\sigma _{0}^y\sigma _{1}^x+4 J^3\sigma _{-1}^x\sigma _{0}^y \right.\\
+& \left. +4 J^3\sigma_{0}^y \sigma_{1}^x+J \lambda ^2 \sigma _{-1}^x\sigma _{0}^y+J \lambda ^2\sigma _{0}^y \sigma_{1}^x \right)
 \end{align*}
 
 
+ 
+\begin{align*}
+C^{(3)}= & -8 i \left(2 h^2 J (\sigma _{-1}^x+ \sigma _{1}^x)\sigma _{0}^y +2  h^2 J  (\sigma _{-1}^y + \sigma_1^y)\sigma _{0}^x -hJ^2( \sigma _{-2}^z\sigma _{-1}^z + \sigma _{1}^z\sigma _{2}^z) \sigma _{0}^y \right. \\
+& \left. -3 h J^2 (\sigma _{-1}^x\sigma _{1}^y + \sigma _{-1}^y\sigma _{1}^x)\sigma _{0}^z  
+ + 2 h J \lambda(\sigma _{-1}^x + \sigma _{1}^x) \sigma _{0}^y+2 h J \lambda (\sigma _{-1}^y +\sigma _{1}^y)\sigma _{0}^x  \right.\\
+& \left.+ 4 J^3(\sigma _{-1}^x+ \sigma _{1}^x)\sigma _{0}^y  +J \lambda ^2(\sigma _{-1}^x+ \sigma _{1}^x)\sigma _{0}^y  \right)
+\end{align*}
+After rearranging terms of $(\sigma _{-1}^x+ \sigma _{1}^x)\sigma _{0}^y$, we get :
 
-\subsection{Non-integrable model}
+
+\begin{align*}
+C^{(3)}= & \alpha C^{(1)}-16 i   h J (h + \lambda)  (\sigma _{-1}^y + \sigma_1^y)\sigma _{0}^x + 8 i hJ^2( \sigma _{-2}^z\sigma _{-1}^z + \sigma _{1}^z\sigma _{2}^z) \sigma _{0}^y  \\
+&   24 i h J^2 (\sigma _{-1}^x\sigma _{1}^y + \sigma _{-1}^y\sigma _{1}^x)\sigma _{0}^z  
+\end{align*}
+where $\alpha =4 (4 J^2 + 2 h^2 + \lambda^2 + 2 h \lambda)$
+%\subsection{Non-integrable model}
 
 \appendix
 
