@@ -1,0 +1,12 @@
+fn[l_, gamma_] = Sum[a^l, l] + gamma
+
+fn[l]
+
+gamma is assumed to be zero
+
+
+fn[l_, gamma_] = Sum[a^l, l]* gamma
+
+fn[l]
+
+gamma is assumed to be one now.
