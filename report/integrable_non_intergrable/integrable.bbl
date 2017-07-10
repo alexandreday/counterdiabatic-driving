@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{abanin2017recent}
+Dmitry~A Abanin and Zlatko Papi{\'c}.
+\newblock Recent progress in many-body localization.
+\newblock {\em arXiv preprint arXiv:1705.09103}, 2017.
+
+\bibitem{cassidy2011generalized}
+Amy~C Cassidy, Charles~W Clark, and Marcos Rigol.
+\newblock Generalized thermalization in an integrable lattice system.
+\newblock {\em Physical review letters}, 106(14):140405, 2011.
+
+\bibitem{d2016quantum}
+Luca D'Alessio, Yariv Kafri, Anatoli Polkovnikov, and Marcos Rigol.
+\newblock From quantum chaos and eigenstate thermalization to statistical
+  mechanics and thermodynamics.
+\newblock {\em Advances in Physics}, 65(3):239--362, 2016.
+
+\bibitem{o2016explicit}
+TE~O'Brien, Dmitry~A Abanin, Guifre Vidal, and Z~Papi{\'c}.
+\newblock Explicit construction of local conserved operators in disordered
+  many-body systems.
+\newblock {\em Physical Review B}, 94(14):144208, 2016.
+
+\bibitem{rigol2008thermalization}
+Marcos Rigol, Vanja Dunjko, and Maxim Olshanii.
+\newblock Thermalization and its mechanism for generic isolated quantum
+  systems.
+\newblock {\em Nature}, 452(7189):854--858, 2008.
+
+\bibitem{rigol2007relaxation}
+Marcos Rigol, Vanja Dunjko, Vladimir Yurovsky, and Maxim Olshanii.
+\newblock Relaxation in a completely integrable many-body quantum system: an ab
+  initio study of the dynamics of the highly excited states of 1d lattice
+  hard-core bosons.
+\newblock {\em Physical review letters}, 98(5):050405, 2007.
+
+\end{thebibliography}

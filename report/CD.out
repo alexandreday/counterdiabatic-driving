@@ -1,12 +1,11 @@
-\BOOKMARK [1][-]{section.1}{Goal}{}% 1
+\BOOKMARK [1][-]{section.1}{Goals: what we hope to achieve}{}% 1
 \BOOKMARK [1][-]{section.2}{Introduction}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Integrable and non-integrable systems}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{What are adiabatic gauge potentials?}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Adiabatic gauge potential}{}% 5
-\BOOKMARK [1][-]{section.4}{Our model: spin chain with transverse and longitudinal field}{}% 6
-\BOOKMARK [1][-]{section.5}{ Regulator based method to find Gauge Potential}{}% 7
-\BOOKMARK [2][-]{subsection.5.1}{Integrable model}{section.5}% 8
-\BOOKMARK [1][-]{appendix.A}{Spin 1/2 particle in a time-dependent magnetic field}{}% 9
-\BOOKMARK [1][-]{appendix.B}{Free interacting fermions in an external potential}{}% 10
-\BOOKMARK [1][-]{appendix.C}{Classical adiabatic gauge potential}{}% 11
-\BOOKMARK [1][-]{appendix.D}{Transverse Field Ising model: calculations in spin basis}{}% 12
+\BOOKMARK [2][-]{subsection.2.1}{Gauge potential}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Adiabatic gauge potential}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Time evolution in moving frame}{subsection.2.2}% 5
+\BOOKMARK [1][-]{section.3}{ Regulator based method to find Gauge Potential}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Integrable model}{section.3}% 7
+\BOOKMARK [1][-]{appendix.A}{Properties of n-commutators}{}% 8
+\BOOKMARK [1][-]{appendix.B}{Classical adiabatic gauge potential}{}% 9
+\BOOKMARK [1][-]{appendix.C}{An example of variational approximation scheme: non-integrable Ising spin chain}{}% 10
+\BOOKMARK [1][-]{appendix.D}{Transverse Field Ising model: calculations in spin basis}{}% 11

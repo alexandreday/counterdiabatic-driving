@@ -12,81 +12,51 @@
 %\usepackage{float}
 \usepackage{placeins}
 \usepackage{diagbox}
+\DeclareMathOperator{\Tr}{Tr}
 \newtheorem{thm}{Theorem}
 \usepackage{subcaption}
 %\usepackage{subfigure}
 \usepackage[english]{babel}
 \author{Mohit}
-\title{Counterdiabatic driving}
+\title{Regulator based method to find Adiabatic Gauge Potential for Quantum Many Body systems }
 \begin{document}
 \maketitle
 
-\section{Goal}
+\section{Goals: what we hope to achieve}
 
-The goal, as of now, is to distinguish between integrable and non-integrable many-body quantum system by studying their approximate gauge adiabatic potential\footnote{We expect results to be valid for classical system too. But for now, we would focus on quantum systems.}
+
+Adiabatic gauge potentials are useful for controlling a quantum system when it's driven externally from one configuration to another. These potentials help us in  circumventing standard adiabatic limitations which requires infinitesimally small rates. For example, these potentials can be used for arbitrarily fast annealing protocols and implementing fast dissipationless driving. 
+
+
+The goal is to develop a regulator based method to find adiabatic gauge potential for quantum many body systems. If we are successful, then this will be a new method to find these potentials and it will give new insights in quantum control of many body systems. 
+
+We will use our method on both quantum integrable and non-integrable systems. For quantum integrable many body systems, exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry}. We hope to derive these results using our new method. For non-integrable systems, exact gauge potentials are very difficult to find. We hope that our method will find an approximate gauge potentials for such systems providing an alternative to variational approximation scheme introduced in \cite{del2012assisted}.
+
+We also hope to use this method to distinguish between quantum integrable and non-integrable systems. Our idea is to use  Eigenstate Thermalization Hypothesis (ETH) for this. Since ETH is valid for local operators in non-integrable systems, we expect local approximate gauge potentials to satisfy ETH, and exact gauge potentials (which are non-local) should not satisfy ETH. We can show that  using ETH, norm of approximate gauge potential should scale exponentially in system size for non-integrable systems. Whereas for integrable systems (where ETH is not valid), exact gauge potential are supposed to scale like a polynomial in system size. We want to understand this issue into more details using our new method.
+
+
+%The goal, as of now, is to distinguish between integrable and non-integrable many-body quantum system by studying their approximate gauge adiabatic potential\footnote{We expect results to be valid for classical system too. But for now, we would focus on quantum systems.}
 
  
-Classically, on one hand, integrable systems have a lot of constants of motion, and as a result, they have a few independent degrees of freedom. On the other hand, non-integrable systems contain a large number of independent degrees of freedom. We expect a similar picture for quantum systems.
-
-The central idea is to apply Eigenstate Thermalization Hypothesis (ETH) to operators of exact gauge potential in non-integrable quantum systems, and claim that its' norm scales exponentially in system 
-size. Whereas for integrable systems, exact gauge potential are supposed to scale like a polynomial in system size.
 
 \section{Introduction}
-\subsection{Integrable and non-integrable systems}
-What is an integrable quantum systems? To the best of my knowledge, the general definition of integrability for quantum systems has not been reached conclusively. Despite this, there are some models which are commonly agreed to be integrable and similarly, there are model which are called non-integrable in literature. For our purposes, we would use such models to get some intuition.
 
-Let's list down a few properties of \textbf{integrable} quantum systems: 
-\begin{itemize}
-\item The many-body density matrix of those systems don't thermalize to Gibbs distribution. In fact, they thermalize to a generalized Gibbs distribution. (see \cite{rigol2007relaxation,cassidy2011generalized} for detail) 
-\item They can be diagonalized using a transformation that is local in space\footnote{According to Dries, for 2D transverse quantum Ising model, Jordan Wigner transformation exists to diagonalize the Hamiltonian. However, it's still called a non-integrable model since then the transformation becomes non-local. I need to dig relevant paper for details}. Examples are non-interacting fermions, 1 D Ising model and 1D transverse field Ising model (TFIM).  These can be diagonalized using Bogoliubov, transfer matrix method and Jordan-Wigner transformation, respectively.
-\item ETH doesn't apply to them 
-\item Distribution of Energy level spacing follows Poisson distribution --energy level attraction.
-\end{itemize}
-
-We note here that many body localized (MBL) system is a new kind of integrable system. To understand its' similarity and difference from integrable system, I am quoting a paragraph from \cite{o2016explicit} : 
-
-``In order to explain the basic phenomenology of MBL systems, including their failure to thermalise, a picture of Local Integrals of Motion (LIOMs) has been put forward. According to this picture, the basic mechanism of MBL is similar to integrable models: there emerges an extensive number of operators (“conserved charges”) $\tau_i$ , which commute amongst  themselves $[\tau_i , \tau_j ]=0$ as well as with the Hamiltonian $[H, \tau_i]=0$.
-
-A special property of MBL systems is that $\tau_i$ have eigenvalues $\pm 1$, thus they resemble the bare spin-1/2 operators, and generically there are L such operators in a lattice system of size L. This means that any Hamiltonian eigenvector can be specified by the conserved quantum numbers corresponding to operators $\tau_i$. Because of this extensive number of emergent quantum numbers (that by definition do not change during unitary evolution), the thermalisation of the system is prevented as the MBL state retains the memory of its initial condition. \textbf{The difference between integrable models and MBL systems is in the form of individual $\tau_i$ : in the integrable case, each $\tau_i$. is an extended sum of local operators, while in the MBL case each $\tau_i$. is a single local operator, up to corrections that vanish exponentially with distance to the core.} The subleading (exponentially suppressed) corrections are important, as they cause the distinction between Anderson and MBL insulators. For example, the presence of tails in LIOMs is responsible for the dephasing dynamics and the spreading of entanglement in MBL systems, which does not occur in Anderson insulators"
-
-In \cite{abanin2017recent}, following Hamiltonian is considered for studying MBL:
-\begin{equation}
-\hat H = -\frac{J}{2} \sum_{j=1}^{N-1} ( \sigma_j^x \sigma_{j+1}^x +  \sigma_j^y \sigma_{j+1}^y) +  V \sum_{j=1}^{N-1} \sigma_j^z \sigma_{j+1}^z +  \sum_{j=1}^{N} h_j\sigma_j^{z}) 
-\end{equation}
-where $h_j$ is random magnetic field chosen from uniform distribution, i.e. $h_j \in [-W,W]$. In this model, form of $\tau_i$ is given as 
-\begin{equation}
-\tau_i^z= \sigma_i^z + \sum_{j,k} \sum_{a,b=x,y,z} f^{a,b}_{i,j,k} \sigma_j^a \sigma_k^b
-\end{equation}
-where weights decay exponentially with distance:
-\begin{equation}
-f^{a,b}_{i,j,k} \propto \exp(- \max\{ |i-j|, |i-k| \}/ \xi)
-\end{equation}
-Let's list down a few properties of \textbf{non-integrable} quantum systems: 
-\begin{itemize}
-
-\item They cannot be diagonalized using a transformation that is local in space. This is not a strong argument because it just means that such a transformation has not been found yet.
-\item ETH does apply to them (\cite{d2016quantum}, \cite{rigol2008thermalization})
-\item Distribution of Energy level spacing are correlated and therefore, they show level repulsion. They follow Wigner-Dyson or similar distributions, depending upon the details of Hamiltonian. These properties can be derived using Random Matrix Theory.
-\end{itemize}
-
-
-We do note that both integrable and non-integrable show quantum phase transition \footnote{Is there any difference between phase transitions shown between integrable and non-integrable models? Apparently no.}. An example of quantum phase transition in integrable model: TFIM show paramagnetic-ferromagnetic quantum phase transition.
-
-\subsection{What are adiabatic gauge potentials?}
-\subsubsection*{Gauge potential}
-Let's represent a wavefunction in some basis:
-\begin{equation}
-|\psi \rangle= \sum_n \psi_n |n \rangle_0
-\end{equation}
-where $|n \rangle_0$ is some fixed, parameter independent basis. Now let's do a unitary basis transformation to $|m (\lambda) \rangle$ in the parameter $\lambda$ dependent space using $U(\lambda)$:
-\begin{equation}
-|m (\lambda) \rangle= \sum_n U_{mn} |n \rangle
-\end{equation}
-Hence, now we can express $|\psi \rangle = \sum_m \tilde{\psi_n}  |m (\lambda) \rangle $, where $\tilde{\psi_n}= \langle  m (\lambda) |\psi \rangle $
+\subsection{Gauge potential}
+Let's represent a wavefunction in some basis as $|\psi \rangle= \sum_n \psi_n |n \rangle_0$
+where $|n \rangle_0$ is some fixed, parameter independent basis. Now let's do a unitary basis transformation to $|m (\lambda) \rangle$ in the parameter $\lambda$ dependent space using $U(\lambda)$ by defining $|m (\lambda) \rangle= \sum_n U_{mn} |n \rangle$. Hence, now we can express $|\psi \rangle = \sum_m \tilde{\psi_n}  |m (\lambda) \rangle $, where $\tilde{\psi_n}= \langle  m (\lambda) |\psi \rangle$. 
  
-Quantum gauge potentials are defined to be generators of continuous unitary transformation. 
-$\tilde{A_{\lambda}}= i \hbar U^{\dagger} \partial_{\lambda} U$, where $\tilde{A_{\lambda}}$ is in rotated ($\lambda$ -dependent basis). In the lab frame, $A_{\lambda}= U \tilde{A_{\lambda}} U^{\dagger}=  i \hbar \partial_{\lambda}$.
+Quantum gauge potentials $A_{\lambda}$ are defined to be generators of continuous unitary transformation. In the lab frame, $A_{\lambda}$ is defined as:
+\begin{equation}
+\boxed{A_{\lambda}=  i \hbar \partial_{\lambda}}
+\end{equation}
 
+In rotated frame ($\lambda$ -dependent basis) , $\tilde{A_{\lambda}}$ is defined as follows:
+\begin{equation}
+\boxed{\tilde{A_{\lambda}}= i \hbar U^{\dagger} \partial_{\lambda} U}
+\end{equation}
+
+
+We can show that gauge potentials in these two frames are related by $A_{\lambda}= U \tilde{A_{\lambda}} U^{\dagger}$
 
 
 Let's take an example of a shifting transformation $U$ to understand gauge potentials:
@@ -99,14 +69,14 @@ We know that unitary transformation $U= \exp( - i \hat{p} \lambda/ \hbar)$ . Now
 Now why do we call it a gauge potential? In \cite{kolodrubetz2016geometry}, they call it gauge potential because there is freedom to choose $ A_{\lambda}$ like how in EM, we have gauge choice. In \cite{kolodrubetz2016geometry}, they say that
 ``one can show that the gauge potentials for canonical shifts of the momentum appear exactly as the electromagnetic vector potential [see Exercise (III.1)]. Gauge potentials generalize these ideas from electromagnetism to arbitrary parameters "
 
- Here I am listing some properties:
+ Here I am listing down some properties:
 \begin{itemize}
 \item They are Hermitian operator.\
 \item $\langle n (\lambda)| A_{\lambda}| m(\lambda) \rangle = {}_0\langle  n| \tilde{A_{\lambda}}| m \rangle_0$
 \end{itemize}
  
 
-\subsubsection*{Adiabatic gauge potential}
+\subsection{Adiabatic gauge potential}
 The gauge potentials become adiabatic gauge potential when unitary transformation generated by $A_{\lambda}$ are used to diagonalize Hamiltonian.
 
  Adiabatic gauge potentials are a special subset of these which diagonalize  the instantaneous Hamiltonian, attempting to leave its eigenbasis invariant as the parameter is changed. These adiabatic gauge potentials generate non-adiabatic corrections to Hamiltonian in the moving basis ($\lambda$ -dependent basis).
@@ -122,13 +92,34 @@ $H (\lambda) |n(\lambda) \rangle = E_n (\lambda) |n(\lambda) $. Let's derive dia
 \item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle= \langle n |\partial_{\lambda} | n \rangle $
 \item \textbf{off- diagonal element:} We use the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate with respect to $\lambda$ to obtain:
 \begin{align}
-\langle m |A_{\lambda} | n \rangle = i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
+\boxed{\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}}
 \end{align}
-
+where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) depend on $\lambda$.
 \end{itemize}
 
+This information can be represented in matrix form as follows:
+\begin{equation}
+i \hbar \partial_{\lambda} H= [ A_{\lambda}, H] -i \hbar M_{\lambda} | n (\lambda) \rangle \langle n (\lambda) |
+\label{m_lambda}
+\end{equation}
+where 
+\begin{equation}
+M_{\lambda} = - \sum_n \dfrac{\partial E_n (\lambda)}{\partial \lambda}
+\end{equation}
 
-\section{Adiabatic gauge potential}
+It's to be noted that for finding $M_{\lambda}$, we need to diagonalize Hamiltonian. We can eliminate $M_{\lambda}$ by taking commutator on both sides of equation \ref{m_lambda} and obtain:
+\begin{equation}
+[H, i \hbar \partial_{\lambda}H - [A_{\lambda}, H]]=0
+\label{def_commutator}
+\end{equation}
+
+Any $A_{\lambda}$ satis   fying equation \ref{def_commutator} is an exact gauge potential. We note that  if $A_{\lambda}$ satisfies equation \ref{def_commutator} , then  $A_{\lambda}+ f(H)$, where $f(H)$ is any function that only contains terms involving Hamiltonian $H$ and other operators that commutes with $H$.
+
+For our future purposes, let's study a gauge choice where we assume diagonal elements of $A_{\lambda}$ is zero. This should mean $\Tr(f(H)^2)=0$ and therefore, this is a choice with minimum Forbenius norm of  $A_{\lambda}$ as shown below:
+\begin{align*}
+||A_{\lambda}^{\prime} ||^2 = \Tr ( (A_{\lambda} + f(H) )^2) = \Tr (A_{\lambda}^2)  + \Tr(f(H)^2) + 2  \Tr ((A_{\lambda} f(H))=  \Tr (A_{\lambda}^2)
+\end{align*}
+\subsubsection{Time evolution in moving frame}
 Our Hamiltonian would be controlled using a control parameter called $\lambda$. Our aim would be drive the system without any transition.
 
 Let Hamiltonian $H_0(\lambda (t))$ satisfy the following equation
@@ -146,12 +137,261 @@ How does the wave function evolve in new basis?
  }(\lambda (t)) - \dot{\lambda} \tilde{\mathcal{A_\lambda}}) |\psi \rangle
 \end{equation}
 
-Note that gauge potential should be purely imaginary. But this doesn't mean that it has to be necessarily anti-Hermitian for a real Hamiltonian.
+Note that gauge potential should be purely imaginary in a basis in which Hamiltonian is real. 
 
-$\clubsuit \clubsuit $Things to include here \\
-Derive the commutator relation, write the variational approach.
 
-\section{Our model: spin chain with transverse and longitudinal field}
+
+
+\section{ Regulator based method to find Gauge Potential}
+Here we would introduce a new method to find Gauge Potential $A_{\lambda}$ which includes a regulator $\mu$. 
+
+Let's start off by writing the off-diagonal elements of exact gauge potential:
+\begin{equation}
+\langle m |A_{\lambda} | n \rangle =-i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
+\end{equation}
+
+For a many-body Hamiltonian, number of states in Hilbert space grows exponentially in system size while energy bandwidth grows linearly with system size (since energy is an extensive quantity). Thus, distance between any two \textit{nearby} eigenvalues is exponentially small in system size. In other words, $E_m-E_n \sim e^{-S}$. If there are non-zero off-diagonal elements of $\partial_{\lambda}H $, then $\langle m |A_{\lambda} | n \rangle$ is ill-defined. It's called small denominator problem \cite{kolodrubetz2016geometry}.
+
+
+ 
+To resolve this problem, we introduce a regulator/ cutoff $\mu$ that regularizes our exact gauge potential in large system size $L$ limit. Once we have taken large $L$ limit, then we take small $\mu$ limit. Hence, if this method works, the right way to take limits will be:
+\begin{eqnarray}
+\langle n | A_{\lambda} | m \rangle &=& \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } -i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) 
+\label{off-digonal}
+\end{eqnarray}
+where we have chosen diagonal elements of $A_{\lambda}$ to be zero \footnote{Dries says we can do this without any loss of generality. I am not sure if we can always do this.}. 
+Now we will use Laplace transform with $s=\mu$:
+
+\begin{eqnarray}
+\langle n | A_{\lambda} | m \rangle &=&   -i \hbar\dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
+&=& -i \hbar  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \sin((E_n-E_m)t) \\
+&=& \dfrac{-i \hbar}{2i}  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \left( e^{i(E_n-E_m)t} - e^{-i(E_n-E_m)t} \right) \\
+&=& \dfrac{ -\hbar}{2}  \int^{\infty}_{0} dt\ e^{-\mu t}  \left(  \langle n | e^{iE_nt} \partial_{\lambda}H   e^{-i E_m t} | m \rangle  -  \langle n |e^{-i E_n t}  \partial_{\lambda}H  e^{ i E_mt} | m \rangle  \right) 
+\end{eqnarray}
+Hence, we can simplify our expression by defining propagator  $U= \exp(-i H t/ \hbar)$. We note that parameter $\lambda$ is fixed while we evolve it in the \textit{artificial time} $t$.
+\begin{eqnarray}
+A_{\lambda} &=& \dfrac{-\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [U^{\dagger}(t \hbar) \partial_{\lambda} H U(t  \hbar) - U^{\dagger}(-t  \hbar) \partial_{\lambda}H U(-t \hbar)]  \\
+&=& \dfrac{\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [ \partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)  ]  
+\end{eqnarray}
+where $\partial_{\lambda}H (t)$ is time-evolved operator $\partial_{\lambda}H$ in Heisenberg picture.
+
+We would be using  Hadamard (or sometimes called Baker-Hausdorff-Campbell) formula to simplify $\partial_{\lambda}H (t)$.
+
+\begin{eqnarray}
+\partial_{\lambda}H (t) &=& U^{\dagger}(t ) \partial_{\lambda} H U(t ) \\
+&=& \exp(i H t/ \hbar) \partial_{\lambda} H \exp(-i H t/ \hbar)  \\
+&=&  \partial_{\lambda} H  + \dfrac{i t}{ \hbar} [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ \hbar}\right)^2 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  3! \hbar}\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
+\end{eqnarray}
+Similarly,  for $\partial_{\lambda}H (-t)$, we have:
+
+\begin{eqnarray}
+\partial_{\lambda}H (-t) &=&  \partial_{\lambda} H  - \dfrac{i t}{ \hbar} [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ \hbar}\right)^2 [H,[H, \partial_{\lambda} H]]  - \left(\dfrac{i t}{  3! \hbar}\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
+\end{eqnarray}
+
+Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar) $ contains only odd  power of time $t$:
+\begin{eqnarray}
+\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)&=&  2 \left[ i t [H, \partial_{\lambda} H] + \left(\dfrac{i t}{  3! }\right)^3 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  5! }\right)^5 [H,[H,[H,[H,[H, \partial_{\lambda} H]]]]]   + \ldots \right]  \nonumber \\
+&=& 2 \sum_{n=0}^{\infty} \dfrac{(it) ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+%&=& -2 i \sum_{n=0}^{\infty} \dfrac{i^{2(n+1)} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+&=& 2 i \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}
+\end{eqnarray}
+where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
+
+We can simplify our expression if we call $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}$ as $\sin ( C^{(1)}t)$, where $C^{(1)}= [H, \partial_{\lambda} H ]$. Thus, we can write: 
+
+\begin{equation}
+\boxed{ A_{\lambda} =  -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
+= -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}}
+\label{def_1}
+\end{equation}
+
+
+Can we further simplify the expression? If we are allowed to change the order of summation and integration \footnote{If there is some singularity, then the order of summation and integration might be important and we might get two different results.}, then we can do first Laplace transform of $t ^{2n+1}$  terms and then later the sum.  Hence, we get:
+\begin{eqnarray}
+A_{\lambda} &=& - i\hbar \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+ &=& - i\hbar  \sum_{n=0}^{\infty}(-1)^{n} C^{(2n+1)} \int_0^{\infty} dt\ e^{-\mu t}  \dfrac{ t ^{2n+1}}{(2n+1)!} \\
+ &=& - i\hbar  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
+\end{eqnarray}
+Hence, we get another expression where we have integrated before taking the summation:
+
+\begin{equation}
+\boxed{ A_{\lambda} =  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}}
+\label{def_2}
+\end{equation}
+We note that $i C^{(2n+1)}$ is Hermitian, which is consistent with the fact that $ A_{\lambda}$ is Hermitian. 
+
+
+Now let's think about $\lim_{L \rightarrow \infty }$ limit which we need to take. I  would claim that while doing the infinite summation we have already taken that limit as we have assumed infinite system size. Why is that? In general,  $C^{(n)}$ grows with $n$ in the sense that it would have operators with larger support over lattice sites as $n$ increases. At a certain  $n_L$ that is proportional to system length $L$, we would find that $C^{n_L}$ has operators with support on boundary lattice sites. This is where our summation would be truncated for a finite system. Hence, the correct order of limits should be:
+
+\begin{equation}
+\boxed{ A_{\lambda} =   \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{n_L}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}}
+\end{equation}
+
+Now one thing which is good is that if we take the wrong order of limit: take $\lim_{\mu \rightarrow 0}$ before $\lim_{L \rightarrow \infty }$, then $A_{\lambda}$ diverges. Thus, now divergence is more explicit than the original expression \ref{off-digonal}. 
+
+How does $\mu$ scale as $L$? In general, it seems that operators involved in the expression of $C^{(n)}$ would have support which depend on $L$. Let's suppose the support of these operators grow as $L^{\gamma}$, i.e., $C^{(n)} \propto L^{\gamma}$, where $\gamma$ is some constant which we don't know. If we assume that $ A_{\lambda}$ is well-defined in large system size limit for many-body Hamiltonian (both integrable and non-integrable), then  $\mu \propto L^{\gamma}$.
+
+Now our task will be use it to find exact/approximate gauge potential for integrable and non-integrable models.
+
+\subsection{Integrable model}
+\subsubsection*{Ising model with local transverse magnetic field}
+We would take the simplest integrable Hamiltonian with Ising interaction and a local $x$ magnetic field:
+\begin{equation}
+H= J \sum_{j}  \sigma_j^z \sigma_{j+1}^z +  \lambda  \sigma_0^x
+\label{zz}
+\end{equation}
+where boundary conditions are not important. Commutation relation followed by spin operators are:
+\begin{equation}
+[\sigma_i^a, \sigma_{j}^b]= 2 i   \delta_{i,j} \sum_c  \epsilon_{a b c} \sigma_i^c
+\end{equation}
+where $\epsilon_{abc}$ is the Levi-Civita symbol, $ \delta_{ij}$ is the Kronecker delta.
+
+This model satisfies Ising symmetry $G= \Pi_i \sigma_i^x$ since $[H, G]=0$.
+
+
+Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^x$ . Here we begin:
+\begin{align*}
+C^{(1)}&= 2 i J \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \\ 
+C^{(2)}&= 8 J^2(\sigma^z_1 \sigma^x_0 \sigma^z_{-1} + \sigma^x_0) - 4J \lambda \sigma_0^z( \sigma_{-1}^z + \sigma_1^z) \\
+C^{(3)} &=  (16 J^2 + 4 \lambda ^2) [H, \partial_{\lambda} H] = \alpha^2  C^{(1)} \\
+C^{(5)}&=[H,[H, C^{(3)}]]  = \alpha^2 [H, [H,C^{(1)}]]]=\alpha^2 C^{(3)}=  \alpha^4 C^{(1)}   
+\end{align*}
+
+
+Hence, $C^{(2n+1)}= \alpha^{2n} C^{(1)}$, where $\alpha^2= 4 (4 J^2 +  \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using \ref{def_1}, we get :
+
+\begin{align*}
+A_{\lambda} &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^{2n}  \\
+ &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  \alpha^{2n+1} t ^{2n+1}}{\alpha(2n+1)!}   \\
+  &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  (\alpha t)^{2n+1}}{(2n+1)!}   \\
+    &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t}  \sin  (\alpha t)   \\
+     &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \dfrac{\alpha}{\alpha^2 + \mu^2} =\dfrac{-i \hbar    C^{(1)}}{{\alpha^2 + \mu^2}} =  \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) 
+\end{align*}
+ 
+
+Using \ref{def_2}, we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+\begin{align*}
+A_{\lambda} &=  \dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} \\
+&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \left(\dfrac{ \alpha}{\mu} \right)^{2n+1} \\
+&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)} \dfrac{\mu \alpha}{ \mu^2 + \alpha^2}\quad, \mbox{if ~}\alpha^2 / \mu^2 <1 \\
+&=    C^{(1)}  \dfrac{ -i\hbar  }{ \mu^2 + \alpha^2}= \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \quad, \mbox{if ~} \alpha^2 / \mu^2 <1 \\
+\end{align*}
+Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as it should.
+
+After taking $\mu \rightarrow 0$ limit, we get an expression for exact gauge potential:
+\begin{equation}
+\boxed{ A_{\lambda} = \dfrac{\hbar J}{{8 J^2 + 2 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z)}
+\end{equation}
+
+This expression is correct because it satisfies equation \ref{def_commutator}. And it's unique upto any term that commutes with Hamiltonian.
+
+
+
+Why $A_{\lambda}$ is non-zero in $\lambda \rightarrow 0$ limit? It need not be zero because additional term in Hamiltonian is $\dot{\lambda} A_{\lambda}$, which goes to zero in $\lambda \rightarrow 0$ limit. 
+
+I can similarly write an exact expression for additional $\sum_{j=1}^L h_j \sigma_j^z$ term in the Hamiltonian, although this term breaks Ising symmetry $G$.
+
+Now for future purposes, let's rotate our axes such that interchange $z$ and $x$ axes while keeping the y axis the same. Our Hamiltonian becomes:
+
+\begin{equation}
+H= -J \sum_{j}  \sigma_j^x \sigma_{j+1}^x -  \lambda  \sigma_0^z
+\label{xx}
+\end{equation}
+
+\begin{align*}
+C^{(1)}&= -2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x) \\ 
+C^{(2)}&= 8 J^2(\sigma^z_1 \sigma^x_0 \sigma^z_{-1} + \sigma^x_0) - 4J \lambda \sigma_0^z( \sigma_{-1}^z + \sigma_1^z) \\
+C^{(3)} &=  (16 J^2 + 4 \lambda ^2) [H, \partial_{\lambda} H] = \alpha^2  C^{(1)} \\
+C^{(5)}&=[H,[H, C^{(3)}]]  = \alpha^2 [H, [H,C^{(1)}]]]=\alpha^2 C^{(3)}=  \alpha^4 C^{(1)}   
+\end{align*}
+
+
+
+\subsubsection*{Transverse Field Ising model}
+We would study another integrable model, which is called Transverse Field Ising model. This model shows quantum phase transition between ferromagnetic and paramagnetic phases. This model satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian. It's Hamiltonian is given by:
+\begin{equation}
+H= -J \sum_{j} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
+\label{xx_z}
+\end{equation}
+where we have not specified boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
+
+This model can be written in terms of spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation.
+
+This model's exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry} and it's given by:
+\begin{equation}
+A_{\lambda}= \sum_l \alpha_l O_l
+\end{equation}
+where $O_l$ is given by
+\begin{equation}
+O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})
+\end{equation}
+
+It will be good to find either exact or approximate gauge potential using our regulator method.
+
+\textbf{Jordan Wigner transformation:} \\
+
+
+\appendix
+\section{Properties of n-commutators}\label{sec.Cn}
+We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$. Now, $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$. Hence, we can claim:
+\begin{align}
+C^{(n)}= [H, C^{(n-1)}], n>1
+\end{align} 
+
+Now we will prove another result, which is useful. Let's suppose $C^{(3)}=  \alpha^2  C^{(1)} + T$, where $T$ is a term involving some operators. 
+\begin{align*}
+C^{(5)} &= [H, C^{(4)}]=[H, [H,C^{(3)}]] \\
+&=[H, [H,\alpha^2  C^{(1)} + T]]= \alpha^2[H, [H,  C^{(1)}]] +[H, [H, T]]= \alpha^2 C^{(3)} +[H, [H, T]]=  \alpha^4 C^{(1)} +[H, [H, T]]
+\end{align*} 
+%\section{Spin 1/2 particle in a time-dependent magnetic field}
+%I would include a derivation from lecture notes to gain an intuition here. I also plan to understand Berry's paper and reproduce some of his calculations in this appendix.
+%
+%\section{Free interacting fermions in an external potential}
+%
+%\begin{equation}
+%H_0= -J \sum_{j=1}^{L-1} (c^{\dagger}_j c_{j+1} +c^{\dagger}_{j+1} c_{j}) + \sum_{j=1}^{L} V_j(\lambda) c^{\dagger}_jc_j
+%\end{equation}
+%
+%
+%\begin{equation}
+%\mathcal{A}^*_{\lambda}= i  \sum_{j=1}^{L-1} \alpha_j (c^{\dagger}_j c_{j+1} - c^{\dagger}_{j+1} c_{j}) 
+%\end{equation}
+%
+%I should include pictures drawn using sympy here.
+
+
+\section{Classical adiabatic gauge potential}
+Let's start by considering classical systems. For such systems, we specify the system by defining Hamiltonian $H (\lambda)$ in terms of canonical variables $q_i (\lambda,t)$ and $p_j (\lambda,t)$. where $\lambda$ is an externally controlled parameter. These variables satisfy the canonical relations:
+\begin{equation}
+\{q_i,p_j \}=\delta_{ij} 
+\end{equation}
+where $\{\ldots \}$ denotes the Poisson bracket.
+
+Canonical transformations are transformations of $q_i$ and $p_j$ to new variables $\bar{q_i}$ and $\bar{p_j}$ such that it preserves Poisson bracket. Hence, 
+\begin{equation}
+\{\bar{q_i},\bar{p_j} \}=\delta_{ij} 
+\end{equation}
+
+What are gauge potentials? Gauge potential $A_{\lambda}$  are the generators of continuous canonical transformations in parameter $\lambda$ space , which can be defined as :
+\begin{alignat}{5}
+q_j(\lambda + \delta \lambda) & =& q_j - \dfrac{\partial A_{\lambda}}{\partial p_j} \delta \lambda &\Rightarrow & \dfrac{\partial q_j}{\partial \lambda} &=& -\dfrac{\partial A_{\lambda}}{\partial p_j} = \{A_{\lambda},q_j \} \\
+p_j(\lambda + \delta \lambda) & =& p_j + \dfrac{\partial A_{\lambda}}{\partial q_j} \delta \lambda & \Rightarrow & \dfrac{\partial p_j}{\partial \lambda} &=& \dfrac{\partial A_{\lambda}}{\partial q_j}=\{ A_{\lambda},p_j \}
+\label{def_A}
+\end{alignat}
+
+We can verify that these transformations are canonical upto order $\delta \lambda ^2$ because we can show that:
+\begin{equation}
+\{q_j(\lambda + \delta \lambda), p_j(\lambda + \delta \lambda)\} = \delta_{ij} + O(\delta \lambda ^2)
+\end{equation}
+
+Let's try to understand by taking an example of continuous canonical transformation. We would shift the position coordinate by $X_i$. Here our parameter $\lambda$ is $X_i$
+\begin{eqnarray}
+ q_i(X_i,t) &=& q_i(0,t) - X_i \\
+p_i(X_i,t)&=& p_i(0,t)
+\end{eqnarray}
+Using equation \ref{def_A}, we see that $\frac{\partial A_{X_i}}{\partial q_j}=0$ and $-\frac{\partial A_{X_i}}{\partial p_j}=-\delta_{ij}$. Hence, $A_{X_i}=p_j + C_j$, where $C_j$ are arbitrary constants of integration. This is the gauge choice we have got in defining these gauge potentials. 
+
+\section{An example of variational approximation scheme: non-integrable Ising spin chain}
 Let's consider Ising quantum spin chain with transverse and longitudinal field whose Hamiltonian is given by:
 \begin{equation}
 H_0=\sum_{j=1}^{L-1} J(\lambda) \sigma_j^z \sigma_{j+1}^z + \sum_{j=1}^{L}  (Z_j (\lambda) \sigma_j^z +X_j (\lambda) \sigma_j^x)
@@ -217,223 +457,6 @@ In Dries's paper \cite{sels2017minimizing}, they show  similar results in their 
 \caption{Fidelity $F^2$ and final energy above ground state $E- E_0$ for L=12 spin chains}
 \label{fid_energ}
 \end{figure}
-
-\section{ Regulator based method to find Gauge Potential}
-Here we would introduce a new method to find Gauge Potential $A_{\lambda}$ which includes a regulator $\mu$. 
-
-Let's start off by writing the off-diagonal elements of exact gauge potential:
-\begin{equation}
-\langle m |A_{\lambda} | n \rangle = i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
-\end{equation}
-
-For a many-body Hamiltonian, number of states in Hilbert space grows exponentially in system size while energy bandwidth grows linearly with system size (since energy is an extensive quantity). Thus, distance between any two \textit{nearby} eigenvalues is exponentially small in system size. In other words, $E_m-E_n \sim e^{-S}$. If there are non-zero off-diagonal elements of $\partial_{\lambda}H $, then $\langle m |A_{\lambda} | n \rangle$ is ill-defined. It's called small denominator problem \cite{kolodrubetz2016geometry}.
-
-
- 
-To resolve this problem, we introduce a regulator/ cutoff $\mu$ that regularizes our exact gauge potential in large system size $L$ limit. Once we have taken large $L$ limit, then we take small $\mu$ limit. Hence, if this method works, the right way to take limits will be:
-\begin{eqnarray}
-\langle n | A_{\lambda} | m \rangle &=& \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) 
-\label{off-digonal}
-\end{eqnarray}
-where we have chosen diagonal elements of $A_{\lambda}$ to be zero \footnote{Dries says we can do this without any loss of generality. I am not sure if we can always do this.}. 
-Now we will use Laplace transform with $s=\mu$:
-
-\begin{eqnarray}
-\langle n | A_{\lambda} | m \rangle &=&  i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
-&=& i \hbar  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \sin((E_n-E_m)t) \\
-&=& \dfrac{i \hbar}{2i}  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \left( e^{i(E_n-E_m)t} - e^{-i(E_n-E_m)t} \right) \\
-&=& \dfrac{ \hbar}{2}  \int^{\infty}_{0} dt\ e^{-\mu t}  \left(  \langle n | e^{iE_nt} \partial_{\lambda}H   e^{-i E_m t} | m \rangle  -  \langle n |e^{-i E_n t}  \partial_{\lambda}H  e^{ i E_mt} | m \rangle  \right) 
-\end{eqnarray}
-Hence, we can simplify our expression by defining propagator  $U= \exp(-i H t/ \hbar)$. We note that parameter $\lambda$ is fixed while we evolve it in the \textit{artificial time} $t$.
-\begin{eqnarray}
-A_{\lambda} &=& \dfrac{\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [U^{\dagger}(t \hbar) \partial_{\lambda} H U(t  \hbar) - U^{\dagger}(-t  \hbar) \partial_{\lambda}H U(-t \hbar)]  \\
-&=& \dfrac{\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [ \partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)  ]  
-\end{eqnarray}
-where $\partial_{\lambda}H (t)$ is time-evolved operator $\partial_{\lambda}H$ in Heisenberg picture.
-
-We would be using  Hadamard formula to simplify $\partial_{\lambda}H (t)$.
-
-\begin{eqnarray}
-\partial_{\lambda}H (t) &=& U^{\dagger}(t ) \partial_{\lambda} H U(t ) \\
-&=& \exp(i H t/ \hbar) \partial_{\lambda} H \exp(-i H t/ \hbar)  \\
-&=&  \partial_{\lambda} H  + \dfrac{i t}{ \hbar} [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ \hbar}\right)^2 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  3! \hbar}\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
-\end{eqnarray}
-Similarly,  for $\partial_{\lambda}H (-t)$, we have:
-
-\begin{eqnarray}
-\partial_{\lambda}H (-t) &=&  \partial_{\lambda} H  - \dfrac{i t}{ \hbar} [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ \hbar}\right)^2 [H,[H, \partial_{\lambda} H]]  - \left(\dfrac{i t}{  3! \hbar}\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
-\end{eqnarray}
-
-Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar) $ contains only odd  power of time $t$:
-\begin{eqnarray}
-\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)&=&  2 \left[ i t [H, \partial_{\lambda} H] + \left(\dfrac{i t}{  3! }\right)^3 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  5! }\right)^5 [H,[H,[H,[H,[H, \partial_{\lambda} H]]]]]   + \ldots \right]  \nonumber \\
-&=& 2 \sum_{n=0}^{\infty} \dfrac{(it) ^{2n+1}}{(2n+1)!} C^{2n+1} \\
-%&=& -2 i \sum_{n=0}^{\infty} \dfrac{i^{2(n+1)} t ^{2n+1}}{(2n+1)!} C^{2n+1} \\
-&=& 2 i \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}
-\end{eqnarray}
-where $C^n$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C_n= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $
-
-We can simplify our expression if we call $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}$ as $\sin ( C^{(1)}t)$, where $C^{(1)}= [H, \partial_{\lambda} H ]$. Thus, we can write: 
-
-\begin{equation}
-\boxed{ A_{\lambda} =  i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
-= i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1}}
-\label{def_1}
-\end{equation}
-
-
-Can we further simplify the expression? If we are allowed to change the order of summation and integration \footnote{If there is some singularity, then the order of summation and integration might be important and we might get two different results.}, then we can do first Laplace transform of $t ^{2n+1}$  terms and then later the sum.  Hence, we get:
-\begin{eqnarray}
-A_{\lambda} &=&  i\hbar \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{2n+1} \\
- &=&  i\hbar  \sum_{n=0}^{\infty}(-1)^{n} C^{2n+1} \int_0^{\infty} dt\ e^{-\mu t}  \dfrac{ t ^{2n+1}}{(2n+1)!} \\
- &=&  i\hbar  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+2}}
-\end{eqnarray}
-Hence, we get another expression where we have integrated before taking the summation:
-
-\begin{equation}
-\boxed{ A_{\lambda} =  \dfrac{i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+1}}}
-\label{def_2}
-\end{equation}
-We note that $i C^{2n+1}$ is Hermitian, which is consistent with the fact that $ A_{\lambda}$ is Hermitian. Also, we see that while doing the infinite summation we have assumed infinite system size. Why? In general,  $C^{n}$ grows with $n$ in the sense that it would have operators with larger support over lattice sites as $n$ increases. At a certain  $n_L$ that is proportional to system length $L$, we would find that $C^{n_L}$ has operators with support on boundary lattice sites. This is where our summation would be truncated for a finite system. Hence, the correct order of limits should be:
-
-\begin{equation}
-\boxed{ A_{\lambda} =   \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } \dfrac{i\hbar}{\mu}  \sum_{n=0}^{n_L}   (-1)^{n} \dfrac{ C^{2n+1}}{\mu^{2n+1}}}
-\end{equation}
-
-Now one thing which is good is that if we take the wrong order of limit: take $\lim_{\mu \rightarrow 0}$ before $\lim_{L \rightarrow \infty }$, then $A_{\lambda}$ diverges. Thus, now divergence is more explicit than the original expression \ref{off-digonal}. 
-
-How should $\mu$ scale as $L$ because it seems that $C^n$ does definitely depend on $L$? Let's suppose $C^n \propto L^{\gamma}$, where $\gamma$ is some constant which we don't know. If we assume that $ A_{\lambda}$ is well-defined in large system size limit for many-body Hamiltonian (both integrable and non-integrable), then  $\mu \propto L^{\gamma}$.
-
-Now our task will be use it to find exact/approximate gauge potential for integrable and non-integrable models.
-
-\subsection{Integrable model}
-\subsubsection*{Ising model with local transverse magnetic field}
-We would take the simplest integrable Hamiltonian with Ising interaction and a local $x$ magnetic field:
-\begin{equation}
-H= J \sum_{j}  \sigma_j^z \sigma_{j+1}^z +  \lambda  \sigma_0^x
-\label{zz}
-\end{equation}
-where boundary conditions are not important. Commutation relation followed by spin operators are:
-\begin{equation}
-[\sigma_i^a, \sigma_{j}^b]= 2 i   \delta_{i,j} \sum_c  \epsilon_{a b c} \sigma_i^c
-\end{equation}
-where $\epsilon_{abc}$ is the Levi-Civita symbol, $ \delta_{ij}$ is the Kronecker delta.
-
-This model satisfies Ising symmetry $G= \Pi_i \sigma_i^x$ since $[H, G]=0$.
-
-
-Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^x$ . Here we begin:
-\begin{align*}
-C^{(1)}&= 2 i J \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \\ 
-C^{(2)}&= 8 J^2(\sigma^z_1 \sigma^x_0 \sigma^z_{-1} + \sigma^x_0) - 4J \lambda \sigma_0^z( \sigma_{-1}^z + \sigma_1^z) \\
-C^{(3)} &=  (16 J^2 + 4 \lambda ^2) [H, \partial_{\lambda} ] = \alpha^2  [H, \partial_{\lambda} H] \\
-[H, [H,[H, [H,[H, \partial_{\lambda} H]]]]] &= \alpha^2 [H, [H,[H, \partial_{\lambda} H]]]=  \alpha^4  [H, \partial_{\lambda}H ] 
-\end{align*}
-
-
-Hence, $C^{2n+1}= \alpha^{2n} C^{(1)}$, where $\alpha^2= 4 (4 J^2 +  \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using \ref{def_1}, we get :
-
-\begin{align*}
-A_{\lambda} &= i\hbar   C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^{2n}  \\
- &= i\hbar   C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  \alpha^{2n+1} t ^{2n+1}}{\alpha(2n+1)!}   \\
-  &= \dfrac{i\hbar   C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  (\alpha t)^{2n+1}}{(2n+1)!}   \\
-    &= \dfrac{i\hbar   C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t}  \sin  (\alpha t)   \\
-     &= \dfrac{i\hbar   C^{(1)}}{\alpha} \dfrac{\alpha}{\alpha^2 + \mu^2} =\dfrac{i\hbar   C^{(1)}}{{\alpha^2 + \mu^2}} =  \dfrac{-2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) 
-\end{align*}
- 
-
-Using \ref{def_2}, we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
-\begin{align*}
-A_{\lambda} &=  \dfrac{i\hbar  C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} \\
-&=  \dfrac{i\hbar}{\mu \alpha}  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \left(\dfrac{ \alpha}{\mu} \right)^{2n+1} \\
-&=  \dfrac{i\hbar}{\mu \alpha}  C^{(1)} \dfrac{\mu \alpha}{ \mu^2 + \alpha^2}\quad, \mbox{if ~}\alpha^2 / \mu^2 <1 \\
-&=    C^{(1)}  \dfrac{ i\hbar  }{ \mu^2 + \alpha^2}= \dfrac{-2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \quad, \mbox{if ~} \alpha^2 / \mu^2 <1 \\
-\end{align*}
-Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as it should.
-
-After taking $\mu \rightarrow 0$ limit, we get an expression for exact gauge potential:
-\begin{equation}
-\boxed{ A_{\lambda} = \dfrac{- \hbar J}{{8 J^2 + 2 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z)}
-\end{equation}
-Now one thing is good that $A_{\lambda}  \propto \sigma_0^y$ since Hamiltonian is real in $\{\sigma_z^i\}$ basis and $\sigma_0^y$ is imaginary, which is consistent with calculation shown in \cite{sels2017minimizing}. 
-
-One thing which I don't understand is why $A_{\lambda}$ is non-zero in $\lambda \rightarrow 0$ limit\footnote{Alright, it need not be because additional term in Hamiltonian is $\dot{\lambda} A_{\lambda}$, which goes to zero in $\lambda \rightarrow 0$ limit. }. Algebraically, it's because $C^{(n)} \propto \partial_{\lambda} H$, which is constant in $\lambda$ for our model. What are the diagonal elements of $A_{\lambda}$? Is it consistent with our assumption that diagonal elements are zero?  I think it's probably because we set diagonal element to be zero as diagonal element depends on derivatives of eigenvalues $| n(\lambda) \rangle$. I think I should be able to come up with a perturbation argument here.
-
-I can similarly write an exact expression for additional $\sum_{j=1}^L h_j \sigma_j^z$ term in the Hamiltonian, although this term breaks Ising symmetry $G$.
-
-\subsubsection*{Transverse Field Ising model}
-We would study another integrable model, which is called Transverse Field Ising model. This model shows quantum phase transition between ferromagnetic and paramagnetic phases. This model satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian. It's Hamiltonian is given by:
-\begin{equation}
-H= -J \sum_{j} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
-\label{xx_z}
-\end{equation}
-where we have not specified boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
-
-This model can be written in terms of spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation.
-
-This model's exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry} and it's given by:
-\begin{equation}
-A_{\lambda}= \sum_l \alpha_l O_l
-\end{equation}
-where $O_l$ is given by
-\begin{equation}
-O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})
-\end{equation}
-
-It will be good to find either exact or approximate gauge potential using our regulator method.
-
-\textbf{Jordan Wigner transformation:} \\
-
-
-\appendix
-
-\section{Spin 1/2 particle in a time-dependent magnetic field}
-I would include a derivation from lecture notes to gain an intuition here. I also plan to understand Berry's paper and reproduce some of his calculations in this appendix.
-
-\section{Free interacting fermions in an external potential}
-
-\begin{equation}
-H_0= -J \sum_{j=1}^{L-1} (c^{\dagger}_j c_{j+1} +c^{\dagger}_{j+1} c_{j}) + \sum_{j=1}^{L} V_j(\lambda) c^{\dagger}_jc_j
-\end{equation}
-
-
-\begin{equation}
-\mathcal{A}^*_{\lambda}= i  \sum_{j=1}^{L-1} \alpha_j (c^{\dagger}_j c_{j+1} - c^{\dagger}_{j+1} c_{j}) 
-\end{equation}
-
-I should include pictures drawn using sympy here.
-
-
-\section{Classical adiabatic gauge potential}
-Let's start by considering classical systems. For such systems, we specify the system by defining Hamiltonian $H (\lambda)$ in terms of canonical variables $q_i (\lambda,t)$ and $p_j (\lambda,t)$. where $\lambda$ is an externally controlled parameter. These variables satisfy the canonical relations:
-\begin{equation}
-\{q_i,p_j \}=\delta_{ij} 
-\end{equation}
-where $\{\ldots \}$ denotes the Poisson bracket.
-
-Canonical transformations are transformations of $q_i$ and $p_j$ to new variables $\bar{q_i}$ and $\bar{p_j}$ such that it preserves Poisson bracket. Hence, 
-\begin{equation}
-\{\bar{q_i},\bar{p_j} \}=\delta_{ij} 
-\end{equation}
-
-What are gauge potentials? Gauge potential $A_{\lambda}$  are the generators of continuous canonical transformations in parameter $\lambda$ space , which can be defined as :
-\begin{alignat}{5}
-q_j(\lambda + \delta \lambda) & =& q_j - \dfrac{\partial A_{\lambda}}{\partial p_j} \delta \lambda &\Rightarrow & \dfrac{\partial q_j}{\partial \lambda} &=& -\dfrac{\partial A_{\lambda}}{\partial p_j} = \{A_{\lambda},q_j \} \\
-p_j(\lambda + \delta \lambda) & =& p_j + \dfrac{\partial A_{\lambda}}{\partial q_j} \delta \lambda & \Rightarrow & \dfrac{\partial p_j}{\partial \lambda} &=& \dfrac{\partial A_{\lambda}}{\partial q_j}=\{ A_{\lambda},p_j \}
-\label{def_A}
-\end{alignat}
-
-We can verify that these transformations are canonical upto order $\delta \lambda ^2$ because we can show that:
-\begin{equation}
-\{q_j(\lambda + \delta \lambda), p_j(\lambda + \delta \lambda)\} = \delta_{ij} + O(\delta \lambda ^2)
-\end{equation}
-
-Let's try to understand by taking an example of continuous canonical transformation. We would shift the position coordinate by $X_i$. Here our parameter $\lambda$ is $X_i$
-\begin{eqnarray}
- q_i(X_i,t) &=& q_i(0,t) - X_i \\
-p_i(X_i,t)&=& p_i(0,t)
-\end{eqnarray}
-Using equation \ref{def_A}, we see that $\frac{\partial A_{X_i}}{\partial q_j}=0$ and $-\frac{\partial A_{X_i}}{\partial p_j}=-\delta_{ij}$. Hence, $A_{X_i}=p_j + C_j$, where $C_j$ are arbitrary constants of integration. This is the gauge choice we have got in defining these gauge potentials. 
 
 
 \section{Transverse Field Ising model: calculations in spin basis}
