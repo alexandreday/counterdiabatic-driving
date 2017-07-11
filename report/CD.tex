@@ -30,7 +30,7 @@ Adiabatic gauge potentials are useful for controlling a quantum system when it's
 
 The goal is to develop a regulator based method to find adiabatic gauge potential for quantum many body systems. If we are successful, then this will be a new method to find these potentials and it will give new insights in quantum control of many body systems. 
 
-We will use our method on both quantum integrable and non-integrable systems. For quantum integrable many body systems, exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry}. We hope to derive these results using our new method. For non-integrable systems, exact gauge potentials are very difficult to find. We hope that our method will find an approximate gauge potentials for such systems providing an alternative to variational approximation scheme introduced in \cite{del2012assisted}.
+We will use our method on both quantum integrable and non-integrable systems. For quantum integrable many body systems, exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry}. We hope to derive these results using our new method. For non-integrable systems, exact gauge potentials are very difficult to find. We hope that our method will find an approximate gauge potentials for such systems providing an alternative method to variational approximation scheme recently introduced in \cite{del2012assisted}.
 
 We also hope to use this method to distinguish between quantum integrable and non-integrable systems. Our idea is to use  Eigenstate Thermalization Hypothesis (ETH) for this. Since ETH is valid for local operators in non-integrable systems, we expect local approximate gauge potentials to satisfy ETH, and exact gauge potentials (which are non-local) should not satisfy ETH. We can show that  using ETH, norm of approximate gauge potential should scale exponentially in system size for non-integrable systems. Whereas for integrable systems (where ETH is not valid), exact gauge potential are supposed to scale like a polynomial in system size. We want to understand this issue into more details using our new method.
 
@@ -63,7 +63,7 @@ Let's take an example of a shifting transformation $U$ to understand gauge poten
 \begin{equation}
 U |x^{\prime} (\lambda) \rangle =|x + \lambda \rangle
 \end{equation}
-We know that unitary transformation $U= \exp( - i \hat{p} \lambda/ \hbar)$ . Now, $\tilde{A_{\lambda}} =\hat{p}$ and $A_{\lambda}= i \hbar \partial_{\lambda}$. 
+We know that unitary transformation $U= \exp( - i \hat{p} \lambda/ \hbar)$ . Now, $\tilde{A_{\lambda}} =\hat{p}$ and $A_{\lambda}= i \hbar \partial_{\lambda}$ \footnote{I don't know why there is a minus sign missing as momentum operator is defined as $\hat{p}= - i \hbar \partial_{x}$}. 
 
 
 Now why do we call it a gauge potential? In \cite{kolodrubetz2016geometry}, they call it gauge potential because there is freedom to choose $ A_{\lambda}$ like how in EM, we have gauge choice. In \cite{kolodrubetz2016geometry}, they say that
@@ -89,7 +89,7 @@ to a particular initial basis by adiabatic (infinitesimally slow) evolution of t
 $H (\lambda) |n(\lambda) \rangle = E_n (\lambda) |n(\lambda) $. Let's derive diagonal and off-diagonal elements. 
 
 \begin{itemize}
-\item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle= \langle n |\partial_{\lambda} | n \rangle $
+\item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle=  i \hbar\langle n |\partial_{\lambda} | n \rangle $
 \item \textbf{off- diagonal element:} We use the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate with respect to $\lambda$ to obtain:
 \begin{align}
 \boxed{\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}}
@@ -99,12 +99,12 @@ where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) de
 
 This information can be represented in matrix form as follows:
 \begin{equation}
-i \hbar \partial_{\lambda} H= [ A_{\lambda}, H] -i \hbar M_{\lambda} | n (\lambda) \rangle \langle n (\lambda) |
+i \hbar \partial_{\lambda} H= [ A_{\lambda}, H] -i \hbar M_{\lambda} 
 \label{m_lambda}
 \end{equation}
 where 
 \begin{equation}
-M_{\lambda} = - \sum_n \dfrac{\partial E_n (\lambda)}{\partial \lambda}
+M_{\lambda} = - \sum_n \dfrac{\partial E_n (\lambda)}{\partial \lambda} | n (\lambda) \rangle \langle n (\lambda) |
 \end{equation}
 
 It's to be noted that for finding $M_{\lambda}$, we need to diagonalize Hamiltonian. We can eliminate $M_{\lambda}$ by taking commutator on both sides of equation \ref{m_lambda} and obtain:
@@ -113,16 +113,41 @@ It's to be noted that for finding $M_{\lambda}$, we need to diagonalize Hamilton
 \label{def_commutator}
 \end{equation}
 
-Any $A_{\lambda}$ satis   fying equation \ref{def_commutator} is an exact gauge potential. We note that  if $A_{\lambda}$ satisfies equation \ref{def_commutator} , then  $A_{\lambda}+ f(H)$, where $f(H)$ is any function that only contains terms involving Hamiltonian $H$ and other operators that commutes with $H$.
+Any $A_{\lambda}$ satisfying equation \ref{def_commutator} is an exact gauge potential. We note that  if $A_{\lambda}$ satisfies equation \ref{def_commutator} , then  $A_{\lambda}+ f(H)$, where $f(H)$ is any function that only contains terms involving Hamiltonian $H$ and other operators that commutes with $H$. We note that $f(H)$ is diagonal in energy basis, i.e. $f(H)^{nm}= \delta_{n,m} f(H)^{nn}$.
+\subsubsection{Minimum norm gauge choice}
+For our future purposes, let's study a gauge choice where we assume diagonal elements of $A_{\lambda}$ in energy basis is zero, i. e.  $ \langle n |A_{\lambda}|n\rangle= A_{\lambda}^{n,n} =0$, for $n=1,2 \ldots D$, where $D$ is the dimension of Hilbert space.  Can we always make such a gauge choice?
 
-For our future purposes, let's study a gauge choice where we assume diagonal elements of $A_{\lambda}$ is zero. This should mean $\Tr(f(H)^2)=0$ and therefore, this is a choice with minimum Forbenius norm of  $A_{\lambda}$ as shown below:
-\begin{align*}
-||A_{\lambda}^{\prime} ||^2 = \Tr ( (A_{\lambda} + f(H) )^2) = \Tr (A_{\lambda}^2)  + \Tr(f(H)^2) + 2  \Tr ((A_{\lambda} f(H))=  \Tr (A_{\lambda}^2)
-\end{align*}
+As we noted above,  a family of $A_{\lambda}$ satisfies equation \ref{def_commutator}. In general, $A_{\lambda}^{\prime}= A_{\lambda} + f(H)$, where $A_{\lambda}^{\prime}$  is an exact gauge potential with all it's diagonal elements chosen to be zero and $A_{\lambda}$ is an exact gauge potential with non-zero diagonal elements. What's the condition on $f(H)$ so that diagonal elements of $A_{\lambda}^{\prime}$  are zero? The required condition is:
+\begin{equation}
+ f(H)^{nn}= -A_{\lambda}^{nn}, \quad n=1,2, \ldots D
+ \label{guage_condn}
+\end{equation}
+  where $D$ is the dimension of Hilbert space. Hence, if somebody hands me $A_{\lambda}$, here is the method to obtain $A_{\lambda}^{\prime}$: I can always cook up a function $f(H)= \sum_{n=1}^D a_n H^n$ by solving $D$ number of equations which satisfy equation \ref{guage_condn} to find out $a_n$. Once, I know $f(H)$, I can always subtract it from $A_{\lambda}$ to obtain $A_{\lambda}^{\prime}$. Hereby, I show that this gauge choice can always be made without any loss of generality.
+
+
+Let's try to understand this gauge choice further by computing the Frobenius norm of $A_{\lambda}$. 
+\begin{align}
+\|A_{\lambda}\|^2= \Tr ( A_{\lambda} ^2)= \sum_{n, m} |A_{\lambda}^{n,m}|^2=\sum_{n} |A_{\lambda}^{n,n}|^2+ \sum_{n \neq m} |A_{\lambda}^{n,m}|^2 =  \sum_{n} |A_{\lambda}^{n,n}|^2+ \| A_{\lambda}^{\prime} \| ^2
+\end{align}
+where $A_{\lambda}^{n,m}= \langle n |A_{\lambda}|m \rangle$ and $|m \rangle$ is the energy eigenstate with energy $E_m$. Thus, we see that in our gauge choice all the diagonal elements ($A_{\lambda}^{n,n}$) are zero, and therefore,  this choice reduces the norm. Is this the minimum norm of  $A_{\lambda}$ which satisfies equation \ref{def_commutator}? The answer is yes as explained below.
+
+
+
+Let's compute the norm of $A_{\lambda}$ another way by exploiting its' equality to $A_{\lambda}^{\prime} - f(H)$: 
+\begin{align}
+|| A_{\lambda} ||^2 &= \Tr ( (  A_{\lambda}^{\prime} - f(H) )^2) \\
+&= \Tr ( A_{\lambda}^{\prime}\ ^2)  + \Tr(f(H)^2) - 2  \Tr (( A_{\lambda}^{\prime} f(H))  \\
+&= \Tr ( A_{\lambda}^{\prime}\ ^2)  + \Tr(f(H)^2) \\
+&=\| A_{\lambda}^{\prime} \| ^2 + \| f(H) \| ^2
+\end{align}
+where we have used  the fact that $f(H)$ is diagonal and $A_{\lambda}^{\prime} $ has no non-zero diagonal elements in energy basis in claiming $\Tr (( A_{\lambda}^{\prime} f(H))=0 $.  We note that since $f(H)$ is diagonal in energy basis, the only way $A_{\lambda}$ will acquire diagonal elements is through $f(H)$. Hence, we see that by choosing diagonal elements of an exact adiabatic gauge potential in energy basis to be zero, we are effectively choosing a gauge potential which has no $f(H)$ term. Hence, this gauge choice is the minimum norm possible.
+
+
+
 \subsubsection{Time evolution in moving frame}
-Our Hamiltonian would be controlled using a control parameter called $\lambda$. Our aim would be drive the system without any transition.
+Our Hamiltonian would be controlled using a control parameter called $\lambda$ and our aim is to find time evolution of wave-function is $\lambda$ -dependent basis called moving frame.
 
-Let Hamiltonian $H_0(\lambda (t))$ satisfy the following equation
+Our Hamiltonian $H_0(\lambda (t))$ would satisfy the following equation:
 
 \begin{equation}
 H_0(\lambda (t)) |\psi \rangle= i \partial_t|\psi \rangle
@@ -159,7 +184,8 @@ To resolve this problem, we introduce a regulator/ cutoff $\mu$ that regularizes
 \langle n | A_{\lambda} | m \rangle &=& \lim_{\mu \rightarrow 0} \lim_{L \rightarrow \infty } -i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) 
 \label{off-digonal}
 \end{eqnarray}
-where we have chosen diagonal elements of $A_{\lambda}$ to be zero \footnote{Dries says we can do this without any loss of generality. I am not sure if we can always do this.}. 
+where we have chosen a gauge choice in which diagonal elements are zero in energy basis, i.e. $A_{\lambda}^{nn}=0$.
+
 Now we will use Laplace transform with $s=\mu$:
 
 \begin{eqnarray}
@@ -175,7 +201,7 @@ A_{\lambda} &=& \dfrac{-\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [U^{\dagger}(t 
 \end{eqnarray}
 where $\partial_{\lambda}H (t)$ is time-evolved operator $\partial_{\lambda}H$ in Heisenberg picture.
 
-We would be using  Hadamard (or sometimes called Baker-Hausdorff-Campbell) formula to simplify $\partial_{\lambda}H (t)$.
+We would be using  Hadamard (or sometimes called Baker-Campbell-Hausdorff) formula to simplify $\partial_{\lambda}H (t)$.
 
 \begin{eqnarray}
 \partial_{\lambda}H (t) &=& U^{\dagger}(t ) \partial_{\lambda} H U(t ) \\
@@ -195,7 +221,7 @@ Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hba
 %&=& -2 i \sum_{n=0}^{\infty} \dfrac{i^{2(n+1)} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
 &=& 2 i \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}
 \end{eqnarray}
-where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
+where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
 
 We can simplify our expression if we call $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}$ as $\sin ( C^{(1)}t)$, where $C^{(1)}= [H, \partial_{\lambda} H ]$. Thus, we can write: 
 
@@ -234,6 +260,30 @@ How does $\mu$ scale as $L$? In general, it seems that operators involved in the
 Now our task will be use it to find exact/approximate gauge potential for integrable and non-integrable models.
 
 \subsection{Integrable model}
+Our goal is to study a integrable model, which is called \textbf{Transverse Field Ising model}. It shows quantum phase transition between ferromagnetic and paramagnetic phases. Moreover, it satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian.
+This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation. It's Hamiltonian is given by:
+\begin{equation}
+H= -J \sum_{j} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
+\label{xx_z}
+\end{equation}
+where we have not specified boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
+
+This model's exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry} and it's given by:
+\begin{equation}
+A_{\lambda}= \sum_l \alpha_l O_l \quad \mbox{where} \quad \alpha_l= -\dfrac{1}{4 L} \sum_k \dfrac{\sin(k) \cos(lk)}{(\cos k - h)^2 + \sin^2 k}
+\end{equation}
+and where  $O_l$ is given by
+\begin{equation}
+O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})= \sum_j ( \sigma_j^x \sigma_{j+1}^z \ldots \sigma_{j+l-1}^z \sigma_{j+l}^y +  \sigma_j^y \sigma_{j+1}^z \ldots \sigma_{j+l-1}^z \sigma_{j+l}^x)
+\end{equation}
+Let's write a first few terms of $O_l$ here:
+\begin{align*}
+O_{l=1}&=  \sum_j ( \sigma_j^x  \sigma_{j+1}^y +  \sigma_j^y  \sigma_{j+1}^x) \\
+O_{l=2} &=  \sum_j ( \sigma_j^x \sigma_{j+1}^z \sigma_{j+2}^y +  \sigma_j^y \sigma_{j+1}^z \sigma_{j+2}^x) \\
+\end{align*}
+It will be good to find either exact or approximate gauge potential using our regulator method. However, before we study this model, we will study much simpler models to learn about this new method.
+
+
 \subsubsection*{Ising model with local transverse magnetic field}
 We would take the simplest integrable Hamiltonian with Ising interaction and a local $x$ magnetic field:
 \begin{equation}
@@ -250,12 +300,12 @@ This model satisfies Ising symmetry $G= \Pi_i \sigma_i^x$ since $[H, G]=0$.
 
 
 Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=\sigma_0^x$ . Here we begin:
-\begin{align*}
+\begin{align}
 C^{(1)}&= 2 i J \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \\ 
 C^{(2)}&= 8 J^2(\sigma^z_1 \sigma^x_0 \sigma^z_{-1} + \sigma^x_0) - 4J \lambda \sigma_0^z( \sigma_{-1}^z + \sigma_1^z) \\
 C^{(3)} &=  (16 J^2 + 4 \lambda ^2) [H, \partial_{\lambda} H] = \alpha^2  C^{(1)} \\
 C^{(5)}&=[H,[H, C^{(3)}]]  = \alpha^2 [H, [H,C^{(1)}]]]=\alpha^2 C^{(3)}=  \alpha^4 C^{(1)}   
-\end{align*}
+\end{align}
 
 
 Hence, $C^{(2n+1)}= \alpha^{2n} C^{(1)}$, where $\alpha^2= 4 (4 J^2 +  \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using \ref{def_1}, we get :
@@ -276,7 +326,7 @@ A_{\lambda} &=  \dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \d
 &=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)} \dfrac{\mu \alpha}{ \mu^2 + \alpha^2}\quad, \mbox{if ~}\alpha^2 / \mu^2 <1 \\
 &=    C^{(1)}  \dfrac{ -i\hbar  }{ \mu^2 + \alpha^2}= \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \quad, \mbox{if ~} \alpha^2 / \mu^2 <1 \\
 \end{align*}
-Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as it should.
+Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as they should.
 
 After taking $\mu \rightarrow 0$ limit, we get an expression for exact gauge potential:
 \begin{equation}
@@ -291,44 +341,55 @@ Why $A_{\lambda}$ is non-zero in $\lambda \rightarrow 0$ limit? It need not be z
 
 I can similarly write an exact expression for additional $\sum_{j=1}^L h_j \sigma_j^z$ term in the Hamiltonian, although this term breaks Ising symmetry $G$.
 
-Now for future purposes, let's rotate our axes such that interchange $z$ and $x$ axes while keeping the y axis the same. Our Hamiltonian becomes:
+
+Now for future purposes, let's study the following Hamiltonian:
 
 \begin{equation}
 H= -J \sum_{j}  \sigma_j^x \sigma_{j+1}^x -  \lambda  \sigma_0^z
 \label{xx}
 \end{equation}
 
+Apart from change in sign of $J$ and $\lambda$, we have rotated our axes through $y$ axis such that it interchanges $z$ and $x$ axes. In other words, we have done following transformation on spins ignoring the sign changes of couplings $J$ and $\lambda$:
+\begin{align*}
+\sigma_j^x \rightarrow \sigma_j^z \\
+\sigma_j^z \rightarrow  \sigma_j^x \\
+\sigma_j^y \rightarrow \sigma_j^y
+\end{align*}
+
+Hence, we get the following  expression for commutator after the required sign changes:
+
+
 \begin{align*}
 C^{(1)}&= -2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x) \\ 
-C^{(2)}&= 8 J^2(\sigma^z_1 \sigma^x_0 \sigma^z_{-1} + \sigma^x_0) - 4J \lambda \sigma_0^z( \sigma_{-1}^z + \sigma_1^z) \\
+C^{(2)}&= - 8 J^2(\sigma^x_1 \sigma^z_0 \sigma^x_{-1} + \sigma^z_0) + 4J \lambda \sigma_0^x( \sigma_{-1}^x + \sigma_1^x) \\
 C^{(3)} &=  (16 J^2 + 4 \lambda ^2) [H, \partial_{\lambda} H] = \alpha^2  C^{(1)} \\
 C^{(5)}&=[H,[H, C^{(3)}]]  = \alpha^2 [H, [H,C^{(1)}]]]=\alpha^2 C^{(3)}=  \alpha^4 C^{(1)}   
 \end{align*}
 
-
-
-\subsubsection*{Transverse Field Ising model}
-We would study another integrable model, which is called Transverse Field Ising model. This model shows quantum phase transition between ferromagnetic and paramagnetic phases. This model satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian. It's Hamiltonian is given by:
+Thus, we conclude that we get an expression for exact gauge potential:
 \begin{equation}
-H= -J \sum_{j} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
-\label{xx_z}
-\end{equation}
-where we have not specified boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
-
-This model can be written in terms of spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation.
-
-This model's exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry} and it's given by:
-\begin{equation}
-A_{\lambda}= \sum_l \alpha_l O_l
-\end{equation}
-where $O_l$ is given by
-\begin{equation}
-O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})
+\boxed{ A_{\lambda} = \dfrac{\hbar J}{{8 J^2 + 2 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x)}
 \end{equation}
 
-It will be good to find either exact or approximate gauge potential using our regulator method.
+\subsubsection*{Ising model with local transverse magnetic fields at two sites}
 
-\textbf{Jordan Wigner transformation:} \\
+
+\begin{equation}
+H= -J \sum_{j}  \sigma_j^x \sigma_{j+1}^x -  \lambda  (\sigma_0^z+ \sigma_1^z) 
+\label{xx}
+\end{equation}
+
+\begin{align*}
+C^{(1)}&= -2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x)  -2 i J \sigma_1^y ( \sigma_{0}^x + \sigma_2^x) \\ 
+C^{(2)}&= - 8 J^2(\sigma^x_1 \sigma^x_{-1} +1) \sigma^z_0 + 4J \lambda \sigma_0^x( \sigma_{-1}^x + \sigma_1^x) \\
+& - 8 J^2(\sigma^x_0 \ \sigma^x_{2}+1)  \sigma^z_1 + 4J \lambda \sigma_1^x( \sigma_{0}^x + \sigma_2^x)- 8 J \lambda \sigma_1^y \sigma_0^y\\
+C^{(3)} &=   \alpha^2  C^{(1)} + 32i J^2 \lambda (\sigma^x_{-1} \sigma^z_0 \sigma^y_1   + \sigma^y_{0} \sigma^z_1 \sigma^x_2) -24 i J \lambda^2 (\sigma^y_{0} \sigma^x_1+ \sigma^y_{1} \sigma^x_0)  + 16 i J^2 \lambda (\sigma^x_{0} \sigma^y_0 \sigma^z_1   + \sigma^y_{1} \sigma^x_1 \sigma^z_0)
+\end{align*}
+
+
+
+
+
 
 
 \appendix
@@ -343,6 +404,7 @@ Now we will prove another result, which is useful. Let's suppose $C^{(3)}=  \alp
 C^{(5)} &= [H, C^{(4)}]=[H, [H,C^{(3)}]] \\
 &=[H, [H,\alpha^2  C^{(1)} + T]]= \alpha^2[H, [H,  C^{(1)}]] +[H, [H, T]]= \alpha^2 C^{(3)} +[H, [H, T]]=  \alpha^4 C^{(1)} +[H, [H, T]]
 \end{align*} 
+Hence, $C^{(5)}= \alpha^4 C^{(1)} + C^{(3)}_T$, where $ C^{(3)}_T=[H, [H, T]]$. $T$ involves operators which are more non-local than $\partial_{\lambda}H$.
 %\section{Spin 1/2 particle in a time-dependent magnetic field}
 %I would include a derivation from lecture notes to gain an intuition here. I also plan to understand Berry's paper and reproduce some of his calculations in this appendix.
 %
