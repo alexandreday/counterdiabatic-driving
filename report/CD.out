@@ -6,7 +6,9 @@
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Time evolution in moving frame}{subsection.2.2}% 6
 \BOOKMARK [1][-]{section.3}{ Regulator based method to find Gauge Potential}{}% 7
 \BOOKMARK [2][-]{subsection.3.1}{Integrable model}{section.3}% 8
-\BOOKMARK [1][-]{appendix.A}{Properties of n-commutators}{}% 9
-\BOOKMARK [1][-]{appendix.B}{Classical adiabatic gauge potential}{}% 10
-\BOOKMARK [1][-]{appendix.C}{An example of variational approximation scheme: non-integrable Ising spin chain}{}% 11
-\BOOKMARK [1][-]{appendix.D}{Transverse Field Ising model: calculations in spin basis}{}% 12
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Ising model with local transverse magnetic field}{subsection.3.1}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Ising model with local transverse magnetic fields at two sites}{subsection.3.1}% 10
+\BOOKMARK [1][-]{appendix.A}{Properties of n-commutators}{}% 11
+\BOOKMARK [1][-]{appendix.B}{Classical adiabatic gauge potential}{}% 12
+\BOOKMARK [1][-]{appendix.C}{An example of variational approximation scheme: non-integrable Ising spin chain}{}% 13
+\BOOKMARK [1][-]{appendix.D}{Transverse Field Ising model: calculations in spin basis}{}% 14
