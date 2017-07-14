@@ -1,20 +1,20 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
-\bibitem{abanin2017recent}
-Dmitry~A Abanin and Zlatko Papi{\'c}.
-\newblock Recent progress in many-body localization.
-\newblock {\em arXiv preprint arXiv:1705.09103}, 2017.
+\bibitem{demirplak2003adiabatic}
+Mustafa Demirplak and Stuart~A Rice.
+\newblock Adiabatic population transfer with control fields.
+\newblock {\em The Journal of Physical Chemistry A}, 107(46):9937--9945, 2003.
 
-\bibitem{cassidy2011generalized}
-Amy~C Cassidy, Charles~W Clark, and Marcos Rigol.
-\newblock Generalized thermalization in an integrable lattice system.
-\newblock {\em Physical review letters}, 106(14):140405, 2011.
+\bibitem{demirplak2005assisted}
+Mustafa Demirplak and Stuart~A Rice.
+\newblock Assisted adiabatic passage revisited.
+\newblock {\em The Journal of Physical Chemistry B}, 109(14):6838--6844, 2005.
 
-\bibitem{d2016quantum}
-Luca D'Alessio, Yariv Kafri, Anatoli Polkovnikov, and Marcos Rigol.
-\newblock From quantum chaos and eigenstate thermalization to statistical
-  mechanics and thermodynamics.
-\newblock {\em Advances in Physics}, 65(3):239--362, 2016.
+\bibitem{berry2009transitionless}
+MV~Berry.
+\newblock Transitionless quantum driving.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  42(36):365303, 2009.
 
 \bibitem{del2012assisted}
 Adolfo del Campo, Marek~M Rams, and Wojciech~H Zurek.
@@ -22,35 +22,28 @@ Adolfo del Campo, Marek~M Rams, and Wojciech~H Zurek.
   point: exact solution for the quantum ising model.
 \newblock {\em Physical review letters}, 109(11):115703, 2012.
 
-\bibitem{kim2013ballistic}
-Hyungwon Kim and David~A Huse.
-\newblock Ballistic spreading of entanglement in a diffusive nonintegrable
-  system.
-\newblock {\em Physical review letters}, 111(12):127205, 2013.
-
 \bibitem{kolodrubetz2016geometry}
 Michael Kolodrubetz, Pankaj Mehta, and Anatoli Polkovnikov.
 \newblock Geometry and non-adiabatic response in quantum and classical systems.
 \newblock {\em arXiv preprint arXiv:1602.01062}, 2016.
 
-\bibitem{o2016explicit}
-TE~O'Brien, Dmitry~A Abanin, Guifre Vidal, and Z~Papi{\'c}.
-\newblock Explicit construction of local conserved operators in disordered
-  many-body systems.
-\newblock {\em Physical Review B}, 94(14):144208, 2016.
+\bibitem{d2016quantum}
+Luca D'Alessio, Yariv Kafri, Anatoli Polkovnikov, and Marcos Rigol.
+\newblock From quantum chaos and eigenstate thermalization to statistical
+  mechanics and thermodynamics.
+\newblock {\em Advances in Physics}, 65(3):239--362, 2016.
 
-\bibitem{rigol2008thermalization}
-Marcos Rigol, Vanja Dunjko, and Maxim Olshanii.
-\newblock Thermalization and its mechanism for generic isolated quantum
-  systems.
-\newblock {\em Nature}, 452(7189):854--858, 2008.
+\bibitem{jarzynski2013generating}
+Christopher Jarzynski.
+\newblock Generating shortcuts to adiabaticity in quantum and classical
+  dynamics.
+\newblock {\em Physical Review A}, 88(4):040101, 2013.
 
-\bibitem{rigol2007relaxation}
-Marcos Rigol, Vanja Dunjko, Vladimir Yurovsky, and Maxim Olshanii.
-\newblock Relaxation in a completely integrable many-body quantum system: an ab
-  initio study of the dynamics of the highly excited states of 1d lattice
-  hard-core bosons.
-\newblock {\em Physical review letters}, 98(5):050405, 2007.
+\bibitem{kim2013ballistic}
+Hyungwon Kim and David~A Huse.
+\newblock Ballistic spreading of entanglement in a diffusive nonintegrable
+  system.
+\newblock {\em Physical review letters}, 111(12):127205, 2013.
 
 \bibitem{sels2017minimizing}
 Dries Sels and Anatoli Polkovnikov.

@@ -25,14 +25,14 @@
 \section{Goals: what we hope to achieve}
 
 
-Adiabatic gauge potentials are useful for controlling a quantum system when it's driven externally from one configuration to another. These potentials help us in  circumventing standard adiabatic limitations which requires infinitesimally small rates. For example, these potentials can be used for arbitrarily fast annealing protocols and implementing fast dissipationless driving. 
+Adiabatic gauge potentials are useful for controlling a quantum system when it's driven externally from one configuration to another. These potentials help us in  circumventing standard adiabatic limitations which requires infinitesimally small rates \cite{demirplak2003adiabatic,demirplak2005assisted, berry2009transitionless}. For example, these potentials can be used for arbitrarily fast annealing protocols and implementing fast dissipationless driving. 
 
 
 The goal is to develop a regulator based method to find adiabatic gauge potential for quantum many body systems. If we are successful, then this will be a new method to find these potentials and it will give new insights in quantum control of many body systems. 
 
 We will use our method on both quantum integrable and non-integrable systems. For quantum integrable many body systems, exact gauge potential is already known in literature \cite{del2012assisted, kolodrubetz2016geometry}. We hope to derive these results using our new method. For non-integrable systems, exact gauge potentials are very difficult to find. We hope that our method will find an approximate gauge potentials for such systems providing an alternative method to variational approximation scheme recently introduced in \cite{del2012assisted}.
 
-We also hope to use this method to distinguish between quantum integrable and non-integrable systems. Our idea is to use  Eigenstate Thermalization Hypothesis (ETH) for this. Since ETH is valid for local operators in non-integrable systems, we expect local approximate gauge potentials to satisfy ETH, and exact gauge potentials (which are non-local) should not satisfy ETH. We can show that  using ETH, norm of approximate gauge potential should scale exponentially in system size for non-integrable systems. Whereas for integrable systems (where ETH is not valid), exact gauge potential are supposed to scale like a polynomial in system size. We want to understand this issue into more details using our new method.
+We also hope to use this method to distinguish between quantum integrable and non-integrable systems. Our idea is to use  Eigenstate Thermalization Hypothesis (ETH)\cite{d2016quantum} for this. Since ETH is valid for local operators in non-integrable systems, we expect local approximate gauge potentials to satisfy ETH, and exact gauge potentials (which are non-local) should not satisfy ETH. We can show that  using ETH, norm of approximate gauge potential should scale exponentially in system size for non-integrable systems. Whereas for integrable systems (where ETH is not valid), exact gauge potential are supposed to scale like a polynomial in system size. We want to understand this issue into more details using our new method.
 
 
 %The goal, as of now, is to distinguish between integrable and non-integrable many-body quantum system by studying their approximate gauge adiabatic potential\footnote{We expect results to be valid for classical system too. But for now, we would focus on quantum systems.}
@@ -97,7 +97,7 @@ $H (\lambda) |n(\lambda) \rangle = E_n (\lambda) |n(\lambda) $. Let's derive dia
 where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) depend on $\lambda$.
 \end{itemize}
 
-This information can be represented in matrix form as follows:
+This information can be represented in matrix form \cite{jarzynski2013generating} as follows:
 \begin{equation}
 i \hbar \partial_{\lambda} H= [ A_{\lambda}, H] -i \hbar M_{\lambda} 
 \label{m_lambda}
@@ -186,59 +186,44 @@ To resolve this problem, we introduce a regulator/ cutoff $\mu$ that regularizes
 \end{eqnarray}
 where we have chosen a gauge choice in which diagonal elements are zero in energy basis, i.e. $A_{\lambda}^{nn}=0$.
 
-Now we will use Laplace transform with $s=\mu$:
+Now  let's first recall here the Laplace transform of $\sin(\omega t)$: 
+\begin{equation}
+\int_0^{\infty} dt\ e^{-s t} \sin(\omega t)= \dfrac{\omega}{ \omega^2 +s^2}
+\end{equation}
+
+Thus, we see that with $s=\mu$, we can convert our expression of $ A_{\lambda}$ into an integral.  
+From here on to simplify our expression of integration, we will choose our units such that $\hbar=1$. \footnote{If we don't choose  $\hbar=1$, then for Laplace integral variable, we should use not use $t$. Instead we should use $t/\hbar$ so that we have $\sin((E_n-E_m)t/ \hbar)$ and $e^{-\mu t/ \hbar}$. Otherwise, we will end up with terms $\sin((E_n-E_m)t)$ and $e^{-\mu t}$, which are dimensionally incorrect.}
 
 \begin{eqnarray}
-\langle n | A_{\lambda} | m \rangle &=&   -i \hbar\dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
-&=& -i \hbar  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \sin((E_n-E_m)t) \\
-&=& \dfrac{-i \hbar}{2i}  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \left( e^{i(E_n-E_m)t} - e^{-i(E_n-E_m)t} \right) \\
-&=& \dfrac{ -\hbar}{2}  \int^{\infty}_{0} dt\ e^{-\mu t}  \left(  \langle n | e^{iE_nt} \partial_{\lambda}H   e^{-i E_m t} | m \rangle  -  \langle n |e^{-i E_n t}  \partial_{\lambda}H  e^{ i E_mt} | m \rangle  \right) 
+\langle n | A_{\lambda} | m \rangle &=&   -i \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
+&=& -i   \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \sin((E_n-E_m)t) \\
+&=&- \dfrac{ 1}{2}  \int^{\infty}_{0} dt\ e^{-\mu t}  \left(  \langle n | e^{iE_nt} \partial_{\lambda}H   e^{-i E_m t} | m \rangle  -  \langle n |e^{-i E_n t}  \partial_{\lambda}H  e^{ i E_mt} | m \rangle  \right) 
 \end{eqnarray}
-Hence, we can simplify our expression by defining propagator  $U= \exp(-i H t/ \hbar)$. We note that parameter $\lambda$ is fixed while we evolve it in the \textit{artificial time} $t$.
+Hence, we can simplify our expression by defining propagator  $U= \exp(-i H t)$. We note that parameter $\lambda$ is fixed while we evolve it in the \textit{artificial time} $t$.
 \begin{eqnarray}
-A_{\lambda} &=& \dfrac{-\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [U^{\dagger}(t \hbar) \partial_{\lambda} H U(t  \hbar) - U^{\dagger}(-t  \hbar) \partial_{\lambda}H U(-t \hbar)]  \\
-&=& \dfrac{\hbar}{2 }\int_0^{\infty} dt\ e^{-\mu t} [ \partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)  ]  
+A_{\lambda} &=& -\dfrac{1}{2 }\int_0^{\infty} dt\ e^{-\mu t} [U^{\dagger}(t ) \partial_{\lambda} H U(t ) - U^{\dagger}(-t ) \partial_{\lambda}H U(-t )]  \\
+&=& -\dfrac{1}{2 }\int_0^{\infty} dt\ e^{-\mu t} [ \partial_{\lambda} H (t) -  \partial_{\lambda}H (-t )  ]  
 \end{eqnarray}
-where $\partial_{\lambda}H (t)$ is time-evolved operator $\partial_{\lambda}H$ in Heisenberg picture.
+where $\partial_{\lambda}H (t)$ is time-evolved operator $\partial_{\lambda}H$ in Heisenberg picture. We note that characteristic time scale in the integration is $1/\mu$.
 
-We would be using  Hadamard (or sometimes called Baker-Campbell-Hausdorff) formula to simplify $\partial_{\lambda}H (t)$.
-
-\begin{eqnarray}
-\partial_{\lambda}H (t) &=& U^{\dagger}(t ) \partial_{\lambda} H U(t ) \\
-&=& \exp(i H t/ \hbar) \partial_{\lambda} H \exp(-i H t/ \hbar)  \\
-&=&  \partial_{\lambda} H  + \dfrac{i t}{ \hbar} [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ \hbar}\right)^2 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  3! \hbar}\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
-\end{eqnarray}
-Similarly,  for $\partial_{\lambda}H (-t)$, we have:
-
-\begin{eqnarray}
-\partial_{\lambda}H (-t) &=&  \partial_{\lambda} H  - \dfrac{i t}{ \hbar} [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ \hbar}\right)^2 [H,[H, \partial_{\lambda} H]]  - \left(\dfrac{i t}{  3! \hbar}\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
-\end{eqnarray}
-
-Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar) $ contains only odd  power of time $t$:
-\begin{eqnarray}
-\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)&=&  2 \left[ i t [H, \partial_{\lambda} H] + \left(\dfrac{i t}{  3! }\right)^3 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  5! }\right)^5 [H,[H,[H,[H,[H, \partial_{\lambda} H]]]]]   + \ldots \right]  \nonumber \\
-&=& 2 \sum_{n=0}^{\infty} \dfrac{(it) ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
-%&=& -2 i \sum_{n=0}^{\infty} \dfrac{i^{2(n+1)} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
-&=& 2 i \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}
-\end{eqnarray}
-where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
-
-We can simplify our expression if we call $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}$ as $\sin ( C^{(1)}t)$. Thus, we can write: 
+Now using  Hadamard (or sometimes called Baker-Campbell-Hausdorff) formula, we find a simplified expression. Detailed calculations are given in appendix \ref{sec.gen_derivation} .
 
 \begin{equation}
 %\boxed{
-A_{\lambda} =  -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
+A_{\lambda} =  -i\int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
 = -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}
 %}
 \label{def_1}
 \end{equation}
+where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
+
 
 
 Can we further simplify the expression? If we are allowed to change the order of summation and integration \footnote{If there is some singularity, then the order of summation and integration might be important and we might get two different results.}, then we can do first Laplace transform of $t ^{2n+1}$  terms and then later the sum.  Hence, we get:
 \begin{eqnarray}
-A_{\lambda} &=& - i\hbar \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
- &=& - i\hbar  \sum_{n=0}^{\infty}(-1)^{n} C^{(2n+1)} \int_0^{\infty} dt\ e^{-\mu t}  \dfrac{ t ^{2n+1}}{(2n+1)!} \\
- &=& - i\hbar  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
+A_{\lambda} &=& - i  \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+ &=& - i \sum_{n=0}^{\infty}(-1)^{n} C^{(2n+1)} \int_0^{\infty} dt\ e^{-\mu t}  \dfrac{ t ^{2n+1}}{(2n+1)!} \\
+ &=& - i  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
 \end{eqnarray}
 Hence, we get another expression where we have integrated before taking the summation:
 
@@ -248,7 +233,7 @@ Hence, we get another expression where we have integrated before taking the summ
  %}
 \label{def_2}
 \end{equation}
-We note that $i C^{(2n+1)}$ is Hermitian, which is consistent with the fact that $ A_{\lambda}$ is Hermitian. 
+Once we are done with the integration, we can bring back $\hbar$ factor. We note that $i C^{(2n+1)}$ is Hermitian, which is consistent with the fact that $ A_{\lambda}$ is Hermitian. 
 
 
 Now let's think about $\lim_{L \rightarrow \infty }$ limit which we need to take. I  would claim that while doing the infinite summation we have already taken that limit as we have assumed infinite system size. Why is that? In general,  $C^{(n)}$ grows with $n$ in the sense that it would have operators with larger support over lattice sites as $n$ increases. At a certain  $n_L$ that is proportional to system length $L$, we would find that $C^{n_L}$ has operators with support on boundary lattice sites. This is where our summation would be truncated for a finite system. Hence, the correct order of limits should be:
@@ -378,7 +363,7 @@ Thus, we conclude that we get an expression for exact gauge potential:
 
 \begin{equation}
 H= -J \sum_{j}  \sigma_j^x \sigma_{j+1}^x -  \lambda  (\sigma_0^z+ \sigma_1^z) 
-\label{xx}
+\label{xx2}
 \end{equation}
 
 \begin{align*}
@@ -390,7 +375,7 @@ C^{(5)} &= \alpha^4  C^{(1)}  + \beta^2 T_2  + \gamma^2 T_3
 \end{align*}
 where $\beta^2=20 (2 J^2+ \lambda^2)$,   $\gamma^2=(32 J^2+ 17\lambda^2)$, and operator terms $T_2=-24 i J \lambda^2 (\sigma^y_{0} \sigma^x_1+ \sigma^y_{1} \sigma^x_0)$  and $T_3= 32i J^2 \lambda (\sigma^x_{-1} \sigma^z_0 \sigma^y_1   + \sigma^y_{0} \sigma^z_1 \sigma^x_2)$ are  terms involves two body operators and three body operators, respectively.
 
-Hence, using theorem proved in appendix, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
+Hence, using theorem proved in appendix \ref{sec.Cn}, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
 %
 %The above information can be interpreted as 
 %\begin{align*}
@@ -399,49 +384,12 @@ Hence, using theorem proved in appendix, I can claim $C^{(2n+1)}= \alpha^{(2n)} 
 %C^{(3)} &=
 %\end{align*}
 
-Hence, now let's find $A_{\lambda}$ using two methods: equation (\ref{def_1}) and (\ref{def_2}). 
-
-Using equation (\ref{def_1}) , we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
-\begin{align*}
-A_{\lambda} &= -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
-&= -i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \right)\\
-&=-i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3  \right) \right)\\
-&=-i\hbar C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \left(  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n}  \alpha^{2n} t ^{2n+1}}{(2n+1)!} \right) -i\hbar \int_0^{\infty} dt\  e^{-\mu t} \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3 \right) \\
-&=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2} -i\hbar \int_0^{\infty} dt\  e^{-\mu t} ( X_2 + X_3)
-\end{align*}
-where $X_2= T_2 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  $ and $X_3= T_3 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\gamma^{(2n-2)} t ^{2n+1}}{(2n+1)!} $. Let's simplify $X_2$ below:
-
-\begin{align*}
-X_2&=T_2\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  \\
-&=\dfrac{T_2}{\beta^2}\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} \\
-&=\dfrac{T_2}{\beta^2}\left(\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} +t - t \right)\\ 
-&=\dfrac{T_2}{\beta^2}\left(\sum_{n=0}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!}  - t \right)\\
-&=\dfrac{T_2}{\beta^2}\left(\dfrac{\sin (\beta t)}{\beta}  - t \right)\\
-\end{align*}
-Similarly, $X_3=\dfrac{T_3}{\gamma^2}\left(\dfrac{\sin (\gamma t)}{\beta}  - t \right)$. Now, let's compute the Laplace transform of $X_2$:
-\begin{align*}
- -i\hbar \int_0^{\infty} dt\  e^{-\mu t}  X_2 &=  -i\hbar\dfrac{T_2}{\beta^3}  \int_0^{\infty} dt\  e^{-\mu t}\left(\sin (\beta t) - \beta t \right) \\
- &=  -i\hbar \dfrac{T_2}{\beta^3} \left( \dfrac{\beta}{\beta^2 + \mu^2} - \dfrac{\beta}{\mu^2}  \right)\\
- &=  -i\hbar \dfrac{T_2}{\beta^2} \left( \dfrac{1}{\beta^2 + \mu^2} - \dfrac{1}{\mu^2}  \right)\\
- &=    \dfrac{i\hbar}{\beta^2 + \mu^2}  \dfrac{T_2}{\mu^2}\\
-\end{align*} 
-
-Hence, after we stitch everything together, we get the final expression of $A_{\lambda}$:
+Now using this information, we find that $A_{\lambda}$  is given by:
 \begin{equation}
 \boxed{A_{\lambda} =\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}}
 \end{equation}
 
-Using equation (\ref{def_2}) , we get exactly the same expression as shown below: %, which gives a divergence in $\mu \rightarrow 0$ limit.
-\begin{align*}
-A_{\lambda} &=  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
-&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
-&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{\alpha^{(2n)} C^{(1)} } {\mu^{2n+1}}  +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
- &=\dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
- &=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}
-\end{align*}
-
-
-We note that the last two terms diverge when we take  $\lim_{\mu \rightarrow 0}$ limit. I am still figuring out how to deal with this.
+Details of the derivation are given in appendix \ref{sec.derivation_A_lambda}. We note that the last two terms diverge when we take  $\lim_{\mu \rightarrow 0}$ limit. I am still figuring out how to deal with this.
 
 
 
@@ -506,7 +454,94 @@ Hence, we  proved that $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T$, $
 %\end{equation}
 %
 %I should include pictures drawn using sympy here.
+\section{Adiabatic gauge potential formula general derivation}\label{sec.gen_derivation}
 
+\begin{eqnarray}
+\langle n | A_{\lambda} | m \rangle &=&   -i \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
+&=& -i   \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \sin((E_n-E_m)t) \\
+&=& \dfrac{-i }{2i}  \int^{\infty}_{0} dt\ e^{-\mu t} \langle n | \partial_{\lambda}H  | m \rangle \left( e^{i(E_n-E_m)t} - e^{-i(E_n-E_m)t} \right) \\
+&=&- \dfrac{ 1}{2}  \int^{\infty}_{0} dt\ e^{-\mu t}  \left(  \langle n | e^{iE_nt} \partial_{\lambda}H   e^{-i E_m t} | m \rangle  -  \langle n |e^{-i E_n t}  \partial_{\lambda}H  e^{ i E_mt} | m \rangle  \right) 
+\end{eqnarray}
+Hence, we can simplify our expression by defining propagator  $U= \exp(-i H t)$. We note that parameter $\lambda$ is fixed while we evolve it in the \textit{artificial time} $t$.
+\begin{eqnarray}
+A_{\lambda} &=& -\dfrac{1}{2 }\int_0^{\infty} dt\ e^{-\mu t} [U^{\dagger}(t ) \partial_{\lambda} H U(t ) - U^{\dagger}(-t ) \partial_{\lambda}H U(-t )]  \\
+&=& -\dfrac{1}{2 }\int_0^{\infty} dt\ e^{-\mu t} [ \partial_{\lambda} H (t) -  \partial_{\lambda}H (-t )  ]  
+\end{eqnarray}
+where $\partial_{\lambda}H (t)$ is time-evolved operator $\partial_{\lambda}H$ in Heisenberg picture.
+
+We would be using  Hadamard (or sometimes called Baker-Campbell-Hausdorff) formula to simplify $\partial_{\lambda}H (t)$.
+
+\begin{eqnarray}
+\partial_{\lambda}H (t) &=& U^{\dagger}(t ) \partial_{\lambda} H U(t ) \\
+&=& \exp(i H t) \partial_{\lambda} H \exp(-i H t)  \\
+&=&  \partial_{\lambda} H  + it [H, \partial_{\lambda} H] + \left(\dfrac{i t}{  2! }\right)^2[H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  3! }\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
+\end{eqnarray}
+Similarly,  for $\partial_{\lambda}H (-t)$, we have:
+
+\begin{eqnarray}
+\partial_{\lambda}H (-t) &=&  \partial_{\lambda} H  - i t [H, \partial_{\lambda} H] + \left(\dfrac{i t}{ 2!}\right)^2 [H,[H, \partial_{\lambda} H]]  - \left(\dfrac{i t}{  3! }\right)^3 [H,[H,[H, \partial_{\lambda} H]]]   + \ldots
+\end{eqnarray}
+
+Now we see that $\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar) $ contains only odd  power of time $t$:
+\begin{eqnarray}
+\partial_{\lambda} H (t \hbar) -  \partial_{\lambda}H (-t  \hbar)&=&  2 \left[ i t [H, \partial_{\lambda} H] + \left(\dfrac{i t}{  3! }\right)^3 [H,[H, \partial_{\lambda} H]]  + \left(\dfrac{i t}{  5! }\right)^5 [H,[H,[H,[H,[H, \partial_{\lambda} H]]]]]   + \ldots \right]  \nonumber \\
+&=& 2 \sum_{n=0}^{\infty} \dfrac{(it) ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+%&=& -2 i \sum_{n=0}^{\infty} \dfrac{i^{2(n+1)} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+&=& 2 i \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}
+\end{eqnarray}
+where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
+
+We can simplify our expression if we call $\sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}$ as $\sin ( C^{(1)}t)$. Thus, we can write: 
+
+\begin{equation}
+%\boxed{
+A_{\lambda} =  -i\int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H ]t)
+= -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)}
+%}
+\end{equation}
+
+
+\section{Adiabatic gauge potential of Ising model with local transverse magnetic fields at two sites}\label{sec.derivation_A_lambda}
+ Using  $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$, we find $A_{\lambda}$ using two methods: equation (\ref{def_1}) and (\ref{def_2}). 
+
+Using equation (\ref{def_1}) , we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+\begin{align*}
+A_{\lambda} &= -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+&= -i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \right)\\
+&=-i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3  \right) \right)\\
+&=-i\hbar C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \left(  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n}  \alpha^{2n} t ^{2n+1}}{(2n+1)!} \right) -i\hbar \int_0^{\infty} dt\  e^{-\mu t} \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3 \right) \\
+&=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2} -i\hbar \int_0^{\infty} dt\  e^{-\mu t} ( X_2 + X_3)
+\end{align*}
+where $X_2= T_2 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  $ and $X_3= T_3 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\gamma^{(2n-2)} t ^{2n+1}}{(2n+1)!} $. Let's simplify $X_2$ below:
+
+\begin{align*}
+X_2&=T_2\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  \\
+&=\dfrac{T_2}{\beta^2}\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} \\
+&=\dfrac{T_2}{\beta^2}\left(\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} +t - t \right)\\ 
+&=\dfrac{T_2}{\beta^2}\left(\sum_{n=0}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!}  - t \right)\\
+&=\dfrac{T_2}{\beta^2}\left(\dfrac{\sin (\beta t)}{\beta}  - t \right)\\
+\end{align*}
+Similarly, $X_3=\dfrac{T_3}{\gamma^3}\left(\sin (\gamma t)  -  \gamma t \right)$. Now, let's compute the Laplace transform of $X_2$:
+\begin{align*}
+ -i\hbar \int_0^{\infty} dt\  e^{-\mu t}  X_2 &=  -i\hbar\dfrac{T_2}{\beta^3}  \int_0^{\infty} dt\  e^{-\mu t}\left(\sin (\beta t) - \beta t \right) \\
+ &=  -i\hbar \dfrac{T_2}{\beta^3} \left( \dfrac{\beta}{\beta^2 + \mu^2} - \dfrac{\beta}{\mu^2}  \right)\\
+ &=  -i\hbar \dfrac{T_2}{\beta^2} \left( \dfrac{1}{\beta^2 + \mu^2} - \dfrac{1}{\mu^2}  \right)\\
+ &=    \dfrac{i\hbar}{\beta^2 + \mu^2}  \dfrac{T_2}{\mu^2}\\
+\end{align*} 
+
+Hence, after we stitch everything together, we get the final expression of $A_{\lambda}$:
+\begin{equation}
+\boxed{A_{\lambda} =\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}}
+\end{equation}
+
+Using equation (\ref{def_2}) , we get exactly the same expression as shown below: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+\begin{align*}
+A_{\lambda} &=  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
+&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
+&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{\alpha^{(2n)} C^{(1)} } {\mu^{2n+1}}  +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
+ &=\dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
+ &=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}
+\end{align*}
 
 \section{Classical adiabatic gauge potential}
 Let's start by considering classical systems. For such systems, we specify the system by defining Hamiltonian $H (\lambda)$ in terms of canonical variables $q_i (\lambda,t)$ and $p_j (\lambda,t)$. where $\lambda$ is an externally controlled parameter. These variables satisfy the canonical relations:
@@ -653,7 +688,7 @@ where $\alpha^2 =4 (4 J^2 + 2 h^2 + \lambda^2 + 2 h \lambda)= (4 J^2 +  h^2 + (h
 
 \bibliography{ref} 
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 
 
 \end{document}
