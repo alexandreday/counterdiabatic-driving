@@ -17,3 +17,20 @@ http://nucleartalent.github.io/Course2ManyBodyMethods/doc/pub/secondquant/html/s
 ####Mathemtica packages
 https://github.com/ValeevGroup/SeQuant  ### I am sure it has second-quantization feature
 http://homepage.cem.itesm.mx/lgomez/quantum/ ###Not so sure if 
+
+
+
+
+##########################
+Hello authors of DiracQ,
+
+Firstly, hats off for a creating a useful computational tool for working with many-body quantum Hamiltonians!
+
+In DiracQ, I get an output like this no matter --
+(J  ** \[Sigma][0, z]**\[Sigma][0, z]) ** 2
+
+It gets difficult to use simplify commands of Mathematica on terms involving this expression. It would be nice if it can be shown as:
+
+
+(J  *  \[Sigma][0, z] \cross \[Sigma][0, z]) ** 2
+###########################
