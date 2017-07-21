@@ -371,27 +371,36 @@ C^{(1)}&= -2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x)  -2 i J \sigma_1^y ( \
 C^{(2)}&= - 8 J^2(\sigma^x_1 \sigma^x_{-1} +1) \sigma^z_0 + 4J \lambda \sigma_0^x( \sigma_{-1}^x + \sigma_1^x) \\
 & - 8 J^2(\sigma^x_0 \ \sigma^x_{2}+1)  \sigma^z_1 + 4J \lambda \sigma_1^x( \sigma_{0}^x + \sigma_2^x)- 8 J \lambda \sigma_1^y \sigma_0^y\\
 C^{(3)} &=   \alpha^2  C^{(1)}  +T_2  +T_3\\  %  + 16 i J^2 \lambda (\sigma^x_{0} \sigma^y_0 \sigma^z_1   + \sigma^y_{1} \sigma^x_1 \sigma^z_0) 
-C^{(5)} &= \alpha^4  C^{(1)}  + \beta^2 T_2  + \gamma^2 T_3
+C^{(5)} &= \alpha^4  C^{(1)}  +C^{(2)}_{T_2}  + C^{(2)}_{T_3}
 \end{align*}
-where $\beta^2=20 (2 J^2+ \lambda^2)$,   $\gamma^2=(32 J^2+ 17\lambda^2)$, and operator terms $T_2=-24 i J \lambda^2 (\sigma^y_{0} \sigma^x_1+ \sigma^y_{1} \sigma^x_0)$  and $T_3= 32i J^2 \lambda (\sigma^x_{-1} \sigma^z_0 \sigma^y_1   + \sigma^y_{0} \sigma^z_1 \sigma^x_2)$ are  terms involves two body operators and three body operators, respectively.
+where two body operator $T_2=-24 i J \lambda^2 (\sigma^y_{0} \sigma^x_1+ \sigma^y_{1} \sigma^x_0)$  , three body operator $T_3= 32i J^2 \lambda (\sigma^x_{-1} \sigma^z_0 \sigma^y_1   + \sigma^y_{0} \sigma^z_1 \sigma^x_2)$, $C^{(2)}_{T_2}=[H, [H, T_2]]$ and  $C^{(2)}_{T_3}=[H, [H, T_3]]$.
 
-Hence, using theorem proved in appendix \ref{sec.Cn}, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
+Now on further computation, we find that:
+\begin{align}
+C^{(2)}_{T_2}&= \delta_1 C^{(1)} + \delta_2 T_2 + \delta_3 T_3 \\
+C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3 
+\end{align}
+where $\delta_1= 96 J^2 \lambda^2$, $\delta_2= 16 \lambda^2$, $\delta_3= 9 \lambda^2$, $\epsilon_1= 64 J \lambda^3$, $\epsilon_2= \frac{32}{3} J \lambda$ and $\epsilon_3= \alpha^2$.
+
+This shows that for any subsequent $C^{(2n+1)}$, we won't have any \textit{new} term apart from $C^{(1)},T_2$ and $T_3$
 %
-%The above information can be interpreted as 
-%\begin{align*}
-%C^{(1)}&=  C^{(1)}_0 + C^{(1)}_1 \\ 
-%C^{(2)} &= C^{(2)}_0 + C^{(2)}_1 - 8 J \lambda \sigma_1^y \sigma_0^y\\ 
-%C^{(3)} &=
-%\end{align*}
-
-Now using this information, we find that $A_{\lambda}$  is given by:
-\begin{equation}
-\boxed{A_{\lambda} =\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}}
-\end{equation}
-
-Details of the derivation are given in appendix \ref{sec.derivation_A_lambda}. We note that the last two terms diverge when we take  $\lim_{\mu \rightarrow 0}$ limit. I am still figuring out how to deal with this.
-
-
+%Hence, using theorem proved in appendix \ref{sec.Cn}, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
+%%
+%%The above information can be interpreted as 
+%%\begin{align*}
+%%C^{(1)}&=  C^{(1)}_0 + C^{(1)}_1 \\ 
+%%C^{(2)} &= C^{(2)}_0 + C^{(2)}_1 - 8 J \lambda \sigma_1^y \sigma_0^y\\ 
+%%C^{(3)} &=
+%%\end{align*}
+%
+%Now using this information, we find that $A_{\lambda}$  is given by:
+%\begin{equation}
+%\boxed{A_{\lambda} =\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}}
+%\end{equation}
+%
+%Details of the derivation are given in appendix \ref{sec.derivation_A_lambda}. We note that the last two terms diverge when we take  $\lim_{\mu \rightarrow 0}$ limit. I am still figuring out how to deal with this.
+%
+%
 
 
 \appendix
@@ -406,7 +415,12 @@ $C^{(n)}= [H, C^{(n-1)}], n>1$
 \end{thm}
 
 
-Now we will prove another result, which is useful.
+Now we will prove some results, which we are useful in computations of commutators.
+\begin{thm}
+If $C^{(3)}=  \alpha^2  C^{(1)} + T$ , then $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + C^{(2n-2)}_T$, $\forall n>0$,  where $T$ is an operator,  $ C^{(0)}_T=T$ , $C^{(2)}_T=[H, [H, T]]$ and so on.
+\end{thm}
+
+
 \begin{thm}
 If $C^{(3)}=  \alpha^2  C^{(1)} + T$ and $C^{(2)}_T= \beta^2 T $ , then $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T$, $\forall n>0$,  where $T$ is a term involving some operators and $ C^{(2)}_T=[H, [H, T]]$
 \end{thm}
