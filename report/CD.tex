@@ -164,9 +164,12 @@ How does the wave function evolve in new basis?
 
 Note that gauge potential should be purely imaginary in a basis in which Hamiltonian is real. 
 
+\subsubsection{Variational solution of adiabatic gauge potential}
 
-
-
+\begin{equation}
+G_{\lambda}= \partial_{\lambda} H + \dfrac{i}{\hbar} [\chi, H] 
+\end{equation}
+If $\chi= A_{\lambda}$, then $[H,G_{\lambda}]=0 $
 \section{ Regulator based method to find Gauge Potential}
 Here we would introduce a new method to find Gauge Potential $A_{\lambda}$ which includes a regulator $\mu$. 
 
@@ -248,7 +251,28 @@ How does $\mu$ scale as $L$? It's an important question whose answer we don't kn
 
 Now our task will be use it to find exact/approximate gauge potential for integrable and non-integrable models.
 
-\subsection{Integrable model}
+\section{Single body problem}
+We would start off with a simple problem and find its' adiabatic gauge potential using our method.
+\begin{equation}
+H= \Delta \sigma^z + \lambda \sigma^x
+\end{equation}
+\begin{align}
+C^{(1)} &= 2 i \Delta \sigma^y \\
+C^{(2)} &= - 4  \Delta ( -  \Delta \sigma^x + \lambda \sigma^z) \\
+C^{(3)} &= \alpha^2 C^{(1)} 
+\end{align}
+where $\alpha^2 = 4 (\Delta^2 + \lambda^2) $
+
+Hence, we find that 
+\begin{equation}
+A_{\lambda}= \dfrac{\hbar}{2}\dfrac{\Delta }{\Delta^2 + \lambda^2} \sigma^y
+\end{equation}
+Similarly, we find that 
+
+\begin{equation}
+A_{\Delta}= -\dfrac{\hbar}{2}\dfrac{\lambda }{\Delta^2 + \lambda^2} \sigma^y
+\end{equation}
+\section{Many body problem: integrable model}
 Our goal is to study a integrable model, which is called \textbf{Transverse Field Ising model}. It shows quantum phase transition between ferromagnetic and paramagnetic phases. Moreover, it satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian.
 This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation. It's Hamiltonian in spin basis is given by:
 \begin{equation}
@@ -273,7 +297,7 @@ O_{l=2} &=  \sum_j ( \sigma_j^x \sigma_{j+1}^z \sigma_{j+2}^y +  \sigma_j^y \sig
 It will be good to find either exact or approximate gauge potential using our regulator method. However, before we study this model, we will study much simpler models to learn about this new method.
 
 
-\subsubsection{Ising model with local transverse magnetic field}
+\subsection{Ising model with local transverse magnetic field}
 We would take the simplest integrable Hamiltonian with Ising interaction and a local $x$ magnetic field:
 \begin{equation}
 H= J \sum_{j}  \sigma_j^z \sigma_{j+1}^z +  \lambda  \sigma_0^x
@@ -358,7 +382,7 @@ Thus, we conclude that we get an expression for exact gauge potential:
 \boxed{ A_{\lambda} = \dfrac{\hbar J}{{8 J^2 + 2 \lambda ^2 }} \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x)}
 \end{equation}
 
-\subsubsection{Ising model with local transverse magnetic fields at two sites}
+\subsection{Ising model with local transverse magnetic fields at two sites}
 
 
 \begin{equation}
@@ -371,9 +395,9 @@ C^{(1)}&= -2 i J \sigma_0^y ( \sigma_{-1}^x + \sigma_1^x)  -2 i J \sigma_1^y ( \
 C^{(2)}&= - 8 J^2(\sigma^x_1 \sigma^x_{-1} +1) \sigma^z_0 + 4J \lambda \sigma_0^x( \sigma_{-1}^x + \sigma_1^x) \\
 & - 8 J^2(\sigma^x_0 \ \sigma^x_{2}+1)  \sigma^z_1 + 4J \lambda \sigma_1^x( \sigma_{0}^x + \sigma_2^x)- 8 J \lambda \sigma_1^y \sigma_0^y\\
 C^{(3)} &=   \alpha^2  C^{(1)}  +T_2  +T_3\\  %  + 16 i J^2 \lambda (\sigma^x_{0} \sigma^y_0 \sigma^z_1   + \sigma^y_{1} \sigma^x_1 \sigma^z_0) 
-C^{(5)} &= \alpha^4  C^{(1)}  +C^{(2)}_{T_2}  + C^{(2)}_{T_3}
 \end{align*}
 where two body operator $T_2=-24 i J \lambda^2 (\sigma^y_{0} \sigma^x_1+ \sigma^y_{1} \sigma^x_0)$  , three body operator $T_3= 32i J^2 \lambda (\sigma^x_{-1} \sigma^z_0 \sigma^y_1   + \sigma^y_{0} \sigma^z_1 \sigma^x_2)$, $C^{(2)}_{T_2}=[H, [H, T_2]]$ and  $C^{(2)}_{T_3}=[H, [H, T_3]]$.
+
 
 Now on further computation, we find that:
 \begin{align}
@@ -382,7 +406,69 @@ C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3
 \end{align}
 where $\delta_1= 96 J^2 \lambda^2$, $\delta_2= 16 \lambda^2$, $\delta_3= 9 \lambda^2$, $\epsilon_1= 64 J \lambda^3$, $\epsilon_2= \frac{32}{3} J \lambda$ and $\epsilon_3= \alpha^2$.
 
-This shows that for any subsequent $C^{(2n+1)}$, we won't have any \textit{new} term apart from $C^{(1)},T_2$ and $T_3$
+
+
+\subsubsection{Infinite summation}
+
+Using theorem proved in appendix, we get
+\begin{align*}
+C^{(2n+1)}= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q} (C^{(2q)}_{T_2} + C^{(2q)}_{T_3}  )
+\end{align*}
+
+
+
+This shows that for any subsequent $C^{(2n+1)}$, we won't have any \textit{new} term apart from $C^{(1)},T_2$ and $T_3$. 
+
+In appendix, we have proved that if $C^{(2)}_T=  \delta T + O$ , then $C^{(2n)}_T= \delta^{n} T +  \delta^{n-1} \sum_{q=0}^{n-1} \delta^{-q} C^{(2q)}_O  $. In our case,  $C^{(2)}_{T_2}=  \delta_2 T_2 + O $ where $O=\delta_1 C^{(1)} + \delta_3 T_3$. Now, let's compute $C^{(2q)}_O$:
+
+\begin{align*}
+C^{(2)}_O&=\delta_1 C^{(3)} + \delta_3  C^{(2)}_{T_3} \\
+Similarly, C^{(2q)}_O&=\delta_1 C^{(2q+1)} + \delta_3  C^{(2q)}_{T_3} 
+\end{align*}
+
+Hence, we see that $C^{(2n)}_{T_2}= \delta_2^{n} T_2 +  \delta_2^{n-1} \sum_{q=0}^{n-1} \delta^{-q} (\delta_1 C^{(2q+1)} + \delta_3  C^{(2q)}_{T_3})  $. Similarly, $C^{(2n)}_{T_3}= \epsilon_3^{n} T_3 +  \epsilon_3^{n-1} \sum_{q=0}^{n-1}\epsilon_3^{-q} (\epsilon_1 C^{(2q+1)} + \epsilon_2  C^{(2q)}_{T_2})  $. 
+
+We are left with a set of three coupled recurrence equations given by:
+\begin{equation}
+\boxed{
+\begin{aligned}
+C^{(2n+1)}&= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q} (C^{(2q)}_{T_2} + C^{(2q)}_{T_3}  ) \\
+C^{(2q)}_{T_2} &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   (\delta_1 C^{(2p+1)} + \delta_3  C^{(2p)}_{T_3})\\
+C^{(2q)}_{T_3} &= \epsilon_3^{q} T_3 +  \epsilon_3^{q-1} \sum_{p=0}^{q-1}\epsilon_3^{-p} (\epsilon_1 C^{(2p+1)} + \epsilon_2  C^{(2p)}_{T_2}) 
+\end{aligned}
+}
+\end{equation}
+
+Now let's concentrate on $C^{(2q)}_{T_2}$ here:
+
+\begin{align}
+C^{(2q)}_{T_2} &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   (\delta_1 C^{(2p+1)} + \delta_3  C^{(2p)}_{T_3})\\
+ &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}    \delta_1 C^{(2p+1)} + \delta_2^{q-1}  \sum_{p=0}^{q-1} \delta_2^{-p}  \delta_3  C^{(2p)}_{T_3}\\
+ &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}    \delta_1 C^{(2p+1)} + O\\
+& =\delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   \delta_1 ( \alpha^{2p} C^{(1)} +\alpha^{2p-2} \sum_{l=0}^{p-1} \alpha^{-2l} (C^{(2l)}_{T_2} + C^{(2l)}_{T_3})) + O 
+\end{align}
+
+Hence, we see that we get infinite summation expression, which seems intractable to me.
+\subsubsection{Linear recurrence coupled equations}
+We know that:
+\begin{align}
+C^{(3)} &=   \alpha^2  C^{(1)}  +T_2  +T_3\\
+C^{(2)}_{T_2}&= \delta_1 C^{(1)} + \delta_2 T_2 + \delta_3 T_3 \\
+C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3 
+\end{align}
+
+Using the results proved in appendix, we can use the above information to write three coupled homogeneous recurrence equations, which are linear in $C^{(2n+1)}$, $C^{(2n)}_{T_2}$ and $C^{(2n)}_{T_3} $:
+\begin{equation}
+\boxed{
+\begin{aligned}
+C^{(2n+1)}&= \alpha^2  C^{(2n-1)} +C^{(2n-2)}_{T_2} + C^{(2n-2)}_{T_3} \\
+C^{(2n)}_{T_2} &=\delta_1  C^{(2n-1)} + \delta_2 C^{(2n-2)}_{T_2} + \delta_3 C^{(2n-2)}_{T_3} \\
+C^{(2n)}_{T_3} &=\epsilon_1  C^{(2n-1)} + \epsilon_2 C^{(2n-2)}_{T_2} + \epsilon_3  C^{(2n-2)}_{T_3}
+\end{aligned}
+}
+\end{equation}
+
+The advantage is that these equations have constant coefficients. 
 %
 %Hence, using theorem proved in appendix \ref{sec.Cn}, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
 %%
@@ -401,55 +487,379 @@ This shows that for any subsequent $C^{(2n+1)}$, we won't have any \textit{new} 
 %Details of the derivation are given in appendix \ref{sec.derivation_A_lambda}. We note that the last two terms diverge when we take  $\lim_{\mu \rightarrow 0}$ limit. I am still figuring out how to deal with this.
 %
 %
+\subsubsection{Exact solution}
 
 
+Let's claim that 
+\begin{equation}
+ A_{\lambda}^*= \alpha^* C^{(1)} +  \beta^* T_2 + \delta^* T_3 
+\end{equation}
+
+where $\alpha^*, \beta^*, \delta^* $ are unknowns. 
+\begin{equation}
+G_{\lambda}= \partial_{\lambda} H + \dfrac{i}{\hbar} [\chi, H] 
+\end{equation}
+If $\chi= A_{\lambda}$, then $[H,G_{\lambda}]=0 $. Let's reformulate it in a way that's easier to compute. 
+\begin{align}
+[H,\partial_{\lambda} H ] &= \dfrac{i}{\hbar} [H,[H, A_{\lambda}^*]] \\
+C^{(1)} &= \dfrac{i}{\hbar} [H,[H,\alpha^* C^{(1)} +  \beta^* T_2 + \delta^* T_3 ]] \\
+C^{(1)} &= \dfrac{i}{\hbar} \left (\alpha^* [H,[H, C^{(1)}]]  +  \beta^* [H,[H,  T_2 ]]+  \delta^* [H,[H,  T_3]]  \right)  \\
+C^{(1)} &= \dfrac{i}{\hbar} \left (\alpha^* C^{(3)}   + \beta^*   C^{(2)}_{T_2} + \delta^* C^{(2)}_{T_3} \right)
+\end{align}
+
+Now, we can use previous results which we obtained to see if we are on the right track.
+
+\begin{align*}
+C^{(3)} &=   \alpha^2  C^{(1)}  +T_2  +T_3 \\
+C^{(2)}_{T_2}&= \delta_1 C^{(1)} + \delta_2 T_2 + \delta_3 T_3 \\
+C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3 
+\end{align*}
+
+Using the above information to simplify our equations, we get:
+\begin{equation}
+\begin{bmatrix}
+    \alpha^2       & \delta_{1} & \epsilon_{1} \\
+    1     & \delta_{2} & \epsilon_{2} \\
+    1      & \delta_{3} & \epsilon_{3}
+\end{bmatrix}
+\begin{bmatrix}
+\alpha^* \\
+\beta^* \\
+\delta^*   
+   \end{bmatrix}
+=
+- i \hbar \begin{bmatrix}
+1 \\
+0 \\
+0   
+   \end{bmatrix}
+\end{equation}
+Using mathematica, we get 
+
+
+
+\begin{align}
+\alpha^* &= - i \hbar \frac{  \left(\delta _3 \epsilon _2-\delta _2 \epsilon _3\right)}{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta
+   _2 \epsilon _1-\delta _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3} \\
+  \beta^* &= i \hbar \frac{ \left(\epsilon _2-\epsilon _3\right) }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta _2 \epsilon
+   _1-\delta _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3} \\
+ \delta^*  &=- i \hbar \frac{ \left(\delta _2-\delta _3\right) }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta _2 \epsilon _1-\delta
+   _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3}
+\end{align}
+where  $\alpha^2= 4 (4 J^2 +  \lambda ^2) $, $\delta_1= 96 J^2 \lambda^2$, $\delta_2= 16 \lambda^2$, $\delta_3= 9 \lambda^2$, $\epsilon_1= 64 J \lambda^3$, $\epsilon_2= \frac{32}{3} J \lambda$ and $\epsilon_3= \alpha^2$.
 \appendix
+
+\section{Linear recurrence coupled equations}
+We have a set of three couple linear recurrence difference equations:
+\begin{equation}
+\boxed{
+\begin{aligned}
+a_{2n+1}&= \alpha^2 a_{2n-1} + b_{2n-2} + c_{2n-2} \\
+b_{2n}&= \delta_1 a_{2n-1} + \delta_2 b_{2n-2} + \delta_3 c_{2n-2} \\
+c_{2n} &= \epsilon_1 a_{2n-1} + \epsilon_2 b_{2n-2} + \epsilon_3 c_{2n-2}\\
+\end{aligned}}
+\quad , \forall n >0
+\end{equation}
+
+where $a_n= \{a_1, a_3, \ldots\}$, $b_n= \{b_0, b_2, \ldots\}$ and $c_n= \{c_0, c_2, \ldots\}$.
+
+We will solve this using generating function approach. We define three functions:
+\begin{align}
+A(z)&= \sum_{n=0}^{\infty} a_{2n+1}z^{2n+1}\\
+ B(z)&= \sum_{n=0}^{\infty} b_{2n}z^{2n}\\
+C(z)&= \sum_{n=0}^{\infty} c_{2n}z^{2n}
+\end{align}
+
+
+Using this, we get from one equation:
+\begin{align}
+a_{2n+1}  z^{2n+1}&= \alpha^2 a_{2n-1} z^{2n+1} + b_{2n-2} z^{2n+1} + c_{2n-2} z^{2n+1}\\
+\sum_{n=1}^{\infty} a_{2n+1}  z^{2n+1}&= \alpha^2  \sum_{n=1}^{\infty} a_{2n-1} z^{2n+1} +  \sum_{n=1}^{\infty} b_{2n-2} z^{2n+1} +  \sum_{n=1}^{\infty}c_{2n-2} z^{2n+1}\\
+A(z) -a_1 z &=\alpha^2  z^2 A(z) +  z^3 B(z) + z^3 C(z)\\
+A(z)(1 -\alpha^2  z^2 )  &=  a_1 z +  z^3 B(z) + z^3 C(z)
+\end{align}
+Hence,we get :
+\begin{equation}
+\boxed{A(z) =  \beta(z) (a_1  +  z^2 B(z) + z^2 C(z))}
+\end{equation}
+where $\beta(z)= z/(1 -\alpha^2  z^2 )$
+
+Similarly, from the second equation we get:
+
+
+\begin{align}
+b_{2n}  z^{2n}&= \delta_1 a_{2n-1} z^{2n} + \delta_2 b_{2n-2} z^{2n} +  \delta_3 c_{2n-2} z^{2n}\\
+\sum_{n=1}^{\infty} b_{2n}  z^{2n}&=\delta_1   \sum_{n=1}^{\infty}a_{2n-1} z^{2n} + \delta_2  \sum_{n=1}^{\infty}  b_{2n-2} z^{2n} +  \delta_3 \sum_{n=1}^{\infty}c_{2n-2} z^{2n}\\
+B(z) -b_0 &=\delta_1  z A(z) + \delta_2 z^2 B(z) + \delta_3 z^2 C(z)\\
+B(z)(1 - \delta_2 z^2 )  &=  b_0 + \delta_1  z A(z) +  \delta_3 z^3 C(z)
+\end{align}
+Finally, we find from third equation:
+\begin{equation}
+C(z)(1 - \epsilon_3 z^2 )  =  c_0 + \epsilon_1  z A(z) +  \epsilon_2 z^3 B(z)
+\end{equation}
+
+Using the value of $A(z)$ we get:
+\begin{align*}
+B(z)(1 - \delta_2 z^2 )  &=  b_0 + \delta_3 z^3 C(z) +  \delta_1  z   \beta(z) (a_1  +  z^2 B(z) + z^2 C(z)) \\
+B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 + \delta_3 z^3 C(z) +  \delta_1  z   \beta(z)  (a_1  +   z^2 C(z)) \\
+B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 +  \delta_1  z   \beta(z)  a_1 + \delta_3 z^3 C(z) +  \delta_1     \beta(z)   z^3 C(z)) \\
+B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 +  \delta_1  z   \beta(z)  a_1 + (\delta_3 +  \delta_1     \beta(z) )  z^3 C(z) \\
+B(z)  &=  \tau(z) ( \omega_0+    \omega_1 z^3 C(z) )\\
+\end{align*}
+where $\tau(z) = 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )$,  $\omega_0= b_0 +  \delta_1  z   \beta(z)  a_1 $ and $\omega_1= \delta_3 +  \delta_1     \beta(z) $.
+
+Similarly, we get for $C(z)$:
+\begin{align*}
+C(z)(1 - \epsilon_3 z^2 ) & =  c_0 +   \epsilon_2 z^3 B(z) + \epsilon_1  z A(z)\\
+C(z)(1 - \epsilon_3 z^2 )  &=  c_0 +   \epsilon_2 z^3 B(z) + \epsilon_1  z \beta(z) (a_1  +  z^2 B(z) + z^2 C(z))\\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  c_0 +  \epsilon_1  z \beta(z) a_1+  \epsilon_2 z^3 B(z) + \epsilon_1   \beta(z) z^3 B(z) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  c_0 +  \epsilon_1  z \beta(z) a_1+  (\epsilon_2 + \epsilon_1   \beta(z)) z^3 B(z)\\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 B(z)
+\end{align*}
+where $\theta_0= c_0 +  \epsilon_1  z \beta(z) a_1$ and $\theta_1= \epsilon_2 + \epsilon_1   \beta(z)$
+
+Now, we will use the fact that $B(z)  =  \tau(z) ( \omega_0+    \omega_1 z^3 C(z) )$ to find out value of $C(z)$:
+\begin{align*}
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 B(z) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 \tau(z) ( \omega_0+    \omega_1 z^3 C(z) ) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 \tau(z)  \omega_0 + \theta_1   \omega_1  z^6 \tau(z)    C(z) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )  &=  \theta_0+ \theta_1  z^3 \tau(z)  \omega_0  \\
+C(z)  &=  \eta(z)( \theta_0+ \theta_1  z^3 \tau(z)  \omega_0 ) \\
+\end{align*}
+where $\eta(z)=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )$.
+
+Hence, 
+\begin{equation}
+\boxed{C(z)  =  \eta(z) \theta_0+  \omega_0 \theta_1  z^3 \eta(z) \tau(z)   }
+\end{equation}
+
+Hence, the value of $B(z)$ is :
+\begin{align*}
+B(z)  &=    \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) C(z) \\
+&= \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z)( \theta_0+ \theta_1  z^3 \tau(z)  \omega_0 ) 
+\end{align*}
+
+
+Hence, 
+\begin{equation}
+\boxed{B(z)  = \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2   }
+\end{equation}
+Now, once we figure out  power series expansions of following unknowns, we can plug it back to $B(z)$ and $C(z)$:
+\begin{align*}
+\beta(z) &= z/(1 -\alpha^2  z^2 ) \\
+ \tau(z) &= 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )\\
+ \omega_0 &= b_0 +  \delta_1  z   \beta(z)  a_1  \\
+ \omega_1 &= \delta_3 +  \delta_1     \beta(z)\\
+ \eta(z)&=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )\\
+ \theta_0&= c_0 +  \epsilon_1  z \beta(z) a_1\\
+ \theta_1&= \epsilon_2 + \epsilon_1   \beta(z)
+\end{align*}
+
+Now, I have got $\beta(z) = z/(1 -\alpha^2  z^2 ) = \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}$. Hence, we get:
+\begin{align*}
+\beta(z) &= \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1} \\
+ \omega_0 &= b_0 +  \delta_1       a_1  \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+2} \\
+ \omega_1 &= \delta_3 +  \delta_1  \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}\\
+ \theta_0&= c_0 +  \epsilon_1   \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+2} a_1\\
+ \theta_1&= \epsilon_2 + \epsilon_1   \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}
+\end{align*}
+
+Now we need to figure out $\tau(z)$ and then we will figure out $\eta(z)$.
+\begin{align*}
+\tau(z)^{-1} &=  1 - \delta_2 z^2 -\delta_1  z^3   \beta(z)  \\
+&=  1 - \delta_2 z^2 -\delta_1  \dfrac{z^4}{ 1 -\alpha^2  z^2 }    \\
+&=  \dfrac{1} {1 -\alpha^2  z^2 }   (1 -\alpha^2  z^2- \delta_2 z^2 + \alpha^2 \delta_2 z^4 -\delta_1 z^4) \\
+&=  \dfrac{1} {1 -\alpha^2  z^2 }   (1 -(\alpha^2 + \delta_2) z^2 + (\alpha^2 \delta_2 -\delta_1) z^4) \\
+&= \dfrac{\alpha^2 \delta_2 -\delta_1} {1 -\alpha^2  z^2 } \zeta  (z) 
+\end{align*}
+
+where $\zeta (z)= (\frac{1}{\alpha^2 \delta_2 -\delta_1} -\frac{\alpha^2 + \delta_2}{\alpha^2 \delta_2 -\delta_1} z^2 +  z^4)$. Let's simplify it further by writing it as $\zeta (z)= (z-z_1)(z-z_2)(z-z_3)(z-z_4)$, where $z_1, z_2, z_3,z_4$ are roots of $\zeta (z)$. Once we do that, then we can write its' reciprocal as sum of partial fractions. 
+
+
+Now let's attack $\eta(z)$:
+\begin{align*}
+\eta(z)^{-1}&=1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)  \\
+ &=1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 ( 1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) ) 
+\end{align*}
+Now, we plug these values to find value of $A(z)$:
+\begin{align}
+A(z)  &=   a_1 \beta(z)   +  z^2 \beta(z) B(z) + z^2 \beta(z) C(z) 
+\end{align}
+
+
+Note that I need to find reciprocal of a polynomial here.
+\url{http://www.sciencedirect.com/science/article/pii/S0377042705006230#bib20}
+
 \section{Properties of n-commutators}\label{sec.Cn}
-We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$. Now, $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$.
+In this section, we would be proving some results of n-commutators $C^{(n)}$.
 
-
-Hence, we can claim using induction argument:
  
 \begin{thm}
-$C^{(n)}= [H, C^{(n-1)}], n>1$
+$C^{(n)}= [H, C^{(n-1)}],  \forall n>0$ where $C^{(0)}=  \partial_{\lambda}H$ and  $C^{(1)}= [H, \partial_{\lambda}H]$
 \end{thm}
+\begin{proof}
+We define the first two terms  as $C^{(0)}=  \partial_{\lambda}H$ and $C^{(1)}= [H, \partial_{\lambda}H]$. 
 
 
-Now we will prove some results, which we are useful in computations of commutators.
+Now, $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$. Similarly, $C^{(3)}=  [H, C^{(2)}]$. Hence, we can claim using induction argument:
+\begin{equation}
+C^{(n)}= [H, C^{(n-1)}]
+\end{equation}
+\end{proof}
+ 
+
+
 \begin{thm}
-If $C^{(3)}=  \alpha^2  C^{(1)} + T$ , then $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + C^{(2n-2)}_T$, $\forall n>0$,  where $T$ is an operator,  $ C^{(0)}_T=T$ , $C^{(2)}_T=[H, [H, T]]$ and so on.
-\end{thm}
-
-
-\begin{thm}
-If $C^{(3)}=  \alpha^2  C^{(1)} + T$ and $C^{(2)}_T= \beta^2 T $ , then $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T$, $\forall n>0$,  where $T$ is a term involving some operators and $ C^{(2)}_T=[H, [H, T]]$
+If $C^{(3)}=  \alpha^2  C^{(1)} + T$ , then $C^{(2n+1)}= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q}C^{(2q)}_T $, $\forall n>0$,  where $T$ is an operator,  $ C^{(0)}_T=T$ , $C^{(2)}_T=[H, [H, T]]$ and so on.
 \end{thm}
 
 \begin{proof}
-We can use principle of mathematical induction to prove the theorem. First, we would check if $P(0)$ is true. Then our next task is to show if $P(k)$ holds, then  $P(k + 1)$ also holds for some unspecified $k$.
 
+\begin{align}
+C^{(5)} &= [H,[H,C^{(3)}]]\\
+&=[H,[H, \alpha^2  C^{(1)} + T ]] \\
+&=\alpha^2 C^{(3)} + [H,[H, T ]] \\
+&=\alpha^4 C^{(1)} + \alpha^2 T + C^{(2)}_T
+\end{align}
 
+\begin{align}
+C^{(7)} &= [H,[H,C^{(5)}]]\\
+&=[H,[H, \alpha^4 C^{(1)} + \alpha^2 T + C^{(2)}_T ]] \\
+&=\alpha^6 C^{(1)} + \alpha^4 T + \alpha^2  C^{(2)}_T +   C^{(4)}_T
+\end{align}
 
-Here we start with $n=5$, which is our basis ($P(0)$) of our induction argument.
+Hence, in general, we can claim that 
 \begin{align*}
-C^{(5)} &= [H, C^{(4)}]=[H, [H,C^{(3)}]] \\
-&=[H, [H,\alpha^2  C^{(1)} + T]]= \alpha^2[H, [H,  C^{(1)}]] +[H, [H, T]]= \alpha^2 C^{(3)} +C^{(2)}_T =  \alpha^4 C^{(1)} +\beta^2 T 
-\end{align*} 
-Hence, $C^{(5)}= \alpha^4 C^{(1)}  +\beta^2 T$. Thus, it has been show that $P(0)$ holds.
-
-
-Our  $P(k)$ statement is $C^{(2k-1)}= \alpha^{(2k-2)} C^{(1)} + \beta^{(2k-4)} T$, which we assume to be true. Using this, we will prove that our $P(k+1)$ statement is true, i.e.  $C^{(2k+1)}= \alpha^{(2k)} C^{(1)} + \beta^{(2k-2)} T$.
-
-\begin{align*}
-C^{(2k+1)} &=[H, [H,C^{(2k-1)}]] \\
-&=[H, [H, \alpha^{(2k-2)} C^{(1)} + \beta^{(2k-4)} T]] \\
-&= \alpha^{(2k-2)}[H, [H,  C^{(1)}]] + \beta^{(2k-4)} [H, [H, T]]\\
-&= \alpha^{(2k-2)} C^{(3)} + \beta^{(2k-4)} C^{(2)}_T \\
-&= \alpha^{(2k)} C^{(1)} + \beta^{(2k-2)} T
-\end{align*} 
-
-Hence, we  proved that $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T$, $\forall n>0$.
+C^{(2n+1)} &=\alpha^{2n} C^{(1)} + \alpha^{2n-2} T +\alpha^{2n-4}  C^{(2)}_T + \ldots +    C^{(2n-2)}_T \\
+&=\alpha^{2n} C^{(1)} + \sum_{q=0}^{n-1} \alpha^{2n-2-2q}C^{(2q)}_T \\
+&=\alpha^{2n} C^{(1)} + \alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q}C^{(2q)}_T 
+\end{align*}
 \end{proof}
+
+If $C^{(2)}_T= \beta^2 T $, then we have a corollary result given below.
+\begin{thm}
+If $C^{(3)}=  \alpha^2  C^{(1)} + T$ and $C^{(2)}_T= \beta^2 T $ , then $C^{(2n+1)}=\alpha^{2n} C^{(1)} +  \left(\dfrac{\alpha^{2n}- \beta ^{2n} }{\alpha^2- \beta ^2}\right)  T$, $\forall n>0$,  where $T$ is a term involving some operators and $ C^{(2)}_T=[H, [H, T]]$
+\end{thm}
+
+\begin{proof}
+Since $C^{(2)}_T= \beta^2 T $, we have  $C^{(2n)}_T= \beta^{2n} T $, $n>0$. Using this, we get:
+\begin{align*}
+C^{(2n+1)} &=\alpha^{2n} C^{(1)} + \alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q}C^{(2q)}_T \\
+&=\alpha^{2n} C^{(1)} + \alpha^{2n-2} T \sum_{q=0}^{n-1}  \left(\dfrac{\beta^2}{\alpha^2}\right)^{q} \\
+&=\alpha^{2n} C^{(1)} +  \left(\dfrac{\alpha^{2n}- \beta ^{2n} }{\alpha^2- \beta ^2}\right)  T
+\end{align*}
+\end{proof}
+
+
+
+
+\begin{thm}
+If $C^{(2)}_T=  \delta T + O$ , then $C^{(2n)}_T= \delta^{n} T +  \delta^{n-1} \sum_{q=0}^{n-1} \delta^{-q} C^{(2q)}_O  $, $\forall n>0$,  where $O$ is an operator,  $ C^{(0)}_T=T$ , $C^{(2)}_T=[H, [H, T]]$ and so on. Similarly,  $ C^{(0)}_O=O$ , $C^{(2)}_O=[H, [H, O]]$ and so on
+\end{thm}
+
+
+\begin{proof}
+
+\begin{align}
+C^{(4)}_T &= [H,[H,C^{(2)}_T]]\\
+&=[H,[H, \delta T + O ]] \\
+&=\delta C^{(2)}_T + C^{(2)}_O \\
+&=\delta^2 T +\delta O + C^{(2)}_O
+\end{align}
+
+\begin{align}
+C^{(6)}_T &= [H,[H,C^{(4)}_T]]\\
+&=[H,[H, \delta^2 T +\delta O + C^{(2)}_O ]] \\
+&=\delta^2 C^{(2)}_T + \delta C^{(2)}_O + C^{(4)}_O \\
+&=\delta^3 T +\delta^2 O + \delta C^{(2)}_O + C^{(4)}_O
+\end{align}
+
+Hence, in general, we can claim that 
+\begin{align*}
+C^{(2n)}_T &=\delta^{n} T + \delta^{n-1} O + \delta^{n-2}  C^{(2)}_O + \ldots +    C^{(2n-2)}_O \\
+&=\delta^{n} T + \sum_{q=0}^{n-1} \delta^{n-1-q}C^{(2q)}_O \\
+&=\delta^{n} T +  \delta^{n-1} \sum_{q=0}^{n-1} \delta^{-q} C^{(2q)}_O 
+\end{align*}
+
+\end{proof}
+
+\begin{thm}
+If $C^{(3)}=  \alpha^2  C^{(1)} + T$ , then $C^{(2n+1)}= \alpha^2  C^{(2n-1)} +C^{(2n-2)}_{T}$, $\forall n>0$,  where $T$ is an operator,  $ C^{(0)}_T=T$ , $C^{(2)}_T=[H, [H, T]]$ and so on.
+\end{thm}
+
+
+
+\begin{proof}
+For $n =2$, we have
+\begin{align}
+C^{(5)} &= [H,[H,C^{(3)}]]\\
+&=[H,[H, \alpha^2  C^{(1)} + T ]] \\
+&=\alpha^2 C^{(3)}+  C^{(2)}_T
+\end{align}
+
+For $n =3$, we have
+\begin{align}
+C^{(7)} &= [H,[H,C^{(5)}]]\\
+&=[H,[H, \alpha^2 C^{(3)}+  C^{(2)}_T ]] \\
+&=\alpha^2 C^{(5)} +  C^{(4)}_T
+\end{align}
+
+Hence, in general, we can claim that 
+\begin{align*}
+C^{(2n+1)} &=\alpha^2  C^{(2n-1)} +C^{(2n-2)}_{T}
+\end{align*}
+\end{proof}
+
+\begin{thm}
+If $C^{(2)}_T=  \delta T + O$ , then $C^{(2n)}_T= \delta C^{(2n-2)}_T + C^{(2n-2)}_O  $, $\forall n>0$,  where $O$ is an operator,  $ C^{(0)}_T=T$ , $C^{(2)}_T=[H, [H, T]]$ and so on. Similarly,  $ C^{(0)}_O=O$ , $C^{(2)}_O=[H, [H, O]]$ and so on
+\end{thm}
+
+\begin{proof}
+
+\begin{align}
+C^{(4)}_T &= [H,[H,C^{(2)}_T]]\\
+&=[H,[H, \delta T + O ]] \\
+&=\delta C^{(2)}_T + C^{(2)}_O 
+\end{align}
+
+\begin{align}
+C^{(6)}_T &= [H,[H,C^{(4)}_T]]\\
+&=[H,[H, \delta C^{(2)}_T + C^{(2)}_O ]] \\
+&=\delta C^{(4)}_T + C^{(4)}_O 
+\end{align}
+
+Hence, in general, we can claim that 
+\begin{align*}
+C^{(2n)}_T &=\delta C^{(2n-2)}_T + C^{(2n-2)}_O 
+\end{align*}
+
+\end{proof}
+
+
+%We can use principle of mathematical induction to prove the theorem. First, we would check if $P(0)$ is true. Then our next task is to show if $P(k)$ holds, then  $P(k + 1)$ also holds for some unspecified $k$.
+%
+%
+%
+%Here we start with $n=5$, which is our basis ($P(0)$) of our induction argument.
+%\begin{align*}
+%C^{(5)} &= [H, C^{(4)}]=[H, [H,C^{(3)}]] \\
+%&=[H, [H,\alpha^2  C^{(1)} + T]]= \alpha^2[H, [H,  C^{(1)}]] +[H, [H, T]]= \alpha^2 C^{(3)} +C^{(2)}_T =  \alpha^4 C^{(1)} +\beta^2 T 
+%\end{align*} 
+%Hence, $C^{(5)}= \alpha^4 C^{(1)}  +\beta^2 T$. Thus, it has been show that $P(0)$ holds.
+%
+%
+%Our  $P(k)$ statement is $C^{(2k-1)}= \alpha^{(2k-2)} C^{(1)} + \beta^{(2k-4)} T$, which we assume to be true. Using this, we will prove that our $P(k+1)$ statement is true, i.e.  $C^{(2k+1)}= \alpha^{(2k)} C^{(1)} + \beta^{(2k-2)} T$.
+%
+%\begin{align*}
+%C^{(2k+1)} &=[H, [H,C^{(2k-1)}]] \\
+%&=[H, [H, \alpha^{(2k-2)} C^{(1)} + \beta^{(2k-4)} T]] \\
+%&= \alpha^{(2k-2)}[H, [H,  C^{(1)}]] + \beta^{(2k-4)} [H, [H, T]]\\
+%&= \alpha^{(2k-2)} C^{(3)} + \beta^{(2k-4)} C^{(2)}_T \\
+%&= \alpha^{(2k)} C^{(1)} + \beta^{(2k-2)} T
+%\end{align*} 
+%
+%Hence, we  proved that $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T$, $\forall n>0$.
+
 
 
 
@@ -515,47 +925,47 @@ A_{\lambda} =  -i\int_0^{\infty} dt\ e^{-\mu t}  \sin ( [H, \partial_{\lambda} H
 \end{equation}
 
 
-\section{Adiabatic gauge potential of Ising model with local transverse magnetic fields at two sites}\label{sec.derivation_A_lambda}
- Using  $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$, we find $A_{\lambda}$ using two methods: equation (\ref{def_1}) and (\ref{def_2}). 
-
-Using equation (\ref{def_1}) , we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
-\begin{align*}
-A_{\lambda} &= -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
-&= -i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \right)\\
-&=-i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3  \right) \right)\\
-&=-i\hbar C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \left(  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n}  \alpha^{2n} t ^{2n+1}}{(2n+1)!} \right) -i\hbar \int_0^{\infty} dt\  e^{-\mu t} \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3 \right) \\
-&=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2} -i\hbar \int_0^{\infty} dt\  e^{-\mu t} ( X_2 + X_3)
-\end{align*}
-where $X_2= T_2 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  $ and $X_3= T_3 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\gamma^{(2n-2)} t ^{2n+1}}{(2n+1)!} $. Let's simplify $X_2$ below:
-
-\begin{align*}
-X_2&=T_2\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  \\
-&=\dfrac{T_2}{\beta^2}\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} \\
-&=\dfrac{T_2}{\beta^2}\left(\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} +t - t \right)\\ 
-&=\dfrac{T_2}{\beta^2}\left(\sum_{n=0}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!}  - t \right)\\
-&=\dfrac{T_2}{\beta^2}\left(\dfrac{\sin (\beta t)}{\beta}  - t \right)\\
-\end{align*}
-Similarly, $X_3=\dfrac{T_3}{\gamma^3}\left(\sin (\gamma t)  -  \gamma t \right)$. Now, let's compute the Laplace transform of $X_2$:
-\begin{align*}
- -i\hbar \int_0^{\infty} dt\  e^{-\mu t}  X_2 &=  -i\hbar\dfrac{T_2}{\beta^3}  \int_0^{\infty} dt\  e^{-\mu t}\left(\sin (\beta t) - \beta t \right) \\
- &=  -i\hbar \dfrac{T_2}{\beta^3} \left( \dfrac{\beta}{\beta^2 + \mu^2} - \dfrac{\beta}{\mu^2}  \right)\\
- &=  -i\hbar \dfrac{T_2}{\beta^2} \left( \dfrac{1}{\beta^2 + \mu^2} - \dfrac{1}{\mu^2}  \right)\\
- &=    \dfrac{i\hbar}{\beta^2 + \mu^2}  \dfrac{T_2}{\mu^2}\\
-\end{align*} 
-
-Hence, after we stitch everything together, we get the final expression of $A_{\lambda}$:
-\begin{equation}
-\boxed{A_{\lambda} =\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}}
-\end{equation}
-
-Using equation (\ref{def_2}) , we get exactly the same expression as shown below: %, which gives a divergence in $\mu \rightarrow 0$ limit.
-\begin{align*}
-A_{\lambda} &=  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
-&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
-&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{\alpha^{(2n)} C^{(1)} } {\mu^{2n+1}}  +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
- &=\dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
- &=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}
-\end{align*}
+%\section{Adiabatic gauge potential of Ising model with local transverse magnetic fields at two sites}\label{sec.derivation_A_lambda}
+% Using  $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$, we find $A_{\lambda}$ using two methods: equation (\ref{def_1}) and (\ref{def_2}). 
+%
+%Using equation (\ref{def_1}) , we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+%\begin{align*}
+%A_{\lambda} &= -i\hbar \int_0^{\infty} dt\ e^{-\mu t}  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \\
+%&= -i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} C^{(2n+1)} \right)\\
+%&=-i\hbar \int_0^{\infty} dt\ e^{-\mu t} \left( t C^{(1)} + \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3  \right) \right)\\
+%&=-i\hbar C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \left(  \sum_{n=0}^{\infty}  \dfrac{(-1)^{n}  \alpha^{2n} t ^{2n+1}}{(2n+1)!} \right) -i\hbar \int_0^{\infty} dt\  e^{-\mu t} \sum_{n=1}^{\infty}  \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!} \left( \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3 \right) \\
+%&=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2} -i\hbar \int_0^{\infty} dt\  e^{-\mu t} ( X_2 + X_3)
+%\end{align*}
+%where $X_2= T_2 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  $ and $X_3= T_3 \sum_{n=1}^{\infty} (-1)^{n} \dfrac{\gamma^{(2n-2)} t ^{2n+1}}{(2n+1)!} $. Let's simplify $X_2$ below:
+%
+%\begin{align*}
+%X_2&=T_2\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{(2n-2)} t ^{2n+1}}{(2n+1)!}  \\
+%&=\dfrac{T_2}{\beta^2}\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} \\
+%&=\dfrac{T_2}{\beta^2}\left(\sum_{n=1}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!} +t - t \right)\\ 
+%&=\dfrac{T_2}{\beta^2}\left(\sum_{n=0}^{\infty} (-1)^{n} \dfrac{\beta^{2n} t ^{2n+1}}{(2n+1)!}  - t \right)\\
+%&=\dfrac{T_2}{\beta^2}\left(\dfrac{\sin (\beta t)}{\beta}  - t \right)\\
+%\end{align*}
+%Similarly, $X_3=\dfrac{T_3}{\gamma^3}\left(\sin (\gamma t)  -  \gamma t \right)$. Now, let's compute the Laplace transform of $X_2$:
+%\begin{align*}
+% -i\hbar \int_0^{\infty} dt\  e^{-\mu t}  X_2 &=  -i\hbar\dfrac{T_2}{\beta^3}  \int_0^{\infty} dt\  e^{-\mu t}\left(\sin (\beta t) - \beta t \right) \\
+% &=  -i\hbar \dfrac{T_2}{\beta^3} \left( \dfrac{\beta}{\beta^2 + \mu^2} - \dfrac{\beta}{\mu^2}  \right)\\
+% &=  -i\hbar \dfrac{T_2}{\beta^2} \left( \dfrac{1}{\beta^2 + \mu^2} - \dfrac{1}{\mu^2}  \right)\\
+% &=    \dfrac{i\hbar}{\beta^2 + \mu^2}  \dfrac{T_2}{\mu^2}\\
+%\end{align*} 
+%
+%Hence, after we stitch everything together, we get the final expression of $A_{\lambda}$:
+%\begin{equation}
+%\boxed{A_{\lambda} =\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}}
+%\end{equation}
+%
+%Using equation (\ref{def_2}) , we get exactly the same expression as shown below: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+%\begin{align*}
+%A_{\lambda} &=  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
+%&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}\\
+%&=  \dfrac{-i\hbar}{\mu} \dfrac{ C^{(1)}}{\mu^{1}}+   \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}   (-1)^{n} \dfrac{\alpha^{(2n)} C^{(1)} } {\mu^{2n+1}}  +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
+% &=\dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\beta^{(2n-2)}  }{\mu^{2n+1}}  T_2 +  \dfrac{-i\hbar}{\mu}  \sum_{n=1}^{\infty}  (-1)^{n} \dfrac{\gamma^{(2n-2)}  }{\mu^{2n+1}} T_3\\
+% &=\dfrac{-i \hbar    C^{(1)}}{\alpha^2 + \mu^2}+ \dfrac{ T_2}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 + \beta^2)} + \dfrac{ T_3}{\mu^2} \dfrac{ i \hbar  }{ (\mu^2 +  \gamma^2)}
+%\end{align*}
 
 \section{Classical adiabatic gauge potential}
 Let's start by considering classical systems. For such systems, we specify the system by defining Hamiltonian $H (\lambda)$ in terms of canonical variables $q_i (\lambda,t)$ and $p_j (\lambda,t)$. where $\lambda$ is an externally controlled parameter. These variables satisfy the canonical relations:

@@ -1,0 +1,48 @@
+In[1]:= m={{1,1,1},{1,2,3},{1,4,9}};
+b={1,2,3};
+LinearSolve[m,b]
+Out[3]= {-(1/2),2,-(1/2)}
+In[56]:= m={{α^2,Subscript[δ, 1] ,Subscript[ϵ, 1]},{1,Subscript[δ, 2], Subscript[ϵ, 2]},{1,Subscript[δ, 3],Subscript[ϵ, 3]}}
+Out[56]= {{α^2,Subscript[δ, 1],Subscript[ϵ, 1]},{1,Subscript[δ, 2],Subscript[ϵ, 2]},{1,Subscript[δ, 3],Subscript[ϵ, 3]}}
+In[57]:=
+MatrixForm[m]
+Out[57]//MatrixForm= (α^2	Subscript[δ, 1]	Subscript[ϵ, 1]
+1	Subscript[δ, 2]	Subscript[ϵ, 2]
+1	Subscript[δ, 3]	Subscript[ϵ, 3]
+
+)
+In[58]:= b=-I *ℏ*{1,0,0};
+In[59]:= b
+Out[59]= {-I ℏ,0,0}
+In[60]:= x=LinearSolve[m,b]
+Out[60]= {-((I ℏ (Subscript[δ, 3] Subscript[ϵ, 2]-Subscript[δ, 2] Subscript[ϵ, 3]))/(Subscript[δ, 2] Subscript[ϵ, 1]-Subscript[δ, 3] Subscript[ϵ, 1]-Subscript[δ, 1] Subscript[ϵ, 2]+α^2 Subscript[δ, 3] Subscript[ϵ, 2]+Subscript[δ, 1] Subscript[ϵ, 3]-α^2 Subscript[δ, 2] Subscript[ϵ, 3])),(I ℏ (Subscript[ϵ, 2]-Subscript[ϵ, 3]))/(Subscript[δ, 2] Subscript[ϵ, 1]-Subscript[δ, 3] Subscript[ϵ, 1]-Subscript[δ, 1] Subscript[ϵ, 2]+α^2 Subscript[δ, 3] Subscript[ϵ, 2]+Subscript[δ, 1] Subscript[ϵ, 3]-α^2 Subscript[δ, 2] Subscript[ϵ, 3]),-((I ℏ (Subscript[δ, 2]-Subscript[δ, 3]))/(Subscript[δ, 2] Subscript[ϵ, 1]-Subscript[δ, 3] Subscript[ϵ, 1]-Subscript[δ, 1] Subscript[ϵ, 2]+α^2 Subscript[δ, 3] Subscript[ϵ, 2]+Subscript[δ, 1] Subscript[ϵ, 3]-α^2 Subscript[δ, 2] Subscript[ϵ, 3]))}
+In[61]:= TeXForm[x]
+Out[61]//TeXForm=
+\left\{-\frac{i \hbar  \left(\delta _3 \epsilon _2-\delta _2 \epsilon _3\right)}{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon
+   _3+\delta _2 \epsilon _1-\delta _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3},\frac{i \left(\epsilon _2-\epsilon _3\right)
+   \hbar }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta _2 \epsilon _1-\delta _3 \epsilon _1-\delta _1 \epsilon
+   _2+\delta _1 \epsilon _3},-\frac{i \left(\delta _2-\delta _3\right) \hbar }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon
+   _3+\delta _2 \epsilon _1-\delta _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3}\right\}
+In[67]:= TeXForm[x[[3]]]
+Out[67]//TeXForm=
+-\frac{i \left(\delta _2-\delta _3\right) \hbar }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta _2 \epsilon _1-\delta
+   _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3}
+In[6]:= x={a[n]==b[n-1]+n,b[n]==a[n-1]-n,a[1]==b[1]==1}
+RSolve[x,{a[n],b[n]},n]
+Out[6]= {a[n]==n+b[-1+n],b[n]==-n+a[-1+n],a[1]==b[1]==1}
+Out[7]= {{a[n]->1/4 (4+3 (-1)^n+(-1)^(2 n)+2 (-1)^(2 n) n),b[n]->1/4 (4-3 (-1)^n+(-1)^(1+2 n)-2 (-1)^(2 n) n)}}
+
+
+During evaluation of In[1]:= SetDelayed::write: Tag In in In[1] is Protected.
+In[18]:= eqn={x[2*n+1]==α^2*x[2*n-1]+y[2*n-2]+z[2*n-2],y[2*n]==Subscript[δ, 1]*x[2*n-1]+ Subscript[δ, 2]* y[2*n-2]+  Subscript[δ, 3]* z[2*n-2], z[2*n]==Subscript[ϵ, 1]*x[2*n-1]+ Subscript[ϵ, 2]* y[2*n-2]+ Subscript[ϵ, 3]* z[2*n-2]}
+Out[18]= {x[1+2 n]==α^2 x[-1+2 n]+y[-2+2 n]+z[-2+2 n],y[2 n]==Subscript[δ, 1] x[-1+2 n]+Subscript[δ, 2] y[-2+2 n]+Subscript[δ, 3] z[-2+2 n],z[2 n]==Subscript[ϵ, 1] x[-1+2 n]+Subscript[ϵ, 2] y[-2+2 n]+Subscript[ϵ, 3] z[-2+2 n]}
+In[19]:= RSolve[eqn,{x[n],y[n],z[n]},n]
+
+Out[19]= RSolve[{x[1+2 n]==α^2 x[-1+2 n]+y[-2+2 n]+z[-2+2 n],y[2 n]==Subscript[δ, 1] x[-1+2 n]+Subscript[δ, 2] y[-2+2 n]+Subscript[δ, 3] z[-2+2 n],z[2 n]==Subscript[ϵ, 1] x[-1+2 n]+Subscript[ϵ, 2] y[-2+2 n]+Subscript[ϵ, 3] z[-2+2 n]},{x[n],y[n],z[n]},n]
+In[20]:= 
+eqn2={a[n]==b[n-1]+n,b[n]==a[n-1]-n,a[1]==b[1]==1}
+Out[20]= {a[n]==n+{1,2,3}[-1+n],{1,2,3}[n]==-n+a[-1+n],a[1]=={1,2,3}[1]==1}
+In[23]:= 
+RSolve[{a[n]==b[n-1]+n,b[n]==a[n-1]-n,a[1]==b[1]==1},{a[n],b[n]},n]
+During evaluation of In[23]:= RSolve::ivar: {1,2,3} is not a valid variable.
+Out[23]= RSolve[{a[n]==n+{1,2,3}[-1+n],{1,2,3}[n]==-n+a[-1+n],a[1]=={1,2,3}[1]==1},{a[n],{1,2,3}[n]},n]
