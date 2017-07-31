@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.5.15)  28 JUL 2017 17:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.5.15)  31 JUL 2017 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1138,19 +1138,24 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 74.
- [2] [3] [4] [5]
-[6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
-Overfull \hbox (36.48267pt too wide) in alignment at lines 910--915
+ [2] [3]
+Overfull \hbox (0.77176pt too wide) in paragraph at lines 180--183
+\OT1/cmr/m/n/10.95 In [[]], au-thors write ``Quite of-ten, one is in-ter-ested 
+in sup-press-ing tran-si-tions from a low-temperature
+ []
+
+[4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19]
+Overfull \hbox (36.48267pt too wide) in alignment at lines 1037--1042
  [][][] []
  []
 
-[16]
-Overfull \hbox (8.06052pt too wide) in paragraph at lines 1001--1001
+[20]
+Overfull \hbox (8.06052pt too wide) in paragraph at lines 1128--1128
 []\OT1/cmr/bx/n/14.4 An ex-am-ple of vari-a-tional ap-prox-i-ma-tion scheme: no
 n-integrable
  []
 
-[17]
+[21]
 Package epstopdf Info: Source file: <protocol.eps>
 (epstopdf)                    date: 2017-06-12 16:50:28
 (epstopdf)                    size: 14634 bytes
@@ -1159,16 +1164,15 @@ Package epstopdf Info: Source file: <protocol.eps>
 (epstopdf)                    size: 10315 bytes
 (epstopdf)             Command: <repstopdf --outfile=protocol-eps-converted-to.
 pdf protocol.eps>
-(epstopdf)             \includegraphics on input line 1027.
+(epstopdf)             \includegraphics on input line 1154.
 Package epstopdf Info: Output file is already uptodate.
- <protocol-eps-converted-to.pdf, id=363, 433.62pt x 289.08pt>
+ <protocol-eps-converted-to.pdf, id=437, 433.62pt x 289.08pt>
 File: protocol-eps-converted-to.pdf Graphic file (type pdf)
 
 <use protocol-eps-converted-to.pdf>
-Package pdftex.def Info: protocol-eps-converted-to.pdf used on input line 1027.
+Package pdftex.def Info: protocol-eps-converted-to.pdf used on input line 1154.
 
 (pdftex.def)             Requested size: 290.5239pt x 193.68259pt.
- [18 <./protocol-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <fidelity_naive.eps>
 (epstopdf)                    date: 2017-06-15 11:48:54
 (epstopdf)                    size: 29370 bytes
@@ -1177,15 +1181,15 @@ Package epstopdf Info: Source file: <fidelity_naive.eps>
 (epstopdf)                    size: 19328 bytes
 (epstopdf)             Command: <repstopdf --outfile=fidelity_naive-eps-convert
 ed-to.pdf fidelity_naive.eps>
-(epstopdf)             \includegraphics on input line 1062.
+(epstopdf)             \includegraphics on input line 1189.
 Package epstopdf Info: Output file is already uptodate.
 
-<fidelity_naive-eps-converted-to.pdf, id=400, 433.62pt x 289.08pt>
+<fidelity_naive-eps-converted-to.pdf, id=442, 433.62pt x 289.08pt>
 File: fidelity_naive-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fidelity_naive-eps-converted-to.pdf>
 Package pdftex.def Info: fidelity_naive-eps-converted-to.pdf used on input line
- 1062.
+ 1189.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 Package epstopdf Info: Source file: <final_energy_naive.eps>
 (epstopdf)                    date: 2017-06-15 11:49:35
@@ -1195,61 +1199,67 @@ Package epstopdf Info: Source file: <final_energy_naive.eps>
 (epstopdf)                    size: 17617 bytes
 (epstopdf)             Command: <repstopdf --outfile=final_energy_naive-eps-con
 verted-to.pdf final_energy_naive.eps>
-(epstopdf)             \includegraphics on input line 1063.
+(epstopdf)             \includegraphics on input line 1190.
 Package epstopdf Info: Output file is already uptodate.
 
-<final_energy_naive-eps-converted-to.pdf, id=401, 433.62pt x 289.08pt>
+<final_energy_naive-eps-converted-to.pdf, id=443, 433.62pt x 289.08pt>
 File: final_energy_naive-eps-converted-to.pdf Graphic file (type pdf)
 
 <use final_energy_naive-eps-converted-to.pdf>
 Package pdftex.def Info: final_energy_naive-eps-converted-to.pdf used on input 
-line 1063.
+line 1190.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
- [19 <./fidelity_naive-eps-converted-to.pdf> <./final_energy_naive-eps-converte
-d-to.pdf>] (./CD.bbl) [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1118.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1118.
-
-(./CD.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1118.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1118.
+ [22 <./protocol-eps-converted-to.pdf>] (./CD.bbl [23 <./fidelity_naive-eps-con
+verted-to.pdf> <./final_energy_naive-eps-converted-to.pdf>]) [24]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1245.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1245.
+ (./CD.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1245.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1245.
 
 Package rerunfilecheck Info: File `CD.out' has not changed.
-(rerunfilecheck)             Checksum: 5725D4BD7A9400188DC661F3DAFF2C8C;1701.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1118.
+(rerunfilecheck)             Checksum: 9E41E697F064D7DB2D5EEFFA2716108E;1921.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1245.
  ) 
 Here is how much of TeX's memory you used:
- 19767 strings out of 494910
- 353441 string characters out of 6179836
- 453398 words of memory out of 5000000
- 22476 multiletter control sequences out of 15000+600000
+ 19812 strings out of 494910
+ 354040 string characters out of 6179836
+ 453404 words of memory out of 5000000
+ 22479 multiletter control sequences out of 15000+600000
  14056 words of font info for 54 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 55i,13n,54p,764b,406s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/symbols/msbm7.pfb>
-Output written on CD.pdf (20 pages, 357193 bytes).
+ 55i,13n,54p,764b,469s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{equation.E.169} has been referenced but does not 
+exist, replaced by a fixed one
+
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm7.pfb>
+Output written on CD.pdf (24 pages, 371493 bytes).
 PDF statistics:
- 593 PDF objects out of 1000 (max. 8388607)
- 478 compressed objects within 5 object streams
- 197 named destinations out of 1000 (max. 500000)
- 196 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 671 PDF objects out of 1000 (max. 8388607)
+ 551 compressed objects within 6 object streams
+ 239 named destinations out of 1000 (max. 500000)
+ 220 words of extra memory for PDF output out of 10000 (max. 10000000)
 
