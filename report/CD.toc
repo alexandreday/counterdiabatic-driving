@@ -1,0 +1,30 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Goals: what we hope to achieve}{2}{section.1}
+\contentsline {section}{\numberline {2}Introduction}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Gauge potential}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Adiabatic gauge potential}{3}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Minimum norm gauge choice}{4}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Time evolution in moving frame}{4}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Variational principle of adiabatic gauge potential}{5}{subsubsection.2.2.3}
+\contentsline {subsection}{\numberline {2.3}Eigenstate Thermalization Hypothesis}{5}{subsection.2.3}
+\contentsline {section}{\numberline {3} Regulator based method to find Gauge Potential}{5}{section.3}
+\contentsline {section}{\numberline {4} Physical meaning of regulator }{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Norm of adiabatic gauge potential}{7}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}ETH applied to norm}{8}{subsubsection.4.1.1}
+\contentsline {subsection}{\numberline {4.2}Fermi golden rule: transition rate}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Fermi golden rule: dissipation rate}{9}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}ETH for complex systems}{10}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Formula involving commutators}{11}{subsubsection.4.3.2}
+\contentsline {section}{\numberline {5}Single body problem}{11}{section.5}
+\contentsline {section}{\numberline {6}Many body problem: integrable model}{12}{section.6}
+\contentsline {subsection}{\numberline {6.1}Ising model with local transverse magnetic field}{12}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Ising model with local transverse magnetic fields at two sites}{14}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Infinite summation}{15}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Linear recurrence coupled equations}{15}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Exact solution}{16}{subsubsection.6.2.3}
+\contentsline {section}{\numberline {A}Linear recurrence coupled equations}{17}{appendix.A}
+\contentsline {section}{\numberline {B}Properties of n-commutators}{19}{appendix.B}
+\contentsline {section}{\numberline {C}Adiabatic gauge potential formula general derivation}{22}{appendix.C}
+\contentsline {section}{\numberline {D}Classical adiabatic gauge potential}{23}{appendix.D}
+\contentsline {section}{\numberline {E}An example of variational approximation scheme: non-integrable Ising spin chain}{24}{appendix.E}
+\contentsline {section}{\numberline {F}Transverse Field Ising model: calculations in spin basis}{25}{appendix.F}

@@ -3,6 +3,7 @@
 \usepackage[hmargin=2.0cm,vmargin=2.5cm,bindingoffset=0.5cm]{geometry}
 \usepackage{amsfonts}
 \usepackage{amsmath,amsthm,amssymb}
+\allowdisplaybreaks
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{tikz}
@@ -21,7 +22,7 @@
 \title{Regulator based method to find adiabatic gauge potential for quantum many body systems }
 \begin{document}
 \maketitle
-
+ \tableofcontents
 \section{Goals: what we hope to achieve}
 
 
@@ -191,6 +192,13 @@ where $\langle \ldots \rangle$ stands for the averaging with respect to the ther
 
 I think a properly defined regulator would help us in defining a cutoff for averaging of $G_{\lambda}(\mathcal{X} )$ when we have finite/zero temperature.
 
+\subsection{Eigenstate Thermalization Hypothesis}
+Eigenstate Thermalization Hypothesis( ETH) gives us an ansatz for matrix elements of observables in the basis of eigenstates of a non-integrable Hamiltonian \cite{d2016quantum}:
+\begin{equation}
+O_{mn}= O( \bar{E}) \delta_{mn} + e^{-S(\bar{E})/2} f_O(\bar{E}, \omega) R_{mn}
+\end{equation}
+where $\bar{E}= (E_m +E_n)/2, \omega= E_n- E_m$ and $S(E)$ is the thermodynamic entropy at energy $E$.
+
 \section{ Regulator based method to find Gauge Potential}
 Here we would introduce a new method to find Gauge Potential $A_{\lambda}$ which includes a regulator $\mu$. 
 
@@ -270,10 +278,69 @@ Now one thing which is good is that if we take the wrong order of limit: take $\
 
 How does $\mu$ scale as $L$? It's an important question whose answer we don't know. Allow me to make a heuristic argument: In general, it seems that operators involved in the expression of $C^{(n)}$ would have support which depend on $L$. Let's suppose the support of these operators grow as $L^{\gamma}$, i.e., $C^{(n)} \propto L^{\gamma}$, where $\gamma$ is some constant which we don't know. If we assume that $ A_{\lambda}$ is well-defined in large system size limit for many-body Hamiltonian (both integrable and non-integrable), then  $\mu \propto L^{\gamma}$.
 
-Now our task will be use it to find exact/approximate gauge potential for integrable and non-integrable models.
 
 \section{ Physical meaning of regulator }
-In thermodynamic limit, we see that exact gauge potential $A_{\lambda}$ has  $\mu=0$ and it has infinite norm. However, in thermodynamic limit, if we take $\mu \neq 0$, then we have approximate gauge potential. If we take $\mu \rightarrow \infty$ limit, then norm of approximate gauge potential is zero.
+\subsection{Norm of adiabatic gauge potential}
+Norm of $A_{\lambda}$ is obviously dictated by $\mu$. Let's compute it by noting that $A_{\lambda}$ has only off-diagonal elements in energy basis in our gauge choice:
+
+\begin{align}
+||A_{\lambda}||^2 &= \Tr  A_{\lambda}^2 \\
+&= \sum_n \langle n | A^2_{\lambda}| n \rangle \\
+&= \sum_{m,n} \langle n | A_{\lambda}| m \rangle  \langle m | A_{\lambda}| n \rangle \\
+&= \sum_{n} \langle n | A_{\lambda}| n \rangle ^2 + \sum_n \sum_{m \neq n}  |\langle m | A_{\lambda}| n \rangle|^2 \\
+&=  \sum_n \sum_{m \neq n}  |\langle m | A_{\lambda}| n \rangle|^2 \\
+&= \hbar^2 \sum_n \sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2
+\end{align}
+
+Hence, in general, for both integrable and non-integrable systems we have: 
+\begin{equation}
+\boxed{||A_{\lambda}||^2 = \hbar^2\sum_n \sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2}
+\end{equation}
+
+After thermodynamic limit ($ L \rightarrow \infty$), if we take $\mu=0$ limit, then we have exact gauge potential $A_{\lambda}$, which has infinite norm. However, after thermodynamic limit, if we take $\mu \neq 0$, then we have approximate gauge potential. If we take $\mu \rightarrow \infty$ limit, then norm of approximate gauge potential is zero.
+
+\subsubsection{ETH applied to norm}
+$\partial_{\lambda}H$ may or may not be a local operator. We would be studying such non-integrable models in which it is a local operator. Hence, we can apply ETH on the operator $\partial_{\lambda}H$.
+
+\begin{align*}
+||A_{\lambda}||^2_{nn} &= \sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2\\
+&=\sum_{m \neq n}  \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} e^{-S(\bar{E})} |f_O(\bar{E}, \omega) R_{mn}|^2\\
+&=\sum_{m \neq n}  \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} e^{-S(E_n -\omega/2)} |f_O(E_n - \omega/2, \omega)|^2 |R_{mn}|^2
+\end{align*}
+where $\bar{E}= (E_m +E_n)/2=E_n - \omega/2$ ,$ \omega= E_n- E_m$ and $S(E)$ is the thermodynamic entropy at energy $E$.
+We would need to convert the sum into integral where we use the fact that function $f_O$ is smooth and fluctuations of $|R_{mn}|^2$ average out in the sum.
+
+\begin{equation}
+\sum_{m \neq n}  \rightarrow \int d \omega \Omega(E_{n}- \omega)= \int d \omega e^{S(E_{n}- \omega)}
+\end{equation}
+where $\Omega(E_{n}+ \omega)$ is density of states.
+
+
+\begin{align*}
+||A_{\lambda}||^2_{nn} &=\int d \omega e^{S(E_{n}- \omega)-S(E_n -\omega/2)} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n - \omega/2, \omega)|^2 
+\end{align*}
+$S(E_{n}- \omega)-S(E_n -\omega/2) = -\beta \omega/2 + \ldots $ and $f_O(E_n - \omega/2, \omega)=f_O(E_n, \omega) + \ldots $ we have
+
+\begin{align*}
+||A_{\lambda}||^2_{nn} &=\int_0^{\infty} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n, \omega)|^2 
+\end{align*}
+\subsection{Fermi golden rule: transition rate}
+Before we talk about Fermi golden rule, let's study  $||   G_{\lambda}||^2$, where $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $.
+
+\begin{align}
+||   G_{\lambda}||^2 &=\Tr (\partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H])^2\\
+&= \Tr (\partial_{\lambda} H)^2 -\dfrac{1}{\hbar^2}  \Tr ( [\mathcal{X}, H]^2) +\dfrac{2i}{\hbar} \Tr (\partial_{\lambda} H  [\mathcal{X}, H])\\
+&= ||\partial_{\lambda} H||^2   - \dfrac{1}{\hbar^2} ||[H, \mathcal{X}]||^2 +\dfrac{2i}{\hbar} \Tr (\partial_{\lambda} H  [\mathcal{X}, H])\\
+&= ||\partial_{\lambda} H||^2   - \dfrac{1}{\hbar^2} ||[H, \mathcal{X}]||^2 
+\end{align}
+where we have used cyclic property of trace operation to show that last term $ \Tr (\partial_{\lambda} H  [\mathcal{X}, H])=0$.
+%\begin{align}
+%||   G_{\lambda}||^2 &=\Tr ((\partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H])^2)\\
+%&= \sum_{m,n} \langle n |  G_{\lambda}| m \rangle  \langle m | G_{\lambda}| n \rangle \\
+%&= \sum_{n} \langle n | G_{\lambda}| n \rangle ^2 + \sum_n \sum_{m \neq n}  |\langle m | G_{\lambda}| n \rangle|^2  \\
+%&= \sum_{n} \langle n |  \partial_{\lambda} H| n \rangle ^2 + \sum_n \sum_{m \neq n}  |\langle m | \partial_{\lambda} H| n \rangle|^2  + \dfrac{1}{\hbar^2}  \sum_n \sum_{m \neq n}  |\langle m |  [\mathcal{X}, H]| n \rangle|^2 \\
+%&= \sum_{n} \langle n |  \partial_{\lambda} H| n \rangle ^2 + \sum_n \sum_{m \neq n}  |\langle m | \partial_{\lambda} H| n \rangle|^2  + \dfrac{1}{\hbar^2} ||[H, \mathcal{X}]||^2
+%\end{align}
 
 Let's try to understand more about $\mu$ by studying transition rate and dissipation rate for a quantum many body systems using Fermi's Golden rule. Let's consider a Hamiltonian:
 \begin{equation}
@@ -285,53 +352,41 @@ where $\lambda= \lambda_0 + \epsilon(t)$ and $\epsilon(t)$ is an infinitesimal w
 \mathcal{H}_{\mathcal{X}} \approx \mathcal{H} (\lambda_0)+ \epsilon \partial_{\lambda}\mathcal{H} + \dot{\epsilon} \mathcal{X}
 \end{equation}
 
-Now using Fermi's golden rule in \cite{kolodrubetz2016geometry},  transition rate $\Gamma_n$ is derived as: 
+Now using Fermi's golden rule in \cite{kolodrubetz2016geometry},  transition rate $\langle \Gamma_n \rangle$ (averaged over all eigenstates) is derived using results from \cite{clerk2010introduction}. $\langle \Gamma_n \rangle$ is given by:
+\begin{align}
+\langle \Gamma_n \rangle &= \kappa\left( \sum_n \langle n | G^2_{\lambda}| n \rangle -  \sum_n \langle n |    \partial_{\lambda} H |    n \rangle ^2\right) \\
+&= \kappa\left( | | G_{\lambda}||^2 -  \sum_n \langle n |    \partial_{\lambda} H |    n \rangle ^2\right) \\
+&=\kappa \sum_n \sum_{m \neq n} \left( |\langle m | \partial_{\lambda} H| n \rangle|^2  - \dfrac{1}{\hbar^2}  (E_n-E_m)^2 |\langle m |  \mathcal{X}| n \rangle|^2 \right)
+\end{align}
+where  $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $. Now, we will choose $\mathcal{X}=A_{\lambda}(\mu) $ to find our final expression:
+
 \begin{equation}
-\Gamma_n= \kappa \sum_n \langle n | G^2_{\lambda}| n \rangle - \kappa  \sum_n \langle n |  \partial_{\lambda} H |    n \rangle ^2
+\boxed{
+\langle \Gamma_n \rangle=\kappa \sum_n \sum_{m \neq n}  |\langle m | \partial_{\lambda} H| n \rangle|^2 \left( 1- \dfrac{(E_n-E_m)^4}{((E_n-E_m)^2 + \mu^2)^2}  \right)
+}
 \end{equation}
-where only first term depends upon $\mu$.
+We note that if take $\mu \rightarrow 0$ limit, then transition rate goes to zero.
+
+%
+%Hence, we get:
+%\begin{align}
+%\langle \Gamma_n \rangle &= \kappa \sum_n \sum_{m \neq n}  |\langle m | G_{\lambda}| n \rangle|^2\\
+%&= \kappa \sum_n \sum_{m \neq n}  |\langle m | \partial_{\lambda} H| n \rangle|^2
+%\end{align}
+%
+%Finally, we get 
+%\begin{equation}
+%\boxed{
+%\langle \Gamma_n \rangle = \kappa \sum_n \sum_{m \neq n}  |\langle m | \partial_{\lambda} H| n \rangle|^2}
+%\end{equation}
+\subsection{Fermi golden rule: dissipation rate}
 
 They define dissipation rate and find that it is equal to:
 \begin{equation}
 \dfrac{d \sigma^2_E}{dt}= -\kappa \Tr ([G_{\lambda}, H]^2)
 \end{equation}
 We note that in energy basis, $[G_{\lambda}, H]$ has only off-diagonal elements because $\langle n |[G_{\lambda}, H] | n \rangle=0$
-\subsection{Formula involving commutators}
-If $G_{\lambda}$ is exact with $\mu =0$, then $[G_{\lambda}, H]=0$. Let's find out $\mu$ dependent dissipation rate. We recall that $G_{\lambda}(A_{\lambda} (\mu) )= \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda} (\mu), H] $.
 
-\begin{align}
-[G_{\lambda}(A_{\lambda} (\mu)), H] &=[ \partial_{\lambda} H, H]  + \dfrac{i}{\hbar} [[A_{\lambda} (\mu), H],  H] \\
-&=- C^{(1)}  - \dfrac{i}{\hbar} [ H, [A_{\lambda} (\mu), H]] \\
-&=- C^{(1)} + \dfrac{i}{\hbar} [ H, [H, A_{\lambda} (\mu)]]
-\end{align}
-Now, let's simplify $[H,[H, A_{\lambda} (\mu)]]$:
-\begin{align}
-[H,[H, A_{\lambda} (\mu)]] &= \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} [H, [H,  \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}]]\\
-&= -i\hbar  \sum_{n=0}^{\infty}   (-1)^{n}   \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}
-\end{align}
-
-Hence, we find that:
-\begin{align}
-[G_{\lambda}(A_{\lambda} (\mu)), H] &= - C^{(1)} +  \sum_{n=0}^{\infty}   (-1)^{n}   \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}
-\end{align}
-
-Let's suppose $C^{(2n+1)}= \alpha^{2n} C^{(1)}$. Then we find that $C^{(2n+3)}= \alpha^{2n+2} C^{(1)} $. Using this, we can simplify our expression for dissipation rate as follows:
-\begin{align}
- [G_{\lambda}(A_{\lambda} (\mu)), H]&=  - C^{(1)} +  \sum_{n=0}^{\infty}   (-1)^{n}   \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}\\
-&=  - C^{(1)} +    \dfrac{ C^{(1)}\alpha^2 }{\mu^{2}} \sum_{n=0}^{\infty}   \left(  - \dfrac{ \alpha^{2} }{\mu^{2}}\right)^n \\
-&=  - C^{(1)} +    \dfrac{ C^{(1)} }{\mu^{2}} \dfrac{ \alpha^2  }{1 + \alpha^2 / \mu^{2}} \\
-&= \left(- 1 +    \dfrac{\alpha^2  }{   \mu^{2}+ \alpha^2 } \right) C^{(1)} \\
-&=-\dfrac{\mu^{2} }{   \mu^{2}+ \alpha^2 }  C^{(1)}
-\end{align}
-Hence, we get 
-\begin{equation}
-\boxed{\dfrac{1}{ \kappa } \dfrac{d \sigma^2_E}{ dt}= -\dfrac{\mu^{4} }{   (\mu^{2}+ \alpha^2)^2 } \Tr (C^{(1)})^2}
-\end{equation}
-
-We note that if take $\mu \rightarrow 0$ limit, then dissipation rate goes to zero.
-
-
-\subsection{ETH for complex systems}
 
 Ignoring $\kappa$ and negative sign, we get:
 
@@ -367,10 +422,16 @@ Hence, we find that :
  &=  -\dfrac{\mu^2}{(E_n-E_m)^2 + \mu^2}  \langle n |\partial_{\lambda} H |m \rangle \\
 \end{align*}
 Hence, we get :
-\begin{align}
-\dfrac{d \sigma^2_E}{dt} &=  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2
-\end{align}
+\begin{equation}
+\boxed{
+\dfrac{d \sigma^2_E}{dt} =  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
+\end{equation}
 We note that if take $\mu \rightarrow 0$ limit, then dissipation rate goes to zero.
+
+
+
+\subsubsection{ETH for complex systems}
+
 
 
 Now, let's apply ETH to this expression 
@@ -378,6 +439,47 @@ Now, let's apply ETH to this expression
 \dfrac{d \sigma^2_E}{dt} &=  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2 \\
 &=  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  e^{-S} |f_{O} R_{mn}|^2
 \end{align}
+
+
+
+
+
+\subsubsection{Formula involving commutators}
+If $G_{\lambda}$ is exact with $\mu =0$, then $[G_{\lambda}, H]=0$. Let's find out $\mu$ dependent dissipation rate. We recall that $G_{\lambda}(A_{\lambda} (\mu) )= \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda} (\mu), H] $
+
+\begin{align}
+[G_{\lambda}(A_{\lambda} (\mu)), H] &=[ \partial_{\lambda} H, H]  + \dfrac{i}{\hbar} [[A_{\lambda} (\mu), H],  H] \\
+&=- C^{(1)}  - \dfrac{i}{\hbar} [ H, [A_{\lambda} (\mu), H]] \\
+&=- C^{(1)} + \dfrac{i}{\hbar} [ H, [H, A_{\lambda} (\mu)]]
+\end{align}
+Now, let's simplify $[H,[H, A_{\lambda} (\mu)]]$:
+\begin{align}
+[H,[H, A_{\lambda} (\mu)]] &= \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty}   (-1)^{n} [H, [H,  \dfrac{ C^{(2n+1)}}{\mu^{2n+1}}]]\\
+&= -i\hbar  \sum_{n=0}^{\infty}   (-1)^{n}   \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}
+\end{align}
+
+Hence, we find that:
+\begin{align}
+[G_{\lambda}(A_{\lambda} (\mu)), H] &= - C^{(1)} +  \sum_{n=0}^{\infty}   (-1)^{n}   \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}
+\end{align}
+
+Let's suppose $C^{(2n+1)}= \alpha^{2n} C^{(1)}$. Then we find that $C^{(2n+3)}= \alpha^{2n+2} C^{(1)} $. Using this, we can simplify our expression for dissipation rate as follows:
+\begin{align}
+ [G_{\lambda}(A_{\lambda} (\mu)), H]&=  - C^{(1)} +  \sum_{n=0}^{\infty}   (-1)^{n}   \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}\\
+&=  - C^{(1)} +    \dfrac{ C^{(1)}\alpha^2 }{\mu^{2}} \sum_{n=0}^{\infty}   \left(  - \dfrac{ \alpha^{2} }{\mu^{2}}\right)^n \\
+&=  - C^{(1)} +    \dfrac{ C^{(1)} }{\mu^{2}} \dfrac{ \alpha^2  }{1 + \alpha^2 / \mu^{2}} \\
+&= \left(- 1 +    \dfrac{\alpha^2  }{   \mu^{2}+ \alpha^2 } \right) C^{(1)} \\
+&=-\dfrac{\mu^{2} }{   \mu^{2}+ \alpha^2 }  C^{(1)}
+\end{align}
+Hence, we get 
+\begin{equation}
+\boxed{\dfrac{1}{ \kappa } \dfrac{d \sigma^2_E}{ dt}= -\dfrac{\mu^{4} }{   (\mu^{2}+ \alpha^2)^2 } \Tr (C^{(1)})^2}
+\end{equation}
+
+We note that if take $\mu \rightarrow 0$ limit, then dissipation rate goes to zero.
+
+
+
 \section{Single body problem}
 We would start off with a simple problem and find its' adiabatic gauge potential using our method.
 \begin{equation}
@@ -677,7 +779,7 @@ where  $\alpha^2= 4 (4 J^2 +  \lambda ^2) $, $\delta_1= 96 J^2 \lambda^2$, $\del
 \appendix
 
 \section{Linear recurrence coupled equations}
-We have a set of three couple linear recurrence difference equations:
+We have a set of three coupled linear recurrence difference equations:
 \begin{equation}
 \boxed{
 \begin{aligned}
@@ -689,6 +791,8 @@ c_{2n} &= \epsilon_1 a_{2n-1} + \epsilon_2 b_{2n-2} + \epsilon_3 c_{2n-2}\\
 \end{equation}
 
 where $a_n= \{a_1, a_3, \ldots\}$, $b_n= \{b_0, b_2, \ldots\}$ and $c_n= \{c_0, c_2, \ldots\}$.
+
+We are looking for a function $f$ such that $a_n= f(a_1, b_0,c_0)$. Similarly, we will get $b_n= g(a_1, b_0,c_0)$ and $c_n= h(a_1, b_0,c_0)$.
 
 We will solve this using generating function approach. We define three functions:
 \begin{align}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{demirplak2003adiabatic}
 Mustafa Demirplak and Stuart~A Rice.
@@ -39,17 +39,23 @@ Christopher Jarzynski.
   dynamics.
 \newblock {\em Physical Review A}, 88(4):040101, 2013.
 
-\bibitem{kim2013ballistic}
-Hyungwon Kim and David~A Huse.
-\newblock Ballistic spreading of entanglement in a diffusive nonintegrable
-  system.
-\newblock {\em Physical review letters}, 111(12):127205, 2013.
-
 \bibitem{sels2017minimizing}
 Dries Sels and Anatoli Polkovnikov.
 \newblock Minimizing irreversible losses in quantum systems by local
   counterdiabatic driving.
 \newblock {\em Proceedings of the National Academy of Sciences}, page
   201619826, 2017.
+
+\bibitem{clerk2010introduction}
+Aashish~A Clerk, Michel~H Devoret, Steven~M Girvin, Florian Marquardt, and
+  Robert~J Schoelkopf.
+\newblock Introduction to quantum noise, measurement, and amplification.
+\newblock {\em Reviews of Modern Physics}, 82(2):1155, 2010.
+
+\bibitem{kim2013ballistic}
+Hyungwon Kim and David~A Huse.
+\newblock Ballistic spreading of entanglement in a diffusive nonintegrable
+  system.
+\newblock {\em Physical review letters}, 111(12):127205, 2013.
 
 \end{thebibliography}
