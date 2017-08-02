@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.5.15)  1 AUG 2017 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.5.15)  2 AUG 2017 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1150,12 +1150,12 @@ in sup-press-ing tran-si-tions from a low-temperature
 
 [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
 [21]
-Overfull \hbox (36.48267pt too wide) in alignment at lines 1141--1146
+Overfull \hbox (36.48267pt too wide) in alignment at lines 1151--1156
  [][][] []
  []
 
 [22]
-Overfull \hbox (8.06052pt too wide) in paragraph at lines 1232--1232
+Overfull \hbox (8.06052pt too wide) in paragraph at lines 1242--1242
 []\OT1/cmr/bx/n/14.4 An ex-am-ple of vari-a-tional ap-prox-i-ma-tion scheme: no
 n-integrable
  []
@@ -1169,13 +1169,13 @@ Package epstopdf Info: Source file: <protocol.eps>
 (epstopdf)                    size: 10315 bytes
 (epstopdf)             Command: <repstopdf --outfile=protocol-eps-converted-to.
 pdf protocol.eps>
-(epstopdf)             \includegraphics on input line 1258.
+(epstopdf)             \includegraphics on input line 1268.
 Package epstopdf Info: Output file is already uptodate.
- <protocol-eps-converted-to.pdf, id=511, 433.62pt x 289.08pt>
+ <protocol-eps-converted-to.pdf, id=512, 433.62pt x 289.08pt>
 File: protocol-eps-converted-to.pdf Graphic file (type pdf)
 
 <use protocol-eps-converted-to.pdf>
-Package pdftex.def Info: protocol-eps-converted-to.pdf used on input line 1258.
+Package pdftex.def Info: protocol-eps-converted-to.pdf used on input line 1268.
 
 (pdftex.def)             Requested size: 290.5239pt x 193.68259pt.
  [24 <./protocol-eps-converted-to.pdf>]
@@ -1187,15 +1187,15 @@ Package epstopdf Info: Source file: <fidelity_naive.eps>
 (epstopdf)                    size: 19328 bytes
 (epstopdf)             Command: <repstopdf --outfile=fidelity_naive-eps-convert
 ed-to.pdf fidelity_naive.eps>
-(epstopdf)             \includegraphics on input line 1293.
+(epstopdf)             \includegraphics on input line 1303.
 Package epstopdf Info: Output file is already uptodate.
 
-<fidelity_naive-eps-converted-to.pdf, id=548, 433.62pt x 289.08pt>
+<fidelity_naive-eps-converted-to.pdf, id=549, 433.62pt x 289.08pt>
 File: fidelity_naive-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fidelity_naive-eps-converted-to.pdf>
 Package pdftex.def Info: fidelity_naive-eps-converted-to.pdf used on input line
- 1293.
+ 1303.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 Package epstopdf Info: Source file: <final_energy_naive.eps>
 (epstopdf)                    date: 2017-06-15 11:49:35
@@ -1205,32 +1205,32 @@ Package epstopdf Info: Source file: <final_energy_naive.eps>
 (epstopdf)                    size: 17617 bytes
 (epstopdf)             Command: <repstopdf --outfile=final_energy_naive-eps-con
 verted-to.pdf final_energy_naive.eps>
-(epstopdf)             \includegraphics on input line 1294.
+(epstopdf)             \includegraphics on input line 1304.
 Package epstopdf Info: Output file is already uptodate.
 
-<final_energy_naive-eps-converted-to.pdf, id=549, 433.62pt x 289.08pt>
+<final_energy_naive-eps-converted-to.pdf, id=550, 433.62pt x 289.08pt>
 File: final_energy_naive-eps-converted-to.pdf Graphic file (type pdf)
 
 <use final_energy_naive-eps-converted-to.pdf>
 Package pdftex.def Info: final_energy_naive-eps-converted-to.pdf used on input 
-line 1294.
+line 1304.
 (pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
  [25 <./fidelity_naive-eps-converted-to.pdf> <./final_energy_naive-eps-converte
 d-to.pdf>] (./CD.bbl [26])
 [27]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1349.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1349.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1359.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1359.
  (./CD.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1349.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1349.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1359.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1359.
 
 Package rerunfilecheck Info: File `CD.out' has not changed.
 (rerunfilecheck)             Checksum: CEEA5B8D09BD7C01606E65A9CE8C3CF8;2358.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1349.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1359.
  ) 
 Here is how much of TeX's memory you used:
- 19846 strings out of 494910
- 354528 string characters out of 6179836
+ 19847 strings out of 494910
+ 354542 string characters out of 6179836
  453458 words of memory out of 5000000
  22485 multiletter control sequences out of 15000+600000
  14056 words of font info for 54 fonts, out of 8000000 for 9000
@@ -1256,10 +1256,10 @@ t/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts
 /public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
 c/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm7.pfb>
-Output written on CD.pdf (27 pages, 385857 bytes).
+Output written on CD.pdf (27 pages, 388293 bytes).
 PDF statistics:
- 759 PDF objects out of 1000 (max. 8388607)
- 635 compressed objects within 7 object streams
- 264 named destinations out of 1000 (max. 500000)
+ 761 PDF objects out of 1000 (max. 8388607)
+ 637 compressed objects within 7 object streams
+ 265 named destinations out of 1000 (max. 500000)
  260 words of extra memory for PDF output out of 10000 (max. 10000000)
 

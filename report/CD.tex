@@ -193,11 +193,17 @@ where $\langle \ldots \rangle$ stands for the averaging with respect to the ther
 I think a properly defined regulator would help us in defining a cutoff for averaging of $G_{\lambda}(\mathcal{X} )$ when we have finite/zero temperature.
 
 \subsection{Eigenstate Thermalization Hypothesis}
-Eigenstate Thermalization Hypothesis( ETH) gives us an ansatz for matrix elements of observables in the basis of eigenstates of a non-integrable Hamiltonian \cite{d2016quantum}:
+Eigenstate Thermalization Hypothesis( ETH) gives us an ansatz for matrix elements of observables in the basis of energy eigenstates  \cite{d2016quantum}:
 \begin{equation}
 O_{mn}= O( \bar{E}) \delta_{mn} + e^{-S(\bar{E})/2} f_O(\bar{E}, \omega) R_{mn}
 \end{equation}
 where $\bar{E}= (E_m +E_n)/2, \omega= E_n- E_m$ and $S(E)$ is the thermodynamic entropy at energy $E$.
+
+We note that it's applicable only for few-body operators of a non-integrable Hamiltonian. By few-body, we mean $n$ body observables with $n \ll N$, where $N$ is the total number of spins, particles, etc. For example, projection operator to eigenstates of many body  Hamiltonian $\hat{P}_{\alpha}= |\Psi_{\alpha} \rangle \langle\Psi_{\alpha}  |$ don't satisfy ETH and it also doesn't satisfy predictions of statistical mechanics. Why is that? We expect that microcanonical averaging should be equivalent to canonical averaging:
+\begin{equation}
+ \langle\Psi_{\alpha}  |O|\Psi_{\alpha} \rangle= \dfrac{\Tr O e^{-\beta H}}{\Tr e^{-\beta H}}
+\end{equation}
+We can see $O= \hat{P}_{\alpha}$ doesn't satisfy the above equation (since left hand side is one and the trace of right hand side can be computed in energy basis to find that it's not one). Projection operator is non-local in real space, and we argue that this is the reason it doesn't satisfy ETH and is not experimentally measurable.
 
 \section{ Regulator based method to find Gauge Potential}
 Here we would introduce a new method to find Gauge Potential $A_{\lambda}$ which includes a regulator $\mu$. 
@@ -322,8 +328,10 @@ where $\Omega(E_{n}+ \omega)$ is density of states.
 $S(E_{n}- \omega)-S(E_n -\omega/2) = -\beta \omega/2 + \ldots $ and $f_O(E_n - \omega/2, \omega)=f_O(E_n, \omega) + \ldots $ we have
 
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=\int_0^{\infty} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n, \omega)|^2 
+||A_{\lambda}||^2_{nn} &=\int_a^{b} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n, \omega)|^2 
 \end{align*}
+where $a$ represents the minimum energy difference $E_m-E_n$ in thermodynamic limit and $b$ is the maximum energy difference. $a= e^{-S} \sim e^{-\delta L}$ and $b= \gamma L$, where $\gamma$ and $\delta$ are constants that depend on the details of Hamiltonian.
+
 \subsection{Fermi golden rule: transition rate}
 Before we talk about Fermi golden rule, let's study  $||   G_{\lambda}||^2$, where $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $.
 
@@ -501,6 +509,8 @@ Similarly, we find that
 \begin{equation}
 A_{\Delta}= -\dfrac{\hbar}{2}\dfrac{\lambda }{\Delta^2 + \lambda^2} \sigma^y
 \end{equation}
+
+
 \section{Many body problem: integrable model}
 Our goal is to study a integrable model, which is called \textbf{Transverse Field Ising model}. It shows quantum phase transition between ferromagnetic and paramagnetic phases. Moreover, it satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian.
 This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation. It's Hamiltonian in spin basis is given by:
