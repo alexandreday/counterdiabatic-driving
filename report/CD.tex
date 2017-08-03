@@ -330,7 +330,25 @@ $S(E_{n}- \omega)-S(E_n -\omega/2) = -\beta \omega/2 + \ldots $ and $f_O(E_n - \
 \begin{align*}
 ||A_{\lambda}||^2_{nn} &=\int_a^{b} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n, \omega)|^2 
 \end{align*}
-where $a$ represents the minimum energy difference $E_m-E_n$ in thermodynamic limit and $b$ is the maximum energy difference. $a= e^{-S} \sim e^{-\delta L}$ and $b= \gamma L$, where $\gamma$ and $\delta$ are constants that depend on the details of Hamiltonian.
+where $a$ represents the minimum energy difference $E_m-E_n$ in thermodynamic limit (which is energy gap between $n$-th state and nearest eigenstate (either $E_{n+1}$ or $E_{n-1}$ depending upon what is $\min \{|E_{n-1}-E_{n}|,|E_{n+1}-E_{n}| \}$) and $b$ is the maximum energy difference (for which we have to find $m$-th state such that we get $\max \{|E_{m}-E_{n}|\}$) ). $a= e^{-S} \sim e^{-\delta L}$ and $b= \gamma L$, where $\gamma$ and $\delta$ are constants that depend on the details of Hamiltonian.
+
+Let's denote $I=e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}$ and find out how it depends on L. First, we check on upper limit.
+
+\begin{align*}
+\lim_{L \rightarrow \infty}I(\omega=L)=\lim_{L \rightarrow \infty} e^{-\beta L/2} \dfrac{L^2}{(L^2 + \mu^2)^2} \rightarrow 0
+\end{align*}
+Now on lower limit.
+\begin{align*}
+\lim_{L \rightarrow \infty}I(\omega=e^{-L})=\lim_{L \rightarrow \infty} e^{-\beta e^{-L}/2} \dfrac{e^{-2L}}{(e^{-2L} + \mu^2)^2}=\lim_{L \rightarrow \infty} \dfrac{e^{-2L}}{(e^{-2L} + \mu^2)^2}
+\end{align*}
+
+\begin{equation}
+  \lim_{L \rightarrow \infty}I(\omega=e^{-L})=\left\{
+  \begin{array}{@{}ll@{}}
+    e^{2L} & (\mu^2 \ll e^{-2L}), \\
+     \dfrac{e^{-2L}}{ \mu^4} & (\mu^2 \gg e^{-2L})
+  \end{array}\right.
+\end{equation}
 
 \subsection{Fermi golden rule: transition rate}
 Before we talk about Fermi golden rule, let's study  $||   G_{\lambda}||^2$, where $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $.
@@ -427,16 +445,23 @@ Hence, we find that :
 \begin{align*}
 \langle n |  [G_{\lambda}, H]|  m \rangle  &=  - \langle n |[H,\partial_{\lambda} H] |m \rangle +\langle n| \dfrac{1}{(E_n-E_m)^2 + \mu^2}  [H,[H, [H, \partial_{\lambda} H]]] | m\rangle \\
  &=  \left(-(E_n- E_m) + \dfrac{(E_n- E_m)^3}{(E_n-E_m)^2 + \mu^2} \right)  \langle n |\partial_{\lambda} H |m \rangle \\
- &=  -\dfrac{\mu^2}{(E_n-E_m)^2 + \mu^2}  \langle n |\partial_{\lambda} H |m \rangle \\
+ &=  -\dfrac{\mu^2 (E_n- E_m)}{(E_n-E_m)^2 + \mu^2}  \langle n |\partial_{\lambda} H |m \rangle \\
 \end{align*}
 Hence, we get :
 \begin{equation}
 \boxed{
-\dfrac{d \sigma^2_E}{dt} =  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
+\dfrac{d \sigma^2_E}{dt} =  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4 (E_n- E_m)^2}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
 \end{equation}
-We note that if take $\mu \rightarrow 0$ limit, then dissipation rate goes to zero.
 
+We note that $\dfrac{d (\sigma^2_E)^{n}}{dt}$ is proportional to  $ \omega^2 = (E_n- E_m)^2$.
 
+Further, we also find that:
+\begin{equation}
+\dfrac{d \sigma^2_E}{dt}= \dfrac{\mu^4}{\hbar^2} || A_{\lambda} (\mu^2)||^2
+\end{equation}
+If we take $\mu \rightarrow 0$ limit after thermodynamic limit $L \rightarrow \infty$ , then $|| A_{\lambda} (\mu^2)||^2 \rightarrow \infty $. Thus, we see that dissipation rate is ill-defined since $\dfrac{d \sigma^2_E}{dt} \rightarrow 0 \times \infty$. This should not be surprising because if $A_{\lambda}$ is ill-defined, everything else  (like $G_{\lambda}$, dissipation rate)that depends on it would also become ill-defined. 
+
+However, what is definitely surprising is that average transition rate $\langle \Gamma_n \rangle$ is well-defined in $\mu \rightarrow 0$ limit (after thermodynamic limit has been taken).
 
 \subsubsection{ETH for complex systems}
 
