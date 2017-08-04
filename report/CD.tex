@@ -535,6 +535,10 @@ Similarly, we find that
 A_{\Delta}= -\dfrac{\hbar}{2}\dfrac{\lambda }{\Delta^2 + \lambda^2} \sigma^y
 \end{equation}
 
+\begin{equation}
+H= \cos \theta \sigma^z + \sin \theta \sigma^x
+\end{equation}
+
 
 \section{Many body problem: integrable model}
 Our goal is to study a integrable model, which is called \textbf{Transverse Field Ising model}. It shows quantum phase transition between ferromagnetic and paramagnetic phases. Moreover, it satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian.
@@ -648,6 +652,7 @@ Thus, we conclude that we get an expression for exact gauge potential:
 
 \subsection{Ising model with local transverse magnetic fields at two sites}
 
+\subsubsection{Exact solution using regulator method}
 
 \begin{equation}
 H= -J \sum_{j}  \sigma_j^x \sigma_{j+1}^x -  \lambda  (\sigma_0^z+ \sigma_1^z) 
@@ -672,54 +677,14 @@ where $\delta_1= 96 J^2 \lambda^2$, $\delta_2= 16 \lambda^2$, $\delta_3= 9 \lamb
 
 
 
-\subsubsection{Infinite summation}
-
-Using theorem proved in appendix, we get
-\begin{align*}
-C^{(2n+1)}= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q} (C^{(2q)}_{T_2} + C^{(2q)}_{T_3}  )
-\end{align*}
-
-
-
-This shows that for any subsequent $C^{(2n+1)}$, we won't have any \textit{new} term apart from $C^{(1)},T_2$ and $T_3$. 
-
-In appendix, we have proved that if $C^{(2)}_T=  \delta T + O$ , then $C^{(2n)}_T= \delta^{n} T +  \delta^{n-1} \sum_{q=0}^{n-1} \delta^{-q} C^{(2q)}_O  $. In our case,  $C^{(2)}_{T_2}=  \delta_2 T_2 + O $ where $O=\delta_1 C^{(1)} + \delta_3 T_3$. Now, let's compute $C^{(2q)}_O$:
-
-\begin{align*}
-C^{(2)}_O&=\delta_1 C^{(3)} + \delta_3  C^{(2)}_{T_3} \\
-Similarly, C^{(2q)}_O&=\delta_1 C^{(2q+1)} + \delta_3  C^{(2q)}_{T_3} 
-\end{align*}
-
-Hence, we see that $C^{(2n)}_{T_2}= \delta_2^{n} T_2 +  \delta_2^{n-1} \sum_{q=0}^{n-1} \delta^{-q} (\delta_1 C^{(2q+1)} + \delta_3  C^{(2q)}_{T_3})  $. Similarly, $C^{(2n)}_{T_3}= \epsilon_3^{n} T_3 +  \epsilon_3^{n-1} \sum_{q=0}^{n-1}\epsilon_3^{-q} (\epsilon_1 C^{(2q+1)} + \epsilon_2  C^{(2q)}_{T_2})  $. 
-
-We are left with a set of three coupled recurrence equations given by:
+Let me summarize here in a more meaningful way what we have so far:
 \begin{equation}
-\boxed{
 \begin{aligned}
-C^{(2n+1)}&= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q} (C^{(2q)}_{T_2} + C^{(2q)}_{T_3}  ) \\
-C^{(2q)}_{T_2} &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   (\delta_1 C^{(2p+1)} + \delta_3  C^{(2p)}_{T_3})\\
-C^{(2q)}_{T_3} &= \epsilon_3^{q} T_3 +  \epsilon_3^{q-1} \sum_{p=0}^{q-1}\epsilon_3^{-p} (\epsilon_1 C^{(2p+1)} + \epsilon_2  C^{(2p)}_{T_2}) 
-\end{aligned}
-}
-\end{equation}
-
-Now let's concentrate on $C^{(2q)}_{T_2}$ here:
-
-\begin{align}
-C^{(2q)}_{T_2} &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   (\delta_1 C^{(2p+1)} + \delta_3  C^{(2p)}_{T_3})\\
- &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}    \delta_1 C^{(2p+1)} + \delta_2^{q-1}  \sum_{p=0}^{q-1} \delta_2^{-p}  \delta_3  C^{(2p)}_{T_3}\\
- &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}    \delta_1 C^{(2p+1)} + O\\
-& =\delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   \delta_1 ( \alpha^{2p} C^{(1)} +\alpha^{2p-2} \sum_{l=0}^{p-1} \alpha^{-2l} (C^{(2l)}_{T_2} + C^{(2l)}_{T_3})) + O 
-\end{align}
-
-Hence, we see that we get infinite summation expression, which seems intractable to me.
-\subsubsection{Linear recurrence coupled equations}
-We know that:
-\begin{align}
 C^{(3)} &=   \alpha^2  C^{(1)}  +T_2  +T_3\\
 C^{(2)}_{T_2}&= \delta_1 C^{(1)} + \delta_2 T_2 + \delta_3 T_3 \\
 C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3 
-\end{align}
+\end{aligned}
+\end{equation}
 
 Using the results proved in appendix, we can use the above information to write three coupled homogeneous recurrence equations, which are linear in $C^{(2n+1)}$, $C^{(2n)}_{T_2}$ and $C^{(2n)}_{T_3} $:
 \begin{equation}
@@ -732,7 +697,48 @@ C^{(2n)}_{T_3} &=\epsilon_1  C^{(2n-1)} + \epsilon_2 C^{(2n-2)}_{T_2} + \epsilon
 }
 \end{equation}
 
-The advantage is that these equations have constant coefficients. 
+The advantage is that these equations have constant coefficients. Let's formulate this in matrix form:
+\begin{equation}
+ \begin{bmatrix}
+C^{(2n+1)} \\
+C^{(2n)}_{T_2} \\
+C^{(2n)}_{T_3}  
+   \end{bmatrix}
+  = \begin{bmatrix}
+    \alpha^2       & 1 &1  \\
+    \delta_{1}     & \delta_{2} &  \delta_{3} \\
+    \epsilon_{1}   & \epsilon_{2} & \epsilon_{3}
+\end{bmatrix}
+\begin{bmatrix}
+C^{(2n-1)} \\
+C^{(2n-2)}_{T_2} \\
+C^{(2n-2)}_{T_3}  
+   \end{bmatrix}   
+\end{equation}
+
+Hence, we can write $v_n= T^n v_0$ where 
+
+\begin{equation}
+v_n= \begin{bmatrix}
+C^{(2n+1)} \\
+C^{(2n)}_{T_2} \\
+C^{(2n)}_{T_3}  
+   \end{bmatrix},   
+T = \begin{bmatrix}
+    \alpha^2       & 1 &1  \\
+    \delta_{1}     & \delta_{2} &  \delta_{3} \\
+    \epsilon_{1}   & \epsilon_{2} & \epsilon_{3}
+\end{bmatrix} ,
+v_0=\begin{bmatrix}
+C_{(1)} \\
+T_2 \\
+T_3    
+   \end{bmatrix}
+\end{equation}
+
+We note that $T^n= (P D P^{-1})^n=P D^n P^{-1}$, where $D$ is diagonal matrix and $P$ is the similarity transformation that diagonalizes $T$. Finally, we can write $v_n= P D^n P^{-1} v_0$ 
+
+What we are actually interested in is adiabatic gauge potential for which we need to take sum over n-Commutators $C^{(2n+1)}$
 %
 %Hence, using theorem proved in appendix \ref{sec.Cn}, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
 %%
@@ -751,7 +757,7 @@ The advantage is that these equations have constant coefficients.
 %Details of the derivation are given in appendix \ref{sec.derivation_A_lambda}. We note that the last two terms diverge when we take  $\lim_{\mu \rightarrow 0}$ limit. I am still figuring out how to deal with this.
 %
 %
-\subsubsection{Exact solution}
+\subsubsection{Exact solution using variational approach}
 
 
 Let's claim that 
@@ -918,51 +924,118 @@ Hence,
 \begin{equation}
 \boxed{B(z)  = \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2   }
 \end{equation}
-Now, once we figure out  power series expansions of following unknowns, we can plug it back to $B(z)$ and $C(z)$:
+
+ For large z, we get 
+
+
 \begin{align*}
-\beta(z) &= z/(1 -\alpha^2  z^2 ) \\
- \tau(z) &= 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )\\
- \omega_0 &= b_0 +  \delta_1  z   \beta(z)  a_1  \\
- \omega_1 &= \delta_3 +  \delta_1     \beta(z)\\
- \eta(z)&=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )\\
- \theta_0&= c_0 +  \epsilon_1  z \beta(z) a_1\\
- \theta_1&= \epsilon_2 + \epsilon_1   \beta(z)
+\beta(z) &= z/(1 -\alpha^2  z^2 ) \simeq -\dfrac{1}{\alpha^2 z} \\
+ \omega_0 &= b_0 +  \delta_1  z   \beta(z)  a_1 \simeq b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}  \\
+ \omega_1 &= \delta_3 +  \delta_1     \beta(z) \simeq \delta_3 \\  
+ \theta_0&= c_0 +  \epsilon_1  z \beta(z) a_1 \simeq c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}    \\
+ \theta_1&= \epsilon_2 + \epsilon_1   \beta(z) \simeq \epsilon_2
 \end{align*}
 
-Now, I have got $\beta(z) = z/(1 -\alpha^2  z^2 ) = \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}$. Hence, we get:
+Now, I will figure out $\tau(z)$:
 \begin{align*}
-\beta(z) &= \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1} \\
- \omega_0 &= b_0 +  \delta_1       a_1  \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+2} \\
- \omega_1 &= \delta_3 +  \delta_1  \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}\\
- \theta_0&= c_0 +  \epsilon_1   \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+2} a_1\\
- \theta_1&= \epsilon_2 + \epsilon_1   \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}
+\tau(z) &= 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )\\
+& \simeq \dfrac{1}{1 - \delta_2 z^2 + \delta_1  z^2/ \alpha^2    }\\
+& \simeq \dfrac{1}{(\delta_1/ \alpha^2 - \delta_2) z^2      }\\
+&\simeq \dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      }
 \end{align*}
 
-Now we need to figure out $\tau(z)$ and then we will figure out $\eta(z)$.
+
+Now, I will figure out $\eta(z)$:
 \begin{align*}
-\tau(z)^{-1} &=  1 - \delta_2 z^2 -\delta_1  z^3   \beta(z)  \\
-&=  1 - \delta_2 z^2 -\delta_1  \dfrac{z^4}{ 1 -\alpha^2  z^2 }    \\
-&=  \dfrac{1} {1 -\alpha^2  z^2 }   (1 -\alpha^2  z^2- \delta_2 z^2 + \alpha^2 \delta_2 z^4 -\delta_1 z^4) \\
-&=  \dfrac{1} {1 -\alpha^2  z^2 }   (1 -(\alpha^2 + \delta_2) z^2 + (\alpha^2 \delta_2 -\delta_1) z^4) \\
-&= \dfrac{\alpha^2 \delta_2 -\delta_1} {1 -\alpha^2  z^2 } \zeta  (z) 
+\eta(z)&=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )\\
+& \simeq \dfrac{1}{1 - \epsilon_3 z^2 + \epsilon_1  z^2/ \alpha^2 -\epsilon_2   \delta_3 z^6 \tau(z)     }\\
+& \simeq -\dfrac{\delta_1/ \alpha^2 - \delta_2}{\epsilon_2   \delta_3     } \dfrac{1}{z^4}\\
+& \simeq -\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \dfrac{1}{z^4}
 \end{align*}
 
-where $\zeta (z)= (\frac{1}{\alpha^2 \delta_2 -\delta_1} -\frac{\alpha^2 + \delta_2}{\alpha^2 \delta_2 -\delta_1} z^2 +  z^4)$. Let's simplify it further by writing it as $\zeta (z)= (z-z_1)(z-z_2)(z-z_3)(z-z_4)$, where $z_1, z_2, z_3,z_4$ are roots of $\zeta (z)$. Once we do that, then we can write its' reciprocal as sum of partial fractions. 
 
-
-Now let's attack $\eta(z)$:
+Hence, we get for $C(z)$:
 \begin{align*}
-\eta(z)^{-1}&=1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)  \\
- &=1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 ( 1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) ) 
+C(z)  &=  \eta(z) \theta_0+  \omega_0 \theta_1  z^3 \eta(z) \tau(z)   \\
+& \simeq -\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2} \right) \dfrac{1}{z^4} +  \omega_0 \theta_1  z^3 \eta(z) \tau(z) \\
+&\simeq -\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2} \right) \dfrac{1}{z^4} - \epsilon_2 \left(b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}  \right)  \left( \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   }  \right) \left(\dfrac{\alpha^2}{\delta_1 -  \alpha^2 \delta_2    } \right) \dfrac{1}{z^3}
 \end{align*}
-Now, we plug these values to find value of $A(z)$:
-\begin{align}
-A(z)  &=   a_1 \beta(z)   +  z^2 \beta(z) B(z) + z^2 \beta(z) C(z) 
-\end{align}
 
 
-Note that I need to find reciprocal of a polynomial here.
-\url{http://www.sciencedirect.com/science/article/pii/S0377042705006230#bib20}
+Hence, we get for $B(z)$:
+\begin{align*}
+B(z)  & = \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2   \\
+& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }+    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2 \\
+& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }- z^3   \delta_3 (c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}   )  (\dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      }) (\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \dfrac{1}{z^4})  + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2 \\
+& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }-  \left(\dfrac{c_0 \alpha^2-\epsilon_1   a_1}{\delta_1 -  \alpha^2 \delta_2     } \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2       \alpha^2   }\right)  \dfrac{1}{z^3} + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2 \\
+& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }-  \left(\dfrac{c_0 \alpha^2-\epsilon_1   a_1}{\delta_1 -  \alpha^2 \delta_2     } \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2       \alpha^2   }\right)  \dfrac{1}{z^3} - z^2 (b_0 - \dfrac{ \delta_1  a_1}{\alpha^2})\delta_3  \epsilon_2    (\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \dfrac{1}{z^4})  \left(\dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      } \right)^2 \\
+& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }-  \left(\dfrac{c_0 \alpha^2-\epsilon_1   a_1}{\delta_1 -  \alpha^2 \delta_2     } \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2       \alpha^2   }\right)  \dfrac{1}{z^3} -   \dfrac{(b_0 \alpha^2 - \delta_1  a_1)   (\delta_1 - \delta_2  \alpha^2 ) }{(\delta_1 -  \alpha^2 \delta_2)   ^2  } \dfrac{1}{z^6}
+\end{align*}
+
+
+Finally, we get :
+
+
+\begin{align*}
+A(z) =  &\beta(z) (a_1  +  z^2 B(z) + z^2 C(z)) \\
+& \simeq -\dfrac{1}{\alpha^2 z} (a_1  +  z^2 B(z) + z^2 C(z)) \\
+& \simeq -\dfrac{1}{\alpha^2 z} (a_1  + \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right) + z^2 C(z)) \\
+& \simeq -\dfrac{1}{\alpha^2 z} (a_1  + \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)) \\
+\end{align*}
+
+
+Finally, finally,  we note that:
+\begin{align*}
+A_{\lambda}&=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  A\left( z=\dfrac{1}{-i \mu}\right)\\
+&=  \dfrac{-\hbar}{\mu} \dfrac{i \mu}{\alpha^2 } \left(a_1  + \dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\\
+&=  \dfrac{-i \hbar}{\alpha^2 } \left(a_1  + \dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right) 
+\end{align*}
+%
+%Now, once we figure out  power series expansions of following unknowns, we can plug it back to $B(z)$ and $C(z)$:
+%\begin{align*}
+%\beta(z) &= z/(1 -\alpha^2  z^2 ) \\
+% \tau(z) &= 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )\\
+% \omega_0 &= b_0 +  \delta_1  z   \beta(z)  a_1  \\
+% \omega_1 &= \delta_3 +  \delta_1     \beta(z)\\
+% \eta(z)&=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )\\
+% \theta_0&= c_0 +  \epsilon_1  z \beta(z) a_1\\
+% \theta_1&= \epsilon_2 + \epsilon_1   \beta(z)
+%\end{align*}
+%
+%Now, I have got $\beta(z) = z/(1 -\alpha^2  z^2 ) = \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}$. Hence, we get:
+%\begin{align*}
+%\beta(z) &= \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1} \\
+% \omega_0 &= b_0 +  \delta_1       a_1  \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+2} \\
+% \omega_1 &= \delta_3 +  \delta_1  \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}\\
+% \theta_0&= c_0 +  \epsilon_1   \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+2} a_1\\
+% \theta_1&= \epsilon_2 + \epsilon_1   \sum_{n=0}^{\infty} \alpha^{2n}z^{2n+1}
+%\end{align*}
+%
+%Now we need to figure out $\tau(z)$ and then we will figure out $\eta(z)$.
+%\begin{align*}
+%\tau(z)^{-1} &=  1 - \delta_2 z^2 -\delta_1  z^3   \beta(z)  \\
+%&=  1 - \delta_2 z^2 -\delta_1  \dfrac{z^4}{ 1 -\alpha^2  z^2 }    \\
+%&=  \dfrac{1} {1 -\alpha^2  z^2 }   (1 -\alpha^2  z^2- \delta_2 z^2 + \alpha^2 \delta_2 z^4 -\delta_1 z^4) \\
+%&=  \dfrac{1} {1 -\alpha^2  z^2 }   (1 -(\alpha^2 + \delta_2) z^2 + (\alpha^2 \delta_2 -\delta_1) z^4) \\
+%&= \dfrac{\alpha^2 \delta_2 -\delta_1} {1 -\alpha^2  z^2 } \zeta  (z) 
+%\end{align*}
+%
+%where $\zeta (z)= (\frac{1}{\alpha^2 \delta_2 -\delta_1} -\frac{\alpha^2 + \delta_2}{\alpha^2 \delta_2 -\delta_1} z^2 +  z^4)$. Let's simplify it further by writing it as $\zeta (z)= (z-z_1)(z-z_2)(z-z_3)(z-z_4)$, where $z_1, z_2, z_3,z_4$ are roots of $\zeta (z)$. Once we do that, then we can write its' reciprocal as sum of partial fractions. 
+%
+%
+%Now let's attack $\eta(z)$:
+%\begin{align*}
+%\eta(z)^{-1}&=1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)  \\
+% &=1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 ( 1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) ) 
+%\end{align*}
+%Now, we plug these values to find value of $A(z)$:
+%\begin{align}
+%A(z)  &=   a_1 \beta(z)   +  z^2 \beta(z) B(z) + z^2 \beta(z) C(z) 
+%\end{align}
+%
+%
+%Note that I need to find reciprocal of a polynomial here.
+%\url{http://www.sciencedirect.com/science/article/pii/S0377042705006230#bib20}
 
 \section{Properties of n-commutators}\label{sec.Cn}
 In this section, we would be proving some results of n-commutators $C^{(n)}$.
@@ -1151,7 +1224,49 @@ C^{(2n)}_T &=\delta C^{(2n-2)}_T + C^{(2n-2)}_O
 %\mathcal{A}^*_{\lambda}= i  \sum_{j=1}^{L-1} \alpha_j (c^{\dagger}_j c_{j+1} - c^{\dagger}_{j+1} c_{j}) 
 %\end{equation}
 %
-%I should include pictures drawn using sympy here.
+\section{Infinite summation method}
+
+Using theorem proved in appendix, we get
+\begin{align*}
+C^{(2n+1)}= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q} (C^{(2q)}_{T_2} + C^{(2q)}_{T_3}  )
+\end{align*}
+
+
+
+This shows that for any subsequent $C^{(2n+1)}$, we won't have any \textit{new} term apart from $C^{(1)},T_2$ and $T_3$. 
+
+In appendix, we have proved that if $C^{(2)}_T=  \delta T + O$ , then $C^{(2n)}_T= \delta^{n} T +  \delta^{n-1} \sum_{q=0}^{n-1} \delta^{-q} C^{(2q)}_O  $. In our case,  $C^{(2)}_{T_2}=  \delta_2 T_2 + O $ where $O=\delta_1 C^{(1)} + \delta_3 T_3$. Now, let's compute $C^{(2q)}_O$:
+
+\begin{align*}
+C^{(2)}_O&=\delta_1 C^{(3)} + \delta_3  C^{(2)}_{T_3} \\
+Similarly, C^{(2q)}_O&=\delta_1 C^{(2q+1)} + \delta_3  C^{(2q)}_{T_3} 
+\end{align*}
+
+Hence, we see that $C^{(2n)}_{T_2}= \delta_2^{n} T_2 +  \delta_2^{n-1} \sum_{q=0}^{n-1} \delta^{-q} (\delta_1 C^{(2q+1)} + \delta_3  C^{(2q)}_{T_3})  $. Similarly, $C^{(2n)}_{T_3}= \epsilon_3^{n} T_3 +  \epsilon_3^{n-1} \sum_{q=0}^{n-1}\epsilon_3^{-q} (\epsilon_1 C^{(2q+1)} + \epsilon_2  C^{(2q)}_{T_2})  $. 
+
+We are left with a set of three coupled recurrence equations given by:
+\begin{equation}
+\boxed{
+\begin{aligned}
+C^{(2n+1)}&= \alpha^{2n} C^{(1)} +\alpha^{2n-2} \sum_{q=0}^{n-1} \alpha^{-2q} (C^{(2q)}_{T_2} + C^{(2q)}_{T_3}  ) \\
+C^{(2q)}_{T_2} &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   (\delta_1 C^{(2p+1)} + \delta_3  C^{(2p)}_{T_3})\\
+C^{(2q)}_{T_3} &= \epsilon_3^{q} T_3 +  \epsilon_3^{q-1} \sum_{p=0}^{q-1}\epsilon_3^{-p} (\epsilon_1 C^{(2p+1)} + \epsilon_2  C^{(2p)}_{T_2}) 
+\end{aligned}
+}
+\end{equation}
+
+Now let's concentrate on $C^{(2q)}_{T_2}$ here:
+
+\begin{align}
+C^{(2q)}_{T_2} &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   (\delta_1 C^{(2p+1)} + \delta_3  C^{(2p)}_{T_3})\\
+ &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}    \delta_1 C^{(2p+1)} + \delta_2^{q-1}  \sum_{p=0}^{q-1} \delta_2^{-p}  \delta_3  C^{(2p)}_{T_3}\\
+ &= \delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}    \delta_1 C^{(2p+1)} + O\\
+& =\delta^{q}_2 T_2 +  \delta_2^{q-1} \sum_{p=0}^{q-1} \delta_2^{-p}   \delta_1 ( \alpha^{2p} C^{(1)} +\alpha^{2p-2} \sum_{l=0}^{p-1} \alpha^{-2l} (C^{(2l)}_{T_2} + C^{(2l)}_{T_3})) + O 
+\end{align}
+
+Hence, we see that we get infinite summation expression, which seems intractable to me.%I should include pictures drawn using sympy here.
+
+
 \section{Adiabatic gauge potential formula general derivation}\label{sec.gen_derivation}
 
 \begin{eqnarray}

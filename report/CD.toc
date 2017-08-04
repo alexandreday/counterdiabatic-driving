@@ -19,12 +19,12 @@
 \contentsline {section}{\numberline {6}Many body problem: integrable model}{13}{section.6}
 \contentsline {subsection}{\numberline {6.1}Ising model with local transverse magnetic field}{13}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Ising model with local transverse magnetic fields at two sites}{15}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Infinite summation}{15}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Linear recurrence coupled equations}{16}{subsubsection.6.2.2}
-\contentsline {subsubsection}{\numberline {6.2.3}Exact solution}{17}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.1}Exact solution using regulator method}{15}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Exact solution using variational approach}{16}{subsubsection.6.2.2}
 \contentsline {section}{\numberline {A}Linear recurrence coupled equations}{17}{appendix.A}
 \contentsline {section}{\numberline {B}Properties of n-commutators}{20}{appendix.B}
-\contentsline {section}{\numberline {C}Adiabatic gauge potential formula general derivation}{23}{appendix.C}
-\contentsline {section}{\numberline {D}Classical adiabatic gauge potential}{24}{appendix.D}
-\contentsline {section}{\numberline {E}An example of variational approximation scheme: non-integrable Ising spin chain}{25}{appendix.E}
-\contentsline {section}{\numberline {F}Transverse Field Ising model: calculations in spin basis}{26}{appendix.F}
+\contentsline {section}{\numberline {C}Infinite summation method}{23}{appendix.C}
+\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{23}{appendix.D}
+\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{25}{appendix.E}
+\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{25}{appendix.F}
+\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{27}{appendix.G}

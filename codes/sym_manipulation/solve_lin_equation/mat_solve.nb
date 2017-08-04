@@ -46,3 +46,16 @@ In[23]:=
 RSolve[{a[n]==b[n-1]+n,b[n]==a[n-1]-n,a[1]==b[1]==1},{a[n],b[n]},n]
 During evaluation of In[23]:= RSolve::ivar: {1,2,3} is not a valid variable.
 Out[23]= RSolve[{a[n]==n+{1,2,3}[-1+n],{1,2,3}[n]==-n+a[-1+n],a[1]=={1,2,3}[1]==1},{a[n],{1,2,3}[n]},n]
+
+m={{α^2,Subscript[δ,1],Subscript[ϵ,1]},{1,Subscript[δ,2],Subscript[ϵ,2]},{1,Subscript[δ,3],Subscript[ϵ,3]}}
+Out[1]= {{α^2,Subscript[δ, 1],Subscript[ϵ, 1]},{1,Subscript[δ, 2],Subscript[ϵ, 2]},{1,Subscript[δ, 3],Subscript[ϵ, 3]}}
+In[2]:= 
+MatrixForm[m]
+Out[2]//MatrixForm= (α^2	Subscript[δ, 1]	Subscript[ϵ, 1]
+1	Subscript[δ, 2]	Subscript[ϵ, 2]
+1	Subscript[δ, 3]	Subscript[ϵ, 3]
+
+)
+Assuming[α^2>0 && Subscript[δ,1]>0 &&Subscript[ϵ,1]>0 && Subscript[δ,2]>0 &&Subscript[ϵ,2]>0 Subscript[δ,3]>0 &&Subscript[ϵ,3] >0, FullSimplify[Eigenvalues[m] ]]
+During evaluation of In[7]:= FullSimplify::fas: Warning: one or more assumptions evaluated to False.
+Out[7]= $Aborted

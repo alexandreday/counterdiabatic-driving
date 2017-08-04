@@ -18,12 +18,12 @@
 \BOOKMARK [1][-]{section.6}{Many body problem: integrable model}{}% 18
 \BOOKMARK [2][-]{subsection.6.1}{Ising model with local transverse magnetic field}{section.6}% 19
 \BOOKMARK [2][-]{subsection.6.2}{Ising model with local transverse magnetic fields at two sites}{section.6}% 20
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Infinite summation}{subsection.6.2}% 21
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Linear recurrence coupled equations}{subsection.6.2}% 22
-\BOOKMARK [3][-]{subsubsection.6.2.3}{Exact solution}{subsection.6.2}% 23
-\BOOKMARK [1][-]{appendix.A}{Linear recurrence coupled equations}{}% 24
-\BOOKMARK [1][-]{appendix.B}{Properties of n-commutators}{}% 25
-\BOOKMARK [1][-]{appendix.C}{Adiabatic gauge potential formula general derivation}{}% 26
-\BOOKMARK [1][-]{appendix.D}{Classical adiabatic gauge potential}{}% 27
-\BOOKMARK [1][-]{appendix.E}{An example of variational approximation scheme: non-integrable Ising spin chain}{}% 28
-\BOOKMARK [1][-]{appendix.F}{Transverse Field Ising model: calculations in spin basis}{}% 29
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Exact solution using regulator method}{subsection.6.2}% 21
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Exact solution using variational approach}{subsection.6.2}% 22
+\BOOKMARK [1][-]{appendix.A}{Linear recurrence coupled equations}{}% 23
+\BOOKMARK [1][-]{appendix.B}{Properties of n-commutators}{}% 24
+\BOOKMARK [1][-]{appendix.C}{Infinite summation method}{}% 25
+\BOOKMARK [1][-]{appendix.D}{Adiabatic gauge potential formula general derivation}{}% 26
+\BOOKMARK [1][-]{appendix.E}{Classical adiabatic gauge potential}{}% 27
+\BOOKMARK [1][-]{appendix.F}{An example of variational approximation scheme: non-integrable Ising spin chain}{}% 28
+\BOOKMARK [1][-]{appendix.G}{Transverse Field Ising model: calculations in spin basis}{}% 29
