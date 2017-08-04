@@ -26,5 +26,5 @@
 \contentsline {section}{\numberline {B}Properties of n-commutators}{20}{appendix.B}
 \contentsline {section}{\numberline {C}Adiabatic gauge potential formula general derivation}{23}{appendix.C}
 \contentsline {section}{\numberline {D}Classical adiabatic gauge potential}{24}{appendix.D}
-\contentsline {section}{\numberline {E}An example of variational approximation scheme: non-integrable Ising spin chain}{24}{appendix.E}
+\contentsline {section}{\numberline {E}An example of variational approximation scheme: non-integrable Ising spin chain}{25}{appendix.E}
 \contentsline {section}{\numberline {F}Transverse Field Ising model: calculations in spin basis}{26}{appendix.F}

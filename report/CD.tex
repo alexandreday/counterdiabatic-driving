@@ -450,7 +450,7 @@ Hence, we find that :
 Hence, we get :
 \begin{equation}
 \boxed{
-\dfrac{d \sigma^2_E}{dt} =  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4 (E_n- E_m)^2}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
+\dfrac{d \sigma^2_E}{dt} =  - \kappa \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4 (E_n- E_m)^2}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
 \end{equation}
 
 We note that $\dfrac{d (\sigma^2_E)^{n}}{dt}$ is proportional to  $ \omega^2 = (E_n- E_m)^2$.
@@ -469,7 +469,7 @@ However, what is definitely surprising is that average transition rate $\langle 
 
 Now, let's apply ETH to this expression 
 \begin{align}
-\dfrac{d \sigma^2_E}{dt} &=  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2 \\
+\dfrac{d \sigma^2_E}{dt} &=  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4 (E_n- E_m)^2}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2 \\
 &=  - \sum_{ n} \sum_{m \neq n}\dfrac{\mu^4}{((E_n-E_m)^2 + \mu^2)^2}  e^{-S} |f_{O} R_{mn}|^2
 \end{align}
 
@@ -835,6 +835,14 @@ A(z)&= \sum_{n=0}^{\infty} a_{2n+1}z^{2n+1}\\
  B(z)&= \sum_{n=0}^{\infty} b_{2n}z^{2n}\\
 C(z)&= \sum_{n=0}^{\infty} c_{2n}z^{2n}
 \end{align}
+
+Importantly, we note that:
+\begin{align*}
+A_{\lambda} & =   \lim_{\mu \rightarrow 0}  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty} (-1)^{n} \dfrac{ a_{2n+1}}{\mu^{2n+1}}\\
+& =   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  \sum_{n=0}^{\infty}  a_{2n+1} \dfrac{i^{2n+1} }{\mu^{2n+1}}\\
+&=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  A\left( z=\dfrac{i}{\mu}\right)\\
+\end{align*}
+Now we expect $ A\left( z=\dfrac{i}{\mu}\right)= \mu f(z=\dfrac{i}{\mu})$ such that $\lim_{\mu \rightarrow 0} f(z=\dfrac{i}{\mu}) $ is finite.
 
 
 Using this, we get from one equation:
