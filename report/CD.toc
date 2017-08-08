@@ -23,8 +23,8 @@
 \contentsline {subsubsection}{\numberline {6.2.2}Exact solution using variational approach}{16}{subsubsection.6.2.2}
 \contentsline {section}{\numberline {A}Linear recurrence coupled equations}{17}{appendix.A}
 \contentsline {section}{\numberline {B}Properties of n-commutators}{21}{appendix.B}
-\contentsline {section}{\numberline {C}Infinite summation method}{23}{appendix.C}
-\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{24}{appendix.D}
-\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{25}{appendix.E}
-\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{26}{appendix.F}
-\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{27}{appendix.G}
+\contentsline {section}{\numberline {C}Infinite summation method}{24}{appendix.C}
+\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{25}{appendix.D}
+\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{26}{appendix.E}
+\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{27}{appendix.F}
+\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{28}{appendix.G}

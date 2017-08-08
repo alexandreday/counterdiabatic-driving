@@ -872,7 +872,7 @@ c_{2n} &= \epsilon_1 a_{2n-1} + \epsilon_2 b_{2n-2} + \epsilon_3 c_{2n-2}\\
 
 where $a_n= \{a_1, a_3, \ldots\}$, $b_n= \{b_0, b_2, \ldots\}$ and $c_n= \{c_0, c_2, \ldots\}$.
 
-We are looking for a function $f$ such that $a_n= f(a_1, b_0,c_0)$. Similarly, we will get $b_n= g(a_1, b_0,c_0)$ and $c_n= h(a_1, b_0,c_0)$.
+%We are looking for a function $f$ such that $a_n= f(a_1, b_0,c_0)$. Similarly, we will get $b_n= g(a_1, b_0,c_0)$ and $c_n= h(a_1, b_0,c_0)$.
 
 We will solve this using generating function approach. We define three functions:
 \begin{align}
@@ -887,7 +887,7 @@ A_{\lambda} & =   \lim_{\mu \rightarrow 0}  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\i
 & =   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  \sum_{n=0}^{\infty}  a_{2n+1} \dfrac{i^{2n+1} }{\mu^{2n+1}}\\
 &=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  A\left( z=\dfrac{i}{\mu}\right)\\
 \end{align*}
-Now we expect $ A\left( z=\dfrac{i}{\mu}\right)= \mu f(z=\dfrac{i}{\mu})$ such that $\lim_{\mu \rightarrow 0} f(z=\dfrac{i}{\mu}) $ is finite.
+Now we expect $ A\left( z=\dfrac{i}{\mu}\right)= \mu f(z=\dfrac{i}{\mu})$ such that $\lim_{\mu \rightarrow 0} f(z=\dfrac{i}{\mu}) $ is finite and non-zero.
 
 
 Using this, we get from one equation:
@@ -910,124 +910,151 @@ Similarly, from the second equation we get:
 b_{2n}  z^{2n}&= \delta_1 a_{2n-1} z^{2n} + \delta_2 b_{2n-2} z^{2n} +  \delta_3 c_{2n-2} z^{2n}\\
 \sum_{n=1}^{\infty} b_{2n}  z^{2n}&=\delta_1   \sum_{n=1}^{\infty}a_{2n-1} z^{2n} + \delta_2  \sum_{n=1}^{\infty}  b_{2n-2} z^{2n} +  \delta_3 \sum_{n=1}^{\infty}c_{2n-2} z^{2n}\\
 B(z) -b_0 &=\delta_1  z A(z) + \delta_2 z^2 B(z) + \delta_3 z^2 C(z)\\
-B(z)(1 - \delta_2 z^2 )  &=  b_0 + \delta_1  z A(z) +  \delta_3 z^3 C(z)
+B(z)(1 - \delta_2 z^2 )  &=  b_0 + \delta_1  z A(z) +  \delta_3 z^2 C(z)
 \end{align}
 Finally, we find from third equation:
 \begin{equation}
-C(z)(1 - \epsilon_3 z^2 )  =  c_0 + \epsilon_1  z A(z) +  \epsilon_2 z^3 B(z)
+C(z)(1 - \epsilon_3 z^2 )  =  c_0 + \epsilon_1  z A(z) +  \epsilon_2 z^2 B(z)
 \end{equation}
 
 Using the value of $A(z)$ we get:
 \begin{align*}
-B(z)(1 - \delta_2 z^2 )  &=  b_0 + \delta_3 z^3 C(z) +  \delta_1  z   \beta(z) (a_1  +  z^2 B(z) + z^2 C(z)) \\
-B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 + \delta_3 z^3 C(z) +  \delta_1  z   \beta(z)  (a_1  +   z^2 C(z)) \\
-B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 +  \delta_1  z   \beta(z)  a_1 + \delta_3 z^3 C(z) +  \delta_1     \beta(z)   z^3 C(z)) \\
-B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 +  \delta_1  z   \beta(z)  a_1 + (\delta_3 +  \delta_1     \beta(z) )  z^3 C(z) \\
-B(z)  &=  \tau(z) ( \omega_0+    \omega_1 z^3 C(z) )\\
+B(z)(1 - \delta_2 z^2 )  &=  b_0 + \delta_3 z^2 C(z) +  \delta_1  z   \beta(z) (a_1  +  z^2 B(z) + z^2 C(z)) \\
+B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 + \delta_3 z^2 C(z) +  \delta_1  z   \beta(z)  (a_1  +   z^2 C(z)) \\
+B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 +  \delta_1  z   \beta(z)  a_1 + \delta_3 z^2 C(z) +  \delta_1     \beta(z)   z^3 C(z) \\
+B(z)(1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )  &=  b_0 +  \delta_1  z   \beta(z)  a_1 + (\delta_3 +  \delta_1 z     \beta(z) )  z^2 C(z) \\
+B(z)  &=  \tau(z) ( \omega_0+    \omega_1 z^2 C(z) )\\
 \end{align*}
-where $\tau(z) = 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )$,  $\omega_0= b_0 +  \delta_1  z   \beta(z)  a_1 $ and $\omega_1= \delta_3 +  \delta_1     \beta(z) $.
+where $\tau(z) = 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )$,  $\omega_0= b_0 +  \delta_1  z   \beta(z)  a_1 $ and $\omega_1= \delta_3 +  \delta_1  z    \beta(z) $.
 
 Similarly, we get for $C(z)$:
 \begin{align*}
 C(z)(1 - \epsilon_3 z^2 ) & =  c_0 +   \epsilon_2 z^3 B(z) + \epsilon_1  z A(z)\\
 C(z)(1 - \epsilon_3 z^2 )  &=  c_0 +   \epsilon_2 z^3 B(z) + \epsilon_1  z \beta(z) (a_1  +  z^2 B(z) + z^2 C(z))\\
 C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  c_0 +  \epsilon_1  z \beta(z) a_1+  \epsilon_2 z^3 B(z) + \epsilon_1   \beta(z) z^3 B(z) \\
-C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  c_0 +  \epsilon_1  z \beta(z) a_1+  (\epsilon_2 + \epsilon_1   \beta(z)) z^3 B(z)\\
-C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 B(z)
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  c_0 +  \epsilon_1  z \beta(z) a_1+  (\epsilon_2 + \epsilon_1  z \beta(z)) z^2 B(z)\\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^2 B(z)
 \end{align*}
-where $\theta_0= c_0 +  \epsilon_1  z \beta(z) a_1$ and $\theta_1= \epsilon_2 + \epsilon_1   \beta(z)$
+where $\theta_0= c_0 +  \epsilon_1  z \beta(z) a_1$ and $\theta_1= \epsilon_2 + \epsilon_1   z \beta(z)$
 
-Now, we will use the fact that $B(z)  =  \tau(z) ( \omega_0+    \omega_1 z^3 C(z) )$ to find out value of $C(z)$:
+Now, we will use the fact that $B(z)  =  \tau(z) ( \omega_0+    \omega_1 z^2 C(z) )$ to find out value of $C(z)$:
 \begin{align*}
-C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 B(z) \\
-C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 \tau(z) ( \omega_0+    \omega_1 z^3 C(z) ) \\
-C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^3 \tau(z)  \omega_0 + \theta_1   \omega_1  z^6 \tau(z)    C(z) \\
-C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )  &=  \theta_0+ \theta_1  z^3 \tau(z)  \omega_0  \\
-C(z)  &=  \eta(z)( \theta_0+ \theta_1  z^3 \tau(z)  \omega_0 ) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^2 B(z) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1  z^2 \tau(z) ( \omega_0+    \omega_1 z^2 C(z) ) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z))  &=  \theta_0+ \theta_1 \omega_0  z^2 \tau(z)   + \theta_1   \omega_1  z^4 \tau(z)    C(z) \\
+C(z)(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^4 \tau(z)   )  &=  \theta_0+ \theta_1 \omega_0 z^2 \tau(z)    \\
+C(z)  &=  \eta(z)( \theta_0+ \theta_1  \omega_0 z^2 \tau(z)  ) \\
 \end{align*}
-where $\eta(z)=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )$.
+where $\eta(z)=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^4 \tau(z)   )$.
 
 Hence, 
 \begin{equation}
-\boxed{C(z)  =  \eta(z) \theta_0+  \omega_0 \theta_1  z^3 \eta(z) \tau(z)   }
+\boxed{C(z)  =  \eta(z) (\theta_0+  \omega_0 \theta_1  z^2  \tau(z) )  }
 \end{equation}
 
 Hence, the value of $B(z)$ is :
 \begin{align*}
-B(z)  &=    \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) C(z) \\
-&= \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z)( \theta_0+ \theta_1  z^3 \tau(z)  \omega_0 ) 
+B(z)  &=   \tau(z)( \omega_0  +    \omega_1 z^2  C(z)) \\
+&= \omega_0 \tau(z) +    \omega_1 z^2  \tau(z) \eta(z)( \theta_0+ \theta_1  z^2 \tau(z)  \omega_0 ) 
 \end{align*}
 
 
 Hence, 
 \begin{equation}
-\boxed{B(z)  = \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2   }
+\boxed{B(z)  = \omega_0 \tau(z) +   \theta_0 \omega_1 z^2  \tau(z) \eta(z)  + \omega_0 \omega_1  \theta_1    z^4 \eta(z)  \tau(z) ^2   }
 \end{equation}
 
- For large z, we get 
+ For $\lim z \rightarrow \infty$, we get 
 
 
 \begin{align*}
 \beta(z) &= z/(1 -\alpha^2  z^2 ) \simeq -\dfrac{1}{\alpha^2 z} \\
  \omega_0 &= b_0 +  \delta_1  z   \beta(z)  a_1 \simeq b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}  \\
- \omega_1 &= \delta_3 +  \delta_1     \beta(z) \simeq \delta_3 \\  
- \theta_0&= c_0 +  \epsilon_1  z \beta(z) a_1 \simeq c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}    \\
- \theta_1&= \epsilon_2 + \epsilon_1   \beta(z) \simeq \epsilon_2
+\omega_1 &= \delta_3 +  \delta_1  z    \beta(z)  \simeq \delta_3  -\dfrac{\delta_1}{\alpha^2 } \\  
+ \theta_0&= c_0 +  \epsilon_1  z \beta(z) a_1 \simeq \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}  \right)  \\
+\theta_1&= \epsilon_2 + \epsilon_1   z \beta(z) \simeq \epsilon_2  -\dfrac{\epsilon_1 }{\alpha^2 }
 \end{align*}
+We note that $\omega_0$ depend on $b_0$ and $\theta_0$ depend on $c_0$.
 
 Now, I will figure out $\tau(z)$:
 \begin{align*}
 \tau(z) &= 1/ (1 - \delta_2 z^2 -\delta_1  z^3   \beta(z) )\\
 & \simeq \dfrac{1}{1 - \delta_2 z^2 + \delta_1  z^2/ \alpha^2    }\\
 & \simeq \dfrac{1}{(\delta_1/ \alpha^2 - \delta_2) z^2      }\\
-&\simeq \dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      }
+&\simeq \dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      }= \dfrac{\theta_2 }{z^2}
 \end{align*}
 
-
+where $\theta_2=\dfrac{\alpha^2}{\delta_1 -  \alpha^2 \delta_2     }$
 Now, I will figure out $\eta(z)$:
 \begin{align*}
-\eta(z)&=1/(1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^6 \tau(z)   )\\
-& \simeq \dfrac{1}{1 - \epsilon_3 z^2 + \epsilon_1  z^2/ \alpha^2 -\epsilon_2   \delta_3 z^6 \tau(z)     }\\
-& \simeq -\dfrac{\delta_1/ \alpha^2 - \delta_2}{\epsilon_2   \delta_3     } \dfrac{1}{z^4}\\
-& \simeq -\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \dfrac{1}{z^4}
+\eta(z)&=\dfrac{1}{1 - \epsilon_3 z^2 - \epsilon_1  z^3   \beta(z) -\theta_1   \omega_1  z^4 \tau(z)   }\\
+& \simeq \dfrac{1}{1 - \epsilon_3 z^2 + \epsilon_1  z^2/ \alpha^2 -\theta_1   \omega_1 z^4 \tau(z)     }\\
+& \simeq \dfrac{1}{1 - \epsilon_3 z^2 + \epsilon_1  z^2/ \alpha^2 - \frac{\theta_1   \omega_1 \alpha^2}{\delta_1 -  \alpha^2 \delta_2} z^2}\\
+& \simeq \dfrac{1}{ - \epsilon_3  + \epsilon_1  / \alpha^2 - \frac{\theta_1   \omega_1 \alpha^2}{\delta_1 -  \alpha^2 \delta_2} } \dfrac{1}{z^2} = \dfrac{\theta_3 }{z^2}
 \end{align*}
+
+where $\theta_3=\dfrac{1}{ - \epsilon_3  + \epsilon_1  / \alpha^2 - \frac{\theta_1   \omega_1 \alpha^2}{\delta_1 -  \alpha^2 \delta_2} }$. 
 
 
 Hence, we get for $C(z)$:
 \begin{align*}
-C(z)  &=  \eta(z) \theta_0+  \omega_0 \theta_1  z^3 \eta(z) \tau(z)   \\
-& \simeq -\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2} \right) \dfrac{1}{z^4} +  \omega_0 \theta_1  z^3 \eta(z) \tau(z) \\
-&\simeq -\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2} \right) \dfrac{1}{z^4} - \epsilon_2 \left(b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}  \right)  \left( \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   }  \right) \left(\dfrac{\alpha^2}{\delta_1 -  \alpha^2 \delta_2    } \right) \dfrac{1}{z^3}
+C(z)  &=  \eta(z) (\theta_0+  \omega_0 \theta_1  z^2  \tau(z) ) \\
+&=  \theta_0 \eta(z) +  \omega_0 \theta_1  z^2  \tau(z)\eta(z) \\
+&=  \theta_0 \dfrac{\theta_3 }{z^2} +  \omega_0 \theta_1  z^2  \dfrac{\theta_2 }{z^2} \dfrac{\theta_3 }{z^2} \\
+&=  (\theta_0 \theta_3  +    \omega_0 \theta_1 \theta_2 \theta_3 ) \dfrac{1 }{z^2}  \\
 \end{align*}
 
 
 Hence, we get for $B(z)$:
 \begin{align*}
-B(z)  & = \omega_0 \tau(z) +    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2   \\
-& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }+    \omega_1 z^3  \tau(z) \eta(z) \theta_0 + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2 \\
-& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }- z^3   \delta_3 (c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}   )  (\dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      }) (\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \dfrac{1}{z^4})  + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2 \\
-& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }-  \left(\dfrac{c_0 \alpha^2-\epsilon_1   a_1}{\delta_1 -  \alpha^2 \delta_2     } \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2       \alpha^2   }\right)  \dfrac{1}{z^3} + \omega_0 \omega_1  \theta_1    z^2 \eta(z)  \tau(z) ^2 \\
-& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }-  \left(\dfrac{c_0 \alpha^2-\epsilon_1   a_1}{\delta_1 -  \alpha^2 \delta_2     } \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2       \alpha^2   }\right)  \dfrac{1}{z^3} - z^2 (b_0 - \dfrac{ \delta_1  a_1}{\alpha^2})\delta_3  \epsilon_2    (\dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2   \delta_3    \alpha^2   } \dfrac{1}{z^4})  \left(\dfrac{\alpha^2}{(\delta_1 -  \alpha^2 \delta_2) z^2      } \right)^2 \\
-& = \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\dfrac{1}{ z^2      }-  \left(\dfrac{c_0 \alpha^2-\epsilon_1   a_1}{\delta_1 -  \alpha^2 \delta_2     } \dfrac{\delta_1 - \delta_2  \alpha^2}{\epsilon_2       \alpha^2   }\right)  \dfrac{1}{z^3} -   \dfrac{(b_0 \alpha^2 - \delta_1  a_1)   (\delta_1 - \delta_2  \alpha^2 ) }{(\delta_1 -  \alpha^2 \delta_2)   ^2  } \dfrac{1}{z^6}
+B(z)  & =\omega_0 \tau(z) +   \theta_0 \omega_1 z^2  \tau(z) \eta(z)  + \omega_0 \omega_1  \theta_1    z^4 \eta(z)  \tau(z) ^2  \\
+& =\omega_0 \dfrac{\theta_2 }{z^2} +   \theta_0 \omega_1 z^2  \dfrac{\theta_2 }{z^2} \eta(z)  + \omega_0 \omega_1  \theta_1    z^4 \eta(z) \dfrac{\theta_2^2 }{z^4} \\
+& =\omega_0 \dfrac{\theta_2 }{z^2} +  \omega_1 \theta_0  \theta_2  \eta(z)  + \omega_0 \omega_1  \theta_1  \theta_2^2  \eta(z)  \\
+& =(\omega_0 \theta_2 +  \omega_1 \theta_0  \theta_2   \theta_3  + \omega_0 \omega_1  \theta_1  \theta_2^2  \theta_3)\dfrac{ 1}{z^2}  
 \end{align*}
 
 
-Finally, we get :
+Finally, we get for $A(z)$ :
 
 
 \begin{align*}
 A(z) =  &\beta(z) (a_1  +  z^2 B(z) + z^2 C(z)) \\
 & \simeq -\dfrac{1}{\alpha^2 z} (a_1  +  z^2 B(z) + z^2 C(z)) \\
-& \simeq -\dfrac{1}{\alpha^2 z} (a_1  + \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right) + z^2 C(z)) \\
-& \simeq -\dfrac{1}{\alpha^2 z} (a_1  + \left(\dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)) \\
+& \simeq -\dfrac{1}{\alpha^2 z} (a_1  +  \omega_0 \theta_2 +  \omega_1 \theta_0  \theta_2   \theta_3  + \omega_0 \omega_1  \theta_1  \theta_2^2  \theta_3 +\theta_0 \theta_3  +    \omega_0 \theta_1 \theta_2 \theta_3) \\
+&= -\dfrac{1}{\alpha^2 z} (a_1  +  \omega_0 \theta_2 + \theta_0 \theta_3+ (\omega_1 \theta_0   +  \omega_0 \theta_1) \theta_2 \theta_3 + \omega_0 \omega_1  \theta_1  \theta_2^2  \theta_3  )\\
+&=-\dfrac{1}{\alpha^2 z} \left(a_1  + \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right) \theta_2 + \theta_0 \theta_3+ (\omega_1 \theta_0   +  \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)\theta_1) \theta_2 \theta_3 \right. \\
+& \left.  + \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)\omega_1  \theta_1  \theta_2^2  \theta_3  \right)\\
+&=-\dfrac{1}{\alpha^2 z} \left(a_1  + \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right) \theta_2 +\left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}  \right)  \theta_3+ (\omega_1 \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}  \right)    +  \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)\theta_1) \theta_2 \theta_3 \right. \\
+& \left.  + \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)\omega_1  \theta_1  \theta_2^2  \theta_3  \right)\\
+&=-\dfrac{1}{\alpha^2 z} \left(a_1  + \theta_2 b_0 - \dfrac{ \delta_1  \theta_2 }{\alpha^2} a_1 +\theta_3 c_0 -\dfrac{\epsilon_1 \theta_3  }{\alpha^2}  a_1  + \omega_1  \theta_2 \theta_3 \left(c_0 -\dfrac{\epsilon_1   a_1}{\alpha^2}  \right)    +  \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)\theta_1 \theta_2 \theta_3  \right. \\
+& \left.  + \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)\omega_1  \theta_1  \theta_2^2  \theta_3  \right)\\
+&=-\dfrac{1}{\alpha^2 z} \left(a_1  + \theta_2 b_0 - \dfrac{ \delta_1  \theta_2 }{\alpha^2} a_1 +\theta_3 c_0 -\dfrac{\epsilon_1 \theta_3  }{\alpha^2}  a_1   +   \omega_1  \theta_2 \theta_3 c_0 -\dfrac{\epsilon_1   \omega_1  \theta_2 \theta_3 }{\alpha^2} a_1     \right. \\
+& \left. +  \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)(\theta_1 \theta_2 \theta_3   + \omega_1  \theta_1  \theta_2^2  \theta_3 ) \right)\\
 \end{align*}
 
+We are getting closer to final expression by clubbing together coefficients of $a_1, b_0, c_0$: 
+\begin{align*}
+A(z) 
+&=-\dfrac{1}{\alpha^2 z} \left(a_1   - \dfrac{ \delta_1  \theta_2 }{\alpha^2} a_1 -\dfrac{\epsilon_1 \theta_3  }{\alpha^2}  a_1  -\dfrac{\epsilon_1   \omega_1  \theta_2 \theta_3 }{\alpha^2} a_1       + \theta_2 b_0   \right. \\
+& \left. +  \left( b_0 - \dfrac{ \delta_1  a_1}{\alpha^2}\right)(\theta_1 \theta_2 \theta_3   + \omega_1  \theta_1  \theta_2^2  \theta_3 ) +\theta_3 c_0  +   \omega_1  \theta_2 \theta_3 c_0   \right)\\
+&=-\dfrac{1}{\alpha^2 z} \left(\left(1   - \dfrac{ \delta_1  \theta_2 }{\alpha^2} -\dfrac{\epsilon_1 \theta_3  }{\alpha^2}   -\dfrac{\epsilon_1   \omega_1  \theta_2 \theta_3 }{\alpha^2}    - \dfrac{ \delta_1  }{\alpha^2}(\theta_1 \theta_2 \theta_3   + \omega_1  \theta_1  \theta_2^2  \theta_3 ) \right) a_1 \right. \\
+& \left. + (1 + \theta_1  \theta_3 (1+   \omega_1   \theta_2   )) \theta_2 b_0  \right. \\
+& \left.  +( 1  +   \omega_1  \theta_2 ) \theta_3 c_0   \right)\\
+&=-\dfrac{1}{\alpha^2 z} f(z)\\
+\end{align*}
+where $f(z)=\left(1   - \dfrac{ \delta_1  \theta_2 }{\alpha^2} -\dfrac{\epsilon_1 \theta_3  }{\alpha^2}    -\dfrac{\epsilon_1   \omega_1  \theta_2 \theta_3 }{\alpha^2}       - \dfrac{ \delta_1  }{\alpha^2}(\theta_1 \theta_2 \theta_3   + \omega_1  \theta_1  \theta_2^2  \theta_3 ) \right) a_1
+  + (1 + \theta_1  \theta_3 (1+   \omega_1   \theta_2   )) \theta_2 b_0  \\
+ +( 1  +   \omega_1  \theta_2 ) \theta_3 c_0   $.
+ 
+ 
+ We note that $f(z)$ is a constant function in $z$ and therefore, this is the required function $f$ we were looking for.
 
 Finally, finally,  we note that:
 \begin{align*}
 A_{\lambda}&=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  A\left( z=\dfrac{1}{-i \mu}\right)\\
-&=  \dfrac{-\hbar}{\mu} \dfrac{i \mu}{\alpha^2 } \left(a_1  + \dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right)\\
-&=  \dfrac{-i \hbar}{\alpha^2 } \left(a_1  + \dfrac{b_0 \alpha^2 -  \delta_1  a_1}{\delta_1 -  \alpha^2 \delta_2}\right) 
+&= \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  A|_{z^{-1}=-i \mu}\\
+&= \lim_{\mu \rightarrow 0}  \dfrac{\hbar}{\mu}  \dfrac{1}{\alpha^2 z} f(z)|_{z^{-1}=-i \mu}\\
+&=  \dfrac{-i \hbar}{\alpha^2 } f(z)\\
 \end{align*}
 %
 %Now, once we figure out  power series expansions of following unknowns, we can plug it back to $B(z)$ and $C(z)$:
