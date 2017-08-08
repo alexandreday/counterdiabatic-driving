@@ -1,0 +1,735 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     24360,        727]
+NotebookOptionsPosition[     22278,        667]
+NotebookOutlinePosition[     22612,        682]
+CellTagsIndexPosition[     22569,        679]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{"m", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\[Alpha]", "^", "2"}], ",", 
+       RowBox[{"Subscript", "[", 
+        RowBox[{"\[Delta]", ",", " ", "1"}], "]"}], " ", ",", 
+       RowBox[{"Subscript", "[", 
+        RowBox[{"\[Epsilon]", ",", " ", "1"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"Subscript", "[", 
+        RowBox[{"\[Delta]", ",", " ", "2"}], "]"}], ",", " ", 
+       RowBox[{"Subscript", "[", 
+        RowBox[{"\[Epsilon]", ",", " ", "2"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", 
+       RowBox[{"Subscript", "[", 
+        RowBox[{"\[Delta]", ",", " ", "3"}], "]"}], ",", 
+       RowBox[{"Subscript", "[", 
+        RowBox[{"\[Epsilon]", ",", " ", "3"}], "]"}]}], "}"}]}], 
+    "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.711117379108405*^9, 
+  3.711117379144126*^9}},ExpressionUUID->"de3e5725-1546-40a7-962e-\
+8f43ce2742b3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SuperscriptBox["\[Alpha]", "2"], ",", 
+     SubscriptBox["\[Delta]", "1"], ",", 
+     SubscriptBox["\[Epsilon]", "1"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     SubscriptBox["\[Delta]", "2"], ",", 
+     SubscriptBox["\[Epsilon]", "2"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", 
+     SubscriptBox["\[Delta]", "3"], ",", 
+     SubscriptBox["\[Epsilon]", "3"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7111173820178013`*^9, 
+  3.711117463857697*^9},ExpressionUUID->"73528664-9651-416a-af5f-\
+9fac1eb0f13e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", "m", "]"}]], "Input",
+ CellChangeTimes->{{3.711117439512616*^9, 
+  3.7111174752453833`*^9}},ExpressionUUID->"24e0e67e-f03d-4ddc-96c9-\
+0b6b21eaf940"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      SuperscriptBox["\[Alpha]", "2"], 
+      SubscriptBox["\[Delta]", "1"], 
+      SubscriptBox["\[Epsilon]", "1"]},
+     {"1", 
+      SubscriptBox["\[Delta]", "2"], 
+      SubscriptBox["\[Epsilon]", "2"]},
+     {"1", 
+      SubscriptBox["\[Delta]", "3"], 
+      SubscriptBox["\[Epsilon]", "3"]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.711117450246159*^9, 
+  3.711117475963215*^9}},ExpressionUUID->"1500975b-fa9a-46e8-9263-\
+511ae1134556"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"Inverse", "[", "m", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.711117479784317*^9, 3.711117490342683*^9}, {
+  3.71111754615022*^9, 
+  3.711117554693884*^9}},ExpressionUUID->"516aeb84-3c18-42ca-a5c1-\
+940f4a41131b"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "3"]}], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]], 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]], 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]]},
+     {
+      FractionBox[
+       RowBox[{
+        SubscriptBox["\[Epsilon]", "2"], "-", 
+        SubscriptBox["\[Epsilon]", "3"]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]], 
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]], 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["\[Epsilon]", "1"], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]]},
+     {
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["\[Delta]", "2"]}], "+", 
+        SubscriptBox["\[Delta]", "3"]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]], 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["\[Delta]", "1"], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]], 
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["\[Delta]", "1"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"]}]}], 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", 
+          SubscriptBox["\[Delta]", "2"]}], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "1"]}], "+", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "1"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}], "+", 
+        RowBox[{
+         SuperscriptBox["\[Alpha]", "2"], " ", 
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}]]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.71111749142715*^9, 
+  3.711117557212566*^9},ExpressionUUID->"6b661ecf-6e2d-40b6-ae23-\
+589102963482"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "=", 
+  RowBox[{
+   RowBox[{"-", "I"}], "*", "\[HBar]", "*", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.711117681990554*^9, 3.711117696145612*^9}, 
+   3.711128591455508*^9},ExpressionUUID->"ef991971-e888-4d54-920c-\
+dd49afa6263a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "\[ImaginaryI]"}], " ", "\[HBar]"}], ",", "0", ",", "0"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.71111769710725*^9},ExpressionUUID->"c484396f-4af4-45d3-bed9-dda136296da6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"x", "=", 
+  RowBox[{"LinearSolve", "[", 
+   RowBox[{"m", ",", "b"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.711117704603014*^9, 3.711117705025734*^9}, 
+   3.711128474642757*^9},ExpressionUUID->"d967425a-222b-43a5-8d11-\
+984c328b0f15"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"\[ImaginaryI]", " ", "\[HBar]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["\[Delta]", "3"], " ", 
+         SubscriptBox["\[Epsilon]", "2"]}], "-", 
+        RowBox[{
+         SubscriptBox["\[Delta]", "2"], " ", 
+         SubscriptBox["\[Epsilon]", "3"]}]}], ")"}]}], 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[Delta]", "2"], " ", 
+       SubscriptBox["\[Epsilon]", "1"]}], "-", 
+      RowBox[{
+       SubscriptBox["\[Delta]", "3"], " ", 
+       SubscriptBox["\[Epsilon]", "1"]}], "-", 
+      RowBox[{
+       SubscriptBox["\[Delta]", "1"], " ", 
+       SubscriptBox["\[Epsilon]", "2"]}], "+", 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], " ", 
+       SubscriptBox["\[Delta]", "3"], " ", 
+       SubscriptBox["\[Epsilon]", "2"]}], "+", 
+      RowBox[{
+       SubscriptBox["\[Delta]", "1"], " ", 
+       SubscriptBox["\[Epsilon]", "3"]}], "-", 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], " ", 
+       SubscriptBox["\[Delta]", "2"], " ", 
+       SubscriptBox["\[Epsilon]", "3"]}]}]]}], ",", 
+   FractionBox[
+    RowBox[{"\[ImaginaryI]", " ", "\[HBar]", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["\[Epsilon]", "2"], "-", 
+       SubscriptBox["\[Epsilon]", "3"]}], ")"}]}], 
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Delta]", "2"], " ", 
+      SubscriptBox["\[Epsilon]", "1"]}], "-", 
+     RowBox[{
+      SubscriptBox["\[Delta]", "3"], " ", 
+      SubscriptBox["\[Epsilon]", "1"]}], "-", 
+     RowBox[{
+      SubscriptBox["\[Delta]", "1"], " ", 
+      SubscriptBox["\[Epsilon]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", "2"], " ", 
+      SubscriptBox["\[Delta]", "3"], " ", 
+      SubscriptBox["\[Epsilon]", "2"]}], "+", 
+     RowBox[{
+      SubscriptBox["\[Delta]", "1"], " ", 
+      SubscriptBox["\[Epsilon]", "3"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[Alpha]", "2"], " ", 
+      SubscriptBox["\[Delta]", "2"], " ", 
+      SubscriptBox["\[Epsilon]", "3"]}]}]], ",", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{"\[ImaginaryI]", " ", "\[HBar]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Delta]", "2"], "-", 
+        SubscriptBox["\[Delta]", "3"]}], ")"}]}], 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[Delta]", "2"], " ", 
+       SubscriptBox["\[Epsilon]", "1"]}], "-", 
+      RowBox[{
+       SubscriptBox["\[Delta]", "3"], " ", 
+       SubscriptBox["\[Epsilon]", "1"]}], "-", 
+      RowBox[{
+       SubscriptBox["\[Delta]", "1"], " ", 
+       SubscriptBox["\[Epsilon]", "2"]}], "+", 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], " ", 
+       SubscriptBox["\[Delta]", "3"], " ", 
+       SubscriptBox["\[Epsilon]", "2"]}], "+", 
+      RowBox[{
+       SubscriptBox["\[Delta]", "1"], " ", 
+       SubscriptBox["\[Epsilon]", "3"]}], "-", 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], " ", 
+       SubscriptBox["\[Delta]", "2"], " ", 
+       SubscriptBox["\[Epsilon]", "3"]}]}]]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7111177061467257`*^9},ExpressionUUID->"3f929da1-2bbc-475f-8ad1-\
+41c67c4e440e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TeXForm", "[", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"Det", "[", "m", "]"}], "*", "x"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.711117774072529*^9, 3.711117804919044*^9}, {
+  3.711117927698206*^9, 3.71111794156905*^9}, {3.711117986303714*^9, 
+  3.711118046122706*^9}, {3.711128454993902*^9, 3.7111284585307903`*^9}, {
+  3.711128515314554*^9, 3.711128516001232*^9}, {3.711128674750033*^9, 
+  3.7111286833568*^9}},ExpressionUUID->"f1fc68ed-1126-4bbe-b0ca-9e7473b26317"],
+
+Cell["\<\
+\\left\\{i \\hbar  \\left(\\delta _3 \\epsilon _2-\\delta _2 \\epsilon \
+_3\\right),-i \\left(\\epsilon _2-\\epsilon _3\\right) \\hbar ,i \
+\\left(\\delta _2-\\delta
+   _3\\right) \\hbar \\right\\}\
+\>", "Output",
+ CellChangeTimes->{{3.711117787386471*^9, 3.711117805610882*^9}, 
+   3.7111179422757998`*^9, {3.711118041619609*^9, 3.7111180471046133`*^9}, 
+   3.711128459423407*^9, 3.711128517230967*^9, 
+   3.7111286858203783`*^9},ExpressionUUID->"a2e8ea07-fbfe-48ed-8edc-\
+c3f4d2d22916"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "[", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
+    RowBox[{"Det", "[", "m", "]"}], "*", 
+    RowBox[{"Inverse", "[", "m", "]"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.711117839140937*^9, 3.7111178659370127`*^9}, {
+   3.71111797140337*^9, 3.71111797340737*^9}, 
+   3.711128467714472*^9},ExpressionUUID->"5fc76e66-d36d-4c6c-9513-\
+20ddc072a810"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["\[Delta]", "3"]}], " ", 
+        SubscriptBox["\[Epsilon]", "2"]}], "+", 
+       RowBox[{
+        SubscriptBox["\[Delta]", "2"], " ", 
+        SubscriptBox["\[Epsilon]", "3"]}]}], 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["\[Delta]", "3"], " ", 
+        SubscriptBox["\[Epsilon]", "1"]}], "-", 
+       RowBox[{
+        SubscriptBox["\[Delta]", "1"], " ", 
+        SubscriptBox["\[Epsilon]", "3"]}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         SubscriptBox["\[Delta]", "2"]}], " ", 
+        SubscriptBox["\[Epsilon]", "1"]}], "+", 
+       RowBox[{
+        SubscriptBox["\[Delta]", "1"], " ", 
+        SubscriptBox["\[Epsilon]", "2"]}]}]},
+     {
+      RowBox[{
+       SubscriptBox["\[Epsilon]", "2"], "-", 
+       SubscriptBox["\[Epsilon]", "3"]}], 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["\[Epsilon]", "1"]}], "+", 
+       RowBox[{
+        SuperscriptBox["\[Alpha]", "2"], " ", 
+        SubscriptBox["\[Epsilon]", "3"]}]}], 
+      RowBox[{
+       SubscriptBox["\[Epsilon]", "1"], "-", 
+       RowBox[{
+        SuperscriptBox["\[Alpha]", "2"], " ", 
+        SubscriptBox["\[Epsilon]", "2"]}]}]},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["\[Delta]", "2"]}], "+", 
+       SubscriptBox["\[Delta]", "3"]}], 
+      RowBox[{
+       SubscriptBox["\[Delta]", "1"], "-", 
+       RowBox[{
+        SuperscriptBox["\[Alpha]", "2"], " ", 
+        SubscriptBox["\[Delta]", "3"]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        SubscriptBox["\[Delta]", "1"]}], "+", 
+       RowBox[{
+        SuperscriptBox["\[Alpha]", "2"], " ", 
+        SubscriptBox["\[Delta]", "2"]}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7111178667255774`*^9, 
+  3.711128499352243*^9},ExpressionUUID->"e91ce44f-8517-4813-8e48-\
+f4e1f450408e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"TeXForm", "[", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{"Det", "[", "m", "]"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.711128870828833*^9, 
+  3.7111288870196123`*^9}},ExpressionUUID->"cf567100-842c-4dbd-91d2-\
+4a93f950bedc"],
+
+Cell["\<\
+\\delta _3 \\left(\\epsilon _1-\\alpha ^2 \\epsilon _2\\right)+\\delta _2 \
+\\left(\\alpha ^2 \\epsilon _3-\\epsilon _1\\right)+\\delta _1 \\left(\\epsilon
+   _2-\\epsilon _3\\right)\
+\>", "Output",
+ CellChangeTimes->{{3.711128875213821*^9, 
+  3.7111288883966503`*^9}},ExpressionUUID->"d70732e4-6ff8-4fd0-b424-\
+21886503cbc9"]
+}, Open  ]]
+},
+WindowSize->{1280, 975},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 989, 27, 34, "Input", "ExpressionUUID" -> \
+"de3e5725-1546-40a7-962e-8f43ce2742b3"],
+Cell[1572, 51, 618, 18, 41, "Output", "ExpressionUUID" -> \
+"73528664-9651-416a-af5f-9fac1eb0f13e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2227, 74, 191, 4, 32, "Input", "ExpressionUUID" -> \
+"24e0e67e-f03d-4ddc-96c9-0b6b21eaf940"],
+Cell[2421, 80, 982, 28, 84, "Output", "ExpressionUUID" -> \
+"1500975b-fa9a-46e8-9263-511ae1134556"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3440, 113, 271, 6, 32, "Input", "ExpressionUUID" -> \
+"516aeb84-3c18-42ca-a5c1-940f4a41131b"],
+Cell[3714, 121, 9938, 280, 135, "Output", "ExpressionUUID" -> \
+"6b661ecf-6e2d-40b6-ae23-589102963482"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13689, 406, 315, 8, 34, "Input", "ExpressionUUID" -> \
+"ef991971-e888-4d54-920c-dd49afa6263a"],
+Cell[14007, 416, 247, 7, 34, "Output", "ExpressionUUID" -> \
+"c484396f-4af4-45d3-bed9-dda136296da6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14291, 428, 260, 6, 34, "Input", "ExpressionUUID" -> \
+"d967425a-222b-43a5-8d11-984c328b0f15"],
+Cell[14554, 436, 3164, 92, 56, "Output", "ExpressionUUID" -> \
+"3f929da1-2bbc-475f-8ad1-41c67c4e440e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17755, 533, 513, 9, 32, "Input", "ExpressionUUID" -> \
+"f1fc68ed-1126-4bbe-b0ca-9e7473b26317"],
+Cell[18271, 544, 498, 10, 65, "Output", "ExpressionUUID" -> \
+"a2e8ea07-fbfe-48ed-8edc-c3f4d2d22916"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18806, 559, 389, 9, 32, "Input", "ExpressionUUID" -> \
+"5fc76e66-d36d-4c6c-9513-20ddc072a810"],
+Cell[19198, 570, 2392, 73, 88, "Output", "ExpressionUUID" -> \
+"e91ce44f-8517-4813-8e48-f4e1f450408e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21627, 648, 296, 7, 55, "Input", "ExpressionUUID" -> \
+"cf567100-842c-4dbd-91d2-4a93f950bedc"],
+Cell[21926, 657, 336, 7, 64, "Output", "ExpressionUUID" -> \
+"d70732e4-6ff8-4fd0-b424-21886503cbc9"]
+}, Open  ]]
+}
+]
+*)
+

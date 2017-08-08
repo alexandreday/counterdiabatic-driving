@@ -730,15 +730,25 @@ T = \begin{bmatrix}
     \epsilon_{1}   & \epsilon_{2} & \epsilon_{3}
 \end{bmatrix} ,
 v_0=\begin{bmatrix}
-C_{(1)} \\
+C^{(1)} \\
 T_2 \\
 T_3    
    \end{bmatrix}
 \end{equation}
+where $C^{(0)}_{T_2}= T_2$ and $C^{(0)}_{T_3}= T_3$.
 
 We note that $T^n= (P D P^{-1})^n=P D^n P^{-1}$, where $D$ is diagonal matrix and $P$ is the similarity transformation that diagonalizes $T$. Finally, we can write $v_n= P D^n P^{-1} v_0$ 
 
 What we are actually interested in is adiabatic gauge potential for which we need to take sum over n-Commutators $C^{(2n+1)}$
+
+\begin{align*}
+A_{\lambda} & =   \lim_{\mu \rightarrow 0}  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\infty} (-1)^{n} \dfrac{C^{(2n+1)}}{\mu^{2n+1}}\\
+& =   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  \sum_{n=0}^{\infty} C^{(2n+1)} \dfrac{i^{2n+1} }{\mu^{2n+1}}\\
+&=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  G\left( z=\dfrac{i}{\mu}\right)\\
+\end{align*}
+where $G(z)= \sum_{n=0}^{\infty} C^{(2n+1)} z^{2n+1}$ is the generating function.
+
+More details are given in Appendix A.
 %
 %Hence, using theorem proved in appendix \ref{sec.Cn}, I can claim $C^{(2n+1)}= \alpha^{(2n)} C^{(1)} + \beta^{(2n-2)} T_2 + \gamma^{(2n-2)} T_3$, $\forall n>0$.
 %%
@@ -765,11 +775,11 @@ Let's claim that
  A_{\lambda}^*= \alpha^* C^{(1)} +  \beta^* T_2 + \delta^* T_3 
 \end{equation}
 
-where $\alpha^*, \beta^*, \delta^* $ are unknowns. 
+where $\alpha^*, \beta^*, \delta^* $ are unknown constants such that $A_{\lambda}^*$ becomes exact gauge potential.
 \begin{equation}
 G_{\lambda}= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] 
 \end{equation}
-If $\mathcal{X}= A_{\lambda}$, then $[H,G_{\lambda}]=0 $. Let's reformulate it in a way that's easier to compute. 
+If $\mathcal{X}= A_{\lambda}$, which is exact gauge potential, then $[H,G_{\lambda}]=0 $. Let's reformulate it in a way that's easier to compute. 
 \begin{align}
 [H,\partial_{\lambda} H ] &= \dfrac{i}{\hbar} [H,[H, A_{\lambda}^*]] \\
 C^{(1)} &= \dfrac{i}{\hbar} [H,[H,\alpha^* C^{(1)} +  \beta^* T_2 + \delta^* T_3 ]] \\
@@ -804,19 +814,48 @@ Using the above information to simplify our equations, we get:
 0   
    \end{bmatrix}
 \end{equation}
+
+Let's denote  $M$ as 
+\begin{equation}
+M=\begin{bmatrix}
+    \alpha^2       & \delta_{1} & \epsilon_{1} \\
+    1     & \delta_{2} & \epsilon_{2} \\
+    1      & \delta_{3} & \epsilon_{3}
+\end{bmatrix}
+\end{equation}
+We note that $M^{T}= T$, where $M^{T}$ is the transpose matrix of $M$. 
+\begin{equation}
+\begin{bmatrix}
+\alpha^* \\
+\beta^* \\
+\delta^*   
+   \end{bmatrix}
+=
+- i \hbar M^{-1} \begin{bmatrix}
+1 \\
+0 \\
+0   
+   \end{bmatrix}
+\end{equation}
+
+
 Using mathematica, we get 
 
 
 
 \begin{align}
-\alpha^* &= - i \hbar \frac{  \left(\delta _3 \epsilon _2-\delta _2 \epsilon _3\right)}{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta
-   _2 \epsilon _1-\delta _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3} \\
-  \beta^* &= i \hbar \frac{ \left(\epsilon _2-\epsilon _3\right) }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta _2 \epsilon
-   _1-\delta _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3} \\
- \delta^*  &=- i \hbar \frac{ \left(\delta _2-\delta _3\right) }{\alpha ^2 \delta _3 \epsilon _2-\alpha ^2 \delta _2 \epsilon _3+\delta _2 \epsilon _1-\delta
-   _3 \epsilon _1-\delta _1 \epsilon _2+\delta _1 \epsilon _3}
+\alpha^* &= - i \hbar \frac{  \left(\delta _2 \epsilon _3 -\delta _3 \epsilon _2\right)}{\det M} \\
+  \beta^* &= -i \hbar \frac{ \left(\epsilon _2-\epsilon _3\right) }{\det M} \\
+ \delta^*  &=- i \hbar \frac{ \left(\delta _3-\delta _2\right) }{\det M}
 \end{align}
 where  $\alpha^2= 4 (4 J^2 +  \lambda ^2) $, $\delta_1= 96 J^2 \lambda^2$, $\delta_2= 16 \lambda^2$, $\delta_3= 9 \lambda^2$, $\epsilon_1= 64 J \lambda^3$, $\epsilon_2= \frac{32}{3} J \lambda$ and $\epsilon_3= \alpha^2$.
+
+
+
+\begin{equation}
+\det M = \delta _3 \left(\epsilon _1-\alpha ^2 \epsilon _2\right)+\delta _2 \left(\alpha ^2 \epsilon _3-\epsilon _1\right)+\delta _1 \left(\epsilon
+   _2-\epsilon _3\right)
+\end{equation}
 \appendix
 
 \section{Linear recurrence coupled equations}
