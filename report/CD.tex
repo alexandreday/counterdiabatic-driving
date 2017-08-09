@@ -746,7 +746,30 @@ A_{\lambda} & =   \lim_{\mu \rightarrow 0}  \dfrac{-i\hbar}{\mu}  \sum_{n=0}^{\i
 & =   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  \sum_{n=0}^{\infty} C^{(2n+1)} \dfrac{i^{2n+1} }{\mu^{2n+1}}\\
 &=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  G\left( z=\dfrac{i}{\mu}\right)\\
 \end{align*}
-where $G(z)= \sum_{n=0}^{\infty} C^{(2n+1)} z^{2n+1}$ is the generating function.
+where $G(z)= \sum_{n=0}^{\infty} C^{(2n+1)} z^{2n+1}$ is the generating function \cite{wilf12generatingfunctionology}.
+
+
+We find that:
+\begin{equation}
+ \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  G\left( z=\dfrac{i}{\mu}\right)= \alpha^* a_1 + \beta^* b_0 + \delta^* c_0
+\end{equation}
+
+where 
+
+\begin{equation}
+\boxed{
+\begin{aligned}
+ \alpha^* &= - i \hbar \frac{  \left(\delta _2 \epsilon _3 -\delta _3 \epsilon _2\right)}{\det T} \\
+  \beta^* &= -i \hbar \frac{ \left(\epsilon _2-\epsilon _3\right) }{\det T} \\
+ \delta^*  &=- i \hbar \frac{ \left(\delta _3-\delta _2\right) }{\det T}
+\end{aligned}
+}
+\end{equation}
+where 
+\begin{equation}
+\det T = \delta _3 \left(\epsilon _1-\alpha ^2 \epsilon _2\right)+\delta _2 \left(\alpha ^2 \epsilon _3-\epsilon _1\right)+\delta _1 \left(\epsilon
+   _2-\epsilon _3\right)
+\end{equation}
 
 More details are given in Appendix A.
 %
@@ -1056,6 +1079,43 @@ A_{\lambda}&=   \lim_{\mu \rightarrow 0}  \dfrac{-\hbar}{\mu}  A\left( z=\dfrac{
 &= \lim_{\mu \rightarrow 0}  \dfrac{\hbar}{\mu}  \dfrac{1}{\alpha^2 z} f(z)|_{z^{-1}=-i \mu}\\
 &=  \dfrac{-i \hbar}{\alpha^2 } f(z)\\
 \end{align*}
+
+
+We summarize here that
+\begin{equation}
+ \dfrac{-i \hbar}{\alpha^2 }f(z)= \alpha^* a_1 + \beta^* b_0 + \delta^* c_0
+\end{equation}
+
+where 
+\begin{align}
+ \alpha^* &= \dfrac{-i \hbar}{\alpha^2 }\left(1   - \dfrac{ \delta_1  \theta_2 }{\alpha^2} -\dfrac{1  }{\alpha^2}\theta_3( 1  +   \omega_1  \theta_2 ) (\epsilon_1 + \delta_1 \theta_1 \theta_2)\right) \\
+ \beta^* &= \dfrac{-i \hbar}{\alpha^2 }(1 + \theta_1  \theta_3 (1+   \omega_1   \theta_2   )) \theta_2\\
+ \delta^* &=\dfrac{-i \hbar}{\alpha^2 }( 1  +   \omega_1  \theta_2 ) \theta_3
+\end{align}
+
+We find that:
+\begin{equation}
+( 1  +   \omega_1  \theta_2 ) \theta_3= \alpha^2 \dfrac{\delta_3- \delta_2}{\det M}
+\end{equation}
+where
+\begin{equation}
+\det M = \delta _3 \left(\epsilon _1-\alpha ^2 \epsilon _2\right)+\delta _2 \left(\alpha ^2 \epsilon _3-\epsilon _1\right)+\delta _1 \left(\epsilon
+   _2-\epsilon _3\right)
+\end{equation}
+
+
+Hence, after all of this, we get:
+\begin{equation}
+\boxed{
+\begin{aligned}
+ \alpha^* &= - i \hbar \frac{  \left(\delta _2 \epsilon _3 -\delta _3 \epsilon _2\right)}{\det M} \\
+  \beta^* &= -i \hbar \frac{ \left(\epsilon _2-\epsilon _3\right) }{\det M} \\
+ \delta^*  &=- i \hbar \frac{ \left(\delta _3-\delta _2\right) }{\det M}
+\end{aligned}
+}
+\end{equation}
+
+
 %
 %Now, once we figure out  power series expansions of following unknowns, we can plug it back to $B(z)$ and $C(z)$:
 %\begin{align*}
