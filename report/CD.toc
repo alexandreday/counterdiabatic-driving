@@ -16,15 +16,16 @@
 \contentsline {subsubsection}{\numberline {4.3.1}ETH for complex systems}{11}{subsubsection.4.3.1}
 \contentsline {subsubsection}{\numberline {4.3.2}Formula involving commutators}{11}{subsubsection.4.3.2}
 \contentsline {section}{\numberline {5}Single body problem}{12}{section.5}
-\contentsline {section}{\numberline {6}Many body problem: integrable model}{13}{section.6}
-\contentsline {subsection}{\numberline {6.1}Ising model with local transverse magnetic field}{13}{subsection.6.1}
+\contentsline {section}{\numberline {6}Many body problem: integrable model}{14}{section.6}
+\contentsline {subsection}{\numberline {6.1}Ising model with local transverse magnetic field}{14}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Ising model with local transverse magnetic fields at two sites}{15}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}Exact solution using regulator method}{15}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Exact solution using variational approach}{16}{subsubsection.6.2.2}
-\contentsline {section}{\numberline {A}Linear recurrence coupled equations}{17}{appendix.A}
-\contentsline {section}{\numberline {B}Properties of n-commutators}{22}{appendix.B}
-\contentsline {section}{\numberline {C}Infinite summation method}{25}{appendix.C}
-\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{25}{appendix.D}
-\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{27}{appendix.E}
-\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{27}{appendix.F}
-\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{29}{appendix.G}
+\contentsline {subsubsection}{\numberline {6.2.2}Exact solution using variational approach}{17}{subsubsection.6.2.2}
+\contentsline {subsection}{\numberline {6.3}Transverse Field Ising model}{18}{subsection.6.3}
+\contentsline {section}{\numberline {A}Linear recurrence coupled equations}{19}{appendix.A}
+\contentsline {section}{\numberline {B}Properties of n-commutators}{23}{appendix.B}
+\contentsline {section}{\numberline {C}Infinite summation method}{26}{appendix.C}
+\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{27}{appendix.D}
+\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{28}{appendix.E}
+\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{29}{appendix.F}
+\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{30}{appendix.G}

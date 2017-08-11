@@ -525,21 +525,58 @@ C^{(3)} &= \alpha^2 C^{(1)}
 \end{align}
 where $\alpha^2 = 4 (\Delta^2 + \lambda^2) $
 
-Hence, we find that 
-\begin{equation}
-A_{\lambda}= \dfrac{\hbar}{2}\dfrac{\Delta }{\Delta^2 + \lambda^2} \sigma^y
-\end{equation}
+
+Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using equation (\ref{def_1}), we get :
+
+\begin{align*}
+A_{\lambda} &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^{2n}  \\
+ &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  \alpha^{2n+1} t ^{2n+1}}{\alpha(2n+1)!}   \\
+  &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  (\alpha t)^{2n+1}}{(2n+1)!}   \\
+    &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t}  \sin  (\alpha t)   \\
+     &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \dfrac{\alpha}{\alpha^2 + \mu^2} =\dfrac{-i \hbar    C^{(1)}}{{\alpha^2 + \mu^2}} 
+\end{align*}
+ 
+
+Using \ref{def_2}, we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+\begin{align*}
+A_{\lambda} &=  \dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} \\
+&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \left(\dfrac{ \alpha}{\mu} \right)^{2n+1} \\
+&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)} \dfrac{\mu \alpha}{ \mu^2 + \alpha^2}\quad, \mbox{if ~}\alpha^2 / \mu^2 <1 \\
+&=      \dfrac{ -i\hbar  }{ \mu^2 + \alpha^2} C^{(1)} \quad, \mbox{if ~} \alpha^2 / \mu^2 <1 \\
+\end{align*}
+Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as they should.
+
+
+Hence, we find that  after $\lim \mu \rightarrow 0$, we get:
+\begin{align}
+ A_{\lambda}& = \dfrac{ -i\hbar  }{ \alpha^2} C^{(1)}\\
+&= \dfrac{\hbar}{2}\dfrac{\Delta }{\Delta^2 + \lambda^2} \sigma^y
+\end{align}
+
 Similarly, we find that 
 
 \begin{equation}
 A_{\Delta}= -\dfrac{\hbar}{2}\dfrac{\lambda }{\Delta^2 + \lambda^2} \sigma^y
 \end{equation}
 
+
+Let's do another single body problem:
 \begin{equation}
 H= \cos \theta \sigma^z + \sin \theta \sigma^x
 \end{equation}
+Here $\theta$ is our parameter, i.e. $\partial_{\theta} H=- \sin \theta \sigma^z + \cos \theta \sigma^x $.
 
 
+\begin{align}
+C^{(1)} &= 2 i \sigma^y \\
+C^{(2)} &= - 4  ( -  \cos \theta \sigma^x + \sin \theta \sigma^z) \\
+C^{(3)} &= \alpha^2 C^{(1)} 
+\end{align}
+where $\alpha^2=4$. Hence, we get:
+\begin{equation}
+A_{\theta}= \dfrac{ \hbar}{2}  \sigma^y = S^y
+\end{equation}
+where $S^y$ is the spin operator.  We find that $A_{\theta}$ is the generator of rotation around $y$ direction, which makes sense to us.
 \section{Many body problem: integrable model}
 Our goal is to study a integrable model, which is called \textbf{Transverse Field Ising model}. It shows quantum phase transition between ferromagnetic and paramagnetic phases. Moreover, it satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian.
 This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation. It's Hamiltonian in spin basis is given by:
@@ -589,25 +626,28 @@ C^{(5)}&=[H,[H, C^{(3)}]]  = \alpha^2 [H, [H,C^{(1)}]]]=\alpha^2 C^{(3)}=  \alph
 \end{align}
 
 
-Hence, $C^{(2n+1)}= \alpha^{2n} C^{(1)}$, where $\alpha^2= 4 (4 J^2 +  \lambda ^2) $. Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using equation (\ref{def_1}), we get :
+Hence, $C^{(2n+1)}= \alpha^{2n} C^{(1)}$, where $\alpha^2= 4 (4 J^2 +  \lambda ^2) $. 
 
-\begin{align*}
-A_{\lambda} &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^{2n}  \\
- &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  \alpha^{2n+1} t ^{2n+1}}{\alpha(2n+1)!}   \\
-  &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  (\alpha t)^{2n+1}}{(2n+1)!}   \\
-    &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t}  \sin  (\alpha t)   \\
-     &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \dfrac{\alpha}{\alpha^2 + \mu^2} =\dfrac{-i \hbar    C^{(1)}}{{\alpha^2 + \mu^2}} =  \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) 
-\end{align*}
- 
 
-Using \ref{def_2}, we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
-\begin{align*}
-A_{\lambda} &=  \dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} \\
-&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \left(\dfrac{ \alpha}{\mu} \right)^{2n+1} \\
-&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)} \dfrac{\mu \alpha}{ \mu^2 + \alpha^2}\quad, \mbox{if ~}\alpha^2 / \mu^2 <1 \\
-&=    C^{(1)}  \dfrac{ -i\hbar  }{ \mu^2 + \alpha^2}= \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \quad, \mbox{if ~} \alpha^2 / \mu^2 <1 \\
-\end{align*}
-Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as they should.
+%Now, we would compute $A_{\lambda}$ using two methods and compare our results. Using equation (\ref{def_1}), we get :
+%
+%\begin{align*}
+%A_{\lambda} &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n} t ^{2n+1}}{(2n+1)!}  \alpha^{2n}  \\
+% &= -i \hbar    C^{(1)} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  \alpha^{2n+1} t ^{2n+1}}{\alpha(2n+1)!}   \\
+%  &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t} \sum_{n=0}^{\infty} \dfrac{(-1)^{n}  (\alpha t)^{2n+1}}{(2n+1)!}   \\
+%    &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \int_0^{\infty} dt\ e^{-\mu t}  \sin  (\alpha t)   \\
+%     &= \dfrac{-i \hbar    C^{(1)}}{\alpha} \dfrac{\alpha}{\alpha^2 + \mu^2} =\dfrac{-i \hbar    C^{(1)}}{{\alpha^2 + \mu^2}} =  \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) 
+%\end{align*}
+% 
+%
+%Using \ref{def_2}, we get: %, which gives a divergence in $\mu \rightarrow 0$ limit.
+%\begin{align*}
+%A_{\lambda} &=  \dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} \\
+%&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)}\sum_{n=0}^{\infty}   (-1)^{n} \left(\dfrac{ \alpha}{\mu} \right)^{2n+1} \\
+%&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)} \dfrac{\mu \alpha}{ \mu^2 + \alpha^2}\quad, \mbox{if ~}\alpha^2 / \mu^2 <1 \\
+%&=    C^{(1)}  \dfrac{ -i\hbar  }{ \mu^2 + \alpha^2}= \dfrac{2 \hbar J}{{\alpha^2 + \mu^2}} \sigma_0^y ( \sigma_{-1}^z + \sigma_1^z) \quad, \mbox{if ~} \alpha^2 / \mu^2 <1 \\
+%\end{align*}
+%Hence, now we can use analytical continuation to claim that our result is also true when $\alpha^2 / \mu^2 >1$ since there is no divergence when $\alpha^2 / \mu^2 =1$. Hence, both methods give the same answer as they should.
 
 After taking $\mu \rightarrow 0$ limit, we get an expression for exact gauge potential:
 \begin{equation}
@@ -879,6 +919,56 @@ where  $\alpha^2= 4 (4 J^2 +  \lambda ^2) $, $\delta_1= 96 J^2 \lambda^2$, $\del
 \det M = \delta _3 \left(\epsilon _1-\alpha ^2 \epsilon _2\right)+\delta _2 \left(\alpha ^2 \epsilon _3-\epsilon _1\right)+\delta _1 \left(\epsilon
    _2-\epsilon _3\right)
 \end{equation}
+
+\subsection{Transverse Field Ising model}
+It's Hamiltonian in spin basis is given by:
+
+\begin{equation}
+H= -J \sum_{j} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
+\end{equation}
+where we have not specified boundary conditions and $\lambda$ is externally-controlled transverse magnetic field
+
+This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation: $\sigma_i^z \sim 1 - 2 c^{\dagger}_i c_i   $ and $\sigma_i^+ \sim \prod_{k<i} \sigma_k^z c_k   $. Details can be found elsewhere \cite{sachdev2007quantum}. Here is what we get after this transformation:
+
+\begin{equation}
+\mathcal{H}= \sum_k \psi_k^{\dagger} H_k \psi_k , \quad H_k=-\begin{bmatrix}
+     \lambda - \cos k & \sin k \\
+\sin k & -(\lambda - \cos k)\\
+\end{bmatrix}
+\end{equation}
+where $\psi_k^{\dagger}= (c^{\dagger}_k, c_{-k})$. We can write $H_k$ in terms of Pauli sigma matrices:
+\begin{equation}
+H_k= -(\lambda - \cos k) \sigma^z_k - \sin k  \sigma^x_k
+\end{equation}
+Let's compute $C^{(1)}=[H_k,\partial_{\lambda} H_k] $ where $\partial_{\lambda} H_k= -\sigma^z_k$. 
+\begin{align}
+C^{(1)} &=[H_k,\partial_{\lambda} H_k]=- 2 i \sin k \sigma^y_k \\
+C^{(2)} &=[H_k,C^{(1)}] =  4  \sin k ( (\lambda - \cos k) \sigma^x_k - \sin k \sigma^z_k) \\
+C^{(3)} &=[H_k,C^{(2)}]= \alpha^2 C^{(1)} 
+\end{align}
+where $\alpha^2 = 4 (\lambda - \cos k)^2 + \sin ^2 ) $
+
+Hence, we find that 
+\begin{align}
+A_{\lambda}& = -i \hbar \dfrac{C^{(1)}}{\alpha^2} \\
+&=-i \hbar \sum_k \dfrac{- 2 i \sin k \psi_k^{\dagger} \sigma^y_k \psi_k}{4 ((\lambda - \cos k)^2 + \sin k^2) } \\
+&=-  \dfrac{\hbar}{2}\sum_k \dfrac{ \sin k }{ (\lambda - \cos k)^2 +  \sin ^2 k } \psi_k^{\dagger} \sigma^y_k \psi_k
+\end{align}
+This expression matches with \cite{kolodrubetz2016geometry}. Using Fourier transform given by \cite{kolodrubetz2016geometry}:
+\begin{equation}
+ \psi_k^{\dagger} \sigma^y_k \psi_k= \dfrac{i}{L} \sum_{j,l}  (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})
+\end{equation}
+
+We get 
+\begin{equation}
+\boxed{A_{\lambda}= \sum_l \alpha_l O_l \quad \mbox{where} \quad \alpha_l= -\dfrac{1}{4 L} \sum_k \dfrac{\sin(k) \cos(lk)}{(\cos k - h)^2 + \sin^2 k}}
+\end{equation}
+where  $O_l$ is given by
+\begin{equation}
+O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})= \sum_j ( \sigma_j^x \sigma_{j+1}^z \ldots \sigma_{j+l-1}^z \sigma_{j+l}^y +  \sigma_j^y \sigma_{j+1}^z \ldots \sigma_{j+l-1}^z \sigma_{j+l}^x)
+\end{equation}
+
+
 \appendix
 
 \section{Linear recurrence coupled equations}
