@@ -968,7 +968,54 @@ where  $O_l$ is given by
 O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})= \sum_j ( \sigma_j^x \sigma_{j+1}^z \ldots \sigma_{j+l-1}^z \sigma_{j+l}^y +  \sigma_j^y \sigma_{j+1}^z \ldots \sigma_{j+l-1}^z \sigma_{j+l}^x)
 \end{equation}
 
+Hence, with our new method, we reproduced result obtained in   \cite{del2012assisted, kolodrubetz2016geometry}.
 
+\section{Many body problem: non-integrable models}
+
+\subsection{Local integrability breaking term}
+
+\begin{equation}
+H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) - h\sum_{j} \sigma_j^z -\lambda \sigma_0^x 
+\end{equation}
+
+
+Let's compute $C^{(1)}=[H_k,\partial_{\lambda} H] $ where $\partial_{\lambda} H= -\sigma^x_0$. 
+\begin{align}
+C^{(1)} &=2 i h\sigma^y_0  \\
+C^{(2)} &=4 h J (\sigma_{-1}^x +  \sigma_1^x)\sigma_0^z-4 h^2\sigma_0^x+ 4 h \lambda
+   \sigma_0^z \\
+ C^{(3)}  &=\alpha^2 C^{(1)}+S_2+ T_2 +T_3
+\end{align}
+where $\alpha^2=h^2+4  \lambda ^2+8 J^2 $, two body operators $T_2=16 i h J \lambda( \sigma^x_{-1} +  \sigma_1^x) \sigma^y_0$ and $S_2=-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0$, and three body operator $T_3=16 i h J^2\sigma^x_{-1} \sigma_0^y\sigma ^x_1$
+
+
+
+
+
+\begin{align*}
+C^{(5)}  &= [H,[H,C^{(3)}] ]\\
+& =[H,[H,\alpha^2 C^{(1)}+S_2+ T_2 +T_3]]\\
+& =\alpha^2 C^{(3)}+ [H,[H, S_2+ T_2 +T_3]]\\
+& =\alpha^2 C^{(3)} + C_{S_2}^{(2)}+ C_{T_2}^{(2)}+C_{T_3}^{(2)}\\
+\end{align*}
+
+Now on further computation, we get 
+\begin{align*}
+C_{S_2}^{(2)}&= \eta_1 C^{(1)} + \eta_2 T_2 + \eta_3 T_3+  \eta_4 S_2 \\
+C^{(2)}_{T_2}&= \delta_1 C^{(1)} + \delta_2 T_2 + \delta_3 T_3 +   \delta_4 S_2\\
+C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3 + \epsilon_4 S_2 
+\end{align*}
+
+
+
+\begin{align*}
+C^{(3)} &=8 i h^3 \sigma^y_0-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0+16 i h J^2\sigma^x_{-1} \sigma ^x_1 \sigma_0^y+16 i h J^2 \sigma^y_0+16 i h J \lambda \sigma^x_{-1} \sigma^y_0+16 i h J \lambda  \sigma_1^x \sigma^y_0+8 i h \lambda ^2
+   \sigma^y_0\\
+   &=8 i h^3 \sigma^y_0 +8 i h \lambda ^2
+   \sigma^y_0 +16 i h J^2 \sigma^y_0-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0+16 i h J^2\sigma^x_{-1} \sigma ^x_1 \sigma_0^y+16 i h J \lambda \sigma^x_{-1} \sigma^y_0+16 i h J \lambda  \sigma_1^x \sigma^y_0\\
+     &=2 i  h \sigma^y_0 (h^2+4  \lambda ^2+8 J^2 )-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0+16 i h J^2\sigma^x_{-1} \sigma_0^y\sigma ^x_1 +16 i h J \lambda( \sigma^x_{-1} +  \sigma_1^x) \sigma^y_0\\
+     &=\alpha^2 C^{(1)}+S_2+ T_2 +T_3
+\end{align*}
 \appendix
 
 \section{Linear recurrence coupled equations}

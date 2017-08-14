@@ -1,0 +1,45 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[      1155,         44]
+NotebookOptionsPosition[       706,         23]
+NotebookOutlinePosition[      1040,         38]
+CellTagsIndexPosition[       997,         35]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<DiracQV1.m\>\"", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{
+  3.711725234689065*^9},ExpressionUUID->"5d350f18-289d-44dc-89a0-\
+e6958963c03e"]
+},
+WindowSize->{1280, 975},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 302, 8, 57, "Input", "ExpressionUUID" -> \
+"5d350f18-289d-44dc-89a0-e6958963c03e"]
+}
+]
+*)
+
