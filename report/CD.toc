@@ -22,12 +22,14 @@
 \contentsline {subsubsection}{\numberline {6.2.1}Exact solution using regulator method}{15}{subsubsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.2}Exact solution using variational approach}{17}{subsubsection.6.2.2}
 \contentsline {subsection}{\numberline {6.3}Transverse Field Ising model}{18}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Fermions basis: single particle picture}{18}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Spin basis}{19}{subsubsection.6.3.2}
 \contentsline {section}{\numberline {7}Many body problem: non-integrable models}{19}{section.7}
 \contentsline {subsection}{\numberline {7.1}Local integrability breaking term}{19}{subsection.7.1}
-\contentsline {section}{\numberline {A}Linear recurrence coupled equations}{20}{appendix.A}
-\contentsline {section}{\numberline {B}Properties of n-commutators}{24}{appendix.B}
-\contentsline {section}{\numberline {C}Infinite summation method}{27}{appendix.C}
-\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{27}{appendix.D}
-\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{29}{appendix.E}
-\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{29}{appendix.F}
-\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{31}{appendix.G}
+\contentsline {section}{\numberline {A}Linear recurrence coupled equations}{21}{appendix.A}
+\contentsline {section}{\numberline {B}Properties of n-commutators}{25}{appendix.B}
+\contentsline {section}{\numberline {C}Infinite summation method}{28}{appendix.C}
+\contentsline {section}{\numberline {D}Adiabatic gauge potential formula general derivation}{28}{appendix.D}
+\contentsline {section}{\numberline {E}Classical adiabatic gauge potential}{30}{appendix.E}
+\contentsline {section}{\numberline {F}An example of variational approximation scheme: non-integrable Ising spin chain}{30}{appendix.F}
+\contentsline {section}{\numberline {G}Transverse Field Ising model: calculations in spin basis}{32}{appendix.G}

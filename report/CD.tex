@@ -578,6 +578,7 @@ A_{\theta}= \dfrac{ \hbar}{2}  \sigma^y = S^y
 \end{equation}
 where $S^y$ is the spin operator.  We find that $A_{\theta}$ is the generator of rotation around $y$ direction, which makes sense to us.
 \section{Many body problem: integrable model}
+
 Our goal is to study a integrable model, which is called \textbf{Transverse Field Ising model}. It shows quantum phase transition between ferromagnetic and paramagnetic phases. Moreover, it satisfies Ising symmetry $G= \Pi_i \sigma_i^z$ since $[H, G]=0$, where $H$ is the Hamiltonian.
 This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation. It's Hamiltonian in spin basis is given by:
 \begin{equation}
@@ -609,9 +610,11 @@ H= J \sum_{j}  \sigma_j^z \sigma_{j+1}^z +  \lambda  \sigma_0^x
 \label{zz}
 \end{equation}
 where boundary conditions are not important. Commutation relation followed by spin operators are:
-\begin{equation}
-[\sigma_i^a, \sigma_{j}^b]= 2 i   \delta_{i,j} \sum_c  \epsilon_{a b c} \sigma_i^c
-\end{equation}
+\begin{align}
+[\sigma_i^a, \sigma_{j}^b]&= 2 i   \delta_{i,j} \sum_c  \epsilon_{a b c} \sigma_i^c
+\\
+\{\sigma_i^a, \sigma_{i}^b\}&= 2   \delta_{a,b} I
+\end{align}
 where $\epsilon_{abc}$ is the Levi-Civita symbol, $ \delta_{ij}$ is the Kronecker delta.
 
 This model satisfies Ising symmetry $G= \Pi_i \sigma_i^x$ since $[H, G]=0$.
@@ -921,6 +924,7 @@ where  $\alpha^2= 4 (4 J^2 +  \lambda ^2) $, $\delta_1= 96 J^2 \lambda^2$, $\del
 \end{equation}
 
 \subsection{Transverse Field Ising model}
+\subsubsection{Fermions basis: single particle picture}
 It's Hamiltonian in spin basis is given by:
 
 \begin{equation}
@@ -936,7 +940,7 @@ This model can be written in terms of non-interacting spinless fermions ($c_i, c
 \sin k & -(\lambda - \cos k)\\
 \end{bmatrix}
 \end{equation}
-where $\psi_k^{\dagger}= (c^{\dagger}_k, c_{-k})$. We can write $H_k$ in terms of Pauli sigma matrices:
+where $\psi_k^{\dagger}= (c^{\dagger}_k, c_{-k})$ is Nambu spinor basis. We can write $H_k$ in terms of Pauli sigma matrices:
 \begin{equation}
 H_k= -(\lambda - \cos k) \sigma^z_k - \sin k  \sigma^x_k
 \end{equation}
@@ -969,6 +973,22 @@ O_l= 2 i \sum_j (c^{\dagger}_{j} c^{\dagger}_{j+l} - \mbox{h.c})= \sum_j ( \sigm
 \end{equation}
 
 Hence, with our new method, we reproduced result obtained in   \cite{del2012assisted, kolodrubetz2016geometry}.
+
+
+\subsubsection{Spin basis}
+
+It's Hamiltonian in spin basis is given by:
+
+\begin{equation}
+H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x)  - \lambda \sum_{j} \sigma_j^z 
+\end{equation}
+Let's compute $C^{(1)}=[H_k,\partial_{\lambda} H] $ where $\partial_{\lambda} H= -\sum_i \sigma^z_i$. 
+\begin{align*}
+C^{(1)}&= -2 i O_{l=1}\\
+\end{align*}
+where $O_{l=1}=  \sum_j ( \sigma_j^x  \sigma_{j+1}^y +  \sigma_j^y  \sigma_{j+1}^x) $
+
+How about we compare it with non-integrable case? Is there some way to see the difference between integrable and non-integrable systems with respect to how the series grows?
 
 \section{Many body problem: non-integrable models}
 
@@ -1007,7 +1027,6 @@ C^{(2)}_{T_3}&= \epsilon_1 C^{(1)} + \epsilon_2 T_2 + \epsilon_3 T_3 + \epsilon_
 \end{align*}
 
 
-
 \begin{align*}
 C^{(3)} &=8 i h^3 \sigma^y_0-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0+16 i h J^2\sigma^x_{-1} \sigma ^x_1 \sigma_0^y+16 i h J^2 \sigma^y_0+16 i h J \lambda \sigma^x_{-1} \sigma^y_0+16 i h J \lambda  \sigma_1^x \sigma^y_0+8 i h \lambda ^2
    \sigma^y_0\\
@@ -1016,6 +1035,44 @@ C^{(3)} &=8 i h^3 \sigma^y_0-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0+
      &=2 i  h \sigma^y_0 (h^2+4  \lambda ^2+8 J^2 )-8 i h^2 J (\sigma_{-1}^y+ \sigma_{1}^y) \sigma^z_0+16 i h J^2\sigma^x_{-1} \sigma_0^y\sigma ^x_1 +16 i h J \lambda( \sigma^x_{-1} +  \sigma_1^x) \sigma^y_0\\
      &=\alpha^2 C^{(1)}+S_2+ T_2 +T_3
 \end{align*}
+
+
+\begin{align*}
+C^{(2)}_{T_2}&= 128 i h^3 J \lambda  \sigma (0,x) \sigma (-1,y)+128 i h^3 J \lambda  \sigma (-1,x) \sigma (0,y)+128 i h^3 J \lambda  \sigma (1,x) \sigma
+   (0,y)\\   
+   &+128 i h^3 J \lambda  \sigma (0,x) \sigma (1,y)-64 i h^2 J^2 \lambda  \sigma (-2,x) \sigma (0,y) \sigma (-1,z)-192 i h^2 J^2 \lambda 
+   \sigma (1,x) \sigma (-1,y) \sigma (0,z)\\
+   &-192 i h^2 J^2 \lambda  \sigma (-1,x) \sigma (1,y) \sigma (0,z)-64 i h^2 J^2 \lambda  \sigma (2,x)\sigma (0,y) \sigma (1,z)-128 i h^2 J \lambda ^2 \sigma (-1,y) \sigma (0,z)\\
+   &-128 i h^2 J \lambda ^2 \sigma (1,y) \sigma (0,z)+256 i h J^3
+   \lambda  \sigma (-1,x) \sigma (0,y)+256 i h J^3 \lambda  \sigma (1,x) \sigma (0,y)\\
+   &+256 i h J^2 \lambda ^2 \sigma (-1,x) \sigma (1,x) \sigma
+   (0,y)+256 i h J^2 \lambda ^2 \sigma (0,y)+64 i h J \lambda ^3 \sigma (-1,x) \sigma (0,y)+64 i h J \lambda ^3 \sigma (1,x) \sigma (0,y)
+\end{align*}
+
+\begin{align*}
+C^{(2)}_{S_2}&=-32 i h^4 J \sigma (-1,y) \sigma (0,z)-32 i h^4 J \sigma (1,y) \sigma (0,z)+32 i h^3 J^2 \sigma (0,x) \sigma (1,x) \sigma (-1,y)\\
+&+128 i h^3 J^2\sigma (-1,x) \sigma (1,x) \sigma (0,y)+32 i h^3 J^2 \sigma (-1,x) \sigma (0,x) \sigma (1,y)+64 i h^3 J^2 \sigma (0,y)\\
+&-64 i h^3 J^2 \sigma(-1,y) \sigma (0,y) \sigma (1,y)+32 i h^3 J^2 \sigma (-2,y) \sigma (-1,z) \sigma (0,z)+32 i h^3 J^2 \sigma (2,y) \sigma (0,z) \sigma (1,z)\\
+&+32i h^3 J \lambda  \sigma (0,x) \sigma (-1,y)+64 i h^3 J \lambda  \sigma (-1,x) \sigma (0,y)+64 i h^3 J \lambda  \sigma (1,x) \sigma (0,y)\\
+&+32 i h^3 J \lambda  \sigma (0,x) \sigma (1,y)-64 i h^2 J^3 \sigma (-2,x) \sigma (1,x) \sigma (0,y) \sigma (-1,z)-64 i h^2 J^3 \sigma (-1,x) \sigma(2,x) \sigma (0,y) \sigma (1,z)\\
+&-64 i h^2 J^3 \sigma (-1,y) \sigma (0,z)-64 i h^2 J^3 \sigma (1,y) \sigma (0,z)-64 i h^2 J^2 \lambda  \sigma   (-2,x) \sigma (0,y) \sigma (-1,z)\\
+&-64 i h^2 J^2 \lambda  \sigma (1,x) \sigma (-1,y) \sigma (0,z)-64 i h^2 J^2 \lambda  \sigma (-1,x) \sigma(1,y) \sigma (0,z)-64 i h^2 J^2 \lambda  \sigma (2,x) \sigma (0,y) \sigma (1,z)\\
+&-32 i h^2 J \lambda ^2 \sigma (-1,y) \sigma (0,z)-32 i h^2 J  \lambda ^2 \sigma (1,y) \sigma (0,z)
+\end{align*}
+
+\begin{align*}
+C^{(2)}_{T_3}&=128 i h^3 J^2 \sigma (0,x) \sigma (1,x) \sigma (-1,y) +192 i h^3 J^2 \sigma (-1,x) \sigma (1,x) \sigma (0,y) +128 i h^3 J^2 \sigma (-1,x) \sigma
+   (0,x) \sigma (1,y)\\
+&-128 i h^3 J^2 \sigma (-1,y) \sigma (0,y) \sigma (1,y)-64 i h^2 J^3 \sigma (-2,x) \sigma (1,x) \sigma (0,y) \sigma (-1,z)\\
+   &-64   i h^2 J^3 \sigma (-1,x) \sigma (2,x) \sigma (0,y) \sigma (1,z)-128 i h^2 J^3 \sigma (-1,y) \sigma (0,z)-128 i h^2 J^3 \sigma (1,y) \sigma
+   (0,z)\\   
+   &-128 i h^2 J^2 \lambda  \sigma (1,x) \sigma (-1,y) \sigma (0,z)-128 i h^2 J^2 \lambda  \sigma (-1,x) \sigma (1,y) \sigma (0,z)\\
+   &+128 i h   J^4 \sigma (-1,x) \sigma (1,x) \sigma (0,y)+128 i h J^4 \sigma (0,y)\\
+&   +128 i h J^3 \lambda  \sigma (-1,x) \sigma (0,y)+128 i h J^3 \lambda 
+   \sigma (1,x) \sigma (0,y)+64 i h J^2 \lambda ^2 \sigma (-1,x) \sigma (1,x) \sigma (0,y)
+\end{align*}
+
+
 \appendix
 
 \section{Linear recurrence coupled equations}
