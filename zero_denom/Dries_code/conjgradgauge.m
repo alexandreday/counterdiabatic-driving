@@ -3,6 +3,7 @@ function x=conjgradgauge()
 %This function implements conjugate gradient minimization for the
 %variational gauge potential. 
 
+
 %Construct function that gives back [[A,H],H]+[[A,Hb],Hb], where Hb is the
 %boundary contributions
 function B=grad(A,H,H2,HbL,HbL2,HbR,HbR2)

@@ -353,16 +353,16 @@ Now on lower limit.
 
 Now, let's compute the norm while assuming $ |f_O(E_n, \omega)|^2 $ is a constant in $\omega$. Hence, we get:
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=  |f_O(E_n, \omega)|^2 \int_0^{\infty} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} 
+||A_{\lambda}||^2_{nn} &=  |f_O(E_n)|^2 \int_0^{\infty} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} 
 \end{align*}
 Let's assume $\beta \ll 1$ (high temperature limit):
 
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=  |f_O(E_n, \omega)|^2 \int_0^{\infty} d \omega \left(1-\beta \omega/2 + \ldots \right) \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  \\
-&=|f_O(E_n, \omega)|^2\left(\dfrac{\pi}{4 \mu}-\dfrac{\beta }{4}-\dfrac{\beta }{4} \log (\mu^2+ \omega^2)|_0^{\infty}  + \ldots \right) \\
+||A_{\lambda}||^2_{nn} &=  |f_O(E_n)|^2 \int_0^{\infty} d \omega \left(1-\beta \omega/2 + \ldots \right) \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  \\
+&=|f_O(E_n)|^2\left(\dfrac{\pi}{4 \mu}-\dfrac{\beta }{4}-\dfrac{\beta }{4} \log (\mu^2+ \omega^2)|_0^{\infty}  + \ldots \right) \\
 \end{align*}
 
-Hence, we see that there is a logarithmic divergence for high temperature limits. There are two limits, in which we find that there is no ultraviolet divergence: $\beta =0$ limit gives $\pi/ 4 \mu$ and $\beta \rightarrow \infty$ limit gives us zero norm. I don't understand why zero temperature limit gives zero norm.
+Hence, we see that there is a logarithmic divergence for high temperature limit. We also note that there are two limits, in which we find that there is no ultraviolet divergence: $\beta =0$ limit gives $\pi/ 4 \mu$ and $\beta \rightarrow \infty$ limit gives us zero norm. I don't understand why zero temperature limit gives zero norm.
 
 \subsection{Fermi golden rule: transition rate}
 Before we talk about Fermi golden rule, let's study  $||   G_{\lambda}||^2$, where $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $.
