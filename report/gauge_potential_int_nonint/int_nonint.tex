@@ -55,6 +55,7 @@ to a particular initial basis by adiabatic (infinitesimally slow) evolution of t
 
 $H (\lambda) |n(\lambda) \rangle = E_n (\lambda) |n(\lambda) $. Let's derive diagonal and off-diagonal elements. 
 
+
 \begin{itemize}
 \item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle=  i \hbar\langle n |\partial_{\lambda} | n \rangle $
 \item \textbf{off- diagonal element:} We use the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate with respect to $\lambda$ to obtain:
@@ -287,7 +288,31 @@ Let's assume $\beta \ll 1$ (high temperature limit):
 Hence, we see that there is a logarithmic divergence for high temperature limit. We also note that there are two limits, in which we find that there is no ultraviolet divergence: $\beta =0$ limit gives $\pi/ 4 \mu$ and $\beta \rightarrow \infty$ limit gives us zero norm. I don't understand why zero temperature limit gives zero norm.
 
 
+\section{Norm computed using ED}
 
+Let's look at the expression of off-diagonal elements of gauge potential:
+\begin{equation}
+\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}, \quad n \neq m
+\end{equation}
+We see that while using ED, we need to be wary of degenerate eigenvalues. Do these degenerate eigenvalues contribute to norm of gauge potential?
+
+Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:
+\begin{align*}
+\partial_{\lambda}\langle m  |  H | n\rangle&=0\\
+\langle \partial_{\lambda} m |  H | n \rangle + \langle  m  |  H |\partial_{\lambda} n \rangle + \langle  m  | \partial_{\lambda} H | n \rangle&=0\\
+\langle \partial_{\lambda} m   | n \rangle E_n + E_m\langle  m  |   \partial_{\lambda} n \rangle + \langle  m  | \partial_{\lambda} H | n \rangle&=0\\
+(E_n - E_m)\langle  \partial_{\lambda} m  |    n \rangle + \langle  m  | \partial_{\lambda} H | n \rangle&=0
+\end{align*}
+Hence, we find that if there are two degenerate energy levels $n$ and $m$ such that $E_n=E_m$, then $\langle  m  | \partial_{\lambda} H | n \rangle=0$. Hence, the contribution to norm of gauge potential from this pair of energy levels will be zero. I should check this numerically if results of my code respect this property.
+
+
+We have two options while computing norm using ED: either take out all degenerate eigenvalues and work in non-degenerate eigen-subspace or introduce a cutoff $\mu$ to help us out here. We find that second option is easier to work numerically. Our $\mu$-dependent gauge potential is given by:
+\begin{equation}
+\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}
+\end{equation}
+We note that for $\mu \neq 0$, $A_{\lambda}$ is zero for degenerate levels $n$ and $m$. What should be the value of $\mu$ chosen?  If $\mu^2 \ll \omega_{mn}^2$, then we would be back to square one because then we can ignore $\mu^2$ in denominator, and then the computer would complain of division by zero problem for degenerate levels $n$ and $m$. If $\mu^2 \gg \omega_{mn}^2$, then we would get approximate gauge potential, not the exact one. 
+
+Numerically, we choose $\mu^2$ to be the difference between two closest  floating point numbers.
 
 \appendix
 
