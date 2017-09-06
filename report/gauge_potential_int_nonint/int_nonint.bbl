@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
 \bibitem{demirplak2003adiabatic}
 Mustafa Demirplak and Stuart~A Rice.
@@ -26,30 +26,6 @@ Luca D'Alessio, Yariv Kafri, Anatoli Polkovnikov, and Marcos Rigol.
 Michael Kolodrubetz, Pankaj Mehta, and Anatoli Polkovnikov.
 \newblock Geometry and non-adiabatic response in quantum and classical systems.
 \newblock {\em arXiv preprint arXiv:1602.01062}, 2016.
-
-\bibitem{jarzynski2013generating}
-Christopher Jarzynski.
-\newblock Generating shortcuts to adiabaticity in quantum and classical
-  dynamics.
-\newblock {\em Physical Review A}, 88(4):040101, 2013.
-
-\bibitem{sels2017minimizing}
-Dries Sels and Anatoli Polkovnikov.
-\newblock Minimizing irreversible losses in quantum systems by local
-  counterdiabatic driving.
-\newblock {\em Proceedings of the National Academy of Sciences}, page
-  201619826, 2017.
-
-\bibitem{clerk2010introduction}
-Aashish~A Clerk, Michel~H Devoret, Steven~M Girvin, Florian Marquardt, and
-  Robert~J Schoelkopf.
-\newblock Introduction to quantum noise, measurement, and amplification.
-\newblock {\em Reviews of Modern Physics}, 82(2):1155, 2010.
-
-\bibitem{wilf12generatingfunctionology}
-H~Wilf.
-\newblock Generatingfunctionology,(1990).
-\newblock {\em ISBN: 0-12-751956-4}.
 
 \bibitem{sachdev2007quantum}
 Subir Sachdev.
