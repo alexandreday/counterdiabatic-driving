@@ -312,7 +312,7 @@ We have two options while computing norm using ED: either take out all degenerat
 \end{equation}
 We note that for $\mu \neq 0$, $A_{\lambda}$ is zero for degenerate levels $n$ and $m$. What should be the value of $\mu$ chosen?  If $\mu^2 \ll \omega_{mn}^2$, then we would be back to square one because then we can ignore $\mu^2$ in denominator, and then the computer would complain of division by zero problem for degenerate levels $n$ and $m$. If $\mu^2 \gg \omega_{mn}^2$, then we would get approximate gauge potential, not the exact one. 
 
-Numerically, we choose $\mu^2$ to be the difference between two closest  floating point numbers.
+Numerically, we choose $\mu^2$ to be the difference between two closest floating point numbers.
 
 We would be studying integrable model, and seeing how norm of gauge potential scales.
 \begin{equation}
@@ -325,6 +325,14 @@ H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) - h\sum_{j} \sigma_j^
 \end{equation}
 where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
 
+
+\begin{figure}
+\begin{center}
+%\includegraphics[scale=0.65]{norm.eps}\\
+\includegraphics[scale=0.65]{norm_2.eps}
+\caption{Norm of gauge potential in integrable and non-integrable systems}
+\end{center}
+\end{figure}
 \appendix
 
 
