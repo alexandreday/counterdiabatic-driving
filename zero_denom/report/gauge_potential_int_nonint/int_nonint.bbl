@@ -1,0 +1,41 @@
+\begin{thebibliography}{1}
+
+\bibitem{demirplak2003adiabatic}
+Mustafa Demirplak and Stuart~A Rice.
+\newblock Adiabatic population transfer with control fields.
+\newblock {\em The Journal of Physical Chemistry A}, 107(46):9937--9945, 2003.
+
+\bibitem{demirplak2005assisted}
+Mustafa Demirplak and Stuart~A Rice.
+\newblock Assisted adiabatic passage revisited.
+\newblock {\em The Journal of Physical Chemistry B}, 109(14):6838--6844, 2005.
+
+\bibitem{berry2009transitionless}
+MV~Berry.
+\newblock Transitionless quantum driving.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  42(36):365303, 2009.
+
+\bibitem{d2016quantum}
+Luca D'Alessio, Yariv Kafri, Anatoli Polkovnikov, and Marcos Rigol.
+\newblock From quantum chaos and eigenstate thermalization to statistical
+  mechanics and thermodynamics.
+\newblock {\em Advances in Physics}, 65(3):239--362, 2016.
+
+\bibitem{kolodrubetz2016geometry}
+Michael Kolodrubetz, Pankaj Mehta, and Anatoli Polkovnikov.
+\newblock Geometry and non-adiabatic response in quantum and classical systems.
+\newblock {\em arXiv preprint arXiv:1602.01062}, 2016.
+
+\bibitem{sachdev2007quantum}
+Subir Sachdev.
+\newblock {\em Quantum phase transitions}.
+\newblock Wiley Online Library, 2007.
+
+\bibitem{del2012assisted}
+Adolfo del Campo, Marek~M Rams, and Wojciech~H Zurek.
+\newblock Assisted finite-rate adiabatic passage across a quantum critical
+  point: exact solution for the quantum ising model.
+\newblock {\em Physical review letters}, 109(11):115703, 2012.
+
+\end{thebibliography}
