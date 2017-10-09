@@ -164,7 +164,7 @@ Let's compute norm of gauge potential:
 ||A_{\lambda}||^2 &= \Tr  A_{\lambda}^2 \\
 &= \Tr \sum_{l,p}  \alpha_p \alpha_l O_l  O_p\\
 &=  \sum_{l,p}  \alpha_p \alpha_l  \Tr O_l  O_p\\
-&=  \sum_{l=1}^{L}  \alpha_l ^2
+&=  2^L \sum_{l=1}^{L}  \alpha_l ^2
 \end{align}
 
 
@@ -172,7 +172,7 @@ Now since $\alpha_l$ for large enough $L$ is exponentially suppressed in $l$, we
 
 
 \begin{equation}
-\boxed{||A_{\lambda}||^2 \sim  L }
+\boxed{||A_{\lambda}||^2 / 2^L \sim  L }
 \end{equation}
 
 \section{Non-integrable model}
@@ -209,7 +209,7 @@ We would argue that the biggest contribution to norm would come from the smalles
 \end{align*}
 where we have used the fact that entropy is extensive, i.e. $S \sim L$. Hence, norm averaged over system size is exponential in system size with $\hbar=1$
 \begin{equation}
-\boxed{||A_{\lambda}||^2/ 2^N \sim  e^{L} 
+\boxed{||A_{\lambda}||^2/ 2^L \sim  e^{L} 
 }
 \end{equation}
 
@@ -303,6 +303,7 @@ Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we h
 \langle \partial_{\lambda} m   | n \rangle E_n + E_m\langle  m  |   \partial_{\lambda} n \rangle + \langle  m  | \partial_{\lambda} H | n \rangle&=0\\
 (E_n - E_m)\langle  \partial_{\lambda} m  |    n \rangle + \langle  m  | \partial_{\lambda} H | n \rangle&=0
 \end{align*}
+
 Hence, we find that if there are two degenerate energy levels $n$ and $m$ such that $E_n=E_m$, then $\langle  m  | \partial_{\lambda} H | n \rangle=0$. Hence, the contribution to norm of gauge potential from this pair of energy levels will be zero. I should check this numerically if results of my code respect this property.
 
 
@@ -354,6 +355,25 @@ where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ wit
 \end{center}
 \end{figure}
 
+\subsection{ED on anti-ferromagnetic}
+For integrable model, let's try this:
+\begin{equation}
+H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
+\end{equation}
+
+and this:
+\begin{equation}
+H= J \sum_{j} \sigma_j^x(\sigma_{j+1}^x+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
+\end{equation}
+where we have chosen $J=1$ and $\lambda=5$ (and maybe also $\lambda=-5$?) with open boundary conditions.
+
+For non-integrable model, let's try this:
+\begin{equation}
+H= J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+\end{equation}
+where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
+
+Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects. We should choose parameters such that we are in ferromagnetic phase.
 \appendix
 
 
