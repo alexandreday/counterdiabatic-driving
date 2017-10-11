@@ -357,23 +357,34 @@ where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ wit
 
 \subsection{ED on anti-ferromagnetic}
 For integrable model, let's try this:
-\begin{equation}
-H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
-\end{equation}
+%\begin{equation}
+%H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
+%\end{equation}
 
-and this:
+%and this:
 \begin{equation}
-H= J \sum_{j} \sigma_j^x(\sigma_{j+1}^x+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
+H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
 \end{equation}
-where we have chosen $J=1$ and $\lambda=5$ (and maybe also $\lambda=-5$?) with open boundary conditions.
+where we have chosen $J=1$ and $\lambda=5$ (and maybe also $\lambda=-5, 0.5$?) with open boundary conditions.
 
 For non-integrable model, let's try this:
 \begin{equation}
-H= J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
 \end{equation}
 where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
 
-Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects. We should choose parameters such that we are in ferromagnetic phase.
+We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
+Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
+
+
+ETH claims that norm of gauge potential in infinite temperature will be ($\hbar=1$):
+\begin{align*}
+||A_{\lambda}||^2 &= \sum_n ||A_{\lambda}||^2_{nn} \\
+&= \sum_n |f_O(E_n)|^2\dfrac{\pi}{4 \mu}\\
+&= \dfrac{\pi 2^L}{4 \mu} |f_O(E_n)|^2 
+\end{align*}
+
+Can we verify using ED calculations?
 \appendix
 
 
