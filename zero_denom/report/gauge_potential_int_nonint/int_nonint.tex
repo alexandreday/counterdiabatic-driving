@@ -285,8 +285,20 @@ Let's assume $\beta \ll 1$ (high temperature limit):
 &=|f_O(E_n)|^2\left(\dfrac{\pi}{4 \mu}-\dfrac{\beta }{4}-\dfrac{\beta }{4} \log (\mu^2+ \omega^2)|_0^{\infty}  + \ldots \right) \\
 \end{align*}
 
-Hence, we see that there is a logarithmic divergence for high temperature limit. We also note that there are two limits, in which we find that there is no ultraviolet divergence: $\beta =0$ limit gives $\pi/ 4 \mu$ and $\beta \rightarrow \infty$ limit gives us zero norm. I don't understand why zero temperature limit gives zero norm.
+We see that there is a logarithmic divergence for high temperature limit. We also note that there are two limits, in which we find that there is no ultraviolet divergence: $\beta =0$ limit gives $\pi/ 4 \mu$ and $\beta \rightarrow \infty$ limit gives us zero norm. I don't understand why zero temperature limit gives zero norm.
 
+
+Hence, ETH claims that norm of gauge potential in infinite temperature will be ($\hbar=1$):
+\begin{align*}
+||A_{\lambda}||^2 &= \sum_n ||A_{\lambda}||^2_{nn} \\
+&= \dfrac{\pi}{4 \mu} \sum_n |f_O(E_n)|^2\\
+&= \dfrac{\pi 2^L}{4 \mu} \langle |f_O(E_n)|^2  \rangle
+\end{align*}
+Hence, we get:
+\begin{equation}
+\boxed{
+\dfrac{||A_{\lambda}||^2} {2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle}
+\end{equation}
 
 \section{Norm computed using ED}
 
@@ -294,8 +306,110 @@ Let's look at the expression of off-diagonal elements of gauge potential:
 \begin{equation}
 \langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}, \quad n \neq m
 \end{equation}
-We see that while using ED, we need to be wary of degenerate eigenvalues. Do these degenerate eigenvalues contribute to norm of gauge potential?
+We see that while using ED, we need to be wary of degenerate eigenvalues. Do these degenerate eigenvalues contribute to norm of gauge potential? Answer is no because $\langle m |\partial_{\lambda}H | n \rangle=0$ for degenerate pair of eigenvalues as shown in appendix \ref{sec.deg}.
 
+
+
+%We have two options while computing norm using ED: either take out all degenerate eigenvalues and work in non-degenerate eigen-subspace or introduce a cutoff $\mu$ to help us out here. We find that second option is easier to work numerically. Our $\mu$-dependent gauge potential is given by:
+%\begin{equation}
+%\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}
+%\end{equation}
+%We note that for $\mu \neq 0$, $A_{\lambda}$ is zero for degenerate levels $n$ and $m$. What should be the value of $\mu$ chosen?  If $\mu^2 \ll \omega_{mn}^2$, then we would be back to square one because then we can ignore $\mu^2$ in denominator, and then the computer would complain of division by zero problem for degenerate levels $n$ and $m$. If $\mu^2 \gg \omega_{mn}^2$, then we would get approximate gauge potential, not the exact one. Numerically, we choose $\mu^2$ to be the difference between two closest floating point numbers.
+
+%We would be studying integrable model, and seeing how norm of gauge potential scales.
+%\begin{equation}
+%H= -J \sum_{j} \sigma_j^x(\sigma_{j+1}^x+ \sigma_{j-1}^x) - \lambda \sum_{j} \sigma_j^z 
+%\end{equation}
+%where we have chosen $J=1$ and $\lambda=5$ with open boundary conditions.
+%
+%\begin{equation}
+%H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) - h\sum_{j} \sigma_j^z -\lambda \sum_{j} \sigma_j^x 
+%\end{equation}
+%where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
+
+
+%\begin{figure}
+%\begin{center}
+%%\includegraphics[scale=0.65]{norm.eps}\\
+%\includegraphics[scale=0.65]{norm_integ.eps}
+%\caption{System size (L) scaling of norm of gauge potential in integrable and non-integrable systems}
+%\end{center}
+%\end{figure}
+%
+%
+%\begin{figure}
+%\begin{center}
+%%\includegraphics[scale=0.65]{norm.eps}\\
+%\includegraphics[scale=0.65]{norm_mu_scaling_all_L.eps}
+%\caption{$\mu$ scaling of norm of gauge potential in integrable and non-integrable systems}
+%\end{center}
+%\end{figure}
+%
+%
+%
+%\begin{figure}
+%\begin{center}
+%\includegraphics[scale=0.53]{norm_mu_scaling_L8.eps}
+%\includegraphics[scale=0.53]{norm_mu_scaling_L10.eps}\\
+%\includegraphics[scale=0.67]{norm_mu_scaling_L12.eps}
+%\caption{$\mu$ scaling of norm of gauge potential in integrable and non-integrable systems}
+%\end{center}
+%\end{figure}
+
+For integrable model, we would study the Hamiltonian of Transverse Field Ising model:
+%\begin{equation}
+%H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
+%\end{equation}
+
+%and this:
+\begin{equation}
+H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
+\end{equation}
+where we have chosen $J=1$ and $\lambda=5$ with open boundary conditions.
+
+For non-integrable model, we would study the Hamiltonian of Ising model with both transverse and longitudinal fields:
+\begin{equation}
+H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+\end{equation}
+where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
+
+We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
+%Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
+
+\subsection{$\mu$ scaling}
+Our $\mu$-dependent gauge potential $A_{\lambda}$ is given by:
+\begin{equation}
+\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}
+\end{equation}
+Hence, norm should be (in units of $\hbar=1$):
+\begin{equation}
+||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{\omega_{nm}^2}{(\omega_{nm}^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2
+\end{equation}
+where $\omega_{nm}=E_n-E_m$
+\begin{itemize}
+\item $\mu \ll \min\{w_{nm}\}$:
+\begin{equation}
+||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2} 
+\end{equation}
+\item $\mu \gg \max\{w_{nm}\} $
+\begin{align*}
+||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 \\
+
+\end{align*}
+\end{itemize}
+%Can we verify using ED calculations?
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.65]{new_v1_norm_L8_L10_L12.eps}
+\caption{$\mu$ scaling of norm of gauge potential in integrable and non-integrable systems}
+\end{center}
+\end{figure}
+
+
+
+\appendix
+\section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
 Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:
 \begin{align*}
 \partial_{\lambda}\langle m  |  H | n\rangle&=0\\
@@ -305,91 +419,6 @@ Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we h
 \end{align*}
 
 Hence, we find that if there are two degenerate energy levels $n$ and $m$ such that $E_n=E_m$, then $\langle  m  | \partial_{\lambda} H | n \rangle=0$. Hence, the contribution to norm of gauge potential from this pair of energy levels will be zero. I should check this numerically if results of my code respect this property.
-
-
-We have two options while computing norm using ED: either take out all degenerate eigenvalues and work in non-degenerate eigen-subspace or introduce a cutoff $\mu$ to help us out here. We find that second option is easier to work numerically. Our $\mu$-dependent gauge potential is given by:
-\begin{equation}
-\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}
-\end{equation}
-We note that for $\mu \neq 0$, $A_{\lambda}$ is zero for degenerate levels $n$ and $m$. What should be the value of $\mu$ chosen?  If $\mu^2 \ll \omega_{mn}^2$, then we would be back to square one because then we can ignore $\mu^2$ in denominator, and then the computer would complain of division by zero problem for degenerate levels $n$ and $m$. If $\mu^2 \gg \omega_{mn}^2$, then we would get approximate gauge potential, not the exact one. 
-
-Numerically, we choose $\mu^2$ to be the difference between two closest floating point numbers.
-
-We would be studying integrable model, and seeing how norm of gauge potential scales.
-\begin{equation}
-H= -J \sum_{j} \sigma_j^x(\sigma_{j+1}^x+ \sigma_{j-1}^x) - \lambda \sum_{j} \sigma_j^z 
-\end{equation}
-where we have chosen $J=1$ and $\lambda=5$ with open boundary conditions.
-
-\begin{equation}
-H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) - h\sum_{j} \sigma_j^z -\lambda \sum_{j} \sigma_j^x 
-\end{equation}
-where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
-
-
-\begin{figure}
-\begin{center}
-%\includegraphics[scale=0.65]{norm.eps}\\
-\includegraphics[scale=0.65]{norm_integ.eps}
-\caption{System size (L) scaling of norm of gauge potential in integrable and non-integrable systems}
-\end{center}
-\end{figure}
-
-
-\begin{figure}
-\begin{center}
-%\includegraphics[scale=0.65]{norm.eps}\\
-\includegraphics[scale=0.65]{norm_mu_scaling_all_L.eps}
-\caption{$\mu$ scaling of norm of gauge potential in integrable and non-integrable systems}
-\end{center}
-\end{figure}
-
-
-
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.53]{norm_mu_scaling_L8.eps}
-\includegraphics[scale=0.53]{norm_mu_scaling_L10.eps}\\
-\includegraphics[scale=0.67]{norm_mu_scaling_L12.eps}
-\caption{$\mu$ scaling of norm of gauge potential in integrable and non-integrable systems}
-\end{center}
-\end{figure}
-
-\subsection{ED on anti-ferromagnetic}
-For integrable model, let's try this:
-%\begin{equation}
-%H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
-%\end{equation}
-
-%and this:
-\begin{equation}
-H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
-\end{equation}
-where we have chosen $J=1$ and $\lambda=5$ (and maybe also $\lambda=-5, 0.5$?) with open boundary conditions.
-
-For non-integrable model, let's try this:
-\begin{equation}
-H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
-\end{equation}
-where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions.
-
-We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
-Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
-
-
-ETH claims that norm of gauge potential in infinite temperature will be ($\hbar=1$):
-\begin{align*}
-||A_{\lambda}||^2 &= \sum_n ||A_{\lambda}||^2_{nn} \\
-&= \dfrac{\pi}{4 \mu} \sum_n |f_O(E_n)|^2\\
-&= \dfrac{\pi 2^L}{4 \mu} \langle |f_O(E_n)|^2  \rangle
-\end{align*}
-Hence, we get:
-\begin{equation}
-\dfrac{||A_{\lambda}||^2} {2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle
-\end{equation}
-Can we verify using ED calculations?
-\appendix
-
 
 
 \bibliography{ref} 
