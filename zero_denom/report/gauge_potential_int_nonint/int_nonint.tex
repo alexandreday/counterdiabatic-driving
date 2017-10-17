@@ -375,36 +375,49 @@ where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ wit
 
 We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
 %Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.7]{new_v1_norm_L8_L10_L12.eps} 
+\caption{Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems}
+\end{center}
+\end{figure}
 
+**blah blah ...numerically we can see four different regimes in which we can understand three of them** 
 \subsection{$\mu$ scaling}
 Our $\mu$-dependent gauge potential $A_{\lambda}$ is given by:
 \begin{equation}
 \langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}
 \end{equation}
-Hence, norm should be (in units of $\hbar=1$):
+where $\omega_{nm}=E_n-E_m$ and eigenstates depend on $\lambda$, i.e.$|n \rangle= |n \lambda \rangle $. Hence, norm should be (in units of $\hbar=1$):
 \begin{equation}
 ||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{\omega_{nm}^2}{(\omega_{nm}^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2
 \end{equation}
-where $\omega_{nm}=E_n-E_m$
-\begin{itemize}
-\item $\mu \ll \min\{w_{nm}\}$:
-\begin{equation}
-||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2} 
-\end{equation}
-\item $\mu \gg \max\{w_{nm}\} $
-\begin{align*}
-||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 \\
 
-\end{align*}
-\end{itemize}
-%Can we verify using ED calculations?
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.65]{new_v1_norm_L8_L10_L12.eps}
-\caption{$\mu$ scaling of norm of gauge potential in integrable and non-integrable systems}
+\includegraphics[scale=0.7]{L12_two_scaling.eps}
+\caption{Two different scaling regimes of $1/\mu$ and $1/\mu^4$: $y_1=\frac{\alpha_1}{x^{\beta_1}}$ and $y_2=\frac{\alpha_2}{x^{\beta_2}}$ where $\beta_1=1.02$, $\beta_2=3.88$, $\alpha_1=0.682$ and $\alpha_2=328.38$ which are found using least square method}
 \end{center}
 \end{figure}
+
+Analytically, we can talk about three regimes:
+\begin{itemize}
+\item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. So, we get exact gauge potential in this regime.
+\begin{equation}
+||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2} 
+\end{equation}
+\item \textbf{$1/\mu^4$ scaling regime} when $\mu \gg \max\{w_{nm}\}$:
+\begin{align*}
+||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 = \dfrac{1}{ \mu^4} \Tr  [H, \partial_{\lambda}H]^2 
+\end{align*}
+\item \textbf{Intermediate regime of $1/\mu$ scaling:} For non-integrable systems, we can use ETH to claim that
+\begin{equation}
+\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle
+\end{equation}
+\end{itemize}
+
+For integrable model, I don't know how to explain $1/\mu$ scaling.
 
 
 
