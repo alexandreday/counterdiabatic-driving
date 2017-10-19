@@ -363,19 +363,28 @@ For integrable model, we would study the Hamiltonian of Transverse Field Ising m
 
 %and this:
 \begin{equation}
-H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
+H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + \lambda \sum_{j} \sigma_j^x
 \end{equation}
+
+%\begin{equation}
+%H= J \sum_{j=1}^L-1 \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
+%\end{equation}
+
 where we have chosen $J=1$ and $\lambda=5$ with open boundary conditions.
 
 For non-integrable model, we would study the Hamiltonian of Ising model with both transverse and longitudinal fields:
 \begin{equation}
-H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
 \end{equation}
+%
+%\begin{equation}
+%H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+%\end{equation}
 where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions. These are values of parameters for which this model has been shown to be robustly non-integrable for small systems \cite{kim2013ballistic}.
 
 We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
 %Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.7]{new_v1_norm_L8_L10_L12.eps} 
 \caption{Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems}
@@ -394,8 +403,26 @@ where $\omega_{nm}=E_n-E_m$ and eigenstates depend on $\lambda$, i.e.$|n \rangle
 ||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{\omega_{nm}^2}{(\omega_{nm}^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2
 \end{equation}
 
-Numerically, we find the dependence of gauge potential on $\mu$ using Exact Diagonalization method (ED) in figure \ref{mu_scaling}.
-\begin{figure}[h!]
+Numerically, we find the dependence of gauge potential on $\mu$ using Exact Diagonalization method (ED) in figure \ref{mu_scaling}. Let's claim that $||A||^2/2^L=\alpha\mu^{\beta}$. Then if we take log both sides, we get
+\begin{equation}
+\log ||A||^2/2^L=\log \alpha+ \beta \log \mu
+\end{equation}
+where $\beta$ is the slope on a log-log scale. Numerically, we can find $\beta_i$ for each pair of points using the following relationship (figure \ref{slope_nonintegrable_mu}):
+\begin{equation}
+\beta_i=\dfrac{\log y( \mu_{i+1}) -\log y( \mu_{i})} {\log \mu_{i+1}-\log \mu_{i}}
+\end{equation}
+where $y= ||A||^2/2^L$. 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{slope.eps}
+\caption{$\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for  integrable and non-integrable systems }
+\label{slope_nonintegrable_mu}
+\end{center}
+\end{figure}
+
+Let's stick to non-integrable systems for now(figure \ref{nonintegrable_mu}).
+
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.7]{L12_two_scaling.eps}
 \caption{Two different scaling regimes of $1/\mu$ and $1/\mu^4$: $y_1=\alpha_1\mu^{\beta_1}$ and $y_2=\alpha_2\mu^{\beta_2}$ where $\beta_1=-1.02$, $\beta_2=-3.88$, $\alpha_1=0.682$ and $\alpha_2=328.38$ which are found using least square method}
@@ -403,7 +430,7 @@ Numerically, we find the dependence of gauge potential on $\mu$ using Exact Diag
 \end{center}
 \end{figure}
 
-Let's stick to non-integrable systems for now(figure \ref{nonintegrable_mu}). Let's study three regimes we see in the figures: 
+ Let's study three regimes we see in the figures: 
 \begin{itemize}
 \item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. So, we get exact gauge potential in this regime.
 \begin{equation}
@@ -414,7 +441,7 @@ This regime seems to grow smaller for larger system size (figure \ref{mu_scaling
 \begin{align*}
 ||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 = \dfrac{1}{ \mu^4} \Tr  [H, \partial_{\lambda}H]^2 =\dfrac{\alpha_2^{Th}}{ \mu^4}
 \end{align*}
-where theoretical value of  $\alpha_2^{Th}=\Tr  [H, \partial_{\lambda}H]^2 $ should be compared against the numerical value obtained in figure \ref{nonintegrable_mu}.
+where theoretical value of  $\alpha_2^{Th}=\Tr  [H, \partial_{\lambda}H]^2 $ should be compared against the numerical value obtained in figure \ref{nonintegrable_mu}.  For $L=12$, we obtain $\alpha_2^{Th}=119.41$ whose details are given in appendix B.
 \item \textbf{Intermediate regime of $1/\mu$ scaling:} For non-integrable systems, we can use ETH to claim that
 \begin{equation}
 \dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle
@@ -422,8 +449,6 @@ where theoretical value of  $\alpha_2^{Th}=\Tr  [H, \partial_{\lambda}H]^2 $ sho
 \end{itemize}
 
 %For integrable model, I don't know how to explain $1/\mu$ scaling.
-
-
 
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
@@ -436,6 +461,35 @@ Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we h
 \end{align*}
 
 Hence, we find that if there are two degenerate energy levels $n$ and $m$ such that $E_n=E_m$, then $\langle  m  | \partial_{\lambda} H | n \rangle=0$. Hence, the contribution to norm of gauge potential from this pair of energy levels will be zero. I should check this numerically if results of my code respect this property.
+
+
+\section{Computing $\Tr [H, \partial_{\lambda}H] $}
+\subsection{Integrable model}
+\begin{equation}
+H=  \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + \lambda \sum_{j} \sigma_j^x
+\end{equation}
+We know that that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x $. Let's denote  $C^{(1)}=[H,\partial_{\lambda}H]$. 
+
+
+\begin{align*}
+[H,\partial_{\lambda}H] & = \sum_{j=1}^{L-1} [\sigma_j^z \sigma_{j+1}^z , \sum_{i} \sigma_i^x]  \\
+&= 2i \left(\sum_{j=1}^{L-1} \sigma_j^y \sigma_{j+1}^z + \sum_{j=2}^{L} \sigma_j^y \sigma_{j-1}^z\right)
+\end{align*}
+
+We find that $\Tr |C^{(1)}|^2 = 8 (L-1)2^L$ 
+\subsection{Non-integrable model}
+Non-integrable model's Hamiltonian is given by: 
+\begin{equation}
+H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+\end{equation}
+\begin{align*}
+[H,\partial_{\lambda}H] & =  [\sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j=1}^{L} \sigma_j^z, \sum_{i} \sigma_i^x]  \\
+&= 2i \left(\sum_{j=1}^{L-1} \sigma_j^y \sigma_{j+1}^z + \sum_{j=2}^{L} \sigma_j^y \sigma_{j-1}^z + h \sum_{j=1}^{L}\sigma_j^y \right) 
+\end{align*}
+
+
+We find that $\Tr |C^{(1)}|^2 = 2^L 4(h^2 L + 2J(L-1))$ 
+
 
 
 \bibliography{ref} 
