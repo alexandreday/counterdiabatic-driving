@@ -164,7 +164,7 @@ Let's compute norm of gauge potential:
 ||A_{\lambda}||^2 &= \Tr  A_{\lambda}^2 \\
 &= \Tr \sum_{l,p}  \alpha_p \alpha_l O_l  O_p\\
 &=  \sum_{l,p}  \alpha_p \alpha_l  \Tr O_l  O_p\\
-&=  2^L \sum_{l=1}^{L}  \alpha_l ^2
+&=  2^{L+1} \sum_{l=1}^{L}  \alpha_l ^2
 \end{align}
 
 
@@ -172,7 +172,7 @@ Now since $\alpha_l$ for large enough $L$ is exponentially suppressed in $l$, we
 
 
 \begin{equation}
-\boxed{||A_{\lambda}||^2 / 2^L \sim  L }
+\boxed{||A_{\lambda}||^2 / 2^L \sim 2 L }
 \end{equation}
 
 \section{Non-integrable model}
@@ -432,22 +432,46 @@ Let's stick to non-integrable systems for now(figure \ref{nonintegrable_mu}).
 
  Let's study three regimes we see in the figures: 
 \begin{itemize}
-\item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. So, we get exact gauge potential in this regime.
+\item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. $\min\{w_{nm}\}= \Delta= E_1 - E_0$ So, we get exact gauge potential in this regime.
 \begin{equation}
-||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2}  
+||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2}  \sim 2^Le^L
 \end{equation}
 This regime seems to grow smaller for larger system size (figure \ref{mu_scaling}).
 \item \textbf{$1/\mu^4$ scaling regime} when $\mu \gg \max\{w_{nm}\}$:
+$\max\{w_{nm}\}= E_{HES} - E_{GS}$
 \begin{align*}
-||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 = \dfrac{1}{ \mu^4} \Tr  [H, \partial_{\lambda}H]^2 =\dfrac{\alpha_2^{Th}}{ \mu^4}
+||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 = \dfrac{1}{ \mu^4} \Tr  [H, \partial_{\lambda}H]^2 =\dfrac{\alpha_2^{Th}}{ \mu^4} \sim\dfrac{L}{ \mu^4} 2^L 
 \end{align*}
 where theoretical value of  $\alpha_2^{Th}=\Tr  [H, \partial_{\lambda}H]^2 $ should be compared against the numerical value obtained in figure \ref{nonintegrable_mu}.  For $L=12$, we obtain $\alpha_2^{Th}=119.41$ whose details are given in appendix B.
+
+When $\mu \gg \max\{w_{nm}\}$, approximate gauge potential $A_{\lambda}^*$ would be given by:
+\begin{align*}
+A_{\lambda}^* & =  -i \hbar [H,\partial_{\lambda}H ]\dfrac{1}{\mu^2}  \\
+& =  -i \hbar \dfrac{1}{\mu^2} C^{(1)}
+\end{align*}
+where $ C^{(1)}=2i \left(\sum_{j=1}^{L-1} \sigma_j^y \sigma_{j+1}^z + \sum_{j=2}^{L} \sigma_j^y \sigma_{j-1}^z + h \sum_{j=1}^{L}\sigma_j^y \right) $.
+
+What is really interesting here in this regime is that approximate gauge potential has only a single body term and a two body term. In other words, when comparing it with exact gauge potential which has $C^{(1)},C^{(3)}, C^{(5)} $ terms involving all many body operators, we have only two and one body term here.
 \item \textbf{Intermediate regime of $1/\mu$ scaling:} For non-integrable systems, we can use ETH to claim that
 \begin{equation}
-\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle
+\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle \sim \dfrac{L^\gamma }{ \mu} 2^L
 \end{equation}
+where $\gamma$ is unknown.
 \end{itemize}
 
+\underline{\textit{A few comments here:}}
+\begin{enumerate}
+\item It's very interesting that there are only two ``kinds" of approximate gauge potential regimes -- the $1/\mu$ regime which is polynomial ($L^{\gamma}$) in the system size and the $1/\mu^4$ regime which is linear in the system size \footnote{Of course, I am ignoring the regime which is between the regime of exact gauge potential (constant plateau regime) and $1/\mu$ scaling. It can't be described using one single exponent $\beta$ unlike three other regimes-- $\beta=0, -1, -4$}. 
+
+In $1/\mu^4$ regime, we know definitely that only two and one body terms survive. In $1/\mu$ regime, which operators survive and which don't? Why there are only two ``kinds" of approximate gauge potential when we introduce a cutoff in our theory? In other words, since exact gauge potential has all possible many body terms for nonintegrable model, we expect that when we introduce $\mu$, magnitude of these terms should be smaller (but all should be still there). Probably in $1/ \mu$ regime all these terms are there unless $\gamma =1/2$. Question is why suddenly at second critical $\mu_c$, we find that approximate gauge potential becomes linear (only single and two body) in system size?
+\item \textbf{Checks on my numerical results:}
+\begin{itemize}
+\item Numerically, go for smaller systems and see if this pattern is seen there too or not. If that's happening, we can probably verify it in the analytical calculations.
+\item Analytically using cutoff regulator formula,  check N=2 and N=4 and verify if these two regimes show up. How does the operators look like for $1/\mu$ scale?
+\item Numerically, go for bigger $\mu$ so that $\alpha_2^{Th}$ matches exactly with numerical value of $\alpha_2$
+\end{itemize} 
+ 
+\end{enumerate}
 %For integrable model, I don't know how to explain $1/\mu$ scaling.
 
 \appendix
@@ -477,6 +501,7 @@ We know that that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x $. Let's denote  $
 \end{align*}
 
 We find that $\Tr |C^{(1)}|^2 = 8 (L-1)2^L$ 
+
 \subsection{Non-integrable model}
 Non-integrable model's Hamiltonian is given by: 
 \begin{equation}

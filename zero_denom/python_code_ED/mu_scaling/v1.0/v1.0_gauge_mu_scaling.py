@@ -55,9 +55,9 @@ def guage_potent_mu(Ham,L, mu):
     return A_lamb
 
 
-muTot=40
-mu_arr=np.logspace(-5,3.0,muTot)
-L=8
+muTot=50
+mu_arr=np.logspace(-10,5.0,muTot)
+L=9
 norm_arr_nonint=np.zeros(muTot)
 H=Ham_nonint(L)
 for i in range(muTot):
@@ -80,19 +80,19 @@ t_end=time.time()
 t_code=(t_end-t_start)/60    
 
 
-f=open('Int_mu_scaling.dat','w')
+f=open('v1.0_L9_int_mu_scaling.dat','w')
 f.write(" L=%d, code time=%f (in min) \n"  %(L,t_code))
-f.write('"mu^2" \t \t "||A||^2" \n')
+f.write('"mu" \t \t "||A||^2" \n')
 
-np.savetxt(f, np.transpose([ mu_arr,norm_arr_int**2]) , fmt='%.12f', delimiter='\t')
+np.savetxt(f, np.transpose([ mu_arr,norm_arr_int**2]) , fmt='%.20f', delimiter='\t')
 f.close()
 
-f=open('Non_int_mu_scaling.dat','w')
+f=open('v1.0_L9_nonint_mu_scaling.dat','w')
 f.write(" L=%d, code time=%f (in min) \n"  %(L,t_code))
-f.write('"mu^2" \t \t "||A||^2" \n')
+f.write('"mu" \t \t "||A||^2" \n')
 
 
-np.savetxt(f, np.transpose([mu_arr,norm_arr_nonint**2]) , fmt='%.12f', delimiter='\t')
+np.savetxt(f, np.transpose([mu_arr,norm_arr_nonint**2]) , fmt='%.20f', delimiter='\t')
 f.close()
 
 
