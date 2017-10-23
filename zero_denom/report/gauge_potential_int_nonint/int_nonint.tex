@@ -227,17 +227,17 @@ For formal calculation, I would need to introduce a cutoff $\mu$. Otherwise, nor
 where we have chosen a gauge choice in which diagonal elements are zero in energy basis, i.e. $A_{\lambda}^{nn}=0$. 
 
 \begin{equation}
-||A_{\lambda}||^2 = \hbar^2\sum_n ||A_{\lambda}||^2_{nn}
+||A_{\lambda}||^2 = \hbar^2\sum_n ||A_{\lambda}||^2_{n}
 \end{equation}
-where $||A_{\lambda}||^2_{nn} =\sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2$.
+where $||A_{\lambda}||^2_{n} =\sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2$.
 
 Let's simplify this using ETH:
 \begin{align*}
-||A_{\lambda}||^2_{nn} &= \sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2\\
-&=\sum_{m \neq n}  \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} e^{-S(\bar{E})} |f_O(\bar{E}, \omega) R_{mn}|^2\\
-&=\sum_{m \neq n}  \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} e^{-S(E_n -\omega/2)} |f_O(E_n - \omega/2, \omega)|^2 |R_{mn}|^2
+||A_{\lambda}||^2_{n} &= \sum_{m \neq n}  \dfrac{(E_m-E_n)^2}{((E_m-E_n)^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2\\
+&=\sum_{m \neq n}  \dfrac{\omega_{nm}^2}{(\omega_{nm}^2 + \mu^2)^2} e^{-S(\bar{E})} |f_O(\bar{E}, \omega_{nm}) R_{mn}|^2\\
+&=\sum_{m \neq n}  \dfrac{\omega_{nm}^2}{(\omega_{nm}^2 + \mu^2)^2} e^{-S(E_n -\omega_{nm}/2)} |f_O(E_n - \omega_{nm}/2, \omega_{nm})|^2 |R_{mn}|^2
 \end{align*}
-where $\bar{E}= (E_m +E_n)/2=E_n - \omega/2$ ,$ \omega= E_n- E_m$ and $S(E)$ is the thermodynamic entropy at energy $E$.
+where $\bar{E}= (E_m +E_n)/2=E_n - \omega/2$, $\omega_{nm}= E_n- E_m$ and $S(E)$ is the thermodynamic entropy at energy $E$.
 We would need to convert the sum into integral where we use the fact that function $f_O$ is smooth and fluctuations of $|R_{mn}|^2$ average out in the sum.
 
 \begin{equation}
@@ -247,14 +247,14 @@ where $\Omega(E_{n}+ \omega)$ is density of states.
 
 
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=\int d \omega e^{S(E_{n}- \omega)-S(E_n -\omega/2)} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n - \omega/2, \omega)|^2 
+||A_{\lambda}||^2_{n} &=\int d \omega e^{S(E_{n}- \omega)-S(E_n -\omega/2)} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n - \omega/2, \omega)|^2 
 \end{align*}
 $S(E_{n}- \omega)-S(E_n -\omega/2) = -\beta \omega/2 + \ldots $ and $f_O(E_n - \omega/2, \omega)=f_O(E_n, \omega) + \ldots $ we have
 
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=\int_a^{b} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n, \omega)|^2 
+||A_{\lambda}||^2_{n} &=\int_a^{b} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  |f_O(E_n, \omega)|^2 
 \end{align*}
-where $a$ represents the minimum energy difference $E_m-E_n$ in thermodynamic limit (which is energy gap between $n$-th state and nearest eigenstate (either $E_{n+1}$ or $E_{n-1}$ depending upon what is $\min \{|E_{n-1}-E_{n}|,|E_{n+1}-E_{n}| \}$) and $b$ is the maximum energy difference (for which we have to find $m$-th state such that we get $\max \{|E_{m}-E_{n}|\}$) ). $a= e^{-S} \sim e^{-\delta L}$ and $b= \gamma L$, where $\gamma$ and $\delta$ are constants that depend on the details of Hamiltonian.
+where $a$ represents the minimum energy difference $E_m-E_n$ in thermodynamic limit (which is $\min\{w_{nm}\}$) and $b$ is the maximum energy difference (for which we have to find $m$-th state such that we get $\max\{w_{nm}\}$) ). $a= e^{-S} \sim e^{-\delta L}$ and $b= \gamma L$, where $\gamma$ and $\delta$ are constants that depend on the details of Hamiltonian.
 
 Let's denote $I=e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}$ and find out how it depends on L. First, we check on upper limit.
 
@@ -276,12 +276,12 @@ Now on lower limit.
 
 Now, let's compute the norm while assuming $ |f_O(E_n, \omega)|^2 $ is a constant in $\omega$. Hence, we get:
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=  |f_O(E_n)|^2 \int_0^{\infty} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} 
+||A_{\lambda}||^2_{n} &=  |f_O(E_n)|^2 \int_0^{\infty} d \omega e^{-\beta \omega/2} \dfrac{\omega^2}{(\omega^2 + \mu^2)^2} 
 \end{align*}
 Let's assume $\beta \ll 1$ (high temperature limit):
 
 \begin{align*}
-||A_{\lambda}||^2_{nn} &=  |f_O(E_n)|^2 \int_0^{\infty} d \omega \left(1-\beta \omega/2 + \ldots \right) \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  \\
+||A_{\lambda}||^2_{n} &=  |f_O(E_n)|^2 \int_0^{\infty} d \omega \left(1-\beta \omega/2 + \ldots \right) \dfrac{\omega^2}{(\omega^2 + \mu^2)^2}  \\
 &=|f_O(E_n)|^2\left(\dfrac{\pi}{4 \mu}-\dfrac{\beta }{4}-\dfrac{\beta }{4} \log (\mu^2+ \omega^2)|_0^{\infty}  + \ldots \right) \\
 \end{align*}
 
@@ -290,7 +290,7 @@ We see that there is a logarithmic divergence for high temperature limit. We als
 
 Hence, ETH claims that norm of gauge potential in infinite temperature will be ($\hbar=1$):
 \begin{align*}
-||A_{\lambda}||^2 &= \sum_n ||A_{\lambda}||^2_{nn} \\
+||A_{\lambda}||^2 &= \sum_n ||A_{\lambda}||^2_{n} \\
 &= \dfrac{\pi}{4 \mu} \sum_n |f_O(E_n)|^2\\
 &= \dfrac{\pi 2^L}{4 \mu} \langle |f_O(E_n)|^2  \rangle
 \end{align*}
@@ -432,13 +432,13 @@ Let's stick to non-integrable systems for now(figure \ref{nonintegrable_mu}).
 
  Let's study three regimes we see in the figures: 
 \begin{itemize}
-\item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. $\min\{w_{nm}\}= \Delta= E_1 - E_0$ So, we get exact gauge potential in this regime.
+\item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: Since density of states is highest in the middle of spectrum, $\min\{w_{nm}\}$ is smallest for two states lying there. In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. So, we get exact gauge potential in this regime.
 \begin{equation}
 ||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2}  \sim 2^Le^L
 \end{equation}
 This regime seems to grow smaller for larger system size (figure \ref{mu_scaling}).
 \item \textbf{$1/\mu^4$ scaling regime} when $\mu \gg \max\{w_{nm}\}$:
-$\max\{w_{nm}\}= E_{HES} - E_{GS}$
+
 \begin{align*}
 ||A_{\lambda}||^2 &= \dfrac{1}{ \mu^4} \sum_n \sum_{m \neq n}  \omega_{nm}^2 |\langle m | \partial_{\lambda}H| n \rangle|^2 = \dfrac{1}{ \mu^4} \Tr  [H, \partial_{\lambda}H]^2 =\dfrac{\alpha_2^{Th}}{ \mu^4} \sim\dfrac{L}{ \mu^4} 2^L 
 \end{align*}
@@ -454,9 +454,9 @@ where $ C^{(1)}=2i \left(\sum_{j=1}^{L-1} \sigma_j^y \sigma_{j+1}^z + \sum_{j=2}
 What is really interesting here in this regime is that approximate gauge potential has only a single body term and a two body term. In other words, when comparing it with exact gauge potential which has $C^{(1)},C^{(3)}, C^{(5)} $ terms involving all many body operators, we have only two and one body term here.
 \item \textbf{Intermediate regime of $1/\mu$ scaling:} For non-integrable systems, we can use ETH to claim that
 \begin{equation}
-\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle \sim \dfrac{L^\gamma }{ \mu} 2^L
+\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle \sim \dfrac{L^\gamma }{ \mu} 
 \end{equation}
-where $\gamma$ is unknown.
+where $\gamma$ is unknown. Probably $\gamma$  depends on $\mu$.
 \end{itemize}
 
 \underline{\textit{A few comments here:}}
@@ -469,6 +469,7 @@ In $1/\mu^4$ regime, we know definitely that only two and one body terms survive
 \item Numerically, go for smaller systems and see if this pattern is seen there too or not. If that's happening, we can probably verify it in the analytical calculations.
 \item Analytically using cutoff regulator formula,  check N=2 and N=4 and verify if these two regimes show up. How does the operators look like for $1/\mu$ scale?
 \item Numerically, go for bigger $\mu$ so that $\alpha_2^{Th}$ matches exactly with numerical value of $\alpha_2$
+\item $\mu_c^{(1)} \sim \min{\omega_{nm}}$ $\mu_c^{(2)} \sim \max{\omega_{nm}}$. It should be same order of magnitude.
 \end{itemize} 
  
 \end{enumerate}
