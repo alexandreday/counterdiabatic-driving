@@ -58,9 +58,9 @@ def gauge_potent_mu(wij,num_lamb_mat,mu):
     return A_lamb
 
 ###parameters
-muTot=200
-mu_arr=np.logspace(-10,10.0,muTot)
-L=6
+muTot=40
+mu_arr=np.logspace(-6,1.0,muTot)
+L=10
 norm_arr_nonint=np.zeros(muTot)
 norm_arr_int=np.zeros(muTot)
 hz=5.00#for int Ham
@@ -108,7 +108,7 @@ t_int_code=(t_end_int-t_start_int)/60
 
 
 
-f=open('v2.0_L%s_nonint_mu_scaling.dat' %L,'w')
+f=open('Test_v2.0_L%s_nonint_mu_scaling.dat' %L,'w')
 f.write(" L=%d, code time=%f (in min) \n"  %(L,t_nonint_code))
 f.write("wij_min=%.20e, wij_max=%.20e \n"  %(wij_min_nonint,wij_max_nonint))
 f.write('"mu" \t \t "||A||^2" \n')
@@ -118,7 +118,7 @@ np.savetxt(f, np.transpose([mu_arr,norm_arr_nonint**2]) , fmt='%.20e', delimiter
 f.close()
 
 
-f=open('v2.0_L%s_int_mu_scaling.dat' %L, 'w')
+f=open('Test_v2.0_L%s_int_mu_scaling.dat' %L, 'w')
 f.write("L=%d, code time=%f (in min) \n"  %(L,t_int_code))
 f.write("wij_min=%.20e, wij_max=%.20e \n"  %(wij_min_int,wij_max_int))
 f.write('"mu" \t \t "||A||^2" \n')
