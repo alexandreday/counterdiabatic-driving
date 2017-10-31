@@ -26,7 +26,6 @@
 
 \section{Introduction}
 
-
 Adiabatic gauge potentials are useful for controlling a quantum system when it's driven externally from one configuration to another. These potentials help us in  circumventing standard adiabatic limitations which requires infinitesimally small rates \cite{demirplak2003adiabatic,demirplak2005assisted, berry2009transitionless}. For example, these potentials can be used for arbitrarily fast annealing protocols and implementing fast dissipationless driving. 
 
 
@@ -382,8 +381,37 @@ H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda 
 %\end{equation}
 where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions. These are values of parameters for which this model has been shown to be robustly non-integrable for small systems \cite{kim2013ballistic}.
 
-We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
-%Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
+We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $.
+
+Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
+
+
+\subsection{System-size scaling of minimum and maximum of $\omega_{ij}$}
+
+ 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/v2_maxwij_int.eps} \\
+\includegraphics[scale=0.7]{new_pics/v2_maxwij_nonint.eps}
+\caption{Using ED method, $\min \omega_{ij}(L)$}
+\end{center}
+\end{figure}
+
+If there is degeneracy, $\min \omega_{ij}(L)$ should be zero. Why don't I see any degenerate level?
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/v2_minwij_int.eps}\\
+\includegraphics[scale=0.7]{new_pics/v2_minwij_nonint.eps}
+\caption{Using ED method,  $\max \omega_{ij}(L)$}
+\end{center}
+\end{figure}
+
+
+
+\subsection{$\mu$ scaling of gauge potential}
+
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling.eps} \\
@@ -393,25 +421,8 @@ We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $. \\
 \end{center}
 \end{figure}
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/norm_L_scaling.eps}
-\caption{exact gauge potential as a function of system size}
-\label{mu_scaling}
-\end{center}
-\end{figure}
 
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/max_wij.eps} \\
-\includegraphics[scale=0.7]{new_pics/min_wij.eps}\\
-\caption{Using ED method, $\min \omega_{ij}(L)$ and $\max \omega_{ij}(L)$}
-\label{mu_scaling}
-\end{center}
-\end{figure}
-
-\subsection{$\mu$ scaling of gauge potential}
 Our $\mu$-dependent gauge potential $A_{\lambda}$ is given by:
 \begin{equation}
 \langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}
@@ -455,6 +466,25 @@ where $y= ||A||^2/2^L$.
 ||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{|\langle m | \partial_{\lambda}H| n \rangle|^2}{\omega_{nm}^2}  \sim 2^Le^L
 \end{equation}
 This regime seems to grow smaller for larger system size (figure \ref{mu_scaling}).
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/v2_1_norm_L_scaling.eps}
+\caption{Exact gauge potential as a function of system size: non-integrable systems (exponential scaling) and integrable (polynomial scaling) }
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/v2_int_exactgauge_Lscaling.eps}\\
+\includegraphics[scale=0.7]{new_pics/v2_1_norm_int_linear.eps}
+\caption{Integrable systems: exact gauge potential as a function of system size }
+\end{center}
+\end{figure}
+
+
 
 \item \textbf{$1/\mu^4$ scaling regime} 
 When $\mu \gg \max\{w_{nm}\}$, approximate gauge potential $A_{\lambda}^*$ would be given by:
