@@ -24,7 +24,7 @@ def Ham_int_antiferro(L,hz):
     basis = spin_basis_1d(L)
     J=1.0
     hz_arr = [[hz,i] for i in range(L)] # OBC
-    J_arr =[[J,i,(i+1)] for i in range(L-1)] # OBC# [[J,i,(i+1)%L] for i in range(L)] # PBC
+    J_arr =[[J,i,(i+1)] for i in range(L-1)] # OBC# [[J,i,(i+1)%L] for i in range(L)] # PBC 
     # static and dynamic lists
     static = [["zz",J_arr],["x",hz_arr]]
     dynamic =[]
@@ -58,9 +58,9 @@ def gauge_potent_mu(wij,num_lamb_mat,mu):
     return A_lamb
 
 ###parameters
-mu=1e-10
+mu=1e-60
 hz=5.0
-L_arr=range(2,11)
+L_arr=range(2,4)
 norm_arr_nonint=np.zeros(len(L_arr))
 norm_arr_int=np.zeros(len(L_arr))
 wij_min_nonint= np.zeros(len(L_arr)) 
@@ -72,7 +72,7 @@ t_start_nonint=time.time()
 ###nonint
 ###finding minimum and maximum wij
 ###running the loop    
-for i in range(len(L_arr)):
+for i in range(0):#len(L_arr)):
 	L=L_arr[i]
 	H=Ham_nonint(L)
 	wij, num_lamb_mat=output_gauge_potent(H,L)
@@ -109,16 +109,16 @@ t_int_code=(t_end_int-t_start_int)/60
 
 
 
-f=open('v2_mu%s_nonint_L_scaling.dat' %mu,'w')
-f.write(" mu=%e, code time=%f (in min) \n"  %(mu,t_nonint_code))
-f.write('"mu" \t \t "||A||^2/2^L \t \t wij_min_nonint \t \t wij_max_nonint" \n')
+#f=open('v2_mu%s_nonint_L_scaling.dat' %mu,'w')
+#f.write(" mu=%e, code time=%f (in min) \n"  %(mu,t_nonint_code))
+#f.write('"mu" \t \t "||A||^2/2^L \t \t wij_min_nonint \t \t wij_max_nonint" \n')
 
 
-np.savetxt(f, np.transpose([L_arr,norm_arr_nonint,wij_min_nonint,wij_max_nonint ]) , fmt='%.20e', delimiter='\t')
-f.close()
+#np.savetxt(f, np.transpose([L_arr,norm_arr_nonint,wij_min_nonint,wij_max_nonint ]) , fmt='%.20e', delimiter='\t')
+#f.close()
 
 
-f=open('v2_mu%s_int_L_scaling.dat' %mu, 'w')
+f=open('Testing_Analy_v2_mu%s_int_L_scaling.dat' %mu, 'w')
 f.write("mu=%e, code time=%f (in min) \n"  %(mu,t_int_code))
 f.write('"mu" \t \t "||A||^2/2^L \t \t wij_min_int \t \t wij_max_int" \n')
 

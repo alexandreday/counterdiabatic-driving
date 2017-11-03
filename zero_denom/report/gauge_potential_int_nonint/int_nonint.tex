@@ -109,10 +109,10 @@ This model can be written in terms of non-interacting spinless fermions ($c_i, c
 
 It's Hamiltonian in spin basis is given by:
 \begin{equation}
-H= -J \sum_{j} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
+H= -J \sum_{j=1}^{L-1} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
 \label{xx_z}
 \end{equation}
-where we have not specified boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
+where we have chosen open boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
 
 This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation: $\sigma_i^z \sim 1 - 2 c^{\dagger}_i c_i   $ and $\sigma_i^+ \sim \prod_{j<i} \sigma_j^z c_j   $. Details can be found elsewhere \cite{sachdev2007quantum} \footnote{Momentum operator chosen to get real valued Hamiltonian is $c_k= \frac{e^{i \pi/4}}{\sqrt{L}}\sum_j c_j e^{-ikj}$, where k is $n\pi/L$ with $n=0,1,2, \ldots L-1$} . Here is what we get after this transformation:
 
@@ -131,7 +131,7 @@ H_k= -(\lambda - \cos k) \sigma^z_k - \sin k  \sigma^x_k
 
 Now using our regulator method (whose details are not given in this report), we can obtain :
 \begin{equation}
-\boxed{A_{\lambda}= \sum_{l=1}^{L} \alpha_l O_l \quad \mbox{where} \quad \alpha_l= -\dfrac{1}{4 L} \sum_k \dfrac{\sin(k) \sin(lk)}{(\cos k - \lambda)^2 + \sin^2 k}}
+\boxed{A_{\lambda}= \sum_{l=1}^{L-1} \alpha_l O_l \quad \mbox{where} \quad \alpha_l= -\dfrac{1}{4 L} \sum_k \dfrac{\sin(k) \sin(lk)}{(\cos k - \lambda)^2 + \sin^2 k}}
 \end{equation}
 where  $O_l$ is given by
 \begin{equation}
@@ -142,29 +142,49 @@ This matches with the result already known in literature \cite{del2012assisted, 
 
 Let's write a first few terms of $O_l$ here:
 \begin{align*}
-O_{l=1}&=  \sum_j ( \sigma_j^x  \sigma_{j+1}^y +  \sigma_j^y  \sigma_{j+1}^x) \\
-O_{l=2} &=  \sum_j ( \sigma_j^x \sigma_{j+1}^z \sigma_{j+2}^y +  \sigma_j^y \sigma_{j+1}^z \sigma_{j+2}^x) \\
+O_{l=1}&=  \sum_{j=1}^{L-1} ( \sigma_j^x  \sigma_{j+1}^y +  \sigma_j^y  \sigma_{j+1}^x) \\
+O_{l=2} &=  \sum_{j=1}^{L-2} ( \sigma_j^x \sigma_{j+1}^z \sigma_{j+2}^y +  \sigma_j^y \sigma_{j+1}^z \sigma_{j+2}^x) 
 \end{align*}
 
+On computation, we find that with open boundary conditions, we get $\Tr O_l  O_p= \delta_{l,p} 2^{L+1} (L-l)$
 
 For large enough system size $L$, we can compute $\alpha_l$ \cite{kolodrubetz2016geometry} by computing the sum into an integral and obtain the value of $\alpha_l$ as: 
 \begin{equation}
- \alpha_l=\left\{
+ \alpha_l=-\dfrac{1}{8}\left\{
   \begin{array}{@{}ll@{}}
-    h^{l-1} & (h^2 <1), \\
-     h^{-l-1} & (h^2 >1)
+    \lambda^{l-1} & (\lambda^2 <1), \\
+     \lambda^{-l-1} & (\lambda^2 >1)
   \end{array}\right.
 \end{equation}
 
 
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/alpha_num_theoret.eps}\\
+\includegraphics[scale=0.7]{new_pics/error_alpha.eps}\\
+\includegraphics[scale=0.7]{new_pics/int_comparing_num_anal_norm_L_scaling.eps}
+\caption{Integrable systems: string length of exact gauge potential as a function of system size }
+\end{center}
+\end{figure}
 
 Let's compute norm of gauge potential:
 \begin{align}
 ||A_{\lambda}||^2 &= \Tr  A_{\lambda}^2 \\
 &= \Tr \sum_{l,p}  \alpha_p \alpha_l O_l  O_p\\
 &=  \sum_{l,p}  \alpha_p \alpha_l  \Tr O_l  O_p\\
-&=  2^{L+1} \sum_{l=1}^{L}  \alpha_l ^2
+&=  2^{L+1} \sum_{l=1}^{L-1}  (L-l) \alpha_l ^2
 \end{align}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/OBC_int_comparing_num_anal_norm_L_scaling.eps}
+\includegraphics[scale=0.7]{new_pics/PBC_int_comparing_num_anal_norm_L_scaling.eps}
+\caption{Integrable systems: Norm of exact gauge potential as a function of system size }
+\end{center}
+\end{figure}
+
 
 
 Now since $\alpha_l$ for large enough $L$ is exponentially suppressed in $l$, we can argue that
@@ -396,8 +416,10 @@ Since anti-ferromagnetic phase has more local order compared to ferromagnetic ph
 \caption{Using ED method, $\min \omega_{ij}(L)$}
 \end{center}
 \end{figure}
-
 If there is degeneracy, $\min \omega_{ij}(L)$ should be zero. Why don't I see any degenerate level?
+
+I find that because of open boundary conditions, I don't get any degenerate states for integrable model\footnote{Can I see this analytically for a simple model with only $J \sum_i\sigma_{i+1}^z \sigma_{i}^z term$?}. The question is then how do I get an almost linear scaling of norm for integrable models? We had reasoned that $\langle n| \partial_{\lambda} H|m\rangle$ is zero because of extensive number of degenerate levels. It doesn't seem like that here.
+
 
 \begin{figure}[!ht]
 \begin{center}
@@ -519,8 +541,8 @@ where $\gamma$ is unknown. Probably $\gamma$  depends on $\mu$.
 %In $1/\mu^4$ regime, we know definitely that only two and one body terms survive. In $1/\mu$ regime, which operators survive and which don't? Why there are only two ``kinds" of approximate gauge potential when we introduce a cutoff in our theory? In other words, since exact gauge potential has all possible many body terms for nonintegrable model, we expect that when we introduce $\mu$, magnitude of these terms should be smaller (but all should be still there). Probably in $1/ \mu$ regime all these terms are there unless $\gamma =1/2$. Question is why suddenly at second critical $\mu_c$, we find that approximate gauge potential becomes linear (only single and two body) in system size?
  \textbf{Checks on my numerical results:}
 \begin{itemize}
-\item Numerically, go for smaller systems and see if this pattern is seen there too or not. If that's happening, we can probably verify it in the analytical calculations.
-\item Analytically using cutoff regulator formula,  check N=2 and N=4 and verify if these two regimes show up. How does the operators look like for $1/\mu$ scale?
+%\item Numerically, go for smaller systems and see if this pattern is seen there too or not. If that's happening, we can probably verify it in the analytical calculations.
+%\item Analytically using cutoff regulator formula,  check N=2 and N=4 and verify if these two regimes show up. How does the operators look like for $1/\mu$ scale?
 \item $\mu_c^{(1)} \sim \min{\omega_{nm}}$ $\mu_c^{(2)} \sim \max{\omega_{nm}}$. It should be same order of magnitude.
 \end{itemize}
 %For integrable model, I don't know how to explain $1/\mu$ scaling.
