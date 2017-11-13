@@ -1,16 +1,19 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Adiabatic gauge potential}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Eigenstate Thermalization Hypothesis}{section.2}% 3
-\BOOKMARK [1][-]{section.3}{Norm of adiabatic gauge potential}{}% 4
-\BOOKMARK [1][-]{section.4}{Integrable model}{}% 5
-\BOOKMARK [1][-]{section.5}{Non-integrable model}{}% 6
-\BOOKMARK [2][-]{subsection.5.1}{ETH applied to norm}{section.5}% 7
-\BOOKMARK [3][-]{subsubsection.5.1.1}{Heuristic argument}{subsection.5.1}% 8
-\BOOKMARK [3][-]{subsubsection.5.1.2}{Formal calculation}{subsection.5.1}% 9
-\BOOKMARK [1][-]{section.6}{Norm computed using ED}{}% 10
-\BOOKMARK [2][-]{subsection.6.1}{System-size scaling of minimum and maximum of ij}{section.6}% 11
-\BOOKMARK [2][-]{subsection.6.2}{ scaling of gauge potential}{section.6}% 12
-\BOOKMARK [1][-]{appendix.A}{Do degenerate eigenvalues contribute to norm of gauge potential?}{}% 13
-\BOOKMARK [1][-]{appendix.B}{Computing `39`42`"613A``45`47`"603ATr[H, H] }{}% 14
-\BOOKMARK [2][-]{subsection.B.1}{Integrable model}{appendix.B}% 15
-\BOOKMARK [2][-]{subsection.B.2}{Non-integrable model}{appendix.B}% 16
+\BOOKMARK [2][-]{subsection.2.1}{Introduction by example}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Formal introduction}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Eigenstate Thermalization Hypothesis}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Information about fO\(, \)}{subsection.2.3}% 6
+\BOOKMARK [1][-]{section.3}{Norm of adiabatic gauge potential}{}% 7
+\BOOKMARK [1][-]{section.4}{Integrable model}{}% 8
+\BOOKMARK [1][-]{section.5}{Non-integrable model}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{ETH applied to norm}{section.5}% 10
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Heuristic argument}{subsection.5.1}% 11
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Formal calculation}{subsection.5.1}% 12
+\BOOKMARK [1][-]{section.6}{Norm computed using ED}{}% 13
+\BOOKMARK [2][-]{subsection.6.1}{System-size scaling of minimum and maximum of ij}{section.6}% 14
+\BOOKMARK [2][-]{subsection.6.2}{ scaling of gauge potential}{section.6}% 15
+\BOOKMARK [1][-]{appendix.A}{Do degenerate eigenvalues contribute to norm of gauge potential?}{}% 16
+\BOOKMARK [1][-]{appendix.B}{Computing `39`42`"613A``45`47`"603ATr[H, H] }{}% 17
+\BOOKMARK [2][-]{subsection.B.1}{Integrable model}{appendix.B}% 18
+\BOOKMARK [2][-]{subsection.B.2}{Non-integrable model}{appendix.B}% 19

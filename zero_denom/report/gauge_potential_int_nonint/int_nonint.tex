@@ -45,6 +45,20 @@ We can exploit this property to distinguish  between quantum integrable and non-
 
 
 \section{Adiabatic gauge potential}
+\subsection{Introduction by example}
+
+
+\begin{equation}
+H_0= \dfrac{p^2}{2m} + V(x- \lambda(t))
+\end{equation}
+
+\begin{align*}
+H_{CD}= H_0 + \dot{\lambda} A_{\lambda}
+\end{align*}
+where $A_{\lambda}= p$.
+Include a picture of glass of water being transported from Dries's PNAS paper. Question: if you have exact gauge potential, does all the excitations during intermediate times is zero.
+
+\subsection{Formal introduction}
 Adiabatic gauge potentials are the generators of a unitary transformation which diagonalize the instantaneous Hamiltonian, attempting to leave its eigenbasis invariant as the parameter is changed. These adiabatic gauge potentials generate \textit{non-adiabatic} corrections to Hamiltonian in the moving basis ($\lambda$ -dependent basis).
  
  This is something from Anatoli's lecture notes \cite{kolodrubetz2016geometry}--
@@ -83,9 +97,16 @@ We note that it's applicable only for few-body operators of a non-integrable Ham
 \end{equation}
 We can see $O= \hat{P}_{\alpha}$ doesn't satisfy the above equation (since left hand side is one and the trace of right hand side can be computed in energy basis to find that it's not one). Projection operator is non-local in real space, and we argue that this is the reason it doesn't satisfy ETH and is not experimentally measurable.
 
+\subsubsection{Information about $f_O(\bar{E}, \omega)$}
 
-
-
+\begin{equation}
+ f_O(\bar{E}, \omega)=\left\{
+  \begin{array}{@{}ll@{}}
+    e^{-\omega T} & (\omega \gg T), \\
+     \dfrac{L}{\omega^2+ \mu_T^2} & (\omega \ll T)
+  \end{array}\right.
+\end{equation}
+where $\mu_T^2 \sim \dfrac{1}{L^2}$ \cite{khatami2013fluctuation, srednicki1999approach,d2016quantum}
 \section{Norm of adiabatic gauge potential}
 Let's compute the norm by noting that $A_{\lambda}$ has only off-diagonal elements in energy basis in our gauge choice:
 
@@ -109,10 +130,10 @@ This model can be written in terms of non-interacting spinless fermions ($c_i, c
 
 It's Hamiltonian in spin basis is given by:
 \begin{equation}
-H= -J \sum_{j=1}^{L-1} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
+H= -J \sum_{j=1}^{L} \sigma_j^x \sigma_{j+1}^x - \lambda \sum_{j} \sigma_j^z 
 \label{xx_z}
 \end{equation}
-where we have chosen open boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
+where we have chosen periodic boundary conditions and $\lambda$ is externally-controlled transverse magnetic field.
 
 This model can be written in terms of non-interacting spinless fermions ($c_i, c^{\dagger}_i $) using Jordan- Wigner transformation: $\sigma_i^z \sim 1 - 2 c^{\dagger}_i c_i   $ and $\sigma_i^+ \sim \prod_{j<i} \sigma_j^z c_j   $. Details can be found elsewhere \cite{sachdev2007quantum} \footnote{Momentum operator chosen to get real valued Hamiltonian is $c_k= \frac{e^{i \pi/4}}{\sqrt{L}}\sum_j c_j e^{-ikj}$, where k is $n\pi/L$ with $n=0,1,2, \ldots L-1$} . Here is what we get after this transformation:
 
@@ -142,11 +163,11 @@ This matches with the result already known in literature \cite{del2012assisted, 
 
 Let's write a first few terms of $O_l$ here:
 \begin{align*}
-O_{l=1}&=  \sum_{j=1}^{L-1} ( \sigma_j^x  \sigma_{j+1}^y +  \sigma_j^y  \sigma_{j+1}^x) \\
-O_{l=2} &=  \sum_{j=1}^{L-2} ( \sigma_j^x \sigma_{j+1}^z \sigma_{j+2}^y +  \sigma_j^y \sigma_{j+1}^z \sigma_{j+2}^x) 
+O_{l=1}&=  \sum_{j=1}^{L} ( \sigma_j^x  \sigma_{j+1}^y +  \sigma_j^y  \sigma_{j+1}^x) \\
+O_{l=2} &=  \sum_{j=1}^{L} ( \sigma_j^x \sigma_{j+1}^z \sigma_{j+2}^y +  \sigma_j^y \sigma_{j+1}^z \sigma_{j+2}^x) 
 \end{align*}
 
-On computation, we find that with open boundary conditions, we get $\Tr O_l  O_p= \delta_{l,p} 2^{L+1} (L-l)$
+On computation, we find that with periodic boundary conditions, we get $\Tr O_l  O_p= \delta_{l,p} 2^{L+1} L$
 
 For large enough system size $L$, we can compute $\alpha_l$ \cite{kolodrubetz2016geometry} by computing the sum into an integral and obtain the value of $\alpha_l$ as: 
 \begin{equation}
@@ -164,7 +185,6 @@ For large enough system size $L$, we can compute $\alpha_l$ \cite{kolodrubetz201
 \begin{center}
 \includegraphics[scale=0.7]{new_pics/alpha_num_theoret.eps}\\
 \includegraphics[scale=0.7]{new_pics/error_alpha.eps}\\
-\includegraphics[scale=0.7]{new_pics/int_comparing_num_anal_norm_L_scaling.eps}
 \caption{Integrable systems: string length of exact gauge potential as a function of system size }
 \end{center}
 \end{figure}
@@ -174,7 +194,7 @@ Let's compute norm of gauge potential:
 ||A_{\lambda}||^2 &= \Tr  A_{\lambda}^2 \\
 &= \Tr \sum_{l,p}  \alpha_p \alpha_l O_l  O_p\\
 &=  \sum_{l,p}  \alpha_p \alpha_l  \Tr O_l  O_p\\
-&=  2^{L+1} \sum_{l=1}^{L-1}  (L-l) \alpha_l ^2
+&=  2^{L+1} L \sum_{l=1}^{L-1}   \alpha_l ^2
 \end{align}
 
 \begin{figure}[!ht]
@@ -502,7 +522,7 @@ This regime seems to grow smaller for larger system size (figure \ref{mu_scaling
 \begin{center}
 \includegraphics[scale=0.7]{new_pics/v2_int_exactgauge_Lscaling.eps}\\
 \includegraphics[scale=0.7]{new_pics/v2_1_norm_int_linear.eps}
-\caption{Integrable systems: exact gauge potential as a function of system size }
+\caption{Integrable systems: exact gauge potential as a function of system size. Periodic boundary conditions shows linear scaling in system size. }
 \end{center}
 \end{figure}
 
