@@ -1,0 +1,15 @@
+python tools for optimization:
+https://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html
+
+http://www.scipy-lectures.org/advanced/mathematical_optimization/
+
+In this project, following things need to be understood:
+1. Dries found out that A^2/2^L is L^2 in system size for nonintegrable model. How is the weight of 1,2,3 ... body operators
+ varies as a function of support of these operators? For integrable case, the weight exponentially falls and that's why 
+A^2/2^L \sim L.
+
+2. What happens if you take locality ansatz in momentum space? Would you get the same scaling as the one Dries got
+ with locality ansatz in real space? Wait, he used to open boundary condition. Does this mean I can't
+write it in terms of translationally invariant momentum states?
+
+
