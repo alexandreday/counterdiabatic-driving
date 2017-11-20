@@ -1,0 +1,38 @@
+My present research is going to be useful for the field of quantum computation, quantum simulation of many-body phenomenon, 
+quantum state control and quantum chaos. 
+
+Counter-diabatic (CD) driving protocols, which are also known as "shortcuts-to-adiabaticity", can help us in doing quantum state transfer and building scalable quantum computers, which are robust to noise and decoherence from enviroment. Within this field of CD driving protocol, there is a problem of zero denominator which prevents us in constructing CD Hamiltonian for non-integrable quantum systems (are quantum analogue of classical chaotic systems) [1]. The reason behind this is their exponential sensitivity to perturbations of the Hamiltonian. This makes the quantum control of such systems extremely difficult.
+
+Our approximate CD protocols for these systems avoids this problem, which provides an alternative method to variational approximation scheme recently introduced in [2]. Further, our method has a potential of being used as a diagnostic tool for differentiating between quantum integrable and non-integrable systems. Compared to the conventional method, which uses statistics of nearest neighbor energy spacing distribution, our method should work without worrying about identifying the symmetries of the Hamiltonian. 
+
+
+[1] Kolodrubetz, Michael, et al. "Geometry and non-adiabatic response in quantum and classical systems." Physics Reports 697 (2017): 1-87.
+[2] Sels, Dries, and Anatoli Polkovnikov. "Minimizing irreversible losses in quantum systems by local counterdiabatic driving." Proceedings of the National Academy of Sciences (2017): 201619826.
+
+--------------------------------
+
+
+Counter-diabatic (CD) driving protocols, which are also known as "shortcuts-to-adiabaticity", provide powerful alternatives for controlling a quantum system. These protocols allow one to drive the system rapidly while still mimicking adiabatic dynamics. They have been shown to work well for a wide variety of systems, but it is exponentially hard to find exact CD protocols for non-integrable quantum many-body systems.
+
+We study a method to develop approximate CD protocols which avoids exponential sensitivity to
+perturbations of the Hamiltonian. 
+
+Quantum non-integrable systems are quantum analogue to classical chaotic system, which are described by eigenstate thermalization hypothesis (ETH).
+
+We study a method to develop approximate CD protocols which avoids exponential sensitivity to
+perturbations of the Hamiltonian. Our finite-size scaling of CD Hamiltonians reveals remarkable differences between
+integrable and non-integrable quantum systems. We identify numerically different scaling regimes and show how they
+arise from the ETH.
+
+
+
+------------
+Quantum computers can provide substantial advantage over classical computers in certain tasks like large number factorization and quantum simulation of quantum many-body phenomenon[0]. Quantum adiabatic dynamics can be used for quantum computation [1], quantum search algorithms[2],  holonomic quantum computation [3], studying quantum many-body phenomena by tracking ground states of complex Hamiltonians [4].
+
+However, the trouble is that quantum adiabatic theorem imposes restriction on adiabatic dynamics, due to which systems have to be driven sufficiently slow. As a result, it's difficult to protect the feeble coherence of the quantum system from noise and decoherence caused by the environment during long adiabatic dynamics.
+
+[0] https://arxiv.org/abs/1009.2267
+[1] https://arxiv.org/abs/quant-ph/0001106
+[2]https://arxiv.org/abs/quant-ph/0107015
+[3]Phys. Lett. A 264, 94–99 (1999)
+[4]Science 292, 472–475 (2001)
