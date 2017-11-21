@@ -1,0 +1,36 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin=2.0cm,vmargin=2.5cm,bindingoffset=0.5cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[english]{babel}
+\author{Mohit Pandey}
+\title{Approximate counter-diabatic driving protocols for non-integrable quantum systems  }
+\begin{document}
+\maketitle
+\textbf{Student's statement  providing the context of the contribution}
+
+
+Quantum computers can provide substantial advantages over classical computers in certain tasks, such as large integer factorization. The "quantum supremacy" is largely due to the quantum algorithms which use 
+%% I don't the word "bizarre" is good here. It sounds perjorative. I can't immediately think of a better single but perhaps you could go into the difference between a "bit" and a "qubit". In any case, try something else.
+world of quantum physics to their advantage. Many of these algorithms are dependent on adiabatic processes. For example, quantum adiabatic dynamics can be used for solving satisfiability problem [1], quantum search algorithms [2] and holonomic quantum computation [3]. 
+
+However, the quantum adiabatic theorem imposes restrictions which require systems to be driven sufficiently slowly. This makes it difficult to protect their 
+%%"feeble" is not good here:
+sensitive coherence from noise and decoherence caused by the environment.
+
+
+Counter-diabatic (CD) driving protocols, which are also known as ”shortcuts-to-adiabaticity,” provide powerful alternatives for controlling quantum systems, doing quantum state transfer and helping in building scalable quantum computers. Within the field of CD driving protocols, there is typically a problem of zero denominators  [4] which prevents one from constructing the CD Hamiltonian for non-integrable quantum systems (which are also called quantum chaotic systems). The reason behind this is their exponential sensitivity to perturbations of the Hamiltonian. This makes the quantum control  of such systems extremely difficult.
+
+Our approximate CD protocol for these systems avoids this problem. Further, our method has a potential of being used as a diagnostic tool for differentiating between integrable and non-integrable quantum systems. Compared to the conventional method, which uses the statistics of the nearest neighbor energy spacing distribution, our method should work without worrying about identifying the symmetries of the Hamiltonian. 
+
+[1] https://arxiv.org/abs/quant-ph/0001106.
+
+[2]https://arxiv.org/abs/quant-ph/0107015.
+
+[3]Phys. Lett. A 264, 94–99 (1999).
+
+[4]Physics Reports 697 (2017): 1-87.
+
+
+\end{document}
