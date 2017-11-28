@@ -61,32 +61,32 @@ def norm(A_lamb):
     return np.linalg.norm(A_lamb, 'fro')
 
 ###parameters
-muTot=100
-mu_arr=np.linspace(0.0005,10.0,muTot)
+muTot=200
+mu_arr=np.linspace(0.75,2.0,muTot)
 norm_arr_nonint=np.zeros(muTot)
 norm_arr_int=np.zeros(muTot)
 hz=5.00#for int Ham
 
 ###
-t_start_nonint=time.time()
+#t_start_nonint=time.time()
 ###nonint
-H=Ham_nonint(L)
-wij, num_lamb_mat=output_gauge_potent(H,L)
+#H=Ham_nonint(L)
+#wij, num_lamb_mat=output_gauge_potent(H,L)
 ###finding minimum and maximum wij
-index_lower = np.tril_indices(2**L,-1)
-wij_arr=wij[index_lower]
-wij_min_nonint= min(wij_arr)
-wij_max_nonint=max(wij_arr)
-print wij_min_nonint,wij_max_nonint
+#index_lower = np.tril_indices(2**L,-1)
+#wij_arr=wij[index_lower]
+#wij_min_nonint= min(wij_arr)
+#wij_max_nonint=max(wij_arr)
+#print wij_min_nonint,wij_max_nonint
 ###running the loop    
-for i in range(muTot):
-    mu=mu_arr[i]
-    A_lamb=gauge_potent_mu(wij, num_lamb_mat,mu)
-    norm_arr_nonint[i]=norm(A_lamb)
+#for i in range(muTot):
+#    mu=mu_arr[i]
+#    A_lamb=gauge_potent_mu(wij, num_lamb_mat,mu)
+#    norm_arr_nonint[i]=norm(A_lamb)
 
 
-t_end_nonint=time.time()
-t_nonint_code=(t_end_nonint-t_start_nonint)/60  
+#t_end_nonint=time.time()
+#t_nonint_code=(t_end_nonint-t_start_nonint)/60  
 
 #######
 t_start_int=time.time()
@@ -110,17 +110,17 @@ t_int_code=(t_end_int-t_start_int)/60
 
 
 
-f=open('v3_OBC_L%s_nonint_mu_linear_scaling.dat' %L,'w')
-f.write(" L=%d, code time=%f (in min) \n"  %(L,t_nonint_code))
-f.write("wij_min=%.20e, wij_max=%.20e \n"  %(wij_min_nonint,wij_max_nonint))
-f.write('"mu" \t \t "||A||^2" \n')
+#f=open('v3_OBC_L%s_nonint_mu_linear_scaling.dat' %L,'w')
+#f.write(" L=%d, code time=%f (in min) \n"  %(L,t_nonint_code))
+#f.write("wij_min=%.20e, wij_max=%.20e \n"  %(wij_min_nonint,wij_max_nonint))
+#f.write('"mu" \t \t "||A||^2" \n')
 
 
-np.savetxt(f, np.transpose([mu_arr,norm_arr_nonint**2]) , fmt='%.20e', delimiter='\t')
-f.close()
+#np.savetxt(f, np.transpose([mu_arr,norm_arr_nonint**2]) , fmt='%.20e', delimiter='\t')
+#f.close()
 
 
-f=open('v3_PBC_L%s_int_mu_linear_scaling.dat' %L, 'w')
+f=open('linear_finer_v3_PBC_L%s_int_mu_linear_scaling.dat' %L, 'w')
 f.write("L=%d, code time=%f (in min) \n"  %(L,t_int_code))
 f.write("wij_min=%.20e, wij_max=%.20e \n"  %(wij_min_int,wij_max_int))
 f.write('"mu" \t \t "||A||^2" \n')

@@ -61,8 +61,8 @@ def norm(A_lamb):
     return np.linalg.norm(A_lamb, 'fro')
 
 ###parameters
-muTot=100
-mu_arr=np.logspace(-5,5.0,muTot)
+muTot=200
+mu_arr=np.logspace(-10,5.0,muTot)
 norm_arr_nonint=np.zeros(muTot)
 norm_arr_int=np.zeros(muTot)
 hz=5.00#for int Ham
