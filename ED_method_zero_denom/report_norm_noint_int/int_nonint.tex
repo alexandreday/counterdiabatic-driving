@@ -339,6 +339,40 @@ Hence, we get:
 \dfrac{||A_{\lambda}||^2} {2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle}
 \end{equation}
 
+
+
+\section{System-size scaling of minimum and maximum of $\omega_{ij}$}
+
+ 
+https://stackoverflow.com/questions/14854339/in-scipy-how-and-why-does-curve-fit-calculate-the-covariance-of-the-parameter-es
+
+https://stackoverflow.com/questions/14581358/getting-standard-errors-on-fitted-parameters-using-the-optimize-leastsq-method-i 
+ 
+ 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.53]{new_pics/v2_maxwij_int.eps}
+\includegraphics[scale=0.53]{new_pics/v2_maxwij_nonint.eps}
+\caption{Using ED method, $\min \omega_{ij}(L)$}
+\end{center}
+\end{figure}
+
+
+
+If there is degeneracy, $\min \omega_{ij}(L)$ should be zero. Why don't I see any degenerate level?
+
+I find that because of open boundary conditions, I don't get any degenerate states for integrable model\footnote{Can I see this analytically for a simple model with only $J \sum_i\sigma_{i+1}^z \sigma_{i}^z$ term?}. The question is then how do I get an almost linear scaling of norm for integrable models? We had reasoned that $\langle n| \partial_{\lambda} H|m\rangle$ is zero because of extensive number of degenerate levels. It doesn't seem like that here.
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.535]{new_pics/v2_minwij_int.eps}
+\includegraphics[scale=0.535]{new_pics/v2_minwij_nonint.eps}
+\caption{Using ED method,  $\max \omega_{ij}(L)$}
+\end{center}
+\end{figure}
+
+
 \section{Norm computed using ED}
 
 Let's look at the expression of off-diagonal elements of gauge potential:
@@ -426,48 +460,22 @@ We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $.
 Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
 
 
-\subsection{System-size scaling of minimum and maximum of $\omega_{ij}$}
-
- 
-https://stackoverflow.com/questions/14854339/in-scipy-how-and-why-does-curve-fit-calculate-the-covariance-of-the-parameter-es
-
-https://stackoverflow.com/questions/14581358/getting-standard-errors-on-fitted-parameters-using-the-optimize-leastsq-method-i 
- 
- 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/v2_maxwij_int.eps} \\
-\includegraphics[scale=0.7]{new_pics/v2_maxwij_nonint.eps}
-\caption{Using ED method, $\min \omega_{ij}(L)$}
-\end{center}
-\end{figure}
-If there is degeneracy, $\min \omega_{ij}(L)$ should be zero. Why don't I see any degenerate level?
-
-I find that because of open boundary conditions, I don't get any degenerate states for integrable model\footnote{Can I see this analytically for a simple model with only $J \sum_i\sigma_{i+1}^z \sigma_{i}^z term$?}. The question is then how do I get an almost linear scaling of norm for integrable models? We had reasoned that $\langle n| \partial_{\lambda} H|m\rangle$ is zero because of extensive number of degenerate levels. It doesn't seem like that here.
-
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/v2_minwij_int.eps}\\
-\includegraphics[scale=0.7]{new_pics/v2_minwij_nonint.eps}
-\caption{Using ED method,  $\max \omega_{ij}(L)$}
-\end{center}
-\end{figure}
 
 
 
 \subsection{$\mu$ scaling of gauge potential}
 
 
+
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling.eps} \\
-\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}\\
-\caption{Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems}
+\includegraphics[scale=0.51]{new_pics/v2_norm_mu_scaling.eps} 
+\includegraphics[scale=0.43]{new_pics/v3_slope_nonint_semilogx.eps}
+%\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}
+\caption{a) Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems b) $\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems}
 \label{mu_scaling}
 \end{center}
 \end{figure}
-
 
 
 Our $\mu$-dependent gauge potential $A_{\lambda}$ is given by:
@@ -483,40 +491,26 @@ Numerically, we find the dependence of gauge potential on $\mu$ using Exact Diag
 \begin{equation}
 \log ||A||^2/2^L=\log \alpha+ \beta \log \mu
 \end{equation}
-where $\beta$ is the slope on a log-log scale. Numerically, we can find $\beta_i$ for each pair of points using the following relationship (figure \ref{slope_nonintegrable_mu}):
+where $\beta$ is the slope on a log-log scale. Numerically, we can find $\beta_i$ for each pair of points using the following relationship (figure \ref{mu_scaling}):
 \begin{equation}
 \beta_i=\dfrac{\log y( \mu_{i+1}) -\log y( \mu_{i})} {\log \mu_{i+1}-\log \mu_{i}}
 \end{equation}
 where $y= ||A||^2/2^L$. 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/v3_slope_nonint_int_compare_semilogx.eps}\\
-\includegraphics[scale=0.7]{new_pics/v3_slope_nonint_int_compare_semilogx.eps}
-\caption{$\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for  integrable and non-integrable systems }
-\label{slope_nonintegrable_mu}
-\end{center}
-\end{figure}
+%\begin{figure}[!ht]
+%\begin{center}
+%%\includegraphics[scale=0.7]{new_pics/v3_slope_nonint_int_compare_semilogx.eps}\\
+%\includegraphics[scale=0.7]{new_pics/v3_slope_nonint_semilogx.eps}
+%\caption{$\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems }
+%%\label{slope_nonintegrable_mu}
+%\end{center}
+%\end{figure}
 
 
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/mu_c_1_nonint.eps}
-\caption{$\mu_c^{(1)}$ dependence of system size L }
-%\label{slope_nonintegrable_mu}
-\end{center}
-\end{figure}
 
 
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.47]{new_pics/v3_slope_int_semilogx.eps} 
-\includegraphics[scale=0.47]{new_pics/v3_slope_int_semilogx_zoom.eps}
-\caption{$\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for  integrable systems }
-\label{slope_nonintegrable_mu}
-\end{center}
-\end{figure}
+
 
 %Let's stick to non-integrable systems for now%(figure \ref{nonintegrable_mu}).
 
@@ -528,7 +522,7 @@ where $y= ||A||^2/2^L$.
 %\end{center}
 %\end{figure}
 
- Let's study three regimes we see in the figures: 
+ Let's study two regimes we see in the figures: 
 \begin{itemize}
 \item \textbf{Constant in $\mu$ regime} when $\mu \ll \min\{w_{nm}\}$: Since density of states is highest in the middle of spectrum, $\min\{w_{nm}\}$ is smallest for two states lying there. In this regime, $\mu$ is so small that it doesn't really affect the norm of gauge potential. So, we get exact gauge potential in this regime.
 \begin{equation}
@@ -536,22 +530,23 @@ where $y= ||A||^2/2^L$.
 \end{equation}
 This regime seems to grow smaller for larger system size (figure \ref{mu_scaling}).
 
-
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.7]{new_pics/v2_1_norm_L_scaling.eps}
-\caption{Exact gauge potential as a function of system size: non-integrable systems (exponential scaling) and integrable (polynomial scaling) }
+\includegraphics[scale=0.5]{new_pics/mu_c_1_nonint.eps}
+\caption{$\mu_c^{(1)}$ dependence of system size L }
+%\label{slope_nonintegrable_mu}
 \end{center}
 \end{figure}
 
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.7]{new_pics/v2_int_exactgauge_Lscaling.eps}
-%\includegraphics[scale=0.7]{new_pics/v2_1_norm_int_linear.eps}
-\caption{Integrable systems: exact gauge potential as a function of system size with open boundary conditions. Periodic boundary conditions shows linear scaling in system size. }
-\end{center}
-\end{figure}
+
+%\begin{figure}[!ht]
+%\begin{center}
+%\includegraphics[scale=0.7]{new_pics/v2_int_exactgauge_Lscaling.eps}
+%%\includegraphics[scale=0.7]{new_pics/v2_1_norm_int_linear.eps}
+%\caption{Integrable systems: exact gauge potential as a function of system size with open boundary conditions. Periodic boundary conditions shows linear scaling in system size. }
+%\end{center}
+%\end{figure}
 
 
 
@@ -574,24 +569,32 @@ where theoretical value of  $\alpha_2^{Th}=\Tr  [H, \partial_{\lambda}H]^2 $ sho
 
 What is really interesting here in this regime is that approximate gauge potential has only a single body term and a two body term. In other words, when comparing it with exact gauge potential which has $C^{(1)},C^{(3)}, C^{(5)} $ terms involving all many body operators, we have only two and one body term here.
 
-\item \textbf{Intermediate regime of $1/\mu$ scaling:} For non-integrable systems, we can use ETH to claim that after assuming $f_O$ doesn't depend on $\omega$:
-\begin{equation}
-\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle \sim \dfrac{L^\gamma }{ \mu} 
-\end{equation}
-where $\gamma$ is unknown. Probably $\gamma$  depends on $\mu$.
+%\item \textbf{Intermediate regime of $1/\mu$ scaling:} For non-integrable systems, we can use ETH to claim that after assuming $f_O$ doesn't depend on $\omega$:
+%\begin{equation}
+%\dfrac{||A_{\lambda}||^2}{2^L}= \dfrac{\pi }{4 \mu} \langle |f_O(E_n)|^2  \rangle \sim \dfrac{L^\gamma }{ \mu} 
+%\end{equation}
+%where $\gamma$ is unknown. Probably $\gamma$  depends on $\mu$.
 \end{itemize}
 
-\underline{\textit{A few comments here:}}
+\subsection{L scaling of gauge potential}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.7]{new_pics/v2_1_norm_L_scaling.eps}
+\caption{Exact gauge potential as a function of system size: non-integrable systems (exponential scaling) and integrable (polynomial scaling) }
+\end{center}
+\end{figure}
+
+%\underline{\textit{A few comments here:}}
 
 %\item It's very interesting that there are only two ``kinds" of approximate gauge potential regimes -- the $1/\mu$ regime which is polynomial ($L^{\gamma}$) in the system size and the $1/\mu^4$ regime which is linear in the system size \footnote{Of course, I am ignoring the regime which is between the regime of exact gauge potential (constant plateau regime) and $1/\mu$ scaling. It can't be described using one single exponent $\beta$ unlike three other regimes-- $\beta=0, -1, -4$}. 
 %
 %In $1/\mu^4$ regime, we know definitely that only two and one body terms survive. In $1/\mu$ regime, which operators survive and which don't? Why there are only two ``kinds" of approximate gauge potential when we introduce a cutoff in our theory? In other words, since exact gauge potential has all possible many body terms for nonintegrable model, we expect that when we introduce $\mu$, magnitude of these terms should be smaller (but all should be still there). Probably in $1/ \mu$ regime all these terms are there unless $\gamma =1/2$. Question is why suddenly at second critical $\mu_c$, we find that approximate gauge potential becomes linear (only single and two body) in system size?
- \textbf{Checks on my numerical results:}
-\begin{itemize}
-%\item Numerically, go for smaller systems and see if this pattern is seen there too or not. If that's happening, we can probably verify it in the analytical calculations.
-%\item Analytically using cutoff regulator formula,  check N=2 and N=4 and verify if these two regimes show up. How does the operators look like for $1/\mu$ scale?
-\item $\mu_c^{(1)} \sim \min{\omega_{nm}}$ $\mu_c^{(2)} \sim \max{\omega_{nm}}$. It should be same order of magnitude.
-\end{itemize}
+% \textbf{Checks on my numerical results:}
+%\begin{itemize}
+%%\item Numerically, go for smaller systems and see if this pattern is seen there too or not. If that's happening, we can probably verify it in the analytical calculations.
+%%\item Analytically using cutoff regulator formula,  check N=2 and N=4 and verify if these two regimes show up. How does the operators look like for $1/\mu$ scale?
+%%\item $\mu_c^{(1)} \sim \min{\omega_{nm}}$ $\mu_c^{(2)} \sim \max{\omega_{nm}}$. It should be same order of magnitude.
+%\end{itemize}
 %For integrable model, I don't know how to explain $1/\mu$ scaling.
 
 \appendix
@@ -636,6 +639,17 @@ H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda 
 We find that $\Tr |C^{(1)}|^2 = 2^L 4(h^2 L + 2J(L-1))$ 
 
 
+
+\subsection{Integrable systems with open boundary condition}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{new_pics/v3_slope_int_semilogx.eps} 
+\includegraphics[scale=0.5]{new_pics/v3_slope_int_semilogx_zoom.eps}
+\caption{$\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for  integrable systems }
+\label{slope_integrable_mu}
+\end{center}
+\end{figure}
 
 \bibliography{ref} 
 
