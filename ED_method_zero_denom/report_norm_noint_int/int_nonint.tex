@@ -252,7 +252,7 @@ where we have used the fact that entropy is extensive, i.e. $S \sim L$. Hence, n
 }
 \end{equation}
 
-Exponential scaling with system size of gauge potential is due to exponential small eigenvalues. Since these eigenvalues appear in the denominator of gauge potential expression, it's called \textbf{zero denominator problem} in literature \cite{kolodrubetz2016geometry}. 
+Exponential scaling with system size of gauge potential is due to exponential small eigenvalues. Since these eigenvalues appear in the denominator of gauge potential expression, it's called \textbf{small denominator problem} in literature \cite{kolodrubetz2016geometry}. 
 
 In Dries's notes, you would find how we are attempting to solve this problem.
 
@@ -477,6 +477,15 @@ Since anti-ferromagnetic phase has more local order compared to ferromagnetic ph
 \end{center}
 \end{figure}
 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.43]{new_pics/slope_small_system_nonint.eps}
+%\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}
+\caption{a) Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems b) $\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems}
+%\label{mu_scaling}
+\end{center}
+\end{figure}
+
 
 Our $\mu$-dependent gauge potential $A_{\lambda}$ is given by:
 \begin{equation}
@@ -522,8 +531,9 @@ Looking at the above expression, why norm  of non-integrable systems is exponent
 What's the biggest $\mu$ of this regime? We know that $\min\{w_{nm}\} \simeq e^{-L}$  due to the exponential number of states in a many-body system whose bandwidth generally increases extensively in system size. Hence, we expect $\mu_c^{1} \simeq e^{-L}$. In figure \ref{mu_c_1_nonintegrable}, we take different slices in y-axis of slope of gauge potential figure \ref{mu_scaling}.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.5]{new_pics/mu_c_1_nonint.eps}
-\caption{$\mu_c^{(1)}$ dependence of system size L }
+\includegraphics[scale=0.45]{new_pics/mu_c_1_nonint.eps}
+\includegraphics[scale=0.52]{new_pics/mu_c_2_nonint.eps}
+\caption{$\mu_c^{(1)}$ and $\mu_c^{(2)}$ dependence of system size L: former seems exponentially small and the latter a linear one }
 \label{mu_c_1_nonintegrable}
 \end{center}
 \end{figure}
@@ -567,9 +577,8 @@ We need to figure out a systematic way to find out the boundary of our phase dia
 
 
 
-
 \subsection{L scaling of gauge potential}
-
+Numerically, we find that norm of exact gauge potential of non-integrable system scale exponentially in system size while it scales as polynomial in system size for integrable system.
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.7]{new_pics/v2_1_norm_L_scaling.eps}
@@ -577,7 +586,18 @@ We need to figure out a systematic way to find out the boundary of our phase dia
 \end{center}
 \end{figure}
 
+In small $\mu$ regime, since we expect $\mu_c^{(1)}= e^{-L}$, we parametrize our $\mu= \mu_0 e^{-L}$, where $\mu_0$ is our parameter. (figure \ref{param_nonintegrable}). Here, we are coming from far left side of phase diagram. Numerically, we find that $\mu_0$ lies between 1 and 10. We don't know how to make the window tighter.
 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.72]{new_pics/scaling_exp_poly.eps}
+\caption{something }
+\label{param_nonintegrable}
+\end{center}
+\end{figure}
+
+Similarly, in big $\mu$ regime, since we expect $\mu_c^{(2)}= L$, we parametrize our $\mu= \mu_0 L$, where $\mu_0$ is our parameter. Here, we are coming from the far right side of phase diagram. We don't know for sure when we cross the critical point, if we find a different scaling of system size apart from linear scaling.
+\newpage
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
 Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:
