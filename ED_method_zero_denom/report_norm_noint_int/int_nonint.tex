@@ -106,7 +106,7 @@ We can see $O= \hat{P}_{\alpha}$ doesn't satisfy the above equation (since left 
      \dfrac{\sqrt{L}}{\omega^2+ \mu_T^2} & (\omega \ll T)
   \end{array}\right.
 \end{equation}
-where $\mu_T^2 \sim \dfrac{1}{L^2}$ \cite{khatami2013fluctuation, srednicki1999approach,d2016quantum}
+where $\mu_T \sim \dfrac{1}{L^2}$ \cite{khatami2013fluctuation, srednicki1999approach,d2016quantum}
 \section{Norm of adiabatic gauge potential}
 Let's compute the norm by noting that $A_{\lambda}$ has only off-diagonal elements in energy basis in our gauge choice:
 
@@ -183,8 +183,8 @@ For large enough system size $L$, we can compute $\alpha_l$ \cite{kolodrubetz201
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.7]{new_pics/alpha_num_theoret.eps}\\
-\includegraphics[scale=0.7]{new_pics/error_alpha.eps}\\
+\includegraphics[scale=0.52]{new_pics/alpha_num_theoret.eps}
+\includegraphics[scale=0.52]{new_pics/error_alpha.eps}
 \caption{Integrable systems: string length of exact gauge potential as a function of system size }
 \end{center}
 \end{figure}
@@ -199,8 +199,8 @@ Let's compute norm of gauge potential:
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.7]{new_pics/OBC_int_comparing_num_anal_norm_L_scaling.eps}
-\includegraphics[scale=0.7]{new_pics/PBC_int_comparing_num_anal_norm_L_scaling.eps}
+\includegraphics[scale=0.52]{new_pics/OBC_int_comparing_num_anal_norm_L_scaling.eps}
+\includegraphics[scale=0.52]{new_pics/PBC_int_comparing_num_anal_norm_L_scaling.eps}
 \caption{Integrable systems: Norm of exact gauge potential as a function of system size }
 \end{center}
 \end{figure}
@@ -479,9 +479,9 @@ Since anti-ferromagnetic phase has more local order compared to ferromagnetic ph
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.43]{new_pics/slope_small_system_nonint.eps}
+\includegraphics[scale=0.72]{new_pics/slope_small_system_nonint.eps}
 %\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}
-\caption{a) Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems b) $\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems}
+\caption{Using ED method, we obtain  $\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems}
 %\label{mu_scaling}
 \end{center}
 \end{figure}
@@ -528,15 +528,7 @@ A_{\lambda} = \sum_j [\alpha_j \sigma_j^y + \beta_j ( \sigma_j^y  \sigma_{j+1}^z
 \end{equation} 
 Looking at the above expression, why norm  of non-integrable systems is exponentially large in system size? My answer, which needs to be discussed with Dries, is that there are only extensive number of operators ($2 L$ in number) as compared to $L$ number of operators in integrable systems. So, the number of operators doesn't make it exponentially large. What makes the big difference is that weight of these operators $\bar{\alpha}_l$ ($ \bar{\alpha}_{l=1}= \{\alpha_j\}, \bar{\alpha}_{l=2}= \{\beta_j\}, \bar{\alpha}_{l=3}=  \{\gamma_j\}$ etc) is exponentially large in string size $l$ which is in contrast with integrable systems, where these weights are exponential suppressed in string size. I should check this for numerically found exact gauge potential.
 
-What's the biggest $\mu$ of this regime? We know that $\min\{w_{nm}\} \simeq e^{-L}$  due to the exponential number of states in a many-body system whose bandwidth generally increases extensively in system size. Hence, we expect $\mu_c^{1} \simeq e^{-L}$. In figure \ref{mu_c_1_nonintegrable}, we take different slices in y-axis of slope of gauge potential figure \ref{mu_scaling}.
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.45]{new_pics/mu_c_1_nonint.eps}
-\includegraphics[scale=0.52]{new_pics/mu_c_2_nonint.eps}
-\caption{$\mu_c^{(1)}$ and $\mu_c^{(2)}$ dependence of system size L: former seems exponentially small and the latter a linear one }
-\label{mu_c_1_nonintegrable}
-\end{center}
-\end{figure}
+What's the biggest $\mu$ of this regime? We know that $\min\{w_{nm}\} \simeq e^{-L}$  due to the exponential number of states in a many-body system whose bandwidth generally increases extensively in system size. Hence, we expect $\mu_c^{(1)} \simeq e^{-L}$. 
 
 
 
@@ -557,14 +549,39 @@ where $ C^{(1)}=2i \left(\sum_{j=1}^{L-1} \sigma_j^y \sigma_{j+1}^z + \sum_{j=2}
 where $\alpha=\Tr  [H, \partial_{\lambda}H]^2 $.  For $L=12$, we obtain $\alpha_2^{Th}=119.41$ whose details are given in appendix B.
 
 
-In this regime, approximate gauge potential is local because it has only a single body term and a two body term. 
+In this regime, approximate gauge potential is local because it has only a single body term and a two body term. What's the smallest $\mu$ of this regime? We know that $\max\{w_{nm}\} \simeq L$  because bandwidth generally increases extensively in system size. Hence, we expect $\mu_c^{(2)} \simeq L$.
 \end{itemize}
 
-These regimes are non-physical because it's not useful to choose $\mu$ either exponentially small (because we will have exact gauge potential which small denominator problem) or extensively big (because in that case, $\mu$ is the biggest energy scale and then nothing interesting really happens). 
+These regimes are non-physical because it's not useful to choose $\mu$ either exponentially small (because we will have exact gauge potential which has small denominator problem) or extensively big (because in that case, $\mu$ is the biggest energy scale and then nothing interesting really happens). 
 
-\subsubsection*{Phase diagram of gauge potential }
+\subsection{Phase diagram of gauge potential }
 
-What we find here is a ``phase diagram" where we get different `types' of gauge potential depending upon the value of $\mu$ used to construct it. Trivial/non-physical regimes are: exact gauge potential in small $\mu$ regime and trivial local approximate gauge potential in big $\mu$ regime.   We need to study more to characterize the different ``phases" for intermediate value pf $\mu$ based upon following parameters. For a given phase, we would have a certain range of allowed $\mu$. Within this range of $\mu$,
+What we find here is a ``phase diagram" where we get different `types' of gauge potential depending upon the value of $\mu$ used to construct it. Trivial/non-physical regimes are: exact gauge potential in small $\mu$ regime and trivial local approximate gauge potential in big $\mu$ regime.\\
+\~ \\
+
+
+\begin{figure}[!ht]
+\begin{center}
+\frame{\begin{tikzpicture}[overlay]
+\draw [->][red, ultra thick] (2.5,0) --(5.0,0.0);
+\draw [-][blue, ultra thick] (-2.5,0) --(-5.0,0.0);
+\draw [-][green, ultra thick, dashed] (-2.5,0) --(2.5,0.0);
+\draw[black,fill=black] (2.5,0) circle (.5ex);
+\draw[black,fill=black] (-2.5,0) circle (.5ex);
+\node at (0.0,-0.35) {\huge{\textcolor{black}{?}}};
+\node at (5.0,-0.35) {\textcolor{black}{$\mu$}};
+\node at (-2.5,-0.35) {\textcolor{black}{$\mu_c^{(1)}(L)=\mu_0^{(1)}e^{-L}$}};
+\node at (2.5,-0.35) {\textcolor{black}{$\mu_c^{(2)}(L)=\mu_0^{(2)}L$}};
+\node at (-3.5,0.45) {\textcolor{black}{$\dfrac{||A||^2}{2^L}=e^{L}$}};
+\node at (3.5,0.45) {\textcolor{black}{$\dfrac{||A||^2}{2^L} \simeq \dfrac{L}{\mu^4}$}};
+\node at (0.0,0.45) {\textcolor{black}{$\dfrac{||A||^2}{2^L}=\dfrac{L^{\alpha(\mu,L)}}{\mu^{\beta(\mu, L)}}$}};
+\end{tikzpicture}}
+\end{center}
+\caption{Phase diagram of gauge potential of non-integrable systems as a function of $\mu$}
+\end{figure}
+
+
+In the above picture, the middle part ($ \mu_c^{(1)}(L) < \mu < \mu_c^{(2)}(L)$) still needs to be found out. How does $\alpha$ and $\beta$ depend on $\mu$ and $L$? In order to answer these questions, we need to study more to characterize the different ``phases" for intermediate value of $\mu$ based upon following parameters. For a given phase, we would have a certain range of allowed $\mu$. Within this range of $\mu$,
 \begin{itemize}
 \item[--] how does the norm of gauge potential varies as a function of system size (L)? Polynomial in L or exponential in L? We know that in exact regime (small $\mu$), it grows as an exponential and in big $\mu$ regime, it grows as linear in system size. What happens in regimes outside these extreme regimes?
 \item[--] what kind of operators makes up our gauge potential? We know that in exact regime (small $\mu$), gauge potential consists all all n- body ($1 \leq n \leq L$) operators are there and in big $\mu$ regime, it contains only one and two body operators. What happens in regimes outside these extreme regimes?
@@ -577,27 +594,73 @@ We need to figure out a systematic way to find out the boundary of our phase dia
 
 
 
-\subsection{L scaling of gauge potential}
-Numerically, we find that norm of exact gauge potential of non-integrable system scale exponentially in system size while it scales as polynomial in system size for integrable system.
+\subsection{Finding boundary of phase diagram: system size scaling }
+
+Numerically, we find that norm of exact gauge potential of non-integrable system scale exponentially in system size while it scales as polynomial in system size for integrable system (figure \ref{exact_regime}).
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.7]{new_pics/v2_1_norm_L_scaling.eps}
 \caption{Exact gauge potential as a function of system size: non-integrable systems (exponential scaling) and integrable (polynomial scaling) }
+\label{exact_regime}
 \end{center}
 \end{figure}
 
-In small $\mu$ regime, since we expect $\mu_c^{(1)}= e^{-L}$, we parametrize our $\mu= \mu_0 e^{-L}$, where $\mu_0$ is our parameter. (figure \ref{param_nonintegrable}). Here, we are coming from far left side of phase diagram. Numerically, we find that $\mu_0$ lies between 1 and 10. We don't know how to make the window tighter.
+
+\subsubsection*{Scaling of slope of gauge potential}
+
+Here we take different slices in y-axis of slope of gauge potential (figure \ref{mu_scaling}) at certain $\beta_c$. In small $\mu$ regime, since we expect $\beta \simeq 0$, we start off with a value of $\beta_c=10^{-10}$  and then we keep on  increasing our value of $\beta_c$ in subsequent iterations. 
+
+In big $\mu$ regime, since we expect $\beta \simeq 4$, we start off with a value of $\beta_c=3$ and then we keep on decreasing our value of $\beta_c$ in subsequent iterations. 
+
+We find that to reach the same value of $\beta_c$, the system needs cutoff $\mu_c$ whose value is exponentially small in system size in small $\mu$ regime while in big  $\mu$ regime, $\mu_c$ whose value is extensively big in system size (figure \ref{mu_c_1_nonintegrable}). This provides evidence that $\mu_c^{(1)} \propto e^{-L}$ and $\mu_c^{(2)} \propto L$.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.72]{new_pics/scaling_exp_poly.eps}
-\caption{something }
+\includegraphics[scale=0.45]{new_pics/mu_c_1_nonint.eps}
+\includegraphics[scale=0.52]{new_pics/mu_c_2_nonint.eps}
+\caption{$\mu_c^{(1)}$ and $\mu_c^{(2)}$ dependence of system size L: former seems exponentially small and the latter a linear one }
+\label{mu_c_1_nonintegrable}
+\end{center}
+\end{figure}
+
+
+
+\subsubsection*{Scaling of gauge potential}
+
+In small $\mu$ regime, since we expect $\mu_c^{(1)} \propto e^{-L}$, we parametrize our $\mu_c^{(1)}(L)= \mu_0 e^{-L}$, where $\mu_0$ is our parameter (left side of figure \ref{param_nonintegrable}). Here, we are coming from far left side of phase diagram which means our first guess of $\mu_0$ ($10^{-30}$) is really smaller than $\min{\omega_{ij}}$ and then we will crank up our value of $\mu_0$ in subsequent guesses. In this regime of exact gauge potential, the value of $\mu^0$ and scaling of $\mu$ with system size should not matter. As we increase the value of $\mu_0$, we would find that the value of $\mu$ is big enough that the value of norm of gauge potential is ``appreciably" different than exact gauge potential (when $\mu_0 \sim 10^{-30}$). Since, this change of behavior is continuous \footnote{Is it a crossover phenomenon or  second order phase transition (continuous in order parameter and first derivative of order parameter but discontinuous  in second derivative )?}, it's difficult to exactly determine the boundary of this phase diagram from this approach (maybe I can look into derivative of some order parameter (norm?) and then find a sharper transition?). Hence, from left side of figure \ref{param_nonintegrable}, it's reasonable to claim that $\mu_c^{(1)}= \mu_0^*e^{-L}$, where $\mu_0^*$ lies between 1 and 10.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.52]{new_pics/scaling_mu_c_1.eps}
+\includegraphics[scale=0.52]{new_pics/scaling_mu_c_2.eps}
+\caption{a) \textbf{Scaling of  $\mu_c^{(1)}$:} we parameterize $\mu$ as $\mu_c^{(1)}(L)= \mu_0 e^{-L}$. We find $\mu_0^*$ to be between 1 and 10  b)\textbf{Scaling of $\mu_c^{(2)}$:}  we parameterize $\mu$ as $\mu_c^{(2)}(L)= \mu_0 L$. We find $\mu_0^*$ to be between 10 and 100.  }
 \label{param_nonintegrable}
 \end{center}
 \end{figure}
 
-Similarly, in big $\mu$ regime, since we expect $\mu_c^{(2)}= L$, we parametrize our $\mu= \mu_0 L$, where $\mu_0$ is our parameter. Here, we are coming from the far right side of phase diagram. We don't know for sure when we cross the critical point, if we find a different scaling of system size apart from linear scaling.
-\newpage
+ 
+Similarly, in big $\mu$ regime, since we expect $\mu_c^{(2)} \propto L$, we parametrize our $\mu_c^{(2)}(L)= \mu_0 L$, where $\mu_0$ is our parameter. In this regime, we have:
+\begin{equation}
+||A_{\lambda}||^2= \dfrac{1}{ \mu(L)^4} \Tr  [H, \partial_{\lambda}H]^2
+\end{equation}
+where $\mu(L)= \mu_0 L$. 
+
+Here, we are coming from far right side of phase diagram which means our first guess of $\mu_0$ ($10^3$) is really bigger than $\max{\omega_{ij}}$ and then we will reduce our value of $\mu_0$ in subsequent guesses. Unlike the regime of exact gauge potential, in this regime of this approximate local gauge potential, the value of $\mu^0$ and scaling of $\mu$ with system size does determine the value of norm of approximate gauge potential. That's why y-axis of right side of figure \ref{param_nonintegrable} has been scaled properly by multiplying norm with $\mu(L)^4$. As we decrease the value of $\mu_0$, we would find that the value of $\mu$ is small enough that the value of norm of gauge potential is ``appreciably" different than local approximate gauge potential (when $\mu_0 \sim 10^3$). Since, this change of behavior is continuous, it's difficult to exactly determine the boundary of this phase diagram from this approach. Hence, from right side of figure \ref{param_nonintegrable}), it's reasonable to claim that $\mu_c^{(2)}= \mu_0^*L$, where $\mu_0^*$, where $\mu_0^*$ lies between 10 and 100.
+
+Before we wind off this section, let's try $\mu_c^{(2)}(L) =\mu_0 L^2$ so as to see what happens if we parametrize with a wrong scaling. 
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.51]{new_pics/scaling_mu_c_2_quad_scaling.eps}
+\caption{Scaling of  $\mu_c^{(2)}$: we parameterize $\mu$ as $\mu_c^{(2)}(L)= \mu_0 L^2$. We find $\mu_0^*$ to be between 1 and 10.  }
+\label{param2_nonintegrable}
+\end{center}
+\end{figure}
+
+Can this second analysis on its' own tell us if our system size dependence of critical points ($\mu_c^{(1)}$ and $\mu_c^{(2)}$) is correct? No, we also need to look into the first analysis of slope of gauge potential with respect to $\mu$, which is presented in  figure \ref{mu_c_1_nonintegrable}.
+
+
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
 Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:
