@@ -344,9 +344,7 @@ Hence, we get:
 \section{System-size scaling of minimum and maximum of $\omega_{ij}$}
 
  
-https://stackoverflow.com/questions/14854339/in-scipy-how-and-why-does-curve-fit-calculate-the-covariance-of-the-parameter-es
 
-https://stackoverflow.com/questions/14581358/getting-standard-errors-on-fitted-parameters-using-the-optimize-leastsq-method-i 
  
  
 \begin{figure}[!ht]
@@ -372,6 +370,7 @@ I find that because of open boundary conditions, I don't get any degenerate stat
 \end{center}
 \end{figure}
 
+Notes on how to find error in fitting using least-square method in python \footnote{a) https://stackoverflow.com/questions/14854339/in-scipy-how-and-why-does-curve-fit-calculate-the-covariance-of-the-parameter-es b) https://stackoverflow.com/questions/14581358/getting-standard-errors-on-fitted-parameters-using-the-optimize-leastsq-method-i }
 
 \section{Norm computed using ED}
 
@@ -659,6 +658,18 @@ Before we wind off this section, let's try $\mu_c^{(2)}(L) =\mu_0 L^2$ so as to 
 \end{figure}
 
 Can this second analysis on its' own tell us if our system size dependence of critical points ($\mu_c^{(1)}$ and $\mu_c^{(2)}$) is correct? No, we also need to look into the first analysis of slope of gauge potential with respect to $\mu$, which is presented in  figure \ref{mu_c_1_nonintegrable}.
+
+\section{Thouless energy scale}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.46]{new_pics/beta_c_1_nonint.eps}
+\includegraphics[scale=0.51]{new_pics/norm_beta_c_1.eps}
+\caption{Scaling of  $\mu_c^{(2)}$: we parameterize $\mu$ as $\mu_c^{(2)}(L)= \mu_0 L^2$. We find $\mu_0^*$ to be between 1 and 10.  }
+\label{param2_nonintegrable}
+\end{center}
+\end{figure}
 
 
 \appendix
