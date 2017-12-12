@@ -659,7 +659,7 @@ Before we wind off this section, let's try $\mu_c^{(2)}(L) =\mu_0 L^2$ so as to 
 
 Can this second analysis on its' own tell us if our system size dependence of critical points ($\mu_c^{(1)}$ and $\mu_c^{(2)}$) is correct? No, we also need to look into the first analysis of slope of gauge potential with respect to $\mu$, which is presented in  figure \ref{mu_c_1_nonintegrable}.
 
-\section{Thouless energy scale}
+\subsection{Thouless energy scale}
 
 
 \begin{figure}[!ht]
@@ -667,10 +667,54 @@ Can this second analysis on its' own tell us if our system size dependence of cr
 \includegraphics[scale=0.46]{new_pics/beta_c_1_nonint.eps}
 \includegraphics[scale=0.51]{new_pics/norm_beta_c_1.eps}
 \caption{Scaling of  $\mu_c^{(2)}$: we parameterize $\mu$ as $\mu_c^{(2)}(L)= \mu_0 L^2$. We find $\mu_0^*$ to be between 1 and 10.  }
-\label{param2_nonintegrable}
+\label{param2a_nonintegrable}
 \end{center}
 \end{figure}
 
+\section{transition and dissipation rate }
+
+\subsection{transition rate}
+Let's try to understand more about $\mu$ by studying transition rate and dissipation rate for a quantum many body systems using Fermi's Golden rule. Let's consider a Hamiltonian:
+\begin{equation}
+\mathcal{H}_{\mathcal{X}} = \mathcal{H} (\lambda) + \dot{\lambda} \mathcal{X}
+\end{equation}
+where $\lambda= \lambda_0 + \epsilon(t)$ and $\epsilon(t)$ is an infinitesimal white noise $\overline{ \epsilon(t) \epsilon(t^{\prime})}= \kappa \delta(t -t^{\prime})$. If the system is in equilibrium, then fluctuation -dissipation theorem dictates $\kappa = T$. Hence, we can write
+
+\begin{equation}
+\mathcal{H}_{\mathcal{X}} \approx \mathcal{H} (\lambda_0)+ \epsilon \partial_{\lambda}\mathcal{H} + \dot{\epsilon} \mathcal{X}
+\end{equation}
+We will need to use $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $ where $\mathcal{X}=A_{\lambda}(\mu) $ .
+
+Now using Fermi's golden rule in \cite{kolodrubetz2016geometry},  transition rate $\langle \Gamma_n \rangle$  is derived using results from \cite{clerk2010introduction} is given by (details given in appendix \ref{sec.transition_rate}): 
+\begin{align}
+ \Gamma_n (\omega) = \kappa  \sum_{m \neq n} |\langle n | G_{\lambda} | m \rangle |^2 \delta(E_n-E_m- \hbar \omega)
+\end{align}
+
+
+Using the fact that 
+$\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}$, we find 
+\begin{align*}
+\langle n | G_{\lambda} | m \rangle &= \langle n |  \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}, H]  | m \rangle \\
+&= \langle n |  \partial_{\lambda} H | m \rangle + \dfrac{i}{\hbar} \langle n |  [A_{\lambda}, H]  | m \rangle \\
+&=   \partial_{\lambda} H^{nm} + \dfrac{i}{\hbar} (E_m-E_n)\langle n | A_{\lambda} | m \rangle \\
+&=   \partial_{\lambda} H^{nm}\left(1 -  \dfrac{(E_n-E_m)^2}{(E_n-E_m)^2 + \mu^2} \right)  
+\end{align*}
+
+Hence, in units of $\hbar=1$, we have:
+ \begin{equation}
+ \boxed{
+ \Gamma_n (\omega) = \kappa  \sum_{m \neq n} | \partial_{\lambda} H^{nm}|^2 \left(1 -  \dfrac{\omega_{nm}^2}{\omega_{nm}^2 + \mu^2} \right)^2 \delta(\omega_{nm}- \omega)}
+\end{equation}
+ In small $\mu$ limit,  $\Gamma_n (\omega)$ is zero for all external energy $\omega$ through noise. In big $\mu$ limit, $ G_{\lambda} \approx \partial_{\lambda} H = \sum_i \sigma_i^x$. 
+
+ \subsection{dissipation rate }
+dissipation rate $\dfrac{d \sigma^2_E}{dt}$  is given by (details given in appendix \ref{sec.dissipation_rate}): 
+
+\begin{align}
+ \dfrac{d \sigma^2_E}{dt}&= \int d\omega \omega^2 \Gamma_n (\omega)\\
+ &=-\kappa \langle n|[G_{\lambda}, H]^2 |n \rangle
+\end{align}
+In small $\mu$ limit,  $ \dfrac{d \sigma^2_E}{dt}$ is zero. In big $\mu$ limit, since, $ G_{\lambda} \approx \partial_{\lambda} H $.  Hence $[G_{\lambda}, H]^2= (C^{(1)}) ^2$ and $\dfrac{d \sigma^2_E}{dt}=-\kappa \langle n|(C^{(1)})^2 |n \rangle $
 
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
@@ -714,7 +758,24 @@ H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda 
 We find that $\Tr |C^{(1)}|^2 = 2^L 4(h^2 L + 2J(L-1))$. 
  
 
-\subsection{Integrable systems with open boundary condition}
+
+\section{details on transition rate}\label{sec.transition_rate}
+\begin{align}
+ \Gamma_n (\omega) &= \kappa  \sum_{m \neq n} |\langle n | \partial_{\lambda} H - i \omega \mathcal{X} | m \rangle |^2 \delta(E_n-E_m- \omega) \\
+ &= \kappa  \sum_{m \neq n} |\langle n | \partial_{\lambda} H - \frac{i}{\hbar} (E_n-E_m)\mathcal{X} | m \rangle |^2 \delta(E_n-E_m- \omega) \\
+ &= \kappa  \sum_{m \neq n} |\langle n | \partial_{\lambda} H + \frac{i}{\hbar} (E_m-E_n)\mathcal{X} | m \rangle |^2 \delta(E_n-E_m- \omega) \\
+ &= \kappa  \sum_{m \neq n} |\langle n | G_{\lambda} | m \rangle |^2 \delta(E_n-E_m- \omega) \\
+\end{align}
+
+\section{details on dissipation rate}\label{sec.dissipation_rate}
+
+\begin{align}
+ \dfrac{d \sigma^2_E}{dt}&= \int d\omega \omega^2 \Gamma_n (\omega)\\
+  &=\int d\omega \kappa\sum_{m \neq n}  \omega^2 |\langle n | G_{\lambda} | m \rangle |^2 \delta(E_m-E_n- \omega)\\
+  &=-\kappa \Tr ([G_{\lambda}, H]^2)
+\end{align}
+
+\section{Integrable systems with open boundary condition}
 
 Here I show that for integrable systems with open boundary conditions, we find some kind of structure, which is absent when computed using periodic boundary conditions.
 

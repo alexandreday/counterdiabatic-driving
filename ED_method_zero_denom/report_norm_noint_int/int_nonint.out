@@ -15,9 +15,14 @@
 \BOOKMARK [2][-]{subsection.7.1}{ scaling of gauge potential}{section.7}% 15
 \BOOKMARK [2][-]{subsection.7.2}{Phase diagram of gauge potential }{section.7}% 16
 \BOOKMARK [2][-]{subsection.7.3}{Finding boundary of phase diagram: system size scaling }{section.7}% 17
-\BOOKMARK [1][-]{section.8}{Thouless energy scale}{}% 18
-\BOOKMARK [1][-]{appendix.A}{Do degenerate eigenvalues contribute to norm of gauge potential?}{}% 19
-\BOOKMARK [1][-]{appendix.B}{Computing `39`42`"613A``45`47`"603ATr[H, H] }{}% 20
-\BOOKMARK [2][-]{subsection.B.1}{Integrable model}{appendix.B}% 21
-\BOOKMARK [2][-]{subsection.B.2}{Non-integrable model}{appendix.B}% 22
-\BOOKMARK [2][-]{subsection.B.3}{Integrable systems with open boundary condition}{appendix.B}% 23
+\BOOKMARK [2][-]{subsection.7.4}{Thouless energy scale}{section.7}% 18
+\BOOKMARK [1][-]{section.8}{transition and dissipation rate }{}% 19
+\BOOKMARK [2][-]{subsection.8.1}{transition rate}{section.8}% 20
+\BOOKMARK [2][-]{subsection.8.2}{dissipation rate }{section.8}% 21
+\BOOKMARK [1][-]{appendix.A}{Do degenerate eigenvalues contribute to norm of gauge potential?}{}% 22
+\BOOKMARK [1][-]{appendix.B}{Computing `39`42`"613A``45`47`"603ATr[H, H] }{}% 23
+\BOOKMARK [2][-]{subsection.B.1}{Integrable model}{appendix.B}% 24
+\BOOKMARK [2][-]{subsection.B.2}{Non-integrable model}{appendix.B}% 25
+\BOOKMARK [1][-]{appendix.C}{details on transition rate}{}% 26
+\BOOKMARK [1][-]{appendix.D}{details on dissipation rate}{}% 27
+\BOOKMARK [1][-]{appendix.E}{Integrable systems with open boundary condition}{}% 28
