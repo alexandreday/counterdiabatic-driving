@@ -19,7 +19,7 @@
 %\usepackage{subfigure}
 \usepackage[english]{babel}
 \author{Mohit}
-\title{Adiabatic gauge potential of quantum integrable and non-integrable systems  }
+\title{Approximate adiabatic gauge potential of non-integrable systems  }
 \begin{document}
 \maketitle
 %\tableofcontents
@@ -107,6 +107,7 @@ We can see $O= \hat{P}_{\alpha}$ doesn't satisfy the above equation (since left 
   \end{array}\right.
 \end{equation}
 where $\mu_T \sim \dfrac{1}{L^2}$ \cite{khatami2013fluctuation, srednicki1999approach,d2016quantum}
+
 \section{Norm of adiabatic gauge potential}
 Let's compute the norm by noting that $A_{\lambda}$ has only off-diagonal elements in energy basis in our gauge choice:
 
@@ -219,19 +220,19 @@ Now since $\alpha_l$ for large enough $L$ is exponentially suppressed in $l$, we
 If we introduce longitudinal magnetic field in Transverse Ising model, then integrability is broken and we get a non-integrable model. We plan to study both local  and global integrability-breaking term. 
 
 \begin{equation}
-H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) - h\sum_{j} \sigma_j^z -\lambda \sum_{j} \sigma_j^x 
+H= -J \sum_{j=1}^{L-1} \sigma_j^x \sigma_{j+1}^x - h\sum_{j=1}^{L} \sigma_j^z -\lambda \sum_{j=1}^{L}\sigma_j^x 
 \end{equation}
 In this model, $\partial_{\lambda}H = - \sum_{j} \sigma_j^x  $ is a global operator.
 
 
 \begin{equation}
-H= -J \sum_{j} \sigma_j^x (\sigma_{j+1}^x+ \sigma_{j-1}^x) - h\sum_{j} \sigma_j^z -\lambda  \sigma_0^x 
+H= -J  \sum_{j=1}^{L-1} \sigma_j^x - h \sum_{j=1}^{L}  \sigma_j^z -\lambda  \sigma_0^x 
 \end{equation}
 In this model, $\partial_{\lambda}H = -  \sigma_0^x  $ is a local operator.
 
 
 \subsection{ETH applied to norm}
-$\partial_{\lambda}H$ may or may not be a local operator. We would be studying such non-integrable models in which it is a local operator. Hence, we can apply ETH on the operator $\partial_{\lambda}H$.
+$\partial_{\lambda}H$ may or may not be a local operator. We are studying such non-integrable models in which it is a local operator or it's composed by adding local operators. Hence, we can apply ETH on the operator $\partial_{\lambda}H$.
 
 \subsubsection{Heuristic argument}
 \begin{align*}
@@ -342,35 +343,68 @@ Hence, we get:
 
 
 \section{System-size scaling of minimum and maximum of $\omega_{ij}$}
+For integrable model, we would study the Hamiltonian of Transverse Field Ising model:
+%\begin{equation}
+%H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
+%\end{equation}
 
- 
+%and this:
+\begin{equation}
+H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + \lambda \sum_{j} \sigma_j^x
+\end{equation}
 
- 
- 
+%\begin{equation}
+%H= J \sum_{j=1}^L-1 \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
+%\end{equation}
+
+where we have chosen $J=1$ and $\lambda=5$ with open boundary conditions.
+
+For non-integrable model, we would study the Hamiltonian of Ising model with both transverse and longitudinal fields:
+\begin{equation}
+H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+\end{equation}
+%
+%\begin{equation}
+%H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
+%\end{equation}
+where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions. These are values of parameters for which this model has been shown to be robustly non-integrable for small systems \cite{kim2013ballistic}. Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
+
+We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $.
+
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.53]{new_pics/v2_maxwij_int.eps}
 \includegraphics[scale=0.53]{new_pics/v2_maxwij_nonint.eps}
-\caption{Using ED method, $\min \omega_{ij}(L)$}
+\caption{Using ED method, $\max \omega_{ij}(L)$ shows linear scaling with system size}
+\label{max_wij}
 \end{center}
 \end{figure}
 
-
-
-If there is degeneracy, $\min \omega_{ij}(L)$ should be zero. Why don't I see any degenerate level?
-
-I find that because of open boundary conditions, I don't get any degenerate states for integrable model\footnote{Can I see this analytically for a simple model with only $J \sum_i\sigma_{i+1}^z \sigma_{i}^z$ term?}. The question is then how do I get an almost linear scaling of norm for integrable models? We had reasoned that $\langle n| \partial_{\lambda} H|m\rangle$ is zero because of extensive number of degenerate levels. It doesn't seem like that here.
-
-
+ 
+Below we use exact diagonalization (ED) to compute $\max \omega_{ij} $ and $\min \omega_{ij}$ as a function of system size. As expected for both non-integrable and integrable systems, we find that $\max \omega_{ij} \sim L$ (figure \ref{max_wij}). For non-integrable system, we find $\min \omega_{ij} \sim e^{-L}$ (right side of figure \ref{min_wij}). For integrable systems, since we are using open boundary conditions (which means there is no symmetry of translation in the system), we find that there is no degeneracies for system size checked upto $L=10$. This can explain why we get the same exponential behavior for this system (left side of figure \ref{min_wij}).
+ 
+ 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.535]{new_pics/v2_minwij_int.eps}
 \includegraphics[scale=0.535]{new_pics/v2_minwij_nonint.eps}
-\caption{Using ED method,  $\max \omega_{ij}(L)$}
+\caption{Using ED method,  $\min \omega_{ij}(L)$ shows exponential scaling with system size}
+\label{min_wij}
 \end{center}
-\end{figure}
+\end{figure} 
 
-Notes on how to find error in fitting using least-square method in python \footnote{a) https://stackoverflow.com/questions/14854339/in-scipy-how-and-why-does-curve-fit-calculate-the-covariance-of-the-parameter-es b) https://stackoverflow.com/questions/14581358/getting-standard-errors-on-fitted-parameters-using-the-optimize-leastsq-method-i }
+We should note that in an integrable system with open boundary condition, exact gauge potential shows an almost linear scaling with system size (figure \ref{exact_regime}). This shows that there are a lot of energy levels in which $ \langle n |\partial_{\lambda}H| m \rangle$ should be zero compared to non-integrable where there are very few degeneracies and very few levels in which $ \langle n |\partial_{\lambda}H| m \rangle$ is zero.
+ 
+
+
+
+
+
+
+
+
+
 
 \section{Norm computed using ED}
 
@@ -428,35 +462,7 @@ We see that while using ED, we need to be wary of degenerate eigenvalues. Do the
 %\end{center}
 %\end{figure}
 
-For integrable model, we would study the Hamiltonian of Transverse Field Ising model:
-%\begin{equation}
-%H= J \sum_{j} \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^x) + \lambda \sum_{j} \sigma_j^z 
-%\end{equation}
 
-%and this:
-\begin{equation}
-H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + \lambda \sum_{j} \sigma_j^x
-\end{equation}
-
-%\begin{equation}
-%H= J \sum_{j=1}^L-1 \sigma_j^z(\sigma_{j+1}^z+ \sigma_{j-1}^z) + \lambda \sum_{j} \sigma_j^x
-%\end{equation}
-
-where we have chosen $J=1$ and $\lambda=5$ with open boundary conditions.
-
-For non-integrable model, we would study the Hamiltonian of Ising model with both transverse and longitudinal fields:
-\begin{equation}
-H= J \sum_{j=1}^{L-1} \sigma_j^z \sigma_{j+1}^z + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
-\end{equation}
-%
-%\begin{equation}
-%H= J \sum_{j} \sigma_j^z (\sigma_{j+1}^z+ \sigma_{j-1}^z) + h\sum_{j} \sigma_j^z +\lambda \sum_{j} \sigma_j^x 
-%\end{equation}
-where we have chosen $J=1$, $h= (\sqrt{5}+1)/4$ and $\lambda=(\sqrt{5}+5)/8$ with open boundary conditions. These are values of parameters for which this model has been shown to be robustly non-integrable for small systems \cite{kim2013ballistic}.
-
-We see that $\partial_{\lambda}H =  \sum_{j} \sigma_j^x  $.
-
-Since anti-ferromagnetic phase has more local order compared to ferromagnetic phase, we expect the former to be less affected by finite size effects.
 
 
 
@@ -465,25 +471,6 @@ Since anti-ferromagnetic phase has more local order compared to ferromagnetic ph
 \subsection{$\mu$ scaling of gauge potential}
 
 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.51]{new_pics/v2_norm_mu_scaling.eps} 
-\includegraphics[scale=0.43]{new_pics/v3_slope_nonint_semilogx.eps}
-%\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}
-\caption{a) Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems b) $\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems}
-\label{mu_scaling}
-\end{center}
-\end{figure}
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.72]{new_pics/slope_small_system_nonint.eps}
-%\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}
-\caption{Using ED method, we obtain  $\mu$ dependence of negative of slope ($-\beta (\mu)$) is shown for non-integrable systems}
-%\label{mu_scaling}
-\end{center}
-\end{figure}
 
 
 Our $\mu$-dependent gauge potential $A_{\lambda}$ is given by:
@@ -495,15 +482,35 @@ where $\omega_{nm}=E_n-E_m$ and eigenstates depend on $\lambda$, i.e.$|n \rangle
 ||A_{\lambda}||^2 = \sum_n \sum_{m \neq n}  \dfrac{\omega_{nm}^2}{(\omega_{nm}^2 + \mu^2)^2} |\langle m | \partial_{\lambda}H| n \rangle|^2
 \end{equation}
 
-Numerically, we find the dependence of gauge potential on $\mu$ using Exact Diagonalization method (ED) in figure \ref{mu_scaling}. Let's claim that $||A||^2/2^L=\alpha\mu^{\beta}$. Then if we take log both sides, we get
+Numerically, we find the dependence of gauge potential on $\mu$ using Exact Diagonalization method (ED) in figure \ref{mu_scaling}.
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.72]{new_pics/v2_norm_mu_scaling.eps} 
+\caption{Using ED method, we obtain  $\mu$ dependence of norm of gauge potential in integrable and non-integrable systems}
+\label{mu_scaling}
+\end{center}
+\end{figure}
+
+ Let's claim that $||A||^2/2^L=\alpha\mu^{\beta}$. Then if we take log both sides, we get
 \begin{equation}
 \log ||A||^2/2^L=\log \alpha+ \beta \log \mu
 \end{equation}
-where $\beta$ is the slope on a log-log scale. Numerically, we can find $\beta_i$ for each pair of points using the following relationship (figure \ref{mu_scaling}):
+where $\beta$ is the slope on a log-log scale. Numerically, we can find $\beta_i$ for each pair of points using the following relationship (figure \ref{beta_mu_scaling}):
 \begin{equation}
 \beta_i=\dfrac{\log y( \mu_{i+1}) -\log y( \mu_{i})} {\log \mu_{i+1}-\log \mu_{i}}
 \end{equation}
 where $y= ||A||^2/2^L$. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.43]{new_pics/v3_slope_nonint_semilogx.eps}
+\includegraphics[scale=0.52]{new_pics/slope_small_system_nonint.eps}
+%\includegraphics[scale=0.7]{new_pics/v2_norm_mu_scaling_nonint.eps}
+\caption{Using ED method, we obtain  $\mu$ dependence of negative of slope ($-\beta (\mu)$) for non-integrable systems: a) bigger systems b) smaller systems}
+\label{beta_mu_scaling}
+\end{center}
+\end{figure}
 %\begin{figure}[!ht]
 %\begin{center}
 %%\includegraphics[scale=0.7]{new_pics/v3_slope_nonint_int_compare_semilogx.eps}\\
@@ -646,7 +653,7 @@ where $\mu(L)= \mu_0 L$.
 
 Here, we are coming from far right side of phase diagram which means our first guess of $\mu_0$ ($10^3$) is really bigger than $\max{\omega_{ij}}$ and then we will reduce our value of $\mu_0$ in subsequent guesses. Unlike the regime of exact gauge potential, in this regime of this approximate local gauge potential, the value of $\mu^0$ and scaling of $\mu$ with system size does determine the value of norm of approximate gauge potential. That's why y-axis of right side of figure \ref{param_nonintegrable} has been scaled properly by multiplying norm with $\mu(L)^4$. As we decrease the value of $\mu_0$, we would find that the value of $\mu$ is small enough that the value of norm of gauge potential is ``appreciably" different than local approximate gauge potential (when $\mu_0 \sim 10^3$). Since, this change of behavior is continuous, it's difficult to exactly determine the boundary of this phase diagram from this approach. Hence, from right side of figure \ref{param_nonintegrable}), it's reasonable to claim that $\mu_c^{(2)}= \mu_0^*L$, where $\mu_0^*$, where $\mu_0^*$ lies between 10 and 100.
 
-Before we wind off this section, let's try $\mu_c^{(2)}(L) =\mu_0 L^2$ so as to see what happens if we parametrize with a wrong scaling. 
+Before we wind off this section, let's try $\mu_c^{(2)}(L) =\mu_0 L^2$ so as to see what happens if we parametrize with a wrong scaling (figure \ref{param2_nonintegrable}). 
 
 
 \begin{figure}[!ht]
@@ -659,37 +666,39 @@ Before we wind off this section, let's try $\mu_c^{(2)}(L) =\mu_0 L^2$ so as to 
 
 Can this second analysis on its' own tell us if our system size dependence of critical points ($\mu_c^{(1)}$ and $\mu_c^{(2)}$) is correct? No, we also need to look into the first analysis of slope of gauge potential with respect to $\mu$, which is presented in  figure \ref{mu_c_1_nonintegrable}.
 
-\subsection{Thouless energy scale}
+%\subsection{Thouless energy scale}
+%
+%
+%\begin{figure}[!ht]
+%\begin{center}
+%\includegraphics[scale=0.46]{new_pics/beta_c_1_nonint.eps}
+%\includegraphics[scale=0.51]{new_pics/norm_beta_c_1.eps}
+%\caption{Scaling of  $\mu_c^{(2)}$: we parameterize $\mu$ as $\mu_c^{(2)}(L)= \mu_0 L^2$. We find $\mu_0^*$ to be between 1 and 10.  }
+%\label{param2a_nonintegrable}
+%\end{center}
+%\end{figure}
 
-
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.46]{new_pics/beta_c_1_nonint.eps}
-\includegraphics[scale=0.51]{new_pics/norm_beta_c_1.eps}
-\caption{Scaling of  $\mu_c^{(2)}$: we parameterize $\mu$ as $\mu_c^{(2)}(L)= \mu_0 L^2$. We find $\mu_0^*$ to be between 1 and 10.  }
-\label{param2a_nonintegrable}
-\end{center}
-\end{figure}
-
-\section{transition and dissipation rate }
-
-\subsection{transition rate}
+\section{Reducing transition and dissipation rate with approximate gauge potential }
 Let's try to understand more about $\mu$ by studying transition rate and dissipation rate for a quantum many body systems using Fermi's Golden rule. Let's consider a Hamiltonian:
 \begin{equation}
 \mathcal{H}_{\mathcal{X}} = \mathcal{H} (\lambda) + \dot{\lambda} \mathcal{X}
 \end{equation}
-where $\lambda= \lambda_0 + \epsilon(t)$ and $\epsilon(t)$ is an infinitesimal white noise $\overline{ \epsilon(t) \epsilon(t^{\prime})}= \kappa \delta(t -t^{\prime})$. If the system is in equilibrium, then fluctuation -dissipation theorem dictates $\kappa = T$. Hence, we can write
+where $\lambda= \lambda_0 + \epsilon(t)$ and  $\epsilon(t)$  is an infinitesimal white noise which satisfies $\overline{ \epsilon(t) \epsilon(t^{\prime})}= \kappa \delta(t -t^{\prime})$ \footnote{If the system is in equilibrium, then fluctuation -dissipation theorem dictates $\kappa = T$}. 
+A system under white noise would lead to transitions between all eigenstates. We will see how much there is reduction in transition and dissipation rate with our approximate gauge potential.
 
+We can simplify the above expression:
 \begin{equation}
 \mathcal{H}_{\mathcal{X}} \approx \mathcal{H} (\lambda_0)+ \epsilon \partial_{\lambda}\mathcal{H} + \dot{\epsilon} \mathcal{X}
 \end{equation}
-We will need to use $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $ where $\mathcal{X}=A_{\lambda}(\mu) $ .
+Our expressions will involve $G_{\lambda}$ which is given as $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $ where $\mathcal{X}=A_{\lambda}(\mu)$.
 
-Now using Fermi's golden rule in \cite{kolodrubetz2016geometry},  transition rate $\langle \Gamma_n \rangle$  is derived using results from \cite{clerk2010introduction} is given by (details given in appendix \ref{sec.transition_rate}): 
+\subsection{Transition rate}
+
+Now we would drive the system periodically in addition to the white noise we have in the system. So, in this protocol, time dependence of $\lambda$ is given as $\lambda(t)= \lambda_0 \sin (\omega t) + \epsilon(t)$. We can use Fermi's golden rule (using results from \cite{clerk2010introduction}) to derive  transition rate $\langle \Gamma_n \rangle$ \cite{kolodrubetz2016geometry} as follows: 
 \begin{align}
  \Gamma_n (\omega) = \kappa  \sum_{m \neq n} |\langle n | G_{\lambda} | m \rangle |^2 \delta(E_n-E_m- \hbar \omega)
 \end{align}
-
+where $\omega$ is frequency of the periodic external drive.   More details  are given in appendix \ref{sec.transition_rate}.
 
 Using the fact that 
 $\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{\omega_{mn}^2+ \mu^2} \omega_{mn}$, we find 
@@ -705,16 +714,108 @@ Hence, in units of $\hbar=1$, we have:
  \boxed{
  \Gamma_n (\omega) = \kappa  \sum_{m \neq n} | \partial_{\lambda} H^{nm}|^2 \left(1 -  \dfrac{\omega_{nm}^2}{\omega_{nm}^2 + \mu^2} \right)^2 \delta(\omega_{nm}- \omega)}
 \end{equation}
- In small $\mu$ limit,  $\Gamma_n (\omega)$ is zero for all external energy $\omega$ through noise. In big $\mu$ limit, $ G_{\lambda} \approx \partial_{\lambda} H = \sum_i \sigma_i^x$. 
+where $\delta$ function is broadened for finite-sized system to include several eigenstates so as to have a smooth dependence of  $\Gamma_n (\omega)$. This means for each $\omega$, we only include the eigenstates in the sum which falls within some tolerance value. We define a tolerance $\epsilon$ as $|\omega- \omega_{nm}|< \epsilon$ to characterize this smoothing procedure. 
 
- \subsection{dissipation rate }
-dissipation rate $\dfrac{d \sigma^2_E}{dt}$  is given by (details given in appendix \ref{sec.dissipation_rate}): 
+In small $\mu$ limit,  $\Gamma_n (\omega)$ is zero for all energy $\omega$. In  $\mu$ is really big, when $A_{\lambda}$ is almost zero, $ G_{\lambda} \approx \partial_{\lambda} H = \sum_i \sigma_i^x$.  This would mean driving the system without any counter-dibatic term. 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.53]{new_pics/transition_rate_low_tol.eps}
+\includegraphics[scale=0.53]{new_pics/transition_rate_high_tol.eps}
+\caption{Transition rate with $\kappa=1$: for L=10, we find that increasing $\mu$ reduces the transition rate across the whole range of energy $\omega$}
+\label{L10_transition}
+\end{center}
+\end{figure}
+
+In small $\mu$ limit,  $\Gamma_n (\omega)$ is zero for all external energy $\omega$ through noise. In  $\mu$ is really big, when $A_{\lambda}$ is almost zero, $ G_{\lambda} \approx \partial_{\lambda} H = \sum_i \sigma_i^x$.  This would mean driving the system using white noise without any counter-dibatic term. 
+
+From figure \ref{L10_transition}, we see that when $\mu > 1$, transition rate is not reducing much for $\omega=0$. Hence, we find that central peak is almost the same while other peaks are reducing a lot. Only when value of $\mu$ is reduced to less than $1$, we find that central peak started reducing. Also, it seems that central peak only starts reducing when other peaks have almost reduced to zero leaving central peak as the only peak in this regime. This should be investigated further.
+Can we make a claim that it is in the big $\mu$ regime when central peak  doesn't get reduced whiel other peaks gets reduced substantially? Is there any information in seeing how width scales with $\mu$?
+
+
+
+ \subsection{Dissipation rate }
+ 
+ \begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.72]{new_pics/dissipation_rate.eps}
+\caption{a) Dissipation rate with $-\kappa=1$: for L=10, we find that increasing $\mu$ reduces the dissipation rate across the whole range of energy $\omega$ b) Average dissipation rate  }
+\label{L10_dissipation}
+\end{center}
+\end{figure}
+
+Dissipation rate $\dfrac{d \sigma^2_E}{dt}$ for a particular eigenstate $ |n \rangle$ is defined as: 
 
 \begin{align}
  \dfrac{d \sigma^2_E}{dt}&= \int d\omega \omega^2 \Gamma_n (\omega)\\
  &=-\kappa \langle n|[G_{\lambda}, H]^2 |n \rangle
 \end{align}
-In small $\mu$ limit,  $ \dfrac{d \sigma^2_E}{dt}$ is zero. In big $\mu$ limit, since, $ G_{\lambda} \approx \partial_{\lambda} H $.  Hence $[G_{\lambda}, H]^2= (C^{(1)}) ^2$ and $\dfrac{d \sigma^2_E}{dt}=-\kappa \langle n|(C^{(1)})^2 |n \rangle $
+
+After doing some calculations (whose details are given in appendix \ref{sec.dissipation_rate}), we find that:
+\begin{equation}
+\boxed{
+\dfrac{d \sigma^2_E (n)}{dt} =  - \kappa  \sum_{m \neq n}\dfrac{\mu^4 (E_n- E_m)^2}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
+\end{equation}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.452]{new_pics/avg_dissipation_rate_2.eps}
+\includegraphics[scale=0.452]{new_pics/avg_dissipation_rate.eps}
+\caption{ Average dissipation rate a) size-dependence  b) system-size scaled  }
+\end{center}
+\end{figure}
+
+
+
+
+In small $\mu$ limit,  $ \dfrac{d \sigma^2_E}{dt}$ is zero. In  the regime when $\mu$ is really big, $A_{\lambda}$ is almost zero and  $ G_{\lambda} \approx \partial_{\lambda} H = \sum_i \sigma_i^x$.  This would mean driving the system without any counter-dibatic term. Hence $[G_{\lambda}, H]^2= (C^{(1)}) ^2$ and $\dfrac{d \sigma^2_E}{dt}=-\kappa \langle n|(C^{(1)})^2 |n \rangle $.
+
+Average transition rate is $\delta_E^2/2^L$ where $\delta_E^2$ is given by:
+
+\begin{equation}
+\delta_E^2= \sum_{n=1}^{2^L}\dfrac{d \sigma^2_E (n)}{dt}
+\end{equation}
+
+\section{Physical meaning of cutoff regulator}
+\subsection{Equation of motion for approximate gauge potential}
+Equation of motion for exact gauge potential $A_{\lambda}$  is:
+\begin{equation}
+[H, G_{\lambda}(\mu=0)]=0
+\end{equation}
+where $G_{\lambda}(\mu=0)= \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}, H] $ 
+
+
+
+Approximate gauge potential is 
+\begin{equation}
+ A_{\lambda}(\mu) =  -i\hbar \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
+\end{equation}
+where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
+
+Now, let's  compute:
+\begin{align}
+[H, G_{\lambda}(\mu)]&=[H, \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}, H]] \\
+&= [H, \partial_{\lambda} H] - \dfrac{i}{\hbar} [H,[ H, A_{\lambda}]]\\
+&= C^{(1)} + i^2    \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}\\
+&= C^{(1)} -  (   \dfrac{ C^{(3)}}{\mu^{2}} - \dfrac{ C^{(5)}}{\mu^{4}} + \ldots)\\
+&= C^{(1)} -   \dfrac{ C^{(3)}}{\mu^{2}} + \dfrac{ C^{(5)}}{\mu^{4}} - \ldots\\
+&=\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n}}\\
+&= \dfrac{i}{\hbar} \mu^2 A_{\lambda} (\mu)
+\end{align}
+ \begin{equation}
+ \boxed{[H, G_{\lambda}(\mu)]= \dfrac{i}{\hbar} \mu^2 A_{\lambda} (\mu)}
+ \end{equation}
+
+
+\subsection{Computing local gauge potential }
+
+Approximate gauge potential is 
+\begin{equation}
+ A_{\lambda}(\mu) =  -i\hbar \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
+\end{equation}
+
+Let's truncate the series by arguing that we have no control over boundary. We do this by putting restriction on $\mu$ that it goes to $\infty$ when $n=L$. 
 
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
@@ -775,6 +876,63 @@ We find that $\Tr |C^{(1)}|^2 = 2^L 4(h^2 L + 2J(L-1))$.
   &=-\kappa \Tr ([G_{\lambda}, H]^2)
 \end{align}
 
+Ignoring $\kappa$ and negative sign, we get:
+
+\begin{align}
+\dfrac{d \sigma^2_E}{dt}&=  \langle n |  [G_{\lambda}, H]^2  |    n \rangle  \\
+&= \sum_{m} \langle n |  [G_{\lambda}, H]|  m \rangle \langle m |  [G_{\lambda}, H]  |    n \rangle \\
+&= \langle n |  [G_{\lambda}, H]|  n \rangle ^2   +   \sum_{m \neq n} \langle n |  [G_{\lambda}, H]|  m \rangle \langle m |  [G_{\lambda}, H]  |    n \rangle \\
+&=  \sum_{m \neq n} |\langle n |  [G_{\lambda}, H]|  m \rangle |^2
+\end{align}
+
+Now \begin{align*}
+ [G_{\lambda}, H]= [\partial_{\lambda} H,H] + \dfrac{i}{\hbar} [[A_{\lambda} , H],H]
+\end{align*}
+Now let's recall:
+
+\begin{eqnarray}
+\langle n | A_{\lambda} | m \rangle &=&  -i \hbar \dfrac{\langle n | \partial_{\lambda}H  | m \rangle}{(E_n-E_m)^2 + \mu^2} (E_n-E_m) \\
+&=&  -i \hbar \dfrac{\langle n | [H, \partial_{\lambda} H]  | m \rangle}{(E_n-E_m)^2 + \mu^2} 
+\end{eqnarray}
+Off-diagonal elements of $[G_{\lambda}, H]$ is given by:
+\begin{align}
+ [G_{\lambda}, H] &= [\partial_{\lambda} H,H] + \dfrac{i}{\hbar} [[A_{\lambda} , H],H] \\
+  &= -[H,\partial_{\lambda} H] - \dfrac{i}{\hbar} [[H,A_{\lambda}],H] \\
+    &= -[H,\partial_{\lambda} H] + \dfrac{i}{\hbar} [H,[H,A_{\lambda}]] \\
+ &=  -[H,\partial_{\lambda} H] + \dfrac{1}{(E_n-E_m)^2 + \mu^2}  [H,[H, [H, \partial_{\lambda} H]]]
+ \end{align}
+Hence, we find that :
+\begin{align*}
+\langle n |  [G_{\lambda}, H]|  m \rangle  &=  - \langle n |[H,\partial_{\lambda} H] |m \rangle +\langle n| \dfrac{1}{(E_n-E_m)^2 + \mu^2}  [H,[H, [H, \partial_{\lambda} H]]] | m\rangle \\
+ &=  \left(-(E_n- E_m) + \dfrac{(E_n- E_m)^3}{(E_n-E_m)^2 + \mu^2} \right)  \langle n |\partial_{\lambda} H |m \rangle \\
+ &=  -\dfrac{\mu^2 (E_n- E_m)}{(E_n-E_m)^2 + \mu^2}  \langle n |\partial_{\lambda} H |m \rangle \\
+\end{align*}
+Hence, we get :
+\begin{equation}
+\boxed{
+\dfrac{d \sigma^2_E}{dt} =  - \kappa  \sum_{m \neq n}\dfrac{\mu^4 (E_n- E_m)^2}{((E_n-E_m)^2 + \mu^2)^2}  |\langle n |\partial_{\lambda} H |m \rangle|^2}
+\end{equation}
+
+
+\section{Properties of n-commutators}\label{sec.Cn}
+In this section, we would be proving some results of n-commutators $C^{(n)}$.
+
+ 
+\begin{thm}
+$C^{(n)}= [H, C^{(n-1)}],  \forall n>0$ where $C^{(0)}=  \partial_{\lambda}H$ and  $C^{(1)}= [H, \partial_{\lambda}H]$
+\end{thm}
+\begin{proof}
+We define the first two terms  as $C^{(0)}=  \partial_{\lambda}H$ and $C^{(1)}= [H, \partial_{\lambda}H]$. 
+
+
+Now, $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$. Similarly, $C^{(3)}=  [H, C^{(2)}]$. Hence, we can claim using induction argument:
+\begin{equation}
+C^{(n)}= [H, C^{(n-1)}]
+\end{equation}
+\end{proof}
+ 
+
+
 \section{Integrable systems with open boundary condition}
 
 Here I show that for integrable systems with open boundary conditions, we find some kind of structure, which is absent when computed using periodic boundary conditions.
@@ -787,6 +945,11 @@ Here I show that for integrable systems with open boundary conditions, we find s
 \label{slope_integrable_mu}
 \end{center}
 \end{figure}
+
+If there is degeneracy, $\min \omega_{ij}(L)$ should be zero. Why don't I see any degenerate level?
+
+I find that because of open boundary conditions, I don't get any degenerate states for integrable model\footnote{Can I see this analytically for a simple model with only $J \sum_i\sigma_{i+1}^z \sigma_{i}^z$ term?}. The question is then how do I get an almost linear scaling of norm for integrable models? We had reasoned that $\langle n| \partial_{\lambda} H|m\rangle$ is zero because of extensive number of degenerate levels. It doesn't seem like that here.
+Notes on how to find error in fitting using least-square method in python \footnote{a) https://stackoverflow.com/questions/14854339/in-scipy-how-and-why-does-curve-fit-calculate-the-covariance-of-the-parameter-es b) https://stackoverflow.com/questions/14581358/getting-standard-errors-on-fitted-parameters-using-the-optimize-leastsq-method-i }
 
 \bibliography{ref} 
 
