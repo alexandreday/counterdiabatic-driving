@@ -794,7 +794,7 @@ Approximate gauge potential is
 where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth. Properties of $C^{(n)}$ are noted in appendix \ref{sec.Cn}.
 
 Now, let's  compute:
-\begin{align}
+\begin{align*}
 [H, G_{\lambda}(\mu)]&=[H, \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}, H]] \\
 &= [H, \partial_{\lambda} H] - \dfrac{i}{\hbar} [H,[ H, A_{\lambda}]]\\
 &= C^{(1)} + i^2    \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}\\
@@ -802,10 +802,22 @@ Now, let's  compute:
 &= C^{(1)} -   \dfrac{ C^{(3)}}{\mu^{2}} + \dfrac{ C^{(5)}}{\mu^{4}} - \ldots\\
 &=\sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n}}\\
 &= \dfrac{i}{\hbar} \mu^2 A_{\lambda} (\mu)
-\end{align}
+\end{align*}
+Hence, we get:
  \begin{equation}
- \boxed{[H, G_{\lambda}(\mu)]= \dfrac{i}{\hbar} \mu^2 A_{\lambda} (\mu)}
+ \boxed{[H, \partial_{\lambda} H] + \dfrac{i}{\hbar}[H, [A_{\lambda}(\mu), H]]= \dfrac{i}{\hbar} \mu^2 A_{\lambda} (\mu)}
  \end{equation}
+This equation reminds us of the equation wrote by Dries using local gauge potential. We will re-derive his calculations here and see what connections we have.
+
+\begin{equation}
+ [\partial_{\lambda} H_S, H_S ] + \dfrac{i}{\hbar}[ [A_{S}, H_S], H_S] + \dfrac{i}{\hbar} \sum_j \gamma_j^2 [[A_{S}, S_j], S_j ]=0
+ \end{equation}
+
+Let's rewrite the way we like it:
+
+\begin{align*}
+ [ H_S,\partial_{\lambda} H_S ] + \dfrac{i}{\hbar}[ H_S, [A_{S}, H_S]] &= \dfrac{i}{\hbar} \sum_j \gamma_j^2 [[A_{S}, S_j], S_j ]
+ \end{align*}
 
 
 \subsection{Computing local gauge potential }
@@ -815,8 +827,42 @@ Approximate gauge potential is
  A_{\lambda}(\mu) =  -i\hbar \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
 \end{equation}
 
-Let's truncate the series by arguing that we have no control over boundary. We do this by putting restriction on $\mu$ that it goes to $\infty$ when $n=L$. 
+Let's truncate the series by modulating cutoff $\mu_n$ as a function of summation index $n$. This summation index is proportional to lattice index, which means that each higher order of commutator  has bigger support on the lattice, i.e. $C^{(n+1)}$ contains operators which are more spread over lattice than operators in $C^{(n-1)}$. We choose the simplest way to truncate the series by arguing that we have no control over boundary and therefore, cutoff $\mu_n$ should be as follows:
 
+\begin{equation}
+  \mu_n=\left\{
+  \begin{array}{@{}ll@{}}
+   \mu & (\mbox{if } n \leq L), \\
+   \infty & (\mbox{if } n > L)
+  \end{array}\right.
+\end{equation}
+This approximation means that $C^{(2n+1)}/\mu^{2n+2}_n \ll 1 $ for $n> L$. As a result, approximate gauge potential after this truncation is: 
+\begin{equation}
+ A_{\lambda}^{L}(\mu) =  -i\hbar \sum_{n=0}^{L}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
+\end{equation}
+The advantage with this series truncation is that this approximate gauge potential can be obtained without using exact diagonalization; it requires only extensive number of steps while computing the sum. However, we don't know if this approximation is useful at all. Does the norm of this approximate gauge potential is polynomial for all value of $\mu$? Does it reduce dissipation and transition rate for all value of $\mu$? These questions should be investigated numerically.
+
+It's equation of motion is given by (where $L$ is even):
+\begin{align*}
+[H, G_{\lambda}(\mu)^L]&=[H, \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}^L, H]] \\
+&= [H, \partial_{\lambda} H] - \dfrac{i}{\hbar} [H,[ H, A_{\lambda}^L]]\\
+&= C^{(1)} + i^2    \sum_{n=0}^{L}   (-1)^{n} \dfrac{ C^{(2n+3)}}{\mu^{2n+2}}\\
+&= C^{(1)} -  (   \dfrac{ C^{(3)}}{\mu^{2}} - \dfrac{ C^{(5)}}{\mu^{4}} + \ldots - \dfrac{ C^{(2L+1)}}{\mu^{2L}}+ \dfrac{ C^{(2L+3)}}{\mu^{2L+2}} )\\
+&= C^{(1)} -   \dfrac{ C^{(3)}}{\mu^{2}} + \dfrac{ C^{(5)}}{\mu^{4}} - \ldots  + \dfrac{ C^{(2L+1)}}{\mu^{2L}} - \dfrac{ C^{(2L+3)}}{\mu^{2L+2}}\\
+&=\sum_{n=0}^{L+1}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n}}\\
+&= \dfrac{i}{\hbar} \mu^2 A_{\lambda}^{L+1} (\mu)
+\end{align*}
+This expression is true for both even and odd values of $L$.
+
+Hence, we get:
+ \begin{equation}
+ \boxed{[H, \partial_{\lambda} H] + \dfrac{i}{\hbar}[H, [A_{\lambda}^{L} (\mu), H]]= \dfrac{i}{\hbar} \mu^2 A_{\lambda}^{L+1} (\mu)}
+ \end{equation}
+Question that is staring right in our face is whether $ \mu^2 A_{\lambda}^{L+1} (\mu)\stackrel{?}{=} \gamma^2 \sum_j  [[A_{S}, S_j], S_j ]$? In other  words, whether $\mu^2 \stackrel{?}{=} \gamma^2 $ and whether $ A_{\lambda}^{L+1} (\mu)\stackrel{?}{=} \sum_j  [[A_{S}, S_j], S_j ]$? 
+
+Both operators share some common physical features: both operators represent system-boundary interaction terms. If $\mu^2$ or $\gamma^2$ goes to zero, then we have exact gauge potential for the remaining system excluding boundaries. And if $\mu^2$ becomes a really big number, then we know norm of gauge potential is zero. I don't know for sure if  norm of gauge potential goes to zero, if $\gamma^2$ becomes really big.
+
+Dries found that for $\gamma=1$, norm of gauge potential is $L^2$. Let's see what do I get for $\mu=1$. Fingers crossed! 
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
 Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:
