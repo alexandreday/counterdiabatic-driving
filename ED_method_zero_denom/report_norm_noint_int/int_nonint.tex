@@ -22,7 +22,7 @@
 \title{Approximate adiabatic gauge potential of non-integrable systems  }
 \begin{document}
 \maketitle
-%\tableofcontents
+\tableofcontents
 
 \section{Introduction}
 
@@ -807,7 +807,7 @@ Hence, we get:
  \begin{equation}
  \boxed{[H, \partial_{\lambda} H] + \dfrac{i}{\hbar}[H, [A_{\lambda}(\mu), H]]= \dfrac{i}{\hbar} \mu^2 A_{\lambda} (\mu)}
  \end{equation}
-This equation reminds us of the equation wrote by Dries using local gauge potential. We will re-derive his calculations here and see what connections we have.
+This equation reminds us of the equation wrote by Dries using local gauge potential. He argued that Hamiltonian is $H_S+ H_B + H_{\mbox{int}}$, where $H_S$ is Hamiltonian of system, $H_B$ is Hamiltonian of boundary and $H_{\mbox{int}}= \sum \gamma_j S_j \otimes B_j$. Local gauge potential is given by this ansatz $A= A_S \otimes \mathsf{1}_B$. Then equation of motion is given by:
 
 \begin{equation}
  [\partial_{\lambda} H_S, H_S ] + \dfrac{i}{\hbar}[ [A_{S}, H_S], H_S] + \dfrac{i}{\hbar} \sum_j \gamma_j^2 [[A_{S}, S_j], S_j ]=0
@@ -819,8 +819,13 @@ Let's rewrite the way we like it:
  [ H_S,\partial_{\lambda} H_S ] + \dfrac{i}{\hbar}[ H_S, [A_{S}, H_S]] &= \dfrac{i}{\hbar} \sum_j \gamma_j^2 [[A_{S}, S_j], S_j ]
  \end{align*}
 
+If $\gamma^2$ goes to zero, then we have exact gauge potential for the remaining system excluding boundaries. Dries found that for $\gamma=1$, norm of gauge potential is $L^2$. 
 
-\subsection{Computing local gauge potential }
+Let's work on this  $ \mu^2 A_{\lambda} (\mu)  =  \gamma^2 \sum_j  [[A_{S}, S_j], S_j ]$ by framing it as an eigenvalue equation in the form of $ \hat{O} A_{\lambda} (\mu) = \mu^2  A_{\lambda} (\mu)$.
+
+\textbf{Big picture stuff:} It's possible that by working on this, we can show that $\mu$ in intermediate regime leads to an approximate gauge potential which is local in the way Dries's ansatz is local.
+
+\subsection{Computing gauge potential by truncating the summation}
 
 Approximate gauge potential is 
 \begin{equation}
@@ -860,9 +865,54 @@ Hence, we get:
  \end{equation}
 Question that is staring right in our face is whether $ \mu^2 A_{\lambda}^{L+1} (\mu)\stackrel{?}{=} \gamma^2 \sum_j  [[A_{S}, S_j], S_j ]$? In other  words, whether $\mu^2 \stackrel{?}{=} \gamma^2 $ and whether $ A_{\lambda}^{L+1} (\mu)\stackrel{?}{=} \sum_j  [[A_{S}, S_j], S_j ]$? 
 
-Both operators share some common physical features: both operators represent system-boundary interaction terms. If $\mu^2$ or $\gamma^2$ goes to zero, then we have exact gauge potential for the remaining system excluding boundaries. And if $\mu^2$ becomes a really big number, then we know norm of gauge potential is zero. I don't know for sure if  norm of gauge potential goes to zero, if $\gamma^2$ becomes really big.
+Both operators represent system-boundary interaction terms. If $\gamma^2$ goes to zero, then we have exact gauge potential for the remaining system excluding boundaries. However, if $\mu^2$ goes to zero, then we will have exact gauge potential for the remaining system provided system size $L$ is really big \footnote{A better approximation (which would give exact gauge potential in small $\mu$ limit for even small systems) is if we tune our $\mu$ such that operators of length bigger than system size $L$ don't appear in the summation.}. Is it possible that we could work with bigger systems numerically since we don't have to use exact diagonlization here?
 
-Dries found that for $\gamma=1$, norm of gauge potential is $L^2$. Let's see what do I get for $\mu=1$. Fingers crossed! 
+If $\mu^2$ becomes a really big number, then we know norm of gauge potential is zero. I don't know for sure if  norm of gauge potential goes to zero, if $\gamma^2$ becomes really big.
+
+\subsubsection{Single body problem}
+
+We would start off with a simple problem and find its' adiabatic gauge potential using our method.
+\begin{equation}
+H= \Delta \sigma^z + \lambda \sigma^x
+\end{equation}
+\begin{align}
+C^{(1)} &= 2 i \Delta \sigma^y \\
+C^{(2)} &= - 4  \Delta ( -  \Delta \sigma^x + \lambda \sigma^z) \\
+C^{(3)} &= \alpha^2 C^{(1)} 
+\end{align}
+where $\alpha^2 = 4 (\Delta^2 + \lambda^2) $
+
+
+Now, we would compute $A_{\lambda}$ :
+
+\begin{align*}
+A_{\lambda} &=  \dfrac{-i \hbar   C^{(1)}}{\mu}\sum_{n=0}^{n_L}   (-1)^{n} \dfrac{ \alpha^{2n}}{\mu^{2n+1}} \\
+&=  \dfrac{-i \hbar }{\mu \alpha}  C^{(1)}\sum_{n=0}^{n_L}   (-1)^{n} \left(\dfrac{ \alpha}{\mu} \right)^{2n+1} \\
+&=  \dfrac{-i \hbar }{\mu \alpha} \left(\dfrac{ \alpha}{\mu} \right)  C^{(1)}\sum_{n=0}^{n_L}  (-1)^{n}  \left(\dfrac{ \alpha^2}{\mu^2} \right)^{n} \\
+&=  \dfrac{-i \hbar }{\mu^2}   C^{(1)}\sum_{n=0}^{n_L}  (-1)^{n}  r^{n} \\
+&=  \dfrac{-i \hbar }{\mu^2}  C^{(1)} \dfrac{1+ r^{n_L+1}}{ 1+r}
+\end{align*}
+where $r=\dfrac{ \alpha^2}{\mu^2}$. 
+
+Now in approximate regime when $\mu$ is really big and $r$ is smaller than 1, then we have in the limit 
+$n_L \rightarrow \infty$:
+
+\begin{align*}
+A_{\lambda}  =  -i \hbar  C^{(1)} \left( \dfrac{1 + e^{ (n_L+1) \log r  }}{ \mu^2 + \alpha^2}\right) \approx -i \hbar  C^{(1)}  \dfrac{1 }{ \mu^2 + \alpha^2} \approx -i \hbar    \dfrac{C^{(1)} }{ \mu^2}
+\end{align*}
+
+Essentially, only the first term contributes in the sum when we are in this regime. Now let's see what happens in exact regime when $\mu$ is small :
+
+\begin{align*}
+A_{\lambda} &=  \dfrac{-i \hbar }{\mu^2}  C^{(1)}\sum_{n=0}^{n_L}  (-1)^{n}  r^{-n}\\
+& =  \dfrac{-i \hbar }{\mu^2}  C^{(1)} \dfrac{1+ r^{-n_L-1}}{ 1+r^{-1}}\\
+& =-i \hbar  C^{(1)} \left( \dfrac{1 + e^{ -(n_L+1) \log r  }}{ \mu^2 + \alpha^2}\right)  \approx -i \hbar    \dfrac{C^{(1)} }{\mu^2 + \alpha^2} \approx -i \hbar    \dfrac{C^{(1)} }{ \alpha^2}
+\end{align*}
+where $r=\dfrac{\mu^2} { \alpha^2}$. 
+
+\textbf{Big picture stuff:} For non-integrable systems, it's difficult to compute the infinite summation. Truncating that summation might help in giving an approximate gauge potential which is tractable. For each system size, we can sum this series a big $n_L$ number of times and see if we get a gauge potential whose averaged norm is $L^2$.
+
+
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
 Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:

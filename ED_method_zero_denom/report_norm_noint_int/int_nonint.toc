@@ -1,27 +1,33 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}Introduction}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Gauge potential}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Adiabatic gauge potential}{2}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Minimum norm gauge choice}{3}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Time evolution in moving frame}{4}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}Variational principle of adiabatic gauge potential}{4}{subsubsection.2.2.3}
-\contentsline {subsection}{\numberline {2.3}Eigenstate Thermalization Hypothesis}{5}{subsection.2.3}
-\contentsline {section}{\numberline {3} Regulator based method to find Gauge Potential}{5}{section.3}
-\contentsline {section}{\numberline {4} Physical meaning of regulator }{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}Norm of adiabatic gauge potential}{7}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}ETH applied to norm}{8}{subsubsection.4.1.1}
-\contentsline {subsection}{\numberline {4.2}Fermi golden rule: transition rate}{9}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Fermi golden rule: dissipation rate}{10}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}ETH for complex systems}{11}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Formula involving commutators}{11}{subsubsection.4.3.2}
-\contentsline {section}{\numberline {5}Single body problem}{12}{section.5}
-\contentsline {section}{\numberline {6}Many body problem: integrable model}{14}{section.6}
-\contentsline {subsection}{\numberline {6.1}Ising model with local transverse magnetic field}{14}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Ising model with local transverse magnetic fields at two sites}{15}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Exact solution using regulator method}{15}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Exact solution using variational approach}{16}{subsubsection.6.2.2}
-\contentsline {subsection}{\numberline {6.3}Transverse Field Ising model}{17}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Fermions basis: single particle picture}{18}{subsubsection.6.3.1}
-\contentsline {section}{\numberline {7}Many body problem: non-integrable models}{19}{section.7}
-\contentsline {subsection}{\numberline {7.1}Local integrability breaking term}{19}{subsection.7.1}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {section}{\numberline {2}Adiabatic gauge potential}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Introduction by example}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Formal introduction}{2}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Eigenstate Thermalization Hypothesis}{3}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}Information about $f_O(\mathaccentV {bar}016{E}, \omega )$}{3}{subsubsection.2.3.1}
+\contentsline {section}{\numberline {3}Norm of adiabatic gauge potential}{3}{section.3}
+\contentsline {section}{\numberline {4}Integrable model}{4}{section.4}
+\contentsline {section}{\numberline {5}Non-integrable model}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}ETH applied to norm}{6}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Heuristic argument}{6}{subsubsection.5.1.1}
+\contentsline {subsubsection}{\numberline {5.1.2}Formal calculation}{6}{subsubsection.5.1.2}
+\contentsline {section}{\numberline {6}System-size scaling of minimum and maximum of $\omega _{ij}$}{8}{section.6}
+\contentsline {section}{\numberline {7}Norm computed using ED}{9}{section.7}
+\contentsline {subsection}{\numberline {7.1}$\mu $ scaling of gauge potential}{10}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Phase diagram of gauge potential }{12}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Finding boundary of phase diagram: system size scaling }{12}{subsection.7.3}
+\contentsline {section}{\numberline {8}Reducing transition and dissipation rate with approximate gauge potential }{15}{section.8}
+\contentsline {subsection}{\numberline {8.1}Transition rate}{15}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Dissipation rate }{16}{subsection.8.2}
+\contentsline {section}{\numberline {9}Physical meaning of cutoff regulator}{17}{section.9}
+\contentsline {subsection}{\numberline {9.1}Equation of motion for approximate gauge potential}{17}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Computing gauge potential by truncating the summation}{18}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Single body problem}{20}{subsubsection.9.2.1}
+\contentsline {section}{\numberline {A}Do degenerate eigenvalues contribute to norm of gauge potential?}{21}{appendix.A}
+\contentsline {section}{\numberline {B}Computing $\Tr [H, \partial _{\lambda }H] $}{21}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Integrable model}{21}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Non-integrable model}{21}{subsection.B.2}
+\contentsline {section}{\numberline {C}details on transition rate}{22}{appendix.C}
+\contentsline {section}{\numberline {D}details on dissipation rate}{22}{appendix.D}
+\contentsline {section}{\numberline {E}Properties of n-commutators}{23}{appendix.E}
+\contentsline {section}{\numberline {F}Integrable systems with open boundary condition}{23}{appendix.F}

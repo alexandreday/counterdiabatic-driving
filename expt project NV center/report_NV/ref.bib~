@@ -1,0 +1,186 @@
+@article{o2016explicit,
+  title={Explicit construction of local conserved operators in disordered many-body systems},
+  author={O'Brien, TE and Abanin, Dmitry A and Vidal, Guifre and Papi{\'c}, Z},
+  journal={Physical Review B},
+  volume={94},
+  number={14},
+  pages={144208},
+  year={2016},
+  publisher={APS}
+}
+
+@article{berry2009transitionless,
+  title={Transitionless quantum driving},
+  author={Berry, MV},
+  journal={Journal of Physics A: Mathematical and Theoretical},
+  volume={42},
+  number={36},
+  pages={365303},
+  year={2009},
+  publisher={IOP Publishing}
+}
+
+@article{clerk2010introduction,
+  title={Introduction to quantum noise, measurement, and amplification},
+  author={Clerk, Aashish A and Devoret, Michel H and Girvin, Steven M and Marquardt, Florian and Schoelkopf, Robert J},
+  journal={Reviews of Modern Physics},
+  volume={82},
+  number={2},
+  pages={1155},
+  year={2010},
+  publisher={APS}
+}
+
+@book{sachdev2007quantum,
+  title={Quantum phase transitions},
+  author={Sachdev, Subir},
+  year={2007},
+  publisher={Wiley Online Library}
+}
+@article{wilf12generatingfunctionology,
+  title={Generatingfunctionology,(1990)},
+  author={Wilf, H},
+  journal={ISBN: 0-12-751956-4}
+}
+@article{demirplak2005assisted,
+  title={Assisted adiabatic passage revisited},
+  author={Demirplak, Mustafa and Rice, Stuart A},
+  journal={The Journal of Physical Chemistry B},
+  volume={109},
+  number={14},
+  pages={6838--6844},
+  year={2005},
+  publisher={ACS Publications}
+}
+
+@article{jarzynski2013generating,
+  title={Generating shortcuts to adiabaticity in quantum and classical dynamics},
+  author={Jarzynski, Christopher},
+  journal={Physical Review A},
+  volume={88},
+  number={4},
+  pages={040101},
+  year={2013},
+  publisher={APS}
+}
+
+@article{abanin2017recent,
+  title={Recent progress in many-body localization},
+  author={Abanin, Dmitry A and Papi{\'c}, Zlatko},
+  journal={arXiv preprint arXiv:1705.09103},
+  year={2017}
+}
+
+@article{kolodrubetz2016geometry,
+  title={Geometry and non-adiabatic response in quantum and classical systems},
+  author={Kolodrubetz, Michael and Mehta, Pankaj and Polkovnikov, Anatoli},
+  journal={arXiv preprint arXiv:1602.01062},
+  year={2016}
+}
+@article{demirplak2003adiabatic,
+  title={Adiabatic population transfer with control fields},
+  author={Demirplak, Mustafa and Rice, Stuart A},
+  journal={The Journal of Physical Chemistry A},
+  volume={107},
+  number={46},
+  pages={9937--9945},
+  year={2003},
+  publisher={ACS Publications}
+}
+
+@article{rigol2007relaxation,
+  title={Relaxation in a completely integrable many-body quantum system: an ab initio study of the dynamics of the highly excited states of 1D lattice hard-core bosons},
+  author={Rigol, Marcos and Dunjko, Vanja and Yurovsky, Vladimir and Olshanii, Maxim},
+  journal={Physical review letters},
+  volume={98},
+  number={5},
+  pages={050405},
+  year={2007},
+  publisher={APS}
+}
+
+@article{cassidy2011generalized,
+  title={Generalized thermalization in an integrable lattice system},
+  author={Cassidy, Amy C and Clark, Charles W and Rigol, Marcos},
+  journal={Physical review letters},
+  volume={106},
+  number={14},
+  pages={140405},
+  year={2011},
+  publisher={APS}
+}
+
+@article{d2016quantum,
+  title={From quantum chaos and eigenstate thermalization to statistical mechanics and thermodynamics},
+  author={D'Alessio, Luca and Kafri, Yariv and Polkovnikov, Anatoli and Rigol, Marcos},
+  journal={Advances in Physics},
+  volume={65},
+  number={3},
+  pages={239--362},
+  year={2016},
+  publisher={Taylor \& Francis}
+}
+@article{rigol2008thermalization,
+  title={Thermalization and its mechanism for generic isolated quantum systems},
+  author={Rigol, Marcos and Dunjko, Vanja and Olshanii, Maxim},
+  journal={Nature},
+  volume={452},
+  number={7189},
+  pages={854--858},
+  year={2008},
+  publisher={Nature Publishing Group}
+}
+
+
+@article{khatami2013fluctuation,
+  title={Fluctuation-dissipation theorem in an isolated system of quantum dipolar bosons after a quench},
+  author={Khatami, Ehsan and Pupillo, Guido and Srednicki, Mark and Rigol, Marcos},
+  journal={Physical review letters},
+  volume={111},
+  number={5},
+  pages={050403},
+  year={2013},
+  publisher={APS}
+}
+
+@article{kim2013ballistic,
+  title={Ballistic spreading of entanglement in a diffusive nonintegrable system},
+  author={Kim, Hyungwon and Huse, David A},
+  journal={Physical review letters},
+  volume={111},
+  number={12},
+  pages={127205},
+  year={2013},
+  publisher={APS}
+}
+@article{sels2017minimizing,
+  title={Minimizing irreversible losses in quantum systems by local counterdiabatic driving},
+  author={Sels, Dries and Polkovnikov, Anatoli},
+  journal={Proceedings of the National Academy of Sciences},
+  pages={201619826},
+  year={2017},
+  publisher={National Acad Sciences}
+}
+
+
+@article{srednicki1999approach,
+  title={The approach to thermal equilibrium in quantized chaotic systems},
+  author={Srednicki, Mark},
+  journal={Journal of Physics A: Mathematical and General},
+  volume={32},
+  number={7},
+  pages={1163},
+  year={1999},
+  publisher={IOP Publishing}
+}
+
+@article{del2012assisted,
+  title={Assisted finite-rate adiabatic passage across a quantum critical point: exact solution for the quantum Ising model},
+  author={del Campo, Adolfo and Rams, Marek M and Zurek, Wojciech H},
+  journal={Physical review letters},
+  volume={109},
+  number={11},
+  pages={115703},
+  year={2012},
+  publisher={APS}
+}
