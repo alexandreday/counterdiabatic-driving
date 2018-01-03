@@ -38,7 +38,7 @@ Let's choose magnetic field to be in x-direction. Then we have:
 H_{NV} &= \hbar \Delta S_z^2 + g \mu_B   S_x  B \\
  &= \Lambda S_z^2 + \lambda   S_x  
 \end{align*}
-where $\Lambda= \hbar \Delta $ and $\lambda=g \mu_B    B $. Magnetic field is going to be our control parameter in this problem. Using spin algebra  (appendix \ref{sec.spin_alegbra}), we obtain Hamiltonian in the basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$):
+where $\Lambda= \hbar \Delta $ and $\lambda=g \mu_B    B $. Magnetic field is going to be our control parameter in this problem. Using spin algebra  (appendix \ref{sec.spin_alegbra}), we obtain Hamiltonian in the $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$):
 
 \begin{equation}
 H= \begin{bmatrix}
@@ -70,11 +70,35 @@ We should remember that $\alpha \propto B$. Hence, it makes sense that when $\al
 
 \section{Adiabatic gauge potential}
 
-Now let's compute adiabatic gauge potential $A_{\lambda}$ whose equation of motion is given by:
+Now let's compute adiabatic gauge potential $A_{\lambda}= i \hbar \partial_{\lambda}$. Its' equation of motion is given by:
 \begin{equation}
 [H, \partial_{\lambda} H +\dfrac{i}{\hbar} [A_{\lambda}, H] ]=0
 \end{equation}
 
+We would choose a gauge such that diagonal elements of diabatic gauge potential $A_{\lambda}$ is zero. We can derive off- diagonal elements by using the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate it with respect to $\lambda$ to obtain:
+\begin{align}
+\boxed{\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}}
+\end{align}
+where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) depend on $\lambda$.
+
+Here $\partial_{\lambda} H=S_x$ whose matrix representation is given in appendix \ref{sec.spin_alegbra}. After doing calculation in $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$), we find that
+
+\begin{equation}
+A_{\lambda}=\hbar N
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & -i \\
+0 & i & 0
+\end{bmatrix}
+\end{equation}
+where N is given by
+\begin{equation}
+N=\dfrac{4\sqrt{2} \alpha \beta \hbar}{\sqrt{8 \alpha^{2} + \beta^{2}} \sqrt{8 \alpha^{2} + \left(\beta - \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}} \sqrt{8 \alpha^{2} + \left(\beta + \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}}}
+\end{equation}
+
+What I don't know is that the above gauge potential is composed of which spin operators. I am still working on it.
+
+\subsection*{Expression involving commutators}
 
 Another way to express this formula is:
 \begin{equation}
@@ -83,6 +107,7 @@ Another way to express this formula is:
 where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth.
 
 Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=S_x$. It turns out that I am not able to compute the summation as the expressions of commutators is pretty involved (details are given in appendix \ref{sec.potn}). I would need to think of some smarter way to compute adiabatic gauge potential.
+
 
 
 \appendix
@@ -180,6 +205,37 @@ S^2|s ,m \rangle = \hbar^2 s(s+1)|s ,m\pm 1\rangle  \quad S_z|s ,m \rangle = \hb
 S_{\pm}|s, m\rangle = \hbar\sqrt{s(s+1)-m(m \pm 1)}|s,m \pm 1\rangle
 \end{equation}
 where $S_+ = S_x + iS_y$ and $S_- = S_x - iS_y $. Hence, we get $S_x = (S_+ + S_-)/2$ and $S_y = (S_+ - S_-)/2i $
+
+\begin{equation}
+S_+= \sqrt{2} \hbar\begin{bmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{bmatrix}
+\quad
+S_-=\sqrt{2} \hbar 
+\begin{bmatrix}
+0 & 0 & 0\\
+1 & 0 & 0\\
+0 & 1 & 0\\
+\end{bmatrix}
+\end{equation}
+
+Hence,
+\begin{equation}
+S_x= \frac{\hbar}{\sqrt{2} }
+\begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 1\\
+0 & 1 & 0\\
+\end{bmatrix} \quad
+S_y=  i \frac{\hbar}{\sqrt{2} }
+\begin{bmatrix}
+0 & -1 & 0\\
+1 & 0 & -1\\
+0 & 1 & 0\\
+\end{bmatrix}
+\end{equation}
 
 
 \bibliography{ref} 
