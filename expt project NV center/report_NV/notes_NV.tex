@@ -25,27 +25,37 @@
 %\tableofcontents
 
 \section{Introduction}
-The ground state of the NV center is a spin triplet with $| 0 \rangle, | -1 \rangle, | 1 \rangle$ spin sub-levels. They are defined in $S_z$ basis , where $\hat{z}$ direction is along the NV center axis. The Hamiltonian for the ground state of the NV center can be written as \cite{dhingra2017nitrogen}:
+ The Hamiltonian for the ground state of the NV center can be written as :
 \begin{equation}
-H_{NV}= \hbar \Delta S_z^2 + g \mu_B \vec{S}. \vec{B}_{ext} 
+H_{NV}= \hbar \Delta S_z^2 + \hbar \gamma_e \vec{S}. \vec{B}_{ext} +  \hbar \gamma_n \vec{J}. \vec{B}_{ext} 
 \end{equation}
-where $\Delta= 2 \pi \times 2.87 $ GHz is zero-field splitting, $g \approx 2$ is the g-factor of electron in the NV center and $\mu_B$ is Bohr magneton. If there is no external magnetic field, then $| -1 \rangle$ and $| 1 \rangle$ levels are degenerate, and  $ \hbar^3 \Delta$ is the energy difference between $| 0 \rangle$ and $| \pm 1 \rangle$ energy levels.
+where $\Delta= 2 \pi \times 2.87 $ GHz is zero-field splitting, $\gamma_e$ is the gyromagnetic ratio of electron in the NV center, $\gamma_n$ is the gyromagnetic ratio of nuclear spin, $\vec{S}$ ($\vec{J}$ ) is the spin of electron (nucleus). 
 
-\section{Eigenvalues}
+Since $\gamma \propto 1/m$ and nucleus is heavier than electron, we have $\gamma_e \gg \gamma_n$. To simplify our model, we will ignore the last term resulting in the following Hamiltonian \cite{dhingra2017nitrogen}:
+\begin{equation}
+H_{NV}= \hbar \Delta S_z^2 + \hbar \gamma_e \vec{S}. \vec{B}_{ext} 
+\end{equation}
+The ground state of electron in the NV center is a spin triplet with $| 0 \rangle, | -1 \rangle, | 1 \rangle$ spin sub-levels. They are defined in $S_z$ basis , where $\hat{z}$ direction is along the NV center axis. If there is no external magnetic field, then $| -1 \rangle$ and $| 1 \rangle$ levels are degenerate, and  $ \hbar^3 \Delta$ is the energy difference between $| 0 \rangle$ and $| \pm 1 \rangle$ energy levels.
+
+\section{Static magnetic field}
 
 Let's choose magnetic field to be in x-direction. Then we have:
 \begin{align*}
-H_{NV} &= \hbar \Delta S_z^2 + g \mu_B   S_x  B \\
+H_{NV} &= \hbar \Delta S_z^2 + \hbar \gamma_e   S_x  B \\
  &= \Lambda S_z^2 + \lambda   S_x  
 \end{align*}
-where $\Lambda= \hbar \Delta $ and $\lambda=g \mu_B    B $. Magnetic field is going to be our control parameter in this problem. Using spin algebra  (appendix \ref{sec.spin_alegbra}), we obtain Hamiltonian in the $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$):
+where $\Lambda= \hbar \Delta $ and $\lambda=\hbar \gamma_e B $. Magnetic field is going to be our control parameter in this problem. 
+
+\subsection{Energy levels as a function of magnetic field}
+
+Using spin algebra  (appendix \ref{sec.spin_alegbra}), we obtain Hamiltonian in the $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$):
 
 \begin{equation}
-H= \begin{bmatrix}
+H= \begin{pmatrix}
     \beta       & \alpha  & 0  \\
     \alpha       & 0 &\alpha  \\
      0       & \alpha & \beta
-\end{bmatrix}
+\end{pmatrix}
 \end{equation}
 where $\alpha= \hbar \lambda/ \sqrt{2} $ and $\beta= \hbar^2 \Lambda$.
 
@@ -68,16 +78,17 @@ We should remember that $\alpha \propto B$. Hence, it makes sense that when $\al
 \nu_0 = (-1,0,1), \quad \nu_1 = (1, -(\beta + \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha, 1) , \quad \nu_2 = (1, -(\beta - \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha, 1)
 \end{align*}
 
-\section{Adiabatic gauge potential}
+\subsection{Adiabatic gauge potential}
 
 Now let's compute adiabatic gauge potential $A_{\lambda}= i \hbar \partial_{\lambda}$. Its' equation of motion is given by:
 \begin{equation}
 [H, \partial_{\lambda} H +\dfrac{i}{\hbar} [A_{\lambda}, H] ]=0
+\label{eom}
 \end{equation}
 
 We would choose a gauge such that diagonal elements of diabatic gauge potential $A_{\lambda}$ is zero. We can derive off- diagonal elements by using the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate it with respect to $\lambda$ to obtain:
 \begin{align}
-\boxed{\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}}
+\langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
 \end{align}
 where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) depend on $\lambda$.
 
@@ -85,34 +96,146 @@ Here $\partial_{\lambda} H=S_x$ whose matrix representation is given in appendix
 
 \begin{equation}
 A_{\lambda}=\hbar N
-\begin{bmatrix}
+\begin{pmatrix}
 0 & 0 & 0\\
 0 & 0 & -i \\
 0 & i & 0
-\end{bmatrix}
+\end{pmatrix}
 \end{equation}
-where N is given by
+where $N=\dfrac{4\sqrt{2} \alpha \beta \hbar}{\sqrt{8 \alpha^{2} + \beta^{2}} \sqrt{8 \alpha^{2} + \left(\beta - \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}} \sqrt{8 \alpha^{2} + \left(\beta + \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}}}$
+%\end{equation}
+
+
+
+The above matrix of $A_{\lambda}$ can be expanded in the basis of $SU(3)$ to expand. This basis is composed of Gell–Mann matrices \cite{gell1962symmetries}, which are represented as $\lambda_i$. For our purpose, most important Gell-Mann matrix is $\lambda_7$ whose representation is given below \cite{ bertlmann2008bloch, krammer2009entanglement}:
+
 \begin{equation}
-N=\dfrac{4\sqrt{2} \alpha \beta \hbar}{\sqrt{8 \alpha^{2} + \beta^{2}} \sqrt{8 \alpha^{2} + \left(\beta - \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}} \sqrt{8 \alpha^{2} + \left(\beta + \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}}}
+\lambda_7=
+\begin{pmatrix}
+0 & 0 & 0\\
+0 & 0 & -i \\
+0 & i & 0
+\end{pmatrix}
+= \dfrac{1}{\sqrt{2} \hbar^2}(\hbar S_y- S_y S_z-  S_z S_y)
 \end{equation}
 
-What I don't know is that the above gauge potential is composed of which spin operators. I am still working on it.
+Hence, we get
 
-\subsection*{Expression involving commutators}
+\begin{equation}
+\boxed{
+A_{\lambda}=\dfrac{N}{\sqrt{2} \hbar}(\hbar S_y - S_y S_z-  S_z S_y)}
+\end{equation}
 
-Another way to express this formula is:
+To be doubly sure, I should verify if the above gauge potential satisfies equation \ref{eom}.
+ 
+\section{Periodic magnetic field with noise}
+
+Let's choose magnetic field to be $\vec{B}= (B_x (t), 0, 0)$ where $B_x(t)= B_0 \sin (\omega t) + \epsilon(t)$ and  $\epsilon(t)$ is an infinitesimal white noise which satisfies $\overline{ \epsilon(t) \epsilon(t^{\prime})}= \kappa \delta(t -t^{\prime})$ \footnote{If the system is in equilibrium, then fluctuation -dissipation theorem dictates $\kappa = T$}. 
+
+Then we have: 
+\begin{align*}
+H_{NV} &= \Lambda S_z^2 + \hbar \gamma_e   S_x  B_x(t) \\
+ &=  \Lambda S_z^2 + \lambda   S_x  
+\end{align*}
+where $\Lambda= \hbar \Delta $ and $\lambda=\hbar \gamma_e (B_0 \sin (\omega t) + \epsilon(t))$. For now on, we will work in the unit in which $\hbar \gamma_e =1$ so that  $\lambda= (B_0 \sin (\omega t) + \epsilon(t))$ and $\Lambda=  \Delta / \gamma_e $.
+
+Using Fermi Golden rule, we can derive transition rate $\langle \Gamma_n \rangle$ \cite{kolodrubetz2016geometry} as follows: 
+\begin{align}
+ \Gamma_n (\omega) = \kappa  \sum_{m \neq n} |\langle n | G_{\lambda} | m \rangle |^2 \delta(E_n-E_m- \hbar \omega)
+\end{align}
+where $G_{\lambda}= \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}, H]$ and  $\omega$ is frequency of the periodic external drive. More details are given in appendix.
+
+
+\appendix
+
+\section{Spin Algebra}\label{sec.spin_alegbra}
+\begin{equation}
+[S_x, S_y]=i \hbar S_z, \quad [S_y, S_z]=i \hbar S_x \quad [S_z, S_x]=i \hbar S_y
+\end{equation}
+\begin{equation}
+S^2|s ,m \rangle = \hbar^2 s(s+1)|s ,m\pm 1\rangle  \quad S_z|s ,m \rangle = \hbar m |s ,m \rangle
+\end{equation}
+\begin{equation}
+S_{\pm}|s, m\rangle = \hbar\sqrt{s(s+1)-m(m \pm 1)}|s,m \pm 1\rangle
+\end{equation}
+where $S_+ = S_x + iS_y$ and $S_- = S_x - iS_y $. Hence, we get $S_x = (S_+ + S_-)/2$ and $S_y = (S_+ - S_-)/2i $
+
+\begin{equation}
+S_+= \sqrt{2} \hbar\begin{pmatrix}
+0 & 1 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{pmatrix}
+\quad
+S_-=\sqrt{2} \hbar 
+\begin{pmatrix}
+0 & 0 & 0\\
+1 & 0 & 0\\
+0 & 1 & 0\\
+\end{pmatrix}
+\end{equation}
+
+Hence,
+\begin{equation}
+S_x= \frac{\hbar}{\sqrt{2} }
+\begin{pmatrix}
+0 & 1 & 0\\
+1 & 0 & 1\\
+0 & 1 & 0\\
+\end{pmatrix} \quad
+S_y=  i \frac{\hbar}{\sqrt{2} }
+\begin{pmatrix}
+0 & -1 & 0\\
+1 & 0 & -1\\
+0 & 1 & 0\\
+\end{pmatrix}
+\end{equation}
+
+\section{Gell-Mann matrices}
+\begin{align*}
+\lambda_1 &= \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\quad \lambda_2 = \begin{pmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\quad \lambda_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{pmatrix}\\
+\lambda_4 &= \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{pmatrix} \quad
+\lambda_5 = \begin{pmatrix} 0 & 0 & -i \\ 0 & 0 & 0 \\ i & 0 & 0 \end{pmatrix} \quad
+\lambda_6 = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \\
+\lambda_7 &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0 \end{pmatrix} \quad
+\lambda_8 = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2 \end{pmatrix}
+\end{align*}
+
+These matrices are traceless and Hermitian.
+
+\section{transition rate}
+Let's consider a Hamiltonian:
+\begin{equation}
+\mathcal{H}_{\mathcal{X}} = \mathcal{H} (\lambda) + \dot{\lambda} \mathcal{X}
+\end{equation}
+where $\lambda= \lambda_0 + \epsilon(t)$ and  $\epsilon(t)$  is an infinitesimal white noise which satisfies $\overline{ \epsilon(t) \epsilon(t^{\prime})}= \kappa \delta(t -t^{\prime})$ \footnote{If the system is in equilibrium, then fluctuation -dissipation theorem dictates $\kappa = T$}. 
+A system under white noise would lead to transitions between all eigenstates. We will see how much there is reduction in transition and dissipation rate with our approximate gauge potential.
+
+We can simplify the above expression:
+\begin{equation}
+\mathcal{H}_{\mathcal{X}} \approx \mathcal{H} (\lambda_0)+ \epsilon \partial_{\lambda}\mathcal{H} + \dot{\epsilon} \mathcal{X}
+\end{equation}
+Our expressions will involve $G_{\lambda}$ which is given as $G_{\lambda}(\mathcal{X} )= \partial_{\lambda} H + \dfrac{i}{\hbar} [\mathcal{X}, H] $ where $\mathcal{X}=A_{\lambda}$.
+
+
+Now we would drive the system periodically in addition to the white noise we have in the system. So, in this protocol, time dependence of $\lambda$ is given as $\lambda(t)= \lambda_0 \sin (\omega t) + \epsilon(t)$. We can use Fermi's golden rule (using results from \cite{clerk2010introduction}) to derive  transition rate $\langle \Gamma_n \rangle$ \cite{kolodrubetz2016geometry} as follows: 
+\begin{align}
+ \Gamma_n (\omega) = \kappa  \sum_{m \neq n} |\langle n | G_{\lambda} | m \rangle |^2 \delta(E_n-E_m- \hbar \omega)
+\end{align}
+where $\omega$ is frequency of the periodic external drive.
+
+
+\section{Gauge potential: expression involving commutators}\label{sec.potn}
+
+Another way to express the formula of adiabatic gauge potential:
 \begin{equation}
  A_{\lambda}(\mu) =  -i\hbar \lim_{\mu \rightarrow 0} \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
 \end{equation}
 where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth.
 
 Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=S_x$. It turns out that I am not able to compute the summation as the expressions of commutators is pretty involved (details are given in appendix \ref{sec.potn}). I would need to think of some smarter way to compute adiabatic gauge potential.
-
-
-
-\appendix
-
-\section{Computation of gauge potential}\label{sec.potn}
 
 Here we begin:
 \begin{align*}
@@ -194,48 +317,6 @@ C^{(3)}&=\hbar^2  C^{(2)} +  \hbar^2 \lambda  T_0   +  i  \hbar^3 \Lambda T_1 + 
    C^{(2)}= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)
  \end{align*}
 
-\section{Spin Algebra}\label{sec.spin_alegbra}
-\begin{equation}
-[S_x, S_y]=i \hbar S_z, \quad [S_y, S_z]=i \hbar S_x \quad [S_z, S_x]=i \hbar S_y
-\end{equation}
-\begin{equation}
-S^2|s ,m \rangle = \hbar^2 s(s+1)|s ,m\pm 1\rangle  \quad S_z|s ,m \rangle = \hbar m |s ,m \rangle
-\end{equation}
-\begin{equation}
-S_{\pm}|s, m\rangle = \hbar\sqrt{s(s+1)-m(m \pm 1)}|s,m \pm 1\rangle
-\end{equation}
-where $S_+ = S_x + iS_y$ and $S_- = S_x - iS_y $. Hence, we get $S_x = (S_+ + S_-)/2$ and $S_y = (S_+ - S_-)/2i $
-
-\begin{equation}
-S_+= \sqrt{2} \hbar\begin{bmatrix}
-0 & 1 & 0\\
-0 & 0 & 1\\
-0 & 0 & 0\\
-\end{bmatrix}
-\quad
-S_-=\sqrt{2} \hbar 
-\begin{bmatrix}
-0 & 0 & 0\\
-1 & 0 & 0\\
-0 & 1 & 0\\
-\end{bmatrix}
-\end{equation}
-
-Hence,
-\begin{equation}
-S_x= \frac{\hbar}{\sqrt{2} }
-\begin{bmatrix}
-0 & 1 & 0\\
-1 & 0 & 1\\
-0 & 1 & 0\\
-\end{bmatrix} \quad
-S_y=  i \frac{\hbar}{\sqrt{2} }
-\begin{bmatrix}
-0 & -1 & 0\\
-1 & 0 & -1\\
-0 & 1 & 0\\
-\end{bmatrix}
-\end{equation}
 
 
 \bibliography{ref} 
