@@ -908,7 +908,18 @@ where $r=\dfrac{\mu^2} { \alpha^2}$.
 
 \textbf{Big picture stuff:} For non-integrable systems, it's difficult to compute the infinite summation. Truncating that summation might help in giving an approximate gauge potential which is tractable. For each system size, we can sum this series a big $n_L$ number of times and see if we get a gauge potential whose averaged norm is $L^2$.
 
+\section{Bethe integrable models}
+One of the goals of this project is to use adiabatic gauge potential as a theoretical tool to distinguish  between quantum integrable and non-integrable system. Our method, if it works, should be better than conventional method (energy level distribution) used in literature for this purpose because unlike the conventional method, we don't have to worry about removing symmetry.
 
+Let's study XXZ model which is given below: 
+
+\begin{equation}
+H=  J \sum_{j=1}^{L} (\sigma_j^x \sigma_{j+1}^x + \sigma_j^y \sigma_{j+1}^y)+  \lambda \sum_{j=1}^{L}\sigma_j^z \sigma_{j+1}^z
+\label{xxz}
+\end{equation}
+where periodic conditions are assumed and $\lambda$ is the anisotropic parameter (and also our control parameter). Hence, $\partial_{\lambda}H= \sum_{j}\sigma_j^z \sigma_{j+1}^z$
+
+We are going to find scaling of norm of exact adiabatic gauge potential with system size.
 \appendix
 \section{Do degenerate eigenvalues contribute to norm of gauge potential?}\label{sec.deg}
 Let's consider $H | n(\lambda) \rangle= E_n  | n(\lambda) \rangle $. Hence, we have $\langle m(\lambda)  |  H | n(\lambda) \rangle=0$ for $n\neq m$. We can exploit this property to get some insight:

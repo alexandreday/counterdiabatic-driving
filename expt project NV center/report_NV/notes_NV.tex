@@ -86,23 +86,61 @@ Now let's compute adiabatic gauge potential $A_{\lambda}= i \hbar \partial_{\lam
 \label{eom}
 \end{equation}
 
-We would choose a gauge such that diagonal elements of diabatic gauge potential $A_{\lambda}$ is zero. We can derive off- diagonal elements by using the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate it with respect to $\lambda$ to obtain:
+Eigen-value equation is given by $H (\lambda) |n(\lambda) \rangle = E_n (\lambda) |n(\lambda) $. Let's derive diagonal and off-diagonal elements:
+
+\begin{itemize}
+\item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle=  i \hbar\langle n |\partial_{\lambda} | n \rangle $
+
+Now since $\alpha= \hbar \lambda/ \sqrt{2} $, we have $\partial_{\lambda}=  \frac{d \alpha}{d \lambda}\partial_{\alpha} =\frac{\hbar}{\sqrt{2}} \partial_{\alpha}$.
+
+ Now let's have a look at eigenvectors:
+\begin{align*}
+| n=0 \rangle = \begin{bmatrix}
+-1 \\
+0 \\
+1
+\end{bmatrix}, \quad | n=1 \rangle = \begin{bmatrix}
+1 \\
+\nu_1 \\
+1 
+\end{bmatrix}
+, \quad 
+| n=2 \rangle = \begin{bmatrix}
+1 \\
+\nu_2 \\
+1 
+\end{bmatrix}
+\end{align*}
+where $\nu_1= -(\beta + \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha $ and $\nu_2=-(\beta - \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha$.
+
+Hence, $A_{\lambda}^{n=0}= 0$
+\item \textbf{off- diagonal element:} We use the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate with respect to $\lambda$ to obtain:
 \begin{align}
 \langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
 \end{align}
 where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) depend on $\lambda$.
-
-Here $\partial_{\lambda} H=S_x$ whose matrix representation is given in appendix \ref{sec.spin_alegbra}. After doing calculation in $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$), we find that
+Here $\partial_{\lambda} H=S_x$ whose matrix representation is given in appendix \ref{sec.spin_alegbra}. After doing calculation in $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$), we find that off-diagonal elements are:
 
 \begin{equation}
-A_{\lambda}=\hbar N
+A_{\lambda}^{od}=i\hbar N
 \begin{pmatrix}
 0 & 0 & 0\\
-0 & 0 & -i \\
-0 & i & 0
+0 & 0 & -1 \\
+0 & 1 & 0
 \end{pmatrix}
 \end{equation}
-where $N=\dfrac{4\sqrt{2} \alpha \beta \hbar}{\sqrt{8 \alpha^{2} + \beta^{2}} \sqrt{8 \alpha^{2} + \left(\beta - \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}} \sqrt{8 \alpha^{2} + \left(\beta + \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}}}$
+where 
+\begin{align*}
+N &=\dfrac{4\sqrt{2} \alpha \beta \hbar}{\sqrt{8 \alpha^{2} + \beta^{2}} \sqrt{8 \alpha^{2} + \left(\beta - \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}} \sqrt{8 \alpha^{2} + \left(\beta + \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}}}\\
+&=\dfrac{4\sqrt{2} \alpha \beta \hbar}{(8 \alpha^{2} + \beta^{2}) \sqrt{8} \alpha}=
+\dfrac{2 \beta \hbar}{8 \alpha^{2} + \beta^{2}}
+\end{align*}
+
+
+
+\end{itemize}
+
+
 %\end{equation}
 
 
