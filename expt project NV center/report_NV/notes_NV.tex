@@ -27,22 +27,21 @@
 \section{Introduction}
  The Hamiltonian for the ground state of the NV center can be written as :
 \begin{equation}
-H_{NV}= \hbar \Delta S_z^2 + \hbar \gamma_e \vec{S}. \vec{B}_{ext} +  \hbar \gamma_n \vec{J}. \vec{B}_{ext} 
+H_{NV}= \hbar \Delta S_z^2 + \hbar \gamma_e \vec{S}. \vec{B}_{ext} +  \hbar \gamma_n \vec{I}. \vec{B}_{ext} + A \vec{S}. \vec{I}
 \end{equation}
-where $\Delta= 2 \pi \times 2.87 $ GHz is zero-field splitting, $\gamma_e$ is the gyromagnetic ratio of electron in the NV center, $\gamma_n$ is the gyromagnetic ratio of nuclear spin, $\vec{S}$ ($\vec{J}$ ) is the spin of electron (nucleus). 
+where $\Delta= 2 \pi \times 2.87 $ GHz is zero-field splitting, $\gamma_e =2.8 MHz/G$ is the gyromagnetic ratio of electron in the NV center, $\gamma_n \simeq 1 kHz/G$ is the gyromagnetic ratio of nuclear spin, $\vec{S}$ ($\vec{I}$ ) is the spin of electron (nucleus) and $A \simeq 3 MHz$ is magnitude of spin-spin coupling which leads to hyperfine splitting. The second and third terms are due to Zeeman effect.
 
-Since $\gamma \propto 1/m$ and nucleus is heavier than electron, we have $\gamma_e \gg \gamma_n$. To simplify our model, we will ignore the last term resulting in the following Hamiltonian \cite{dhingra2017nitrogen}:
+Since $\gamma \propto 1/m$ and nucleus is heavier than electron, we have $\gamma_e \gg \gamma_n$. To simplify our model, we will ignore the last two terms resulting in the following Hamiltonian :
 \begin{equation}
 H_{NV}= \hbar \Delta S_z^2 + \hbar \gamma_e \vec{S}. \vec{B}_{ext} 
 \end{equation}
-The ground state of electron in the NV center is a spin triplet with $| 0 \rangle, | -1 \rangle, | 1 \rangle$ spin sub-levels. They are defined in $S_z$ basis , where $\hat{z}$ direction is along the NV center axis. If there is no external magnetic field, then $| -1 \rangle$ and $| 1 \rangle$ levels are degenerate, and  $ \hbar^3 \Delta$ is the energy difference between $| 0 \rangle$ and $| \pm 1 \rangle$ energy levels.
+It seems that the above Hamiltonian should be experimentally realizable \cite{dhingra2017nitrogen}. Moreover, the ground state of electron in the NV center is a spin triplet with $| 0 \rangle, | -1 \rangle, | 1 \rangle$ spin sub-levels. They are defined in $S_z$ basis , where $\hat{z}$ direction is along the NV center axis. If there is no external magnetic field, then $| -1 \rangle$ and $| 1 \rangle$ levels are degenerate, and  $ \hbar^3 \Delta$ is the energy difference between $| 0 \rangle$ and $| \pm 1 \rangle$ energy levels.
 
 \section{Static magnetic field}
 
-Let's choose magnetic field to be in x-direction. Then we have:
+Let's choose magnetic field to be in x-direction \footnote{If magnetic field is in z-direction, then gauge potential is zero. This is so because increasing $B_z$ does not induce any excitations. }. Then we have:
 \begin{align*}
-H_{NV} &= \hbar \Delta S_z^2 + \hbar \gamma_e   S_x  B \\
- &= \Lambda S_z^2 + \lambda   S_x  
+H_{NV} &= \hbar \Delta S_z^2 + \hbar \gamma_e   S_x  B = \Lambda S_z^2 + \lambda   S_x  
 \end{align*}
 where $\Lambda= \hbar \Delta $ and $\lambda=\hbar \gamma_e B $. Magnetic field is going to be our control parameter in this problem. 
 
@@ -56,8 +55,9 @@ H= \begin{pmatrix}
     \alpha       & 0 &\alpha  \\
      0       & \alpha & \beta
 \end{pmatrix}
+\quad \mbox{where}  ~
+ \alpha= \hbar \lambda/ \sqrt{2}, ~ \beta= \hbar^2 \Lambda
 \end{equation}
-where $\alpha= \hbar \lambda/ \sqrt{2} $ and $\beta= \hbar^2 \Lambda$.
 
 
 \begin{figure}[!ht]
@@ -91,80 +91,83 @@ Eigen-value equation is given by $H (\lambda) |n(\lambda) \rangle = E_n (\lambda
 \begin{itemize}
 \item \textbf{n-th diagonal element:} $A_{\lambda}^n= \langle n |A_{\lambda} | n \rangle=  i \hbar\langle n |\partial_{\lambda} | n \rangle $
 
-Now since $\alpha= \hbar \lambda/ \sqrt{2} $, we have $\partial_{\lambda}=  \frac{d \alpha}{d \lambda}\partial_{\alpha} =\frac{\hbar}{\sqrt{2}} \partial_{\alpha}$.
-
- Now let's have a look at eigenvectors:
-\begin{align*}
-| n=0 \rangle = \begin{bmatrix}
--1 \\
-0 \\
-1
-\end{bmatrix}, \quad | n=1 \rangle = \begin{bmatrix}
-1 \\
-\nu_1 \\
-1 
-\end{bmatrix}
-, \quad 
-| n=2 \rangle = \begin{bmatrix}
-1 \\
-\nu_2 \\
-1 
-\end{bmatrix}
-\end{align*}
-where $\nu_1= -(\beta + \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha $ and $\nu_2=-(\beta - \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha$.
-
-Hence, $A_{\lambda}^{n=0}= 0$
+%Now since $\alpha= \hbar \lambda/ \sqrt{2} $, we have $\partial_{\lambda}=  \frac{d \alpha}{d \lambda}\partial_{\alpha} =\frac{\hbar}{\sqrt{2}} \partial_{\alpha}$.
+%
+% Now let's have a look at eigenvectors:
+%\begin{align*}
+%| n=0 \rangle = \begin{bmatrix}
+%-1 \\
+%0 \\
+%1
+%\end{bmatrix}, \quad | n=1 \rangle = \begin{bmatrix}
+%1 \\
+%\nu_1 \\
+%1 
+%\end{bmatrix}
+%, \quad 
+%| n=2 \rangle = \begin{bmatrix}
+%1 \\
+%\nu_2 \\
+%1 
+%\end{bmatrix}
+%\end{align*}
+%where $\nu_1= -(\beta + \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha $ and $\nu_2=-(\beta - \sqrt{\beta^2 + 8 \alpha^2})/2 \alpha$.
+%
+%Hence, $A_{\lambda}^{n=0}= 0$
 \item \textbf{off- diagonal element:} We use the identity $\langle m |H(\lambda) | n \rangle=0 \quad, n \neq m$ and then differentiate with respect to $\lambda$ to obtain:
 \begin{align}
 \langle m |A_{\lambda} | n \rangle =  -i \hbar \dfrac{\langle m |\partial_{\lambda}H | n \rangle}{E_m-E_n}
 \end{align}
 where both  energies ($E_m, E_n$) and eigenvectors ($|m \rangle, |n \rangle$) depend on $\lambda$.
-Here $\partial_{\lambda} H=S_x$ whose matrix representation is given in appendix \ref{sec.spin_alegbra}. After doing calculation in $S_z$ basis ($|- 1\rangle$, $| 0 \rangle$ , $| 1 \rangle$), we find that off-diagonal elements are:
+\end{itemize}
+
+
+Here $\partial_{\lambda} H=S_x$ whose matrix representation is given in appendix \ref{sec.spin_alegbra}. We find that $\tilde{A_{\lambda}} $ in energy basis is given by :
 
 \begin{equation}
-A_{\lambda}^{od}=i\hbar N
+\tilde{A_{\lambda}}=i\hbar \tilde{N}
 \begin{pmatrix}
 0 & 0 & 0\\
 0 & 0 & -1 \\
 0 & 1 & 0
-\end{pmatrix}
+\end{pmatrix}, \quad \mbox{where} ~ \tilde{N} =\dfrac{ \beta \hbar}{8 \alpha^{2} + \beta^{2}}
 \end{equation}
-where 
+
+
+In $S_z$ basis, we have  $A_{\lambda}= U\tilde{A_{\lambda}} U^{T}$ where $U$ is the unitary transformation that diagonalizes Hamiltonian, i.e. $H_d= U^THU$. $A_{\lambda}$ is given below:
+
 \begin{align*}
-N &=\dfrac{4\sqrt{2} \alpha \beta \hbar}{\sqrt{8 \alpha^{2} + \beta^{2}} \sqrt{8 \alpha^{2} + \left(\beta - \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}} \sqrt{8 \alpha^{2} + \left(\beta + \sqrt{8 \alpha^{2} + \beta^{2}}\right)^{2}}}\\
-&=\dfrac{4\sqrt{2} \alpha \beta \hbar}{(8 \alpha^{2} + \beta^{2}) \sqrt{8} \alpha}=
-\dfrac{2 \beta \hbar}{8 \alpha^{2} + \beta^{2}}
+A_{\lambda}=i\hbar N
+\begin{pmatrix}
+0 & -1 & 0\\
+1 & 0 & 1 \\
+0 & -1 & 0
+\end{pmatrix}, \quad \mbox{where} ~ N =\dfrac{ \beta \hbar}{\sqrt{16 \alpha^{2} + 2\beta^{2}}}
 \end{align*}
-
-
-
-\end{itemize}
 
 
 %\end{equation}
 
 
 
-The above matrix of $A_{\lambda}$ can be expanded in the basis of $SU(3)$ to expand. This basis is composed of Gell–Mann matrices \cite{gell1962symmetries}, which are represented as $\lambda_i$. For our purpose, most important Gell-Mann matrix is $\lambda_7$ whose representation is given below \cite{ bertlmann2008bloch, krammer2009entanglement}:
+The above matrix of $A_{\lambda}$ can be expanded in the basis of $SU(3)$ to expand. This basis is composed of Gell–Mann matrices \cite{gell1962symmetries}, which are represented as $\lambda_i$. For our purpose, most important Gell-Mann matrices are $\lambda_2$ and $\lambda_7$ whose representation is given below \cite{ bertlmann2008bloch, krammer2009entanglement}:
 
-\begin{equation}
-\lambda_7=
-\begin{pmatrix}
-0 & 0 & 0\\
-0 & 0 & -i \\
-0 & i & 0
-\end{pmatrix}
-= \dfrac{1}{\sqrt{2} \hbar^2}(\hbar S_y- S_y S_z-  S_z S_y)
-\end{equation}
+\begin{align*}
+\lambda_2 = \begin{pmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix} 
+= \dfrac{1}{\sqrt{2} \hbar^2}(\hbar S_y+ S_y S_z+  S_z S_y)\\
+\lambda_7= \begin{pmatrix} 0 & 0 & 0\\0 & 0 & -i \\0 & i & 0\end{pmatrix}= \dfrac{1}{\sqrt{2} \hbar^2}(\hbar S_y- S_y S_z-  S_z S_y)
+\end{align*}
 
-Hence, we get
+Hence, we find that $A_{\lambda}=\hbar N(\lambda_2- \lambda_7)$ which can be written as:
 
 \begin{equation}
 \boxed{
-A_{\lambda}=\dfrac{N}{\sqrt{2} \hbar}(\hbar S_y - S_y S_z-  S_z S_y)}
+A_{\lambda}=N_0(S_y S_z+  S_z S_y)}
 \end{equation}
+where $N_0 =\dfrac{ \beta }{\sqrt{8 \alpha^{2} + \beta^{2}}}= \dfrac{\hbar \Delta }{ \sqrt{4  \gamma_e^2 B^2 + \hbar^2 \Delta^2}}$.
 
-To be doubly sure, I should verify if the above gauge potential satisfies equation \ref{eom}.
+
+
  
 \section{Periodic magnetic field with noise}
 
@@ -185,6 +188,18 @@ where $G_{\lambda}= \partial_{\lambda} H + \dfrac{i}{\hbar} [A_{\lambda}, H]$ an
 
 
 \appendix
+\section{Gell-Mann matrices}
+\begin{align*}
+\lambda_1 &= \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\quad \lambda_2 = \begin{pmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+\quad \lambda_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{pmatrix}\\
+\lambda_4 &= \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{pmatrix} \quad
+\lambda_5 = \begin{pmatrix} 0 & 0 & -i \\ 0 & 0 & 0 \\ i & 0 & 0 \end{pmatrix} \quad
+\lambda_6 = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \\
+\lambda_7 &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0 \end{pmatrix} \quad
+\lambda_8 = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2 \end{pmatrix}
+\end{align*}
+These matrices are traceless and Hermitian.
 
 \section{Spin Algebra}\label{sec.spin_alegbra}
 \begin{equation}
@@ -197,7 +212,6 @@ S^2|s ,m \rangle = \hbar^2 s(s+1)|s ,m\pm 1\rangle  \quad S_z|s ,m \rangle = \hb
 S_{\pm}|s, m\rangle = \hbar\sqrt{s(s+1)-m(m \pm 1)}|s,m \pm 1\rangle
 \end{equation}
 where $S_+ = S_x + iS_y$ and $S_- = S_x - iS_y $. Hence, we get $S_x = (S_+ + S_-)/2$ and $S_y = (S_+ - S_-)/2i $
-
 \begin{equation}
 S_+= \sqrt{2} \hbar\begin{pmatrix}
 0 & 1 & 0\\
@@ -212,9 +226,7 @@ S_-=\sqrt{2} \hbar
 0 & 1 & 0\\
 \end{pmatrix}
 \end{equation}
-
-Hence,
-\begin{equation}
+Hence, \begin{equation}
 S_x= \frac{\hbar}{\sqrt{2} }
 \begin{pmatrix}
 0 & 1 & 0\\
@@ -229,21 +241,9 @@ S_y=  i \frac{\hbar}{\sqrt{2} }
 \end{pmatrix}
 \end{equation}
 
-\section{Gell-Mann matrices}
-\begin{align*}
-\lambda_1 &= \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
-\quad \lambda_2 = \begin{pmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}
-\quad \lambda_3 = \begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{pmatrix}\\
-\lambda_4 &= \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{pmatrix} \quad
-\lambda_5 = \begin{pmatrix} 0 & 0 & -i \\ 0 & 0 & 0 \\ i & 0 & 0 \end{pmatrix} \quad
-\lambda_6 = \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} \\
-\lambda_7 &= \begin{pmatrix} 0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0 \end{pmatrix} \quad
-\lambda_8 = \frac{1}{\sqrt{3}} \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & -2 \end{pmatrix}
-\end{align*}
 
-These matrices are traceless and Hermitian.
 
-\section{transition rate}
+\section{Transition rate for periodically driven noisy system}
 Let's consider a Hamiltonian:
 \begin{equation}
 \mathcal{H}_{\mathcal{X}} = \mathcal{H} (\lambda) + \dot{\lambda} \mathcal{X}
@@ -264,96 +264,96 @@ Now we would drive the system periodically in addition to the white noise we hav
 \end{align}
 where $\omega$ is frequency of the periodic external drive.
 
-
-\section{Gauge potential: expression involving commutators}\label{sec.potn}
-
-Another way to express the formula of adiabatic gauge potential:
-\begin{equation}
- A_{\lambda}(\mu) =  -i\hbar \lim_{\mu \rightarrow 0} \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
-\end{equation}
-where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth.
-
-Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=S_x$. It turns out that I am not able to compute the summation as the expressions of commutators is pretty involved (details are given in appendix \ref{sec.potn}). I would need to think of some smarter way to compute adiabatic gauge potential.
-
-Here we begin:
-\begin{align*}
-C^{(1)}=[H,S_x] &= \Lambda  [S_z^2, S_x] \\
-&= S_z[S_z, S_x] + [S_z, S_x] S_z \\
-&= i \hbar (S_z S_y + S_y S_z) \\
-&=i \hbar ([S_z, S_y] +  2 S_y S_z)\\
-&=i \hbar (- i \hbar S_x +  2 S_y S_z)
-\end{align*}
-
-\begin{align*}
-C^{(2)}=[H,C^{(1)}] &=     \hbar^2 [H,  S_x]  +  i \hbar[ H,   S_y S_z] \\
-&= \hbar^2 C^{(1)}  +  i \hbar S_y[ H,    S_z] +  i \hbar[ H,   S_y ]S_z\\
-&= \hbar^2 C^{(1)}  +  i \hbar \lambda S_y [ S_x,    S_z] + i \hbar T\\
-&= \hbar^2 C^{(1)} - \hbar^2 \lambda S_y^2  + i \hbar T
-\end{align*}
-
-\begin{align*}
-T=[ H,   S_y ]S_z &= \Lambda [S_z^2, S_y]S_z + \lambda   [S_x, S_y]S_z   \\
- &=   \Lambda S_z[S_z, S_y]S_z+\Lambda [S_z, S_y]S_z^2 + i \hbar \lambda   S_z^2   \\
-  &=  -i \hbar \Lambda  ( S_z S_x S_z+ S_x S_z^2) +  i \hbar \lambda   S_z^2   \\
-    &=  -i \hbar \Lambda  ( [S_z, S_x] S_z+ 2 S_x S_z^2) +  i \hbar \lambda   S_z^2   \\
-        &=  -i  \hbar \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) +  i \hbar \lambda   S_z^2   
-\end{align*}
-Hence, we get:
-\begin{align*}
-C^{(2)}=[H,C^{(1)}]  &= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S_y^2 +S_z^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2) \\
-&= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)
-\end{align*}
-Further, 
-\begin{align*}
-C^{(3)}=[H,C^{(2)}] &= [H,\hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)] \\
-&= \hbar^2  C^{(2)}  -  \hbar^2 \lambda [H,(S^2 - S_x^2)]   + \hbar^2 \Lambda  [H,( i \hbar S_y S_z+  S_x S_z^2)] \\
-&= \hbar^2  C^{(2)} +  \hbar^2 \lambda [H, S_x^2]   +  i  \hbar^3 \Lambda  [H, S_y S_z] + \hbar^2 \Lambda  [H, S_x S_z^2] \\
-&= \hbar^2  C^{(2)} +  \hbar^2 \lambda^2 [S_z^2, S_x^2]   +  i  \hbar^3 \Lambda T_1 + \hbar^2 \Lambda T_2 \\
-&= \hbar^2  C^{(2)} +  \hbar^2 \lambda  T_0   +  i  \hbar^3 \Lambda T_1 + \hbar^2 \Lambda T_2 
-\end{align*}
-
-\begin{align*}
-T_0 =[S_z^2, S_x^2]  &=S_z[S_z, S_x^2] + [S_z, S_x^2]S_z \\
-					&=S_z S_x[S_z, S_x] + S_z [S_z, S_x]S_x + S_x[S_z, S_x]S_z + [S_z, S_x]S_xS_z \\
-					&=i \hbar(S_z S_xS_y + S_z S_yS_x + S_xS_yS_z + S_y S_xS_z ) \\
-					&=i \hbar(S_z [ S_x, S_y] + 2 S_z S_yS_x + [S_x, S_y] S_z + 2S_y S_xS_z ) \\
-					&=2i \hbar (i \hbar S_z^2  + S_z S_y S_x   + S_y S_xS_z ) \\
-					&=-2 \hbar^2 S_z^2  + 2i \hbar ( S_z S_y S_x   + S_y S_xS_z ) 
-\end{align*}
-
-\begin{align*}
-T_1 =[H, S_y S_z]  = - \hbar^2 \lambda S_y^2  + i \hbar T &= - \hbar^2 \lambda S_y^2  +  \hbar^2 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - \hbar^2 \lambda   S_z^2\\
-&= - \hbar^2 \lambda (S_y^2 + S_z^2) +  \hbar^2 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) 
-\end{align*}
-
-\begin{align*}
-T_2 =[H, S_x S_z^2] & = [H, S_x ]S_z^2 + S_x [H,  S_z^2] \\
- &= C^{(1)}S_z^2 + \lambda S_x [S_x,  S_z^2]  \\
-&= C^{(1)}S_z^2 + \lambda S_x [S_x,  S_z]S_z + \lambda S_x S_z [S_x,  S_z]  \\
-&= C^{(1)}S_z^2 - i \hbar  \lambda (S_x S_y S_z +  S_x S_z S_y)  \\
-&= C^{(1)}S_z^2 - i \hbar  \lambda (S_x [S_y, S_z] + 2 S_x S_z S_y)  \\
-&= C^{(1)}S_z^2 - i \hbar  \lambda (i \hbar S_x^2 + 2 S_x S_z S_y)  \\
-&= C^{(1)}S_z^2 + \hbar^2  \lambda  S_x^2  - 2 i \hbar  \lambda  S_x S_z S_y
-\end{align*}
-
-Finally, we get 
-\begin{align*}
-C^{(3)}&=\hbar^2  C^{(2)} +  \hbar^2 \lambda  T_0   +  i  \hbar^3 \Lambda T_1 + \hbar^2 \Lambda T_2 \\
-&=\hbar^2  C^{(2)} +  2i \hbar^3 \lambda  (i \hbar S_z^2  + S_z S_y S_x   + S_y S_xS_z )    +  \hbar^2 \Lambda( i  \hbar T_1 +  T_2) 
-\end{align*}
-
- Let's simplify the last term $i  \hbar T_1 +  T_2$:
- \begin{align*}
- i  \hbar T_1 +  T_2 &= - i \hbar^3 \lambda (S_y^2 + S_z^2) +  i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) +  C^{(1)}S_z^2 + \hbar^2  \lambda  S_x^2  - 2 i \hbar  \lambda  S_x S_z S_y \\
- &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 + i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - 2 i \hbar  \lambda  S_x S_z S_y +  C^{(1)}S_z^2 \\
- &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 + i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - 2 i \hbar  \lambda  S_x S_z S_y +  i \hbar (- i \hbar S_x +  2 S_y S_z) S_z^2 \\
-  &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 + i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - 2 i \hbar  \lambda  S_x S_z S_y +  \hbar^2 S_x S_z^2 +  2  i \hbar S_y  S_z^3 \\
-   &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 +  \hbar^2 S_x S_z^2 (1+ 2 i \hbar \Lambda)  - \hbar^4 \Lambda  S_y S_z - 2 i \hbar  \lambda  S_x S_z S_y   +  2  i \hbar S_y  S_z^3 \\
- \end{align*}
- Now, let's write:
- \begin{align*}
-   C^{(2)}= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)
- \end{align*}
+%
+%\section{Gauge potential: expression involving commutators}\label{sec.potn}
+%
+%Another way to express the formula of adiabatic gauge potential:
+%\begin{equation}
+% A_{\lambda}(\mu) =  -i\hbar \lim_{\mu \rightarrow 0} \sum_{n=0}^{\infty}   (-1)^{n} \dfrac{ C^{(2n+1)}}{\mu^{2n+2}}
+%\end{equation}
+%where $C^{(n)}$ is n- commutator of $H$ and $\partial_{\lambda} H$, i.e. $C^{(n)}= [H, [H, \mbox{ n times} \ldots,[H, \partial_{\lambda} H ]]] ] $.  We define the first term as $C^{(1)}= [H, \partial_{\lambda}H]$, second term as $C^{(2)}= [H,[H, \partial_{\lambda}H]]= [H, C^{(1)}]$ and so on and forth.
+%
+%Let's find out $A_{\lambda}$ for this Hamiltonian for which we need to compute different odd-powered commutator $[H, \partial_{\lambda} H]$, where $\partial_{\lambda} H=S_x$. It turns out that I am not able to compute the summation as the expressions of commutators is pretty involved (details are given in appendix \ref{sec.potn}). I would need to think of some smarter way to compute adiabatic gauge potential.
+%
+%Here we begin:
+%\begin{align*}
+%C^{(1)}=[H,S_x] &= \Lambda  [S_z^2, S_x] \\
+%&= S_z[S_z, S_x] + [S_z, S_x] S_z \\
+%&= i \hbar (S_z S_y + S_y S_z) \\
+%&=i \hbar ([S_z, S_y] +  2 S_y S_z)\\
+%&=i \hbar (- i \hbar S_x +  2 S_y S_z)
+%\end{align*}
+%
+%\begin{align*}
+%C^{(2)}=[H,C^{(1)}] &=     \hbar^2 [H,  S_x]  +  i \hbar[ H,   S_y S_z] \\
+%&= \hbar^2 C^{(1)}  +  i \hbar S_y[ H,    S_z] +  i \hbar[ H,   S_y ]S_z\\
+%&= \hbar^2 C^{(1)}  +  i \hbar \lambda S_y [ S_x,    S_z] + i \hbar T\\
+%&= \hbar^2 C^{(1)} - \hbar^2 \lambda S_y^2  + i \hbar T
+%\end{align*}
+%
+%\begin{align*}
+%T=[ H,   S_y ]S_z &= \Lambda [S_z^2, S_y]S_z + \lambda   [S_x, S_y]S_z   \\
+% &=   \Lambda S_z[S_z, S_y]S_z+\Lambda [S_z, S_y]S_z^2 + i \hbar \lambda   S_z^2   \\
+%  &=  -i \hbar \Lambda  ( S_z S_x S_z+ S_x S_z^2) +  i \hbar \lambda   S_z^2   \\
+%    &=  -i \hbar \Lambda  ( [S_z, S_x] S_z+ 2 S_x S_z^2) +  i \hbar \lambda   S_z^2   \\
+%        &=  -i  \hbar \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) +  i \hbar \lambda   S_z^2   
+%\end{align*}
+%Hence, we get:
+%\begin{align*}
+%C^{(2)}=[H,C^{(1)}]  &= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S_y^2 +S_z^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2) \\
+%&= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)
+%\end{align*}
+%Further, 
+%\begin{align*}
+%C^{(3)}=[H,C^{(2)}] &= [H,\hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)] \\
+%&= \hbar^2  C^{(2)}  -  \hbar^2 \lambda [H,(S^2 - S_x^2)]   + \hbar^2 \Lambda  [H,( i \hbar S_y S_z+  S_x S_z^2)] \\
+%&= \hbar^2  C^{(2)} +  \hbar^2 \lambda [H, S_x^2]   +  i  \hbar^3 \Lambda  [H, S_y S_z] + \hbar^2 \Lambda  [H, S_x S_z^2] \\
+%&= \hbar^2  C^{(2)} +  \hbar^2 \lambda^2 [S_z^2, S_x^2]   +  i  \hbar^3 \Lambda T_1 + \hbar^2 \Lambda T_2 \\
+%&= \hbar^2  C^{(2)} +  \hbar^2 \lambda  T_0   +  i  \hbar^3 \Lambda T_1 + \hbar^2 \Lambda T_2 
+%\end{align*}
+%
+%\begin{align*}
+%T_0 =[S_z^2, S_x^2]  &=S_z[S_z, S_x^2] + [S_z, S_x^2]S_z \\
+%					&=S_z S_x[S_z, S_x] + S_z [S_z, S_x]S_x + S_x[S_z, S_x]S_z + [S_z, S_x]S_xS_z \\
+%					&=i \hbar(S_z S_xS_y + S_z S_yS_x + S_xS_yS_z + S_y S_xS_z ) \\
+%					&=i \hbar(S_z [ S_x, S_y] + 2 S_z S_yS_x + [S_x, S_y] S_z + 2S_y S_xS_z ) \\
+%					&=2i \hbar (i \hbar S_z^2  + S_z S_y S_x   + S_y S_xS_z ) \\
+%					&=-2 \hbar^2 S_z^2  + 2i \hbar ( S_z S_y S_x   + S_y S_xS_z ) 
+%\end{align*}
+%
+%\begin{align*}
+%T_1 =[H, S_y S_z]  = - \hbar^2 \lambda S_y^2  + i \hbar T &= - \hbar^2 \lambda S_y^2  +  \hbar^2 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - \hbar^2 \lambda   S_z^2\\
+%&= - \hbar^2 \lambda (S_y^2 + S_z^2) +  \hbar^2 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) 
+%\end{align*}
+%
+%\begin{align*}
+%T_2 =[H, S_x S_z^2] & = [H, S_x ]S_z^2 + S_x [H,  S_z^2] \\
+% &= C^{(1)}S_z^2 + \lambda S_x [S_x,  S_z^2]  \\
+%&= C^{(1)}S_z^2 + \lambda S_x [S_x,  S_z]S_z + \lambda S_x S_z [S_x,  S_z]  \\
+%&= C^{(1)}S_z^2 - i \hbar  \lambda (S_x S_y S_z +  S_x S_z S_y)  \\
+%&= C^{(1)}S_z^2 - i \hbar  \lambda (S_x [S_y, S_z] + 2 S_x S_z S_y)  \\
+%&= C^{(1)}S_z^2 - i \hbar  \lambda (i \hbar S_x^2 + 2 S_x S_z S_y)  \\
+%&= C^{(1)}S_z^2 + \hbar^2  \lambda  S_x^2  - 2 i \hbar  \lambda  S_x S_z S_y
+%\end{align*}
+%
+%Finally, we get 
+%\begin{align*}
+%C^{(3)}&=\hbar^2  C^{(2)} +  \hbar^2 \lambda  T_0   +  i  \hbar^3 \Lambda T_1 + \hbar^2 \Lambda T_2 \\
+%&=\hbar^2  C^{(2)} +  2i \hbar^3 \lambda  (i \hbar S_z^2  + S_z S_y S_x   + S_y S_xS_z )    +  \hbar^2 \Lambda( i  \hbar T_1 +  T_2) 
+%\end{align*}
+%
+% Let's simplify the last term $i  \hbar T_1 +  T_2$:
+% \begin{align*}
+% i  \hbar T_1 +  T_2 &= - i \hbar^3 \lambda (S_y^2 + S_z^2) +  i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) +  C^{(1)}S_z^2 + \hbar^2  \lambda  S_x^2  - 2 i \hbar  \lambda  S_x S_z S_y \\
+% &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 + i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - 2 i \hbar  \lambda  S_x S_z S_y +  C^{(1)}S_z^2 \\
+% &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 + i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - 2 i \hbar  \lambda  S_x S_z S_y +  i \hbar (- i \hbar S_x +  2 S_y S_z) S_z^2 \\
+%  &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 + i \hbar^3 \Lambda  ( i \hbar S_y S_z+ 2 S_x S_z^2) - 2 i \hbar  \lambda  S_x S_z S_y +  \hbar^2 S_x S_z^2 +  2  i \hbar S_y  S_z^3 \\
+%   &= - i \hbar^3 \lambda (S_y^2 + S_z^2)   + \hbar^2  \lambda  S_x^2 +  \hbar^2 S_x S_z^2 (1+ 2 i \hbar \Lambda)  - \hbar^4 \Lambda  S_y S_z - 2 i \hbar  \lambda  S_x S_z S_y   +  2  i \hbar S_y  S_z^3 \\
+% \end{align*}
+% Now, let's write:
+% \begin{align*}
+%   C^{(2)}= \hbar^2 C^{(1)}  -  \hbar^2 \lambda (S^2 - S_x^2)  + \hbar^2 \Lambda  ( i \hbar S_y S_z+  S_x S_z^2)
+% \end{align*}
 
 
 
