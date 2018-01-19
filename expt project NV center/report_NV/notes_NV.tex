@@ -241,7 +241,51 @@ S_y=  i \frac{\hbar}{\sqrt{2} }
 \end{pmatrix}
 \end{equation}
 
+\section{Fidelity of ground state of two and three level problem}
 
+The Hamiltonian for Landau-Zener problem is :
+\begin{equation}
+H= \hbar \Delta \sigma_z + \hbar \lambda(t) \sigma_x
+\end{equation}
+where $\lambda(t)= 2(t-1)/\tau$. Hence, $\dot{\lambda}= 2/\tau$. We are going to start off ground-state of Hamiltonian with $\lambda=-2$ at time $t_i= 1- \tau$ and end our protocol with  $\lambda=2$ at $t_f= 1+ \tau$. Hence, duration of our protocol is $2 \tau$. 
+
+\begin{figure}[!ht]
+\begin{center}
+ \includegraphics[scale=0.5]{pics/lambda_LZ.eps} 
+\includegraphics[scale=0.5]{pics/energy_LZ.eps} 
+\caption{a) Protocol of magnetic field b) Avoided level crossing as we change $\lambda$ for $\Delta=1$ and $\tau=2$ }
+\label{ev_lz}
+\end{center}
+\end{figure}
+
+We would numerically compute fidelity $F$ as we run our simulation  from $t=t_i$ to $t=t_f$ units, where $F= \langle  \psi_{GS} (t_f)| \psi(t_f) \rangle$.
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/fidelity_LZ.eps} 
+\caption{Fidelity (probability to find the wave-function to be in ground state) as increase the duration of protocol}
+\label{fid_nv}
+\end{center}
+\end{figure}
+
+Let's choose magnetic field to be in x-direction. Then we have Hamiltonian of NV center given by:
+\begin{align*}
+H_{NV} &= \hbar \Delta S_z^2 + \hbar \gamma_e   S_x  B \\
+&= \hbar \Delta (S_z^2 +  \dfrac{\gamma_e}{\Delta}   S_x  B) \\
+&= \hbar \Delta (S_z^2 +  \lambda S_x  ) 
+\end{align*}
+where $\lambda= \gamma_e B/ \Delta $. We will tune $\lambda$ as $\lambda(t)= 2(t-1)/\tau$. Actual time of duration would be $t_{act}= 2 \tau \Delta $ 
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/energy_NV.eps} 
+\includegraphics[scale=0.5]{pics/fidelity_NV_expt.eps}
+\caption{a)Avoided level crossing as we change $\lambda$   b) Fidelity (probability to find the wave-function to be in ground state) as increase the duration of protocol}
+\label{fid_lz}
+\end{center}
+\end{figure}
 
 \section{Transition rate for periodically driven noisy system}
 Let's consider a Hamiltonian:
