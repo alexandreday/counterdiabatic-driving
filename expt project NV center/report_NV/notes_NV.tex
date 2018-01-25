@@ -242,13 +242,14 @@ S_y=  i \frac{\hbar}{\sqrt{2} }
 \end{equation}
 
 \section{Fidelity of ground state of two and three level problem}
-
+\subsection*{Two level system}
 The Hamiltonian for Landau-Zener problem is :
 \begin{equation}
 H= \hbar \Delta \sigma_z + \hbar \lambda(t) \sigma_x
 \end{equation}
 where $\lambda(t)= 2(t-1)/\tau$. Hence, $\dot{\lambda}= 2/\tau$. We are going to start off ground-state of Hamiltonian with $\lambda=-2$ at time $t_i= 1- \tau$ and end our protocol with  $\lambda=2$ at $t_f= 1+ \tau$. Hence, duration of our protocol is $2 \tau$. 
 
+Here condition for time-evolution to be adiabatic is $1/ \tau \ll E/ \hbar $ which comes out to be $1/ \tau \ll \Delta^2 $
 \begin{figure}[!ht]
 \begin{center}
  \includegraphics[scale=0.5]{pics/lambda_LZ.eps} 
@@ -269,23 +270,69 @@ We would numerically compute fidelity $F$ as we run our simulation  from $t=t_i$
 \end{center}
 \end{figure}
 
+
+\subsection*{Two level system: rotating magnetic field}
+
+The Hamiltonian for Landau-Zener problem is ($\hbar =1$):
+\begin{equation}
+H= \Delta \sigma_z + \lambda(t) (\sigma_x \cos(\omega t) + \sigma_y \sin(\omega t))
+\end{equation}
+Going to rotating frame, we find:
+\begin{align*}
+H_{rot}&= V^{\dagger}H V - i V^{\dagger} \dot{V}\\
+&= (\Delta - \dfrac{\omega}{2}) \sigma_z + \lambda(t) \sigma_x
+\end{align*}
+where $V= \exp(-i \omega t \sigma_z/2)$
+
+We would choose $\omega =2 \Delta$ so that $H_{rot}= \lambda(t) \sigma_x$.
+  
+\subsection*{Three level system}
 Let's choose magnetic field to be in x-direction. Then we have Hamiltonian of NV center given by:
 \begin{align*}
 H_{NV} &= \hbar \Delta S_z^2 + \hbar \gamma_e   S_x  B \\
 &= \hbar \Delta (S_z^2 +  \dfrac{\gamma_e}{\Delta}   S_x  B) \\
-&= \hbar \Delta (S_z^2 +  \lambda S_x  ) 
+&= \hbar \Delta (S_z^2 +  \lambda(t) S_x  ) \\
+&= \Delta H_0(t)
 \end{align*}
-where $\lambda= \gamma_e B/ \Delta $. We will tune $\lambda$ as $\lambda(t)= 2(t-1)/\tau$. Actual time of duration would be $t_{act}= 2 \tau \Delta $ 
+where $\lambda= \gamma_e B/ \Delta $. We would choose $\lambda(t)= t/2T$. Hence, $\dot{\lambda}= 1/(2T)$. We are going to start off ground-state of Hamiltonian with $\lambda=-2$ at time $t_i= - T$ and end our protocol with  $\lambda=2$ at $t_f= T$. Hence, duration of our protocol is $2 T$. 
+
+Let's suppose our Hamiltonian commutes at different time. Then unitary operator $U (t)= \exp ( -i \Delta \int  H_0 (\Delta t) dt$. We can define $\tau= \Delta t$ so that $U( \tau)$. Since $\Delta \sim 10^9 s^{-1}$, this technique helps us numerically because then we don't have to deal with matrices that has huge numbers of the order of $\Delta$.
+
+
+Hence, for this purpose, we should convert $\lambda (t)=  \Delta t/ 2(\Delta T)= \tau/(2 \tilde{T})= \lambda(\tau)$. This means that actual time of duration of protocol would be $ 2 T= 2 \tilde{T}/ \Delta$. 
 
 
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.5]{pics/energy_NV.eps} 
 \includegraphics[scale=0.5]{pics/fidelity_NV_expt.eps}
-\caption{a)Avoided level crossing as we change $\lambda$   b) Fidelity (probability to find the wave-function to be in ground state) as increase the duration of protocol}
+\caption{a)Avoided level crossing as we change $\lambda$  with $  T= 2 / \Delta$ seconds b) Fidelity (probability to find the wave-function to be in ground state) as we increase the duration of protocol}
 \label{fid_lz}
 \end{center}
 \end{figure}
+In this numerical simulation, range of magnetic field has been chosen to be what's accessible in lab. We see that it's there is almost no transition from ground state to excited states.
+
+
+\subsection*{Three level system: rotating magnetic field}
+
+Let's choose magnetic field to be in x-direction. Then we have Hamiltonian of NV center given by:
+\begin{align*}
+H_{NV} &= \hbar \Delta S_z^2 + \hbar \gamma_e   S_x  B_x \cos (\Delta t) \\
+&= \hbar \Delta (S_z^2 +  \dfrac{\gamma_e}{\Delta}   S_x B_x \cos (\Delta t)) \\
+&= \hbar \Delta (S_z^2 +  \lambda(t)\cos (\Delta t) S_x  ) \\
+&=  \hbar \Delta H_0(t)
+\end{align*}
+where $\lambda(t)= \gamma_e B_x( t)  / \Delta $. We would choose $\lambda( \Delta t)= 2 \Delta t/(\Delta T)= 2 \tau/ \tilde{T}$. Hence, $H_0(\tau)=S_z^2 +  \lambda(\tau) S_x   \cos (\tau)$. With $\hbar=1$, we have $H_{NV}=\Delta H_0(\tau)$
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/energy_NV_cosine.eps} 
+\caption{Energy levels}
+\label{energy_lz_2}
+\end{center}
+\end{figure}
+
+%We are going to start off ground-state of Hamiltonian with $\lambda=0$ at time $t_i= 0$ and end our protocol with  $\lambda=2$ at $t_f= \tilde{T}$. Hence, duration of our protocol is $2 \tilde{T}$.
 
 \section{Transition rate for periodically driven noisy system}
 Let's consider a Hamiltonian:
