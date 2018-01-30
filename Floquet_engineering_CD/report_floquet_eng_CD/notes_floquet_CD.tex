@@ -26,29 +26,109 @@
 
 \section{CD driving}
  \begin{equation}
- H_0= - J \sum_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j V_j (\lambda) c^{\dagger}_{i} c_i
+ H_0= - J \sum_j (c^{\dagger}_{j+1} c_j+ \mbox{h.c}) + \sum_j V_j (\lambda) c^{\dagger}_{j} c_j
  \end{equation}
-For this problem, approximate gauge potential is chosen to be $A_{\lambda}^*= i \sum_j \alpha_j (c^{\dagger}_{i+1} c_i- h.c)$.
+For this problem, approximate gauge potential is chosen to be $A_{\lambda}^*= i \sum_j \alpha_j (c^{\dagger}_{j+1} c_j- h.c)$.
+
+On minimizing action, we get 
+\begin{align*}
+-3 J^2 (\alpha_{j+1}+ \alpha_{j-1})+ (6 J^2 + (V_{j+1}- V_{j})^2) \alpha_j= - J \partial_{\lambda} (V_{j+1}- V_{j}) \\
+\end{align*}
 
 \begin{align*}
-H_{CD}&= H_0 + \dot{\lambda} A_{\lambda}\\
-&=-  \sum_j J_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j U_j  c^{\dagger}_{i} c_i
+H_{CD}&= H_0 + \dot{\lambda} A_{\lambda}=  \sum_j J_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j U_j  c^{\dagger}_{i} c_i
 \end{align*}
 
 where 
 \begin{align*}
 J_j= J \sqrt{1 + (\dot{\lambda} \alpha_j/J)^2} \quad U_j = V_j( \lambda) - \sum_i^j \dfrac{J}{J^2 + (\dot{\lambda} \alpha_i/J)^2} (\ddot{\lambda} \alpha_j + \dot{\lambda}^2 \partial_{\lambda} \alpha_j)
 \end{align*}
+
+
+
 \section{Floquet driving}
 
- \begin{equation}
- H_0= - J \sum_j (c^{\dagger}_{i+1} c_i+ h.c) + \Omega \sum_j \dfrac{\xi}{2}  \sin (\Omega t - \Phi j + \Phi/2) c^{\dagger}_{j} c_j
- \end{equation}
-Going to rotating frame defined by:
+\begin{align*}
+H = H_0 + H_1 = J\sum_j (c_{j+1}^{\dagger} c_j  + \mbox{h.c}) + \cos(\omega t) \sum_j A_j  c_j^{\dagger} c_j
+\end{align*}
+We would go to the rotating frame $|\psi_{rot} \rangle= V^{\dagger}|\psi_{lab} \rangle$
+where $V=\exp(-i \sin(\omega t)/ \omega \sum_j A_j  c_j^{\dagger} c_j)$.
+
+\begin{align*}
+H_{rot}&= V^{\dagger} H V- i V^{\dagger} \dot{V}\\
+&=V^{\dagger} H_0 V + \cos(\omega t) \sum_j A_j  c_j^{\dagger} c_j + i^2 \cos(\omega t) \sum_j A_j  c_j^{\dagger} c_j \\
+&=V^{\dagger} H_0 V =V^{\dagger} c_{j+1}^{\dagger}V V^{\dagger} c_j V  + \mbox{h.c}
+\end{align*}
+
+Using $[n_j,c_j ]= -c_j$ and $[n_j,c_j^{\dagger} ]= c_j^{\dagger}$
+
+\begin{align*}
+H_{rot}&= J\sum_j   ( g^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c})
+\end{align*}
+where $g^{j, j+1}= \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right)$
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/alpha_j_linear_potn.eps}
+\includegraphics[scale=0.5]{pics/j_eff_cd.eps}
+\caption{a) $\alpha_j$ for linear potential with vanishing boundary condition b) Effective hopping strength }
+\end{center}
+\end{figure}
+
+\begin{align*}
+H_F^{(0)}&= \dfrac{1}{T}   \int_{t_0}^{T+t_0}(c_{j+1}^{\dagger} c_j \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right) dt + \mbox{h.c})\\
+&= J_{eff} (c_{j+1}^{\dagger} c_j + \mbox{h.c})\\
+\end{align*}
+where $J_{eff}=J \mathcal{J}_0 \left(\dfrac{A_{j+1}- A_j}{\omega}\right)$
+
+A necessary condition for cold atom experiments to work is that the driving frequency be smaller than the band gap between the lowest two Bloch bands, or otherwise higher bands will get populated.
+
+
+\section{Linear potential}
+We choose $V(j, \lambda)= j \lambda$.
+
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.68]{pics/j_eff_f.eps}
+\caption{Comparison of effective hopping strength from floquet and CD driving }
+\end{center}
+\end{figure}
+
+\section{Eckart potential}
+$V(\lambda,j) =\dfrac{ \lambda(t)}{\cosh^2 j/ \xi}$. This potential is localized and I expect it to better amenable for present purpose.
+
+
+\appendix 
+\section{Magnus expansion}
+For a Hamiltonian which is periodic in time, it's unitary operator over a full driving cycle is given by:
 \begin{equation}
-V= \exp( - i \sum_j \Delta_j c^{\dagger}_{j} c_j)
+U(T+ t_0, t_0)= \mathcal{T}_t\exp(- \dfrac{i}{\hbar} \int_{t_0}^T dt H(t))= \exp(- \dfrac{i}{\hbar}  H_F[t_0]T)
 \end{equation}
-where $\Delta_j= \cos (\Omega t - \Phi j + \Phi/2)$
+$ H_F[t_0]= \sum_n H_F^{(n)}[t_0] $ 
+where 
+\begin{align*}
+H_F^{(0)}= \dfrac{1}{T} \int_{t_0}^{T+t_0} H(t) dt \\
+H_F^{(1)}= \dfrac{1}{2! T i \hbar} \int_{t_0}^{T+t_0}  dt_1\int_{t_0}^{t_1} dt_2  [H(t_1), H(t_2)] 
+\end{align*}
+
+
+\section{Bessel's function of first kind}
+Integral representation of Bessel's function of first kind $\mathcal{J}_n (x)$ is given by:
+\begin{equation}
+\mathcal{J}_n (x)=  \frac{1}{2 \pi} \int_{-\pi}^\pi d\tau e^{i(n \tau - x \sin \tau)}= \frac{1}{T} \int_{-T/2}^{T/2} d\tau e^{i(n   \omega \tau - x \sin \omega \tau)}
+\end{equation}
+For $x \ll1$, $\mathcal{J}_0 (x)= 1- \frac{x^2}{2}$
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/bessel_fun.eps} 
+\includegraphics[scale=0.5]{pics/bessel_fun_zoom.eps} 
+\caption{Bessel's function }
+\end{center}
+\end{figure}
+
 \bibliography{ref} 
 
 \bibliographystyle{unsrt}
