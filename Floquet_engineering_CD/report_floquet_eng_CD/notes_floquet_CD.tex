@@ -1,0 +1,57 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[hmargin=2.0cm,vmargin=2.5cm,bindingoffset=0.5cm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath,amsthm,amssymb}
+\allowdisplaybreaks
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+%\usepackage{float}
+\usepackage{placeins}
+\usepackage{diagbox}
+\DeclareMathOperator{\Tr}{Tr}
+\newtheorem{thm}{Theorem}
+\usepackage{subcaption}
+%\usepackage{subfigure}
+\usepackage[english]{babel}
+\author{Mohit}
+\title{Counter-diabatic driving using Floquet engineering}
+\begin{document}
+\maketitle
+%\tableofcontents
+
+\section{CD driving}
+ \begin{equation}
+ H_0= - J \sum_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j V_j (\lambda) c^{\dagger}_{i} c_i
+ \end{equation}
+For this problem, approximate gauge potential is chosen to be $A_{\lambda}^*= i \sum_j \alpha_j (c^{\dagger}_{i+1} c_i- h.c)$.
+
+\begin{align*}
+H_{CD}&= H_0 + \dot{\lambda} A_{\lambda}\\
+&=-  \sum_j J_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j U_j  c^{\dagger}_{i} c_i
+\end{align*}
+
+where 
+\begin{align*}
+J_j= J \sqrt{1 + (\dot{\lambda} \alpha_j/J)^2} \quad U_j = V_j( \lambda) - \sum_i^j \dfrac{J}{J^2 + (\dot{\lambda} \alpha_i/J)^2} (\ddot{\lambda} \alpha_j + \dot{\lambda}^2 \partial_{\lambda} \alpha_j)
+\end{align*}
+\section{Floquet driving}
+
+ \begin{equation}
+ H_0= - J \sum_j (c^{\dagger}_{i+1} c_i+ h.c) + \Omega \sum_j \dfrac{\xi}{2}  \sin (\Omega t - \Phi j + \Phi/2) c^{\dagger}_{j} c_j
+ \end{equation}
+Going to rotating frame defined by:
+\begin{equation}
+V= \exp( - i \sum_j \Delta_j c^{\dagger}_{j} c_j)
+\end{equation}
+where $\Delta_j= \cos (\Omega t - \Phi j + \Phi/2)$
+\bibliography{ref} 
+
+\bibliographystyle{unsrt}
+%\bibliographystyle{plain}
+
+\end{document}
