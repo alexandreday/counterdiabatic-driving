@@ -35,17 +35,25 @@ On minimizing action, we get
 -3 J^2 (\alpha_{j+1}+ \alpha_{j-1})+ (6 J^2 + (V_{j+1}- V_{j})^2) \alpha_j= - J \partial_{\lambda} (V_{j+1}- V_{j}) \\
 \end{align*}
 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/alpha_j_linear_potn.eps}
+\includegraphics[scale=0.5]{pics/j_eff_cd.eps}\\
+\caption{a) $\alpha_j$ for linear potential with vanishing boundary condition b) Effective hopping strength}
+\end{center}
+\end{figure}
+
 \begin{align*}
-H_{CD}&= H_0 + \dot{\lambda} A_{\lambda}=  \sum_j J_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j U_j  c^{\dagger}_{i} c_i
+H_{CD}&= H_0 + \dot{\lambda} A_{\lambda}=  \sum_j J^{CD}_j (c^{\dagger}_{i+1} c_i+ h.c) + \sum_j U_j  c^{\dagger}_{i} c_i
 \end{align*}
 
 where 
 \begin{align*}
-J_j= J \sqrt{1 + (\dot{\lambda} \alpha_j/J)^2} \quad U_j = V_j( \lambda) - \sum_i^j \dfrac{J}{J^2 + (\dot{\lambda} \alpha_i/J)^2} (\ddot{\lambda} \alpha_j + \dot{\lambda}^2 \partial_{\lambda} \alpha_j)
+J^{CD}_j= J \sqrt{1 + (\dot{\lambda} \alpha_j/J)^2} \quad U_j = V_j( \lambda) - \sum_i^j \dfrac{J}{J^2 + (\dot{\lambda} \alpha_i/J)^2} (\ddot{\lambda} \alpha_j + \dot{\lambda}^2 \partial_{\lambda} \alpha_j)
 \end{align*}
 
-
-
+Over here, I am going to work with $\dot{\lambda}=1$ and $L=1024$.
 \section{Floquet driving}
 
 \begin{align*}
@@ -67,21 +75,15 @@ H_{rot}&= J\sum_j   ( g^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c})
 \end{align*}
 where $g^{j, j+1}= \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right)$
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.5]{pics/alpha_j_linear_potn.eps}
-\includegraphics[scale=0.5]{pics/j_eff_cd.eps}
-\caption{a) $\alpha_j$ for linear potential with vanishing boundary condition b) Effective hopping strength }
-\end{center}
-\end{figure}
+
 
 \begin{align*}
-H_F^{(0)}&= \dfrac{1}{T}   \int_{t_0}^{T+t_0}(c_{j+1}^{\dagger} c_j \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right) dt + \mbox{h.c})\\
-&= J_{eff} (c_{j+1}^{\dagger} c_j + \mbox{h.c})\\
+H_F^{(0)}&= \dfrac{1}{T}   \sum_j \int_{t_0}^{T+t_0}(c_{j+1}^{\dagger} c_j \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right) dt + \mbox{h.c})\\
+&= \sum_j J_{j}^F (c_{j+1}^{\dagger} c_j + \mbox{h.c})\\
 \end{align*}
-where $J_{eff}=J \mathcal{J}_0 \left(\dfrac{A_{j+1}- A_j}{\omega}\right)$
+where $J_{j}^F=J^F \mathcal{J}_0 \left(\dfrac{A_{j+1}- A_j}{\omega}\right)$
 
-A necessary condition for cold atom experiments to work is that the driving frequency be smaller than the band gap between the lowest two Bloch bands, or otherwise higher bands will get populated.
+%A necessary condition for cold atom experiments to work is that the driving frequency be smaller than the band gap between the lowest two Bloch bands, or otherwise higher bands will get populated.
 
 
 \section{Linear potential}
@@ -91,14 +93,45 @@ We choose $V(j, \lambda)= j \lambda$.
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.68]{pics/j_eff_f.eps}
-\caption{Comparison of effective hopping strength from floquet and CD driving }
+\includegraphics[scale=0.5]{pics/driving_field_amplitude.eps}
+\includegraphics[scale=0.5]{pics/j_eff_f.eps}
+\caption{a)   Driving field amplitude $A_j$ b)  Comparison of effective hopping strength from floquet and CD driving }
 \end{center}
 \end{figure}
 
 \section{Eckart potential}
-$V(\lambda,j) =\dfrac{ \lambda(t)}{\cosh^2 j/ \xi}$. This potential is localized and I expect it to better amenable for present purpose.
+%\subsection{Moving potential}
+%$V(\lambda,j) =\dfrac{V_0}{\cosh^2 [(j-\lambda)/ \xi]}$ where $\xi$ is the localization length.
+%We will use $V_0=2J$
+\subsection{Inserting potential}
+$V(\lambda,j) =\dfrac{ \lambda(t)}{\cosh^2 j/ \xi}$ where $\xi$ is the localization length.
 
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.68]{pics/eckart_potn.eps}
+\caption{Eckart potential with $\lambda=1$ }
+\end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/alpha_j_eckart_potn_loc.eps}
+\includegraphics[scale=0.5]{pics/alpha_j_eckart_potn_nonloc.eps}
+\caption{ $\alpha_j$ for Eckart potential  with vanishing boundary condition  with a) $\xi=8$ b) $\xi=50$}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/j_eff_cd_eckart_potn.eps}
+\includegraphics[scale=0.5]{pics/driving_field_amplitude_diff_eckart_potn.eps}
+\includegraphics[scale=0.5]{pics/driving_field_amplitude_eckart_potn.eps}
+\includegraphics[scale=0.5]{pics/j_eff_comp_eckart_potn.eps}
+\caption{ a) Effective hopping strength b) $(A_{j+1}-A_{j})/\omega$ c)Driving field's amplitude $A_{j}/\omega$ d) Comparison of effective hopping strength from floquet and CD driving }
+\end{center}
+\end{figure}
 
 \appendix 
 \section{Magnus expansion}
