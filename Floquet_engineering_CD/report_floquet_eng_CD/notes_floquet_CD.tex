@@ -71,17 +71,17 @@ H_{rot}&= V^{\dagger} H V- i V^{\dagger} \dot{V}\\
 Using $[n_j,c_j ]= -c_j$ and $[n_j,c_j^{\dagger} ]= c_j^{\dagger}$
 
 \begin{align*}
-H_{rot}&= J\sum_j   ( g^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c})
+H_{rot}&= J\sum_j   ( g^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c}) \quad \mbox{where } ~ g^{j, j+1}= \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right)
 \end{align*}
-where $g^{j, j+1}= \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right)$
+
 
 
 
 \begin{align*}
 H_F^{(0)}&= \dfrac{1}{T}   \sum_j \int_{t_0}^{T+t_0}(c_{j+1}^{\dagger} c_j \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right) dt + \mbox{h.c})\\
-&= \sum_j J_{j}^F (c_{j+1}^{\dagger} c_j + \mbox{h.c})\\
+&= \sum_j J_{j}^F (c_{j+1}^{\dagger} c_j + \mbox{h.c}) \quad \mbox{where} ~ J_{j}^F=J^F \mathcal{J}_0 \left(\dfrac{A_{j+1}- A_j}{\omega}\right)
 \end{align*}
-where $J_{j}^F=J^F \mathcal{J}_0 \left(\dfrac{A_{j+1}- A_j}{\omega}\right)$
+
 
 %A necessary condition for cold atom experiments to work is that the driving frequency be smaller than the band gap between the lowest two Bloch bands, or otherwise higher bands will get populated.
 
