@@ -146,7 +146,12 @@ H_F^{(0)}= \dfrac{1}{T} \int_{t_0}^{T+t_0} H(t) dt \\
 H_F^{(1)}= \dfrac{1}{2! T i \hbar} \int_{t_0}^{T+t_0}  dt_1\int_{t_0}^{t_1} dt_2  [H(t_1), H(t_2)] 
 \end{align*}
 
-
+Hence, 
+\begin{align*}
+|\psi (T) \rangle &= U |\psi (0) \rangle \\
+&= \exp(- \dfrac{i}{\hbar}  H_F T)|\psi (0) \rangle \\
+&= \lim_{\omega \rightarrow \infty}\exp(- \dfrac{i}{\hbar}  H_F^{(0)}T)|\psi (0) \rangle
+\end{align*}
 \section{Bessel's function of first kind}
 Integral representation of Bessel's function of first kind $\mathcal{J}_n (x)$ is given by:
 \begin{equation}
@@ -162,6 +167,31 @@ For $x \ll1$, $\mathcal{J}_0 (x)= 1- \frac{x^2}{2}$
 \end{center}
 \end{figure}
 
+\section{Numerics of a single body problem}
+
+Consider the Hamiltonian operator $\mathbf{H}$ on lattice 
+\begin{equation}
+\mathbf{H}= \sum_n V_n |n \rangle \langle n| + \sum_n (u_{n,n+1}|n \rangle \langle n+ 1|  + u_{n,n+1}^*|n +1 \rangle \langle n|)
+\end{equation}
+In units of $\hbar=1$, time-evolution is given by 
+\begin{equation}
+\mathbf{H} | \Psi \rangle= i\dfrac{d}{dt} | \Psi \rangle
+\label{shrod eqn}
+\end{equation}
+We choose $| \Psi \rangle= \sum_n \psi_n | n \rangle$, where $\psi_n$ is the probability amplitude for the quantum particle on $n$-th lattice site. Hence, we find time-evolution of $\psi_n$ is given by:
+\begin{equation}
+i\frac{d\psi_n}{dt} =   u_{n,n+1}\psi_{n+1} + u_{n-1,n}^* \psi_{n-1} + V_n \psi_n 
+\end{equation}
+With this, we have converted the problem of solving SE into a problem of solving an ODE.
+
+For us, $u_{j, j+1}= \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right)$ as we are interested in studying the dynamics of this Hamiltonian:
+\begin{align*}
+H_{rot}&= J\sum_j   ( u^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c}) 
+\end{align*}
+Let's suppose $A_j= j$ where $j$ goes from $0$ to $L-1$.
+
+
+%\subsection{Matrix representation}
 \bibliography{ref} 
 
 \bibliographystyle{unsrt}
