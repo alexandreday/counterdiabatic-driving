@@ -100,9 +100,7 @@ We choose $V(j, \lambda)= j \lambda$.
 \end{figure}
 
 \section{Eckart potential}
-%\subsection{Moving potential}
-%$V(\lambda,j) =\dfrac{V_0}{\cosh^2 [(j-\lambda)/ \xi]}$ where $\xi$ is the localization length.
-%We will use $V_0=2J$
+
 \subsection{Inserting potential}
 $V(\lambda,j) =\dfrac{ \lambda(t)}{\cosh^2 j/ \xi}$ where $\xi$ is the localization length.
 
@@ -133,6 +131,12 @@ $V(\lambda,j) =\dfrac{ \lambda(t)}{\cosh^2 j/ \xi}$ where $\xi$ is the localizat
 \end{center}
 \end{figure}
 
+\subsection{Moving potential}
+$V(\lambda,j) =\dfrac{V_0}{\cosh^2 [(j-\lambda)/ \xi]}$ where $\xi$ is the localization length.
+We will use $V_0=2J$. And  $\partial_{\lambda}V=\dfrac{2V_0 \sinh [(j-\lambda)/ \xi]}{ \xi \cosh^3 [(j-\lambda)/ \xi]}=\dfrac{2V_0 \tanh [(j-\lambda)/ \xi]}{ \xi \cosh^2 [(j-\lambda)/ \xi]} $.
+
+I still don't know why my numerical simulation is not consistent with Dries's calculation.
+
 \appendix 
 \section{Magnus expansion}
 For a Hamiltonian which is periodic in time, it's unitary operator over a full driving cycle is given by:
@@ -152,20 +156,7 @@ Hence,
 &= \exp(- \dfrac{i}{\hbar}  H_F T)|\psi (0) \rangle \\
 &= \lim_{\omega \rightarrow \infty}\exp(- \dfrac{i}{\hbar}  H_F^{(0)}T)|\psi (0) \rangle
 \end{align*}
-\section{Bessel's function of first kind}
-Integral representation of Bessel's function of first kind $\mathcal{J}_n (x)$ is given by:
-\begin{equation}
-\mathcal{J}_n (x)=  \frac{1}{2 \pi} \int_{-\pi}^\pi d\tau e^{i(n \tau - x \sin \tau)}= \frac{1}{T} \int_{-T/2}^{T/2} d\tau e^{i(n   \omega \tau - x \sin \omega \tau)}
-\end{equation}
-For $x \ll1$, $\mathcal{J}_0 (x)= 1- \frac{x^2}{2}$
 
-\begin{figure}[!ht]
-\begin{center}
-\includegraphics[scale=0.5]{pics/bessel_fun.eps} 
-\includegraphics[scale=0.5]{pics/bessel_fun_zoom.eps} 
-\caption{Bessel's function }
-\end{center}
-\end{figure}
 
 \section{Numerics of a single body problem}
 
@@ -186,10 +177,46 @@ With this, we have converted the problem of solving SE into a problem of solving
 
 For us, $u_{j, j+1}= \exp\left(i \sin(\omega t) \dfrac{A_{j+1}- A_j}{\omega}\right)$ as we are interested in studying the dynamics of this Hamiltonian:
 \begin{align*}
-H_{rot}&= J\sum_j   ( u^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c}) 
+H&= J\sum_{j=0}^{L-1}   ( u^{j, j+1} c_{j+1}^{\dagger} c_j + \mbox{h.c}) 
 \end{align*}
-Let's suppose $A_j= j$ where $j$ goes from $0$ to $L-1$.
+where periodic boundary condition is assumed. Let's suppose $A_j= j$ where $j$ goes from $0$ to $L-2$ and $A_{j=L-1}= 0$ so that $A_{j+1}- A_j=1$ for all values of $j=\{0,L-1\}$ \footnote{We should be careful with the boundary terms. For $j={0,L-1}$, $A_1-A_0=1$. But $A_{L}-A_{L-1}=A_0- (L-1)=1-L$}. For a lattice-size of $L=51$, I did numerical simulation with initial condition as $| \psi (t=0) \rangle= \delta_{i, (L-1)/2}$.
 
+
+
+\begin{equation*}
+\begin{aligned}[c]
+|\psi (t=T)_{num} \rangle &= U |\psi (0) \rangle \\
+&= \exp(- \dfrac{i}{\hbar}  H T)|\psi (0) \rangle 
+\end{aligned}
+\qquad \qquad
+\begin{aligned}[c]
+|\psi_F (T) \rangle &= U_F |\psi (0) \rangle \\
+&\simeq \exp(- \dfrac{i}{\hbar}  H_F^{(0)}T)|\psi (0) \rangle
+\end{aligned}
+\end{equation*}
+
+where $H_F^{(0)}= \sum_{j=0}^{L-1} J_{j}^F (c_{j+1}^{\dagger} c_j + \mbox{h.c})$ with $J_{j}^F=J^F \mathcal{J}_0 \left(\dfrac{A_{j+1}- A_j}{\omega}\right)$
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/single_body_L51_floquet.eps} 
+\caption{$\psi_{num}(T)$ is the wavefunction obtained after solving numerically and $\psi_F (T)$ is the wevfunction-obtained using zeroth term of Magnus expansion}
+\end{center}
+\end{figure}
+\section{Bessel's function of first kind}
+Integral representation of Bessel's function of first kind $\mathcal{J}_n (x)$ is given by:
+\begin{equation}
+\mathcal{J}_n (x)=  \frac{1}{2 \pi} \int_{-\pi}^\pi d\tau e^{i(n \tau - x \sin \tau)}= \frac{1}{T} \int_{-T/2}^{T/2} d\tau e^{i(n   \omega \tau - x \sin \omega \tau)}
+\end{equation}
+For $x \ll1$, $\mathcal{J}_0 (x)= 1- \frac{x^2}{2}$
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=0.5]{pics/bessel_fun.eps} 
+\includegraphics[scale=0.5]{pics/bessel_fun_zoom.eps} 
+\caption{Bessel's function }
+\end{center}
+\end{figure}
 
 %\subsection{Matrix representation}
 \bibliography{ref} 
